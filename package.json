@@ -5,8 +5,8 @@
     "dependencies": {},
     "node-red": {
         "settings": {
-            "flowFile": "OldFlowsOnPi.json",
-            "credentialsFile": "OldFlowsOnPi_cred.json"
+            "flowFile": "flow.json",
+            "credentialsFile": "flow_cred.json"
         }
     }
 }
