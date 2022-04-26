@@ -38,6 +38,14 @@
         "info": ""
     },
     {
+        "id": "a53ab117a50507b3",
+        "type": "tab",
+        "label": "Flow 4",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "2b927ce4382b5b4a",
         "type": "sqlitedb",
         "db": "",
@@ -3131,6 +3139,224 @@
         "y": 660,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "1c2b36180bdd1ae9",
+        "type": "debug",
+        "z": "a53ab117a50507b3",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 1050,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "e6470ed7a38945f1",
+        "type": "inject",
+        "z": "a53ab117a50507b3",
+        "name": "alarm trigger",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 426.9999771118164,
+        "y": 515.2222151756287,
+        "wires": [
+            [
+                "0efd31c06d4b1c22"
+            ]
+        ]
+    },
+    {
+        "id": "fc8e16d062f3f477",
+        "type": "function",
+        "z": "a53ab117a50507b3",
+        "name": "SimpleBlockingQueue",
+        "func": "context.queue = context.queue || [];\n\nvar totalAllowedQueueSize = 20;\nvar mqtt_connected = false;\nvar blocked = false;\n\n// mqtt out node\nvar nextNode = RED.nodes.getNode(\"ae7f8962.dd8b18\");\n// status check\nmqtt_connected = nextNode.brokerConn.connected;\nif (context.queue.length >= totalAllowedQueueSize) blocked = true;\n\nif (msg.payload.op == \"reset\"  ) {\n   context.queue = [];\n} else if ( msg.payload.op == \"trigger\" ) {\n    // dequeue\n    if ( context.queue.length === 0 ) msg = null; // no action\n    else {\n       if ( mqtt_connected ) msg.payload = context.queue.shift();\n    }\n} else {\n    // enqueue\n    if ( !blocked ) context.queue.push(msg.payload);\n}\n\nif (mqtt_connected) {\n    if( !blocked )\n        node.status({fill:\"green\",shape:\"ring\",text: '('+context.queue.length+') stored,connected' });\n    else \n        node.status({fill:\"red\",shape:\"ring\",text: 'blocked,('+context.queue.length+') stored,connected' });\n} else {\n    if( !blocked ) \n        node.status({fill:\"red\",shape:\"ring\",text: '('+context.queue.length+') stored,disconnected' });\n    else\n        node.status({fill:\"red\",shape:\"ring\",text: 'blocked,('+context.queue.length+') stored,disconnected' });\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 532.5555486679077,
+        "wires": [
+            [
+                "1c2b36180bdd1ae9",
+                "f39aef2e75c37880"
+            ]
+        ]
+    },
+    {
+        "id": "6b7fb96e7abc6677",
+        "type": "inject",
+        "z": "a53ab117a50507b3",
+        "name": "report trigger",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 426.9999694824219,
+        "y": 558.2222146987915,
+        "wires": [
+            [
+                "f85517a91ae73529"
+            ]
+        ]
+    },
+    {
+        "id": "0efd31c06d4b1c22",
+        "type": "function",
+        "z": "a53ab117a50507b3",
+        "name": "alarm generator",
+        "func": "\nvar trigger  = Math.floor(Math.random() * 6);\n\nmsg.payload.timestamp = Date.now();\nswitch ( trigger ) {\ncase 0 :\ncase 2 :\ncase 4 :\n    msg.payload.op = 'report';\n    msg.payload.priority = 1;\n    msg.payload.task = 'Gas Leak';\n    break;  \ncase 1 :\ncase 3 :\ncase 5 :\n    msg.payload.op = 'report';\n    msg.payload.priority = 2;\n    msg.payload.task = 'Water Leak';\n    break;    \ndefault:\n    msg.payload.op = 'report';\n    msg.payload.priority = 'low';\n    msg.payload.task = 'Gas Task';\n    break;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 616,
+        "y": 516.4444370269775,
+        "wires": [
+            [
+                "fc8e16d062f3f477"
+            ]
+        ]
+    },
+    {
+        "id": "f85517a91ae73529",
+        "type": "function",
+        "z": "a53ab117a50507b3",
+        "name": "mqtt out trigger",
+        "func": "msg.payload = { op : 'trigger' } ;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 615.9999961853027,
+        "y": 559.4444379806519,
+        "wires": [
+            [
+                "fc8e16d062f3f477"
+            ]
+        ]
+    },
+    {
+        "id": "f39aef2e75c37880",
+        "type": "mqtt out",
+        "z": "a53ab117a50507b3",
+        "name": "MQTT pub - node1/alarm",
+        "topic": "node1/alarm",
+        "qos": "",
+        "retain": "",
+        "broker": "d139ad3f.b28af",
+        "x": 1084,
+        "y": 581.1111183166504,
+        "wires": []
+    },
+    {
+        "id": "4ee440121715a6fe",
+        "type": "debug",
+        "z": "a53ab117a50507b3",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 636,
+        "y": 650.1111059188843,
+        "wires": []
+    },
+    {
+        "id": "fa6ab534ac4f32c3",
+        "type": "debug",
+        "z": "a53ab117a50507b3",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 663.9999961853027,
+        "y": 695.1111059188843,
+        "wires": []
+    },
+    {
+        "id": "f29c7353d3c373af",
+        "type": "mqtt in",
+        "z": "a53ab117a50507b3",
+        "name": "MQTT sub - node1/alarm",
+        "topic": "node1/alarm",
+        "qos": "2",
+        "broker": "d139ad3f.b28af",
+        "inputs": 0,
+        "x": 453,
+        "y": 695.2222166061401,
+        "wires": [
+            [
+                "fa6ab534ac4f32c3"
+            ]
+        ]
+    },
+    {
+        "id": "e1b22166372d3995",
+        "type": "inject",
+        "z": "a53ab117a50507b3",
+        "name": "reset trigger",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 428,
+        "y": 599.2222166061401,
+        "wires": [
+            [
+                "dc578435e33a8380"
+            ]
+        ]
+    },
+    {
+        "id": "dc578435e33a8380",
+        "type": "function",
+        "z": "a53ab117a50507b3",
+        "name": "reset trigger",
+        "func": "msg.payload = { op : 'reset' } ;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 605.9999847412109,
+        "y": 599.6527853012085,
+        "wires": [
+            [
+                "fc8e16d062f3f477"
+            ]
+        ]
+    },
+    {
+        "id": "1675b28812cb5115",
+        "type": "mosca in",
+        "z": "a53ab117a50507b3",
+        "mqtt_port": "1883",
+        "mqtt_ws_port": "",
+        "name": "",
+        "username": "",
+        "password": "",
+        "dburl": "",
+        "x": 443,
+        "y": 650.2222166061401,
+        "wires": [
+            [
+                "4ee440121715a6fe"
+            ]
         ]
     }
 ]
