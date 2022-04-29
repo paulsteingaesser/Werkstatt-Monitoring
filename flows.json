@@ -1,0 +1,3375 @@
+[
+    {
+        "id": "e0803275bdcac180",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "1da5016475402c1e",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "6242732e510fa6bb",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "70e0d7ed.51e808",
+        "type": "tab",
+        "label": "Maschinentracker",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "3fa1b27d967748be",
+        "type": "tab",
+        "label": "Maschinentracker",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "a53ab117a50507b3",
+        "type": "tab",
+        "label": "Flow 4",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "2b927ce4382b5b4a",
+        "type": "sqlitedb",
+        "db": "",
+        "mode": "RWC"
+    },
+    {
+        "id": "97158aa1.026308",
+        "type": "sqlitedb",
+        "db": "db_002"
+    },
+    {
+        "id": "3c770aff.9ba2a6",
+        "type": "ui_tab",
+        "name": "Anmeldung",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "d40ead3e.334ab",
+        "type": "ui_group",
+        "name": "",
+        "tab": "3c770aff.9ba2a6",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "ecd475138fd07684",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "907974f919b7eb48",
+        "type": "ui_group",
+        "name": "Anmeldung",
+        "tab": "3c770aff.9ba2a6",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "af9cb38.01d655",
+        "type": "sqlitedb",
+        "db": "/tmp/sqlite",
+        "mode": "RWC"
+    },
+    {
+        "id": "6b5b1f74.6f562",
+        "type": "ui_group",
+        "name": "Kreissäge",
+        "tab": "a6b74173.c7ccc",
+        "order": 1,
+        "disp": true,
+        "width": "8",
+        "collapse": false
+    },
+    {
+        "id": "d1d9a7ea.ea1988",
+        "type": "ui_group",
+        "name": "Auswertung",
+        "tab": "4ce63ea5.5bc4b",
+        "order": 1,
+        "disp": false,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "a6b74173.c7ccc",
+        "type": "ui_tab",
+        "name": "Maschinenlaufzeit",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "4ce63ea5.5bc4b",
+        "type": "ui_tab",
+        "name": "Auswertung",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "227bf809.b629f8",
+        "type": "serial-port",
+        "serialport": "/dev/ttyAMA0",
+        "serialbaud": "38400",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "5327e533db022d58",
+        "type": "ui_text_input",
+        "z": "e0803275bdcac180",
+        "name": "",
+        "label": "Benutzer",
+        "tooltip": "",
+        "group": "d40ead3e.334ab",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 840,
+        "y": 340,
+        "wires": [
+            [
+                "b061b9f26270deb3"
+            ]
+        ]
+    },
+    {
+        "id": "6007ff851b286596",
+        "type": "ui_text_input",
+        "z": "e0803275bdcac180",
+        "name": "",
+        "label": "Passwort",
+        "tooltip": "",
+        "group": "d40ead3e.334ab",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "password",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 840,
+        "y": 380,
+        "wires": [
+            [
+                "b061b9f26270deb3"
+            ]
+        ]
+    },
+    {
+        "id": "72bfa42f56d4b359",
+        "type": "sqlite",
+        "z": "e0803275bdcac180",
+        "mydb": "2b927ce4382b5b4a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "",
+        "x": 1230,
+        "y": 460,
+        "wires": [
+            [
+                "8a5b80724f075088"
+            ]
+        ]
+    },
+    {
+        "id": "8a5b80724f075088",
+        "type": "debug",
+        "z": "e0803275bdcac180",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1430,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "b061b9f26270deb3",
+        "type": "function",
+        "z": "e0803275bdcac180",
+        "name": "INSERT",
+        "func": "var username = { \"topic\": \"INSERT INTO RANDOMNUM USERS ( \" + msg.payload + \", )\"\n}\nreturn username;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1060,
+        "y": 460,
+        "wires": [
+            [
+                "72bfa42f56d4b359"
+            ]
+        ]
+    },
+    {
+        "id": "88288188a1aaeb64",
+        "type": "ui_button",
+        "z": "e0803275bdcac180",
+        "name": "",
+        "group": "d40ead3e.334ab",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Login",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "orange",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 830,
+        "y": 460,
+        "wires": [
+            [
+                "b061b9f26270deb3"
+            ]
+        ]
+    },
+    {
+        "id": "2f7637bf680b7051",
+        "type": "sqlite",
+        "z": "e0803275bdcac180",
+        "mydb": "97158aa1.026308",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "db_002",
+        "x": 1160,
+        "y": 600,
+        "wires": [
+            [
+                "63e375590f5de06a"
+            ]
+        ]
+    },
+    {
+        "id": "a1f7304375fa5a05",
+        "type": "inject",
+        "z": "e0803275bdcac180",
+        "name": "CREATE DB",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "CREATE TABLE USERS(\"userID\" INT PRIMARY KEY NOT NULL,\"user\" STRING NOT NULL, \"password\" STRING NOT NULL)",
+        "payload": "",
+        "payloadType": "date",
+        "x": 870,
+        "y": 600,
+        "wires": [
+            [
+                "2f7637bf680b7051"
+            ]
+        ]
+    },
+    {
+        "id": "63e375590f5de06a",
+        "type": "debug",
+        "z": "e0803275bdcac180",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1330,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "db5a646ad61e66fb",
+        "type": "inject",
+        "z": "e0803275bdcac180",
+        "name": "INSERT",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 860,
+        "y": 660,
+        "wires": [
+            [
+                "8589d1bc779f08a7"
+            ]
+        ]
+    },
+    {
+        "id": "8589d1bc779f08a7",
+        "type": "function",
+        "z": "e0803275bdcac180",
+        "name": "INSERT",
+        "func": "var user = \"Till\";\nvar password= \"123\";\nvar userIndex = 1;\nvar newMsg = {\n \"topic\": \"INSERT INTO USERS(USERID,USER,PASSWORD) VALUES(\"+userIndex+\",\"+user+\",\"+password+\")\"\n}\nuserIndex++;\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1020,
+        "y": 660,
+        "wires": [
+            [
+                "daa4d21c0899955f"
+            ]
+        ]
+    },
+    {
+        "id": "c6c5255dbc5af166",
+        "type": "debug",
+        "z": "e0803275bdcac180",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 1330,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "daa4d21c0899955f",
+        "type": "sqlite",
+        "z": "e0803275bdcac180",
+        "mydb": "97158aa1.026308",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "db_002",
+        "x": 1160,
+        "y": 660,
+        "wires": [
+            [
+                "c6c5255dbc5af166"
+            ]
+        ]
+    },
+    {
+        "id": "c7499082be8c73e9",
+        "type": "inject",
+        "z": "e0803275bdcac180",
+        "name": "DELETE 30s",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "DELETE FROM USERS WHERE TIMESTAMP <= strftime('%s','now', '-30 seconds')*1000",
+        "payload": "",
+        "payloadType": "date",
+        "x": 870,
+        "y": 720,
+        "wires": [
+            [
+                "5fd110ead6b65eba"
+            ]
+        ]
+    },
+    {
+        "id": "5fd110ead6b65eba",
+        "type": "sqlite",
+        "z": "e0803275bdcac180",
+        "mydb": "97158aa1.026308",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "db_002",
+        "x": 1160,
+        "y": 720,
+        "wires": [
+            [
+                "71d1477cbbf3c040"
+            ]
+        ]
+    },
+    {
+        "id": "5c58c7e183f9fcad",
+        "type": "inject",
+        "z": "e0803275bdcac180",
+        "name": "DELETE 24h",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "DELETE FROM USERS WHERE TIMESTAMP <= strftime('%s','now', '-24 hours')*1000",
+        "payload": "",
+        "payloadType": "date",
+        "x": 870,
+        "y": 760,
+        "wires": [
+            [
+                "5fd110ead6b65eba"
+            ]
+        ]
+    },
+    {
+        "id": "7be8d5ad65b1a02b",
+        "type": "inject",
+        "z": "e0803275bdcac180",
+        "name": "DELETE 7d",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "DELETE FROM USERS WHERE TIMESTAMP <= strftime('%s','now', '-7 days')*1000",
+        "payload": "",
+        "payloadType": "date",
+        "x": 870,
+        "y": 800,
+        "wires": [
+            [
+                "5fd110ead6b65eba"
+            ]
+        ]
+    },
+    {
+        "id": "71d1477cbbf3c040",
+        "type": "debug",
+        "z": "e0803275bdcac180",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 1330,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "9e1144a3e88abb25",
+        "type": "inject",
+        "z": "e0803275bdcac180",
+        "name": "UPDATE",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "UPDATE USERS",
+        "payload": "",
+        "payloadType": "date",
+        "x": 860,
+        "y": 860,
+        "wires": [
+            [
+                "a93aef0f6397b04b"
+            ]
+        ]
+    },
+    {
+        "id": "a93aef0f6397b04b",
+        "type": "sqlite",
+        "z": "e0803275bdcac180",
+        "mydb": "97158aa1.026308",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "db_002",
+        "x": 1160,
+        "y": 860,
+        "wires": [
+            [
+                "6a6ad5110ab36a65"
+            ]
+        ]
+    },
+    {
+        "id": "6a6ad5110ab36a65",
+        "type": "debug",
+        "z": "e0803275bdcac180",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 1330,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "f7edb34c5b0418d4",
+        "type": "inject",
+        "z": "e0803275bdcac180",
+        "name": "COUNT",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "SELECT COUNT(*) FROM USERS",
+        "payload": "",
+        "payloadType": "date",
+        "x": 850,
+        "y": 900,
+        "wires": [
+            [
+                "a93aef0f6397b04b"
+            ]
+        ]
+    },
+    {
+        "id": "40f353c21f809090",
+        "type": "inject",
+        "z": "e0803275bdcac180",
+        "name": "SELECT",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "SELECT * FROM USERS ORDER BY USERID DESC LIMIT 100;",
+        "payload": "",
+        "payloadType": "date",
+        "x": 860,
+        "y": 960,
+        "wires": [
+            [
+                "ab40968a6de1f34f"
+            ]
+        ]
+    },
+    {
+        "id": "ab40968a6de1f34f",
+        "type": "sqlite",
+        "z": "e0803275bdcac180",
+        "mydb": "97158aa1.026308",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "db_002",
+        "x": 1160,
+        "y": 960,
+        "wires": [
+            [
+                "50b81034cb4557c6",
+                "70c9291b557563a9"
+            ]
+        ]
+    },
+    {
+        "id": "70c9291b557563a9",
+        "type": "ui_template",
+        "z": "e0803275bdcac180",
+        "group": "d40ead3e.334ab",
+        "name": "",
+        "order": 0,
+        "width": "6",
+        "height": "7",
+        "format": "<table style=\"width:100%\">\n  <tr>\n    <th>UserID</th> \n    <th>Benutzername</th>\n    <th>Passwort</th> \n  </tr>\n  <tr ng-repeat=\"x in msg.payload | limitTo:20\">\n    <td>{{$index}}</td>\n    <td>{{msg.payload[$index].USER}}</td>\n    <td>{{msg.payload[$index].PASSWORD}}</td>\n  </tr>\n</table>\n\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 1340,
+        "y": 1000,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "50b81034cb4557c6",
+        "type": "debug",
+        "z": "e0803275bdcac180",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 1330,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "882b9e9717120eb6",
+        "type": "sqlite",
+        "z": "e0803275bdcac180",
+        "mydb": "97158aa1.026308",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "db_002",
+        "x": 1160,
+        "y": 1080,
+        "wires": [
+            [
+                "52d8773814a73cc7"
+            ]
+        ]
+    },
+    {
+        "id": "8b19793ed1ec6b78",
+        "type": "inject",
+        "z": "e0803275bdcac180",
+        "name": "DROP DB",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "DROP TABLE USERS",
+        "payload": "",
+        "payloadType": "date",
+        "x": 860,
+        "y": 1080,
+        "wires": [
+            [
+                "882b9e9717120eb6"
+            ]
+        ]
+    },
+    {
+        "id": "52d8773814a73cc7",
+        "type": "debug",
+        "z": "e0803275bdcac180",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1330,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "fbce28e4fafea311",
+        "type": "comment",
+        "z": "e0803275bdcac180",
+        "name": "Löscht vorhandene Datenbank",
+        "info": "",
+        "x": 570,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "8052818c02752b0f",
+        "type": "comment",
+        "z": "e0803275bdcac180",
+        "name": "Erstellt Datenbank durch sql Befehl im topic",
+        "info": "",
+        "x": 570,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "e88de422fe08ccfa",
+        "type": "comment",
+        "z": "e0803275bdcac180",
+        "name": "Erstellt timestamp, dessen payload durch INSERT Funktion modifiziert wird und an SQLite DB übergeben wird.",
+        "info": "",
+        "x": 370,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "a079dcf29d75f0cb",
+        "type": "comment",
+        "z": "e0803275bdcac180",
+        "name": "Löscht Einträge der letzten 30s durch Timestamp Vergleich",
+        "info": "",
+        "x": 530,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "ab5ef55d864c2315",
+        "type": "debug",
+        "z": "e0803275bdcac180",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 1570,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "6998a6c973287db5",
+        "type": "comment",
+        "z": "e0803275bdcac180",
+        "name": "Erstellt Datenbank durch sql Befehl im topic",
+        "info": "",
+        "x": 490,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "01e52465e5aa6278",
+        "type": "comment",
+        "z": "e0803275bdcac180",
+        "name": "Erstellt Datenbank durch sql Befehl im topic",
+        "info": "",
+        "x": 490,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "492db222f0a5c647",
+        "type": "comment",
+        "z": "e0803275bdcac180",
+        "name": "Erstellt Datenbank durch sql Befehl im topic",
+        "info": "",
+        "x": 470,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "14163d3a9cd1d3f3",
+        "type": "debug",
+        "z": "e0803275bdcac180",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1410,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "4a010388ceeece02",
+        "type": "debug",
+        "z": "e0803275bdcac180",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1410,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "ad08074b212a8934",
+        "type": "comment",
+        "z": "e0803275bdcac180",
+        "name": "",
+        "info": "",
+        "x": 480,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "24269b0cd6bb6d94",
+        "type": "comment",
+        "z": "1da5016475402c1e",
+        "name": "all topics",
+        "info": "\nCREATE TABLE RANDOMNUM( TIMESTAMP INT PRIMARY KEY NOT NULL, VALUE INT NOT NULL, BOOL INT NOT NULL)\n\n//INSERT\nvar randomNum = Math.round(Math.random()*100);\nvar largeBool = (randomNum > 50)?1:0;\nvar newMsg = {\n \"topic\": \"INSERT INTO RANDOMNUM VALUES ( \" + msg.payload + \", \" + randomNum + \", \" + largeBool + \")\"\n}\nreturn newMsg;\n\nDELETE FROM RANDOMNUM WHERE TIMESTAMP <= strftime('%s','now', '-30 seconds')*1000\nDELETE FROM RANDOMNUM WHERE TIMESTAMP <= strftime('%s','now', '-24 hours')*1000\nDELETE FROM RANDOMNUM WHERE TIMESTAMP <= strftime('%s','now', '-7 days')*1000\n\nSELECT COUNT(*) FROM RANDOMNUM\n\nUPDATE RANDOMNUM SET BOOL = 1 WHERE VALUE > 80 AND BOOL = 0\n\nSELECT * FROM RANDOMNUM ORDER BY TIMESTAMP DESC LIMIT 100;\n<table style=\"width:100%\">\n  <tr>\n    <th>Sitzung</th> \n    <th>Datum</th>\n    <th>kw/H Verbrauch</th> \n  </tr>\n  <tr ng-repeat=\"x in msg.payload | limitTo:20\">\n    <td>{{$index}}</td>\n    <td>{{msg.payload[$index].TIMESTAMP}}</td>\n    <td>{{msg.payload[$index].VALUE}}</td> \n    <td>{{msg.payload[$index].BOOL}}</td>\n  </tr>\n</table>\n\n",
+        "x": 900,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "aa08041617d12203",
+        "type": "sqlite",
+        "z": "1da5016475402c1e",
+        "mydb": "97158aa1.026308",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "db_002",
+        "x": 1380,
+        "y": 240,
+        "wires": [
+            [
+                "0b18365fab58e59c"
+            ]
+        ]
+    },
+    {
+        "id": "fc3711fe20391ef7",
+        "type": "inject",
+        "z": "1da5016475402c1e",
+        "name": "CREATE DB",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "CREATE TABLE RANDOMNUM(VALUE INT NOT NULL, TIMESTAMP INT PRIMARY KEY NOT NULL, POWERCONSUMPTION INT NOT NULL )",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1090,
+        "y": 240,
+        "wires": [
+            [
+                "aa08041617d12203"
+            ]
+        ]
+    },
+    {
+        "id": "0b18365fab58e59c",
+        "type": "debug",
+        "z": "1da5016475402c1e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1550,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "6b668363c2db0927",
+        "type": "inject",
+        "z": "1da5016475402c1e",
+        "name": "INSERT",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1080,
+        "y": 300,
+        "wires": [
+            [
+                "e0c02986c0f31039"
+            ]
+        ]
+    },
+    {
+        "id": "e0c02986c0f31039",
+        "type": "function",
+        "z": "1da5016475402c1e",
+        "name": "INSERT",
+        "func": "var randomNum = Math.round(Math.random()*100);\nvar timestamp = new Date();\nvar sessionIndex = 1;\nvar newMsg = {\n \"topic\": \"INSERT INTO RANDOMNUM VALUES ( \" + sessionIndex + \", \" + msg.payload + \", \" + randomNum + \")\"\n}\nsessionIndex++;\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1240,
+        "y": 300,
+        "wires": [
+            [
+                "6a77995892cf662f"
+            ]
+        ]
+    },
+    {
+        "id": "cb155d7991bdf2cd",
+        "type": "debug",
+        "z": "1da5016475402c1e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 1550,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "6a77995892cf662f",
+        "type": "sqlite",
+        "z": "1da5016475402c1e",
+        "mydb": "97158aa1.026308",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "db_002",
+        "x": 1380,
+        "y": 300,
+        "wires": [
+            [
+                "cb155d7991bdf2cd"
+            ]
+        ]
+    },
+    {
+        "id": "68a51a3dc82a6ac8",
+        "type": "inject",
+        "z": "1da5016475402c1e",
+        "name": "DELETE 30s",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "DELETE FROM RANDOMNUM WHERE TIMESTAMP <= strftime('%s','now', '-30 seconds')*1000",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1090,
+        "y": 360,
+        "wires": [
+            [
+                "ec149b429df34e76"
+            ]
+        ]
+    },
+    {
+        "id": "ec149b429df34e76",
+        "type": "sqlite",
+        "z": "1da5016475402c1e",
+        "mydb": "97158aa1.026308",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "db_002",
+        "x": 1380,
+        "y": 360,
+        "wires": [
+            [
+                "5822ddc119e325e6"
+            ]
+        ]
+    },
+    {
+        "id": "08727ecdbe5725c5",
+        "type": "inject",
+        "z": "1da5016475402c1e",
+        "name": "DELETE 24h",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "DELETE FROM RANDOMNUM WHERE TIMESTAMP <= strftime('%s','now', '-24 hours')*1000",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1090,
+        "y": 400,
+        "wires": [
+            [
+                "ec149b429df34e76"
+            ]
+        ]
+    },
+    {
+        "id": "3bf9075dd950f7e1",
+        "type": "inject",
+        "z": "1da5016475402c1e",
+        "name": "DELETE 7d",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "DELETE FROM RANDOMNUM WHERE TIMESTAMP <= strftime('%s','now', '-7 days')*1000",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1090,
+        "y": 440,
+        "wires": [
+            [
+                "ec149b429df34e76"
+            ]
+        ]
+    },
+    {
+        "id": "5822ddc119e325e6",
+        "type": "debug",
+        "z": "1da5016475402c1e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 1550,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "bdb85124e7d12839",
+        "type": "inject",
+        "z": "1da5016475402c1e",
+        "name": "UPDATE",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "UPDATE RANDOMNUM",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1080,
+        "y": 500,
+        "wires": [
+            [
+                "4f3b90030088f21f"
+            ]
+        ]
+    },
+    {
+        "id": "4f3b90030088f21f",
+        "type": "sqlite",
+        "z": "1da5016475402c1e",
+        "mydb": "97158aa1.026308",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "db_002",
+        "x": 1380,
+        "y": 500,
+        "wires": [
+            [
+                "59907034779e88ad"
+            ]
+        ]
+    },
+    {
+        "id": "59907034779e88ad",
+        "type": "debug",
+        "z": "1da5016475402c1e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 1550,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "ea28f76e0d48afe5",
+        "type": "inject",
+        "z": "1da5016475402c1e",
+        "name": "COUNT",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "SELECT COUNT(*) FROM RANDOMNUM",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1070,
+        "y": 540,
+        "wires": [
+            [
+                "4f3b90030088f21f"
+            ]
+        ]
+    },
+    {
+        "id": "6bf222399a5b4782",
+        "type": "inject",
+        "z": "1da5016475402c1e",
+        "name": "SELECT",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "SELECT * FROM RANDOMNUM ORDER BY TIMESTAMP DESC LIMIT 100;",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1080,
+        "y": 600,
+        "wires": [
+            [
+                "21b39077c346ea0c"
+            ]
+        ]
+    },
+    {
+        "id": "21b39077c346ea0c",
+        "type": "sqlite",
+        "z": "1da5016475402c1e",
+        "mydb": "97158aa1.026308",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "db_002",
+        "x": 1380,
+        "y": 600,
+        "wires": [
+            [
+                "c59c654cd293a885",
+                "31e7903d946d21bd"
+            ]
+        ]
+    },
+    {
+        "id": "31e7903d946d21bd",
+        "type": "ui_template",
+        "z": "1da5016475402c1e",
+        "group": "d40ead3e.334ab",
+        "name": "",
+        "order": 0,
+        "width": "6",
+        "height": "7",
+        "format": "<table style=\"width:100%\">\n  <tr>\n    <th>Sitzung</th> \n    <th>Datum</th>\n    <th>kw/H Verbrauch</th> \n  </tr>\n  <tr ng-repeat=\"x in msg.payload | limitTo:20\">\n    <td>{{$index}}</td>\n    <td>{{msg.payload[$index].TIMESTAMP}}</td>\n    <td>{{msg.payload[$index].POWERCONSUMPTION}}</td>\n  </tr>\n</table>\n\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 1560,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c59c654cd293a885",
+        "type": "debug",
+        "z": "1da5016475402c1e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 1550,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "9f6b6c3c6a3996ba",
+        "type": "sqlite",
+        "z": "1da5016475402c1e",
+        "mydb": "97158aa1.026308",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "db_002",
+        "x": 1380,
+        "y": 720,
+        "wires": [
+            [
+                "05456ab848979754"
+            ]
+        ]
+    },
+    {
+        "id": "5cc4969fc84d73f5",
+        "type": "inject",
+        "z": "1da5016475402c1e",
+        "name": "DROP DB",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "DROP TABLE RANDOMNUM",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1080,
+        "y": 720,
+        "wires": [
+            [
+                "9f6b6c3c6a3996ba"
+            ]
+        ]
+    },
+    {
+        "id": "05456ab848979754",
+        "type": "debug",
+        "z": "1da5016475402c1e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1550,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "660653f5e0ebf46a",
+        "type": "comment",
+        "z": "1da5016475402c1e",
+        "name": "Löscht vorhandene Datenbank",
+        "info": "",
+        "x": 790,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "a7b40cf6843aeee8",
+        "type": "comment",
+        "z": "1da5016475402c1e",
+        "name": "Erstellt Datenbank durch sql Befehl im topic",
+        "info": "",
+        "x": 790,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "692b0baef93c6615",
+        "type": "comment",
+        "z": "1da5016475402c1e",
+        "name": "Erstellt timestamp, dessen payload durch INSERT Funktion modifiziert wird und an SQLite DB übergeben wird.",
+        "info": "",
+        "x": 590,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "84362c0a2b27cafa",
+        "type": "comment",
+        "z": "1da5016475402c1e",
+        "name": "Löscht Einträge der letzten 30s durch Timestamp Vergleich",
+        "info": "",
+        "x": 750,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "a428570c.ba1898",
+        "type": "function",
+        "z": "70e0d7ed.51e808",
+        "name": "",
+        "func": "var output = msg.payload.split(\" \");\n\nvar NodeID = parseInt(output[0]);\nvar RP1    = parseFloat(output[2]);\nvar Vrms   = parseFloat(output[15]);\n\nvar msg1 = {payload : NodeID};\nvar msg2 = {payload : RP1};\nvar msg3 = {payload : Vrms};\n\nreturn [msg2];",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 560,
+        "y": 420,
+        "wires": [
+            [
+                "d1c2e42e.4e1948"
+            ]
+        ]
+    },
+    {
+        "id": "49baf463.1aa47c",
+        "type": "debug",
+        "z": "70e0d7ed.51e808",
+        "d": true,
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 930,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "d1c2e42e.4e1948",
+        "type": "switch",
+        "z": "70e0d7ed.51e808",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "25",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 170,
+        "y": 640,
+        "wires": [
+            [
+                "6f80861d.e779c8"
+            ],
+            [
+                "e8151a56.521d58"
+            ]
+        ]
+    },
+    {
+        "id": "6f80861d.e779c8",
+        "type": "change",
+        "z": "70e0d7ed.51e808",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "1",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 350,
+        "y": 580,
+        "wires": [
+            [
+                "1ccfc57b.03d0cb"
+            ]
+        ]
+    },
+    {
+        "id": "e8151a56.521d58",
+        "type": "change",
+        "z": "70e0d7ed.51e808",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 350,
+        "y": 700,
+        "wires": [
+            [
+                "1ccfc57b.03d0cb"
+            ]
+        ]
+    },
+    {
+        "id": "3c4e5d97.214eb2",
+        "type": "inject",
+        "z": "70e0d7ed.51e808",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 420,
+        "wires": [
+            [
+                "92e010bb.86886"
+            ]
+        ]
+    },
+    {
+        "id": "1ccfc57b.03d0cb",
+        "type": "rbe",
+        "z": "70e0d7ed.51e808",
+        "name": "",
+        "func": "rbei",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 560,
+        "y": 640,
+        "wires": [
+            [
+                "49baf463.1aa47c",
+                "3e7c68ec.300c68",
+                "ef9351e4.b64a9"
+            ]
+        ]
+    },
+    {
+        "id": "f05123c2.9813a",
+        "type": "sqlite",
+        "z": "70e0d7ed.51e808",
+        "mydb": "af9cb38.01d655",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "",
+        "x": 430,
+        "y": 1700,
+        "wires": [
+            [
+                "7d40c321.931f4c"
+            ]
+        ]
+    },
+    {
+        "id": "384281a7.fc8b8e",
+        "type": "inject",
+        "z": "70e0d7ed.51e808",
+        "name": "CREATE",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "CREATE TABLE daten(id INTEGER PRIMARY KEY AUTOINCREMENT, nutzer NUMERIC, time TIME, dauer TIME, maschine TEXT)",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 1580,
+        "wires": [
+            [
+                "f05123c2.9813a"
+            ]
+        ]
+    },
+    {
+        "id": "6672e944.fa4c98",
+        "type": "inject",
+        "z": "70e0d7ed.51e808",
+        "name": "INSERT",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "INSERT INTO daten(nutzer, time, dauer, maschine) values ('Anton', 1611171060762, 2223, 'Kreissäge')",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 1640,
+        "wires": [
+            [
+                "f05123c2.9813a"
+            ]
+        ]
+    },
+    {
+        "id": "e1d6bb15.221fc8",
+        "type": "inject",
+        "z": "70e0d7ed.51e808",
+        "name": "SELECT",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "SELECT * FROM daten",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 1700,
+        "wires": [
+            [
+                "f05123c2.9813a"
+            ]
+        ]
+    },
+    {
+        "id": "5e485381.e4efbc",
+        "type": "inject",
+        "z": "70e0d7ed.51e808",
+        "name": "DELETE",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "DELETE from daten",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 1760,
+        "wires": [
+            [
+                "f05123c2.9813a"
+            ]
+        ]
+    },
+    {
+        "id": "f3097729.537098",
+        "type": "inject",
+        "z": "70e0d7ed.51e808",
+        "name": "DROP",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "DROP TABLE daten",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 1820,
+        "wires": [
+            [
+                "f05123c2.9813a"
+            ]
+        ]
+    },
+    {
+        "id": "7d40c321.931f4c",
+        "type": "debug",
+        "z": "70e0d7ed.51e808",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 670,
+        "y": 1700,
+        "wires": []
+    },
+    {
+        "id": "6d789924.a943c8",
+        "type": "debug",
+        "z": "70e0d7ed.51e808",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 1120,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "3e7c68ec.300c68",
+        "type": "switch",
+        "z": "70e0d7ed.51e808",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 560,
+        "y": 780,
+        "wires": [
+            [
+                "281c3044.ed8e5"
+            ],
+            [
+                "4641f5da.743cec"
+            ]
+        ]
+    },
+    {
+        "id": "281c3044.ed8e5",
+        "type": "function",
+        "z": "70e0d7ed.51e808",
+        "name": "",
+        "func": "var start  = Math.floor(Date.now()/1000);\n\nglobal.set(\"startzeit\", start);\n\nvar msg1 = {payload : start};\n\n\nreturn [msg1];\n\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 740,
+        "y": 760,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4641f5da.743cec",
+        "type": "function",
+        "z": "70e0d7ed.51e808",
+        "name": "",
+        "func": "var start = global.get(\"startzeit\");\nvar nutzer = global.get(\"nutzer\");\nvar end   = Math.floor(Date.now()/1000);\n\nvar dauer = end - start;\n\nvar msg1 = {payload : start};\nvar msg2 = {payload : end};\n\nsqlstatement = \"INSERT INTO daten(nutzer, time, dauer, maschine) values ('\" + nutzer + \"', \" + start + \", \" + dauer + \", 'Kreissäge')\";\n\nmsg.topic = sqlstatement;\n\n//msg.payload = {value:msg.payload, start:start, end:end, sql:sqlstatement};\n\n// return [msg1, msg2];\nreturn msg;\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 740,
+        "y": 800,
+        "wires": [
+            [
+                "e3e7661b.35c318"
+            ]
+        ]
+    },
+    {
+        "id": "e3e7661b.35c318",
+        "type": "sqlite",
+        "z": "70e0d7ed.51e808",
+        "mydb": "af9cb38.01d655",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "",
+        "x": 920,
+        "y": 800,
+        "wires": [
+            [
+                "6d789924.a943c8"
+            ]
+        ]
+    },
+    {
+        "id": "80045218.51e5c",
+        "type": "inject",
+        "z": "70e0d7ed.51e808",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 380,
+        "y": 760,
+        "wires": [
+            [
+                "1ccfc57b.03d0cb"
+            ]
+        ]
+    },
+    {
+        "id": "736dbaeb.4fadc4",
+        "type": "inject",
+        "z": "70e0d7ed.51e808",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 380,
+        "y": 800,
+        "wires": [
+            [
+                "1ccfc57b.03d0cb"
+            ]
+        ]
+    },
+    {
+        "id": "3c315cb2.a3caa4",
+        "type": "inject",
+        "z": "70e0d7ed.51e808",
+        "name": "SELECT",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "SELECT * FROM daten",
+        "payload": "",
+        "payloadType": "date",
+        "x": 960,
+        "y": 1620,
+        "wires": [
+            [
+                "bdbca26c.353b2"
+            ]
+        ]
+    },
+    {
+        "id": "bdbca26c.353b2",
+        "type": "sqlite",
+        "z": "70e0d7ed.51e808",
+        "mydb": "af9cb38.01d655",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "",
+        "x": 1130,
+        "y": 1620,
+        "wires": [
+            [
+                "8f902e9b.1a947"
+            ]
+        ]
+    },
+    {
+        "id": "8f902e9b.1a947",
+        "type": "csv",
+        "z": "70e0d7ed.51e808",
+        "name": "",
+        "sep": ",",
+        "hdrin": "",
+        "hdrout": true,
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "id, nutzer, time, dauer, maschine",
+        "skip": "0",
+        "strings": true,
+        "x": 1310,
+        "y": 1620,
+        "wires": [
+            [
+                "4b026b88.844624"
+            ]
+        ]
+    },
+    {
+        "id": "4b026b88.844624",
+        "type": "file",
+        "z": "70e0d7ed.51e808",
+        "name": "",
+        "filename": "/home/pi/.node-red/node_modules/node-red-dashboard/dist/usage.csv",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 1670,
+        "y": 1620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "56145555.91eaac",
+        "type": "ui_button",
+        "z": "70e0d7ed.51e808",
+        "name": "",
+        "group": "6b5b1f74.6f562",
+        "order": 3,
+        "width": "4",
+        "height": "1",
+        "passthru": false,
+        "label": "Anton",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "Anton",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 950,
+        "y": 1880,
+        "wires": [
+            [
+                "28f5fd9a.e48802"
+            ]
+        ]
+    },
+    {
+        "id": "28f5fd9a.e48802",
+        "type": "function",
+        "z": "70e0d7ed.51e808",
+        "name": "",
+        "func": "var nutzer  = msg.payload;\n\nglobal.set(\"nutzer\", nutzer);\n\nvar msg1 = {payload : nutzer};\n\n\nreturn [msg1];\n\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1110,
+        "y": 1820,
+        "wires": [
+            [
+                "45a61e74.d86fc"
+            ]
+        ]
+    },
+    {
+        "id": "45a61e74.d86fc",
+        "type": "ui_text",
+        "z": "70e0d7ed.51e808",
+        "group": "6b5b1f74.6f562",
+        "order": 1,
+        "width": "0",
+        "height": "0",
+        "name": "",
+        "label": "Eingeloggt",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 1270,
+        "y": 1820,
+        "wires": []
+    },
+    {
+        "id": "b675c4dd.e65028",
+        "type": "inject",
+        "z": "70e0d7ed.51e808",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "keiner",
+        "payloadType": "str",
+        "x": 956,
+        "y": 1816,
+        "wires": [
+            [
+                "28f5fd9a.e48802"
+            ]
+        ]
+    },
+    {
+        "id": "d394f403.9b9868",
+        "type": "ui_button",
+        "z": "70e0d7ed.51e808",
+        "name": "",
+        "group": "6b5b1f74.6f562",
+        "order": 4,
+        "width": "4",
+        "height": "1",
+        "passthru": false,
+        "label": "ATIC",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "ATIC",
+        "payloadType": "str",
+        "topic": "",
+        "x": 950,
+        "y": 1920,
+        "wires": [
+            [
+                "28f5fd9a.e48802"
+            ]
+        ]
+    },
+    {
+        "id": "7ee87bf9.4bfa24",
+        "type": "ui_button",
+        "z": "70e0d7ed.51e808",
+        "name": "",
+        "group": "6b5b1f74.6f562",
+        "order": 5,
+        "width": "4",
+        "height": "1",
+        "passthru": false,
+        "label": "Gabriel",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "Gabriel",
+        "payloadType": "str",
+        "topic": "",
+        "x": 960,
+        "y": 1960,
+        "wires": [
+            [
+                "28f5fd9a.e48802"
+            ]
+        ]
+    },
+    {
+        "id": "351e75d.572a18a",
+        "type": "ui_button",
+        "z": "70e0d7ed.51e808",
+        "name": "",
+        "group": "6b5b1f74.6f562",
+        "order": 6,
+        "width": "4",
+        "height": "1",
+        "passthru": false,
+        "label": "Momo",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "Momo",
+        "payloadType": "str",
+        "topic": "",
+        "x": 950,
+        "y": 2000,
+        "wires": [
+            [
+                "28f5fd9a.e48802"
+            ]
+        ]
+    },
+    {
+        "id": "410dcc95.7b3054",
+        "type": "ui_button",
+        "z": "70e0d7ed.51e808",
+        "name": "",
+        "group": "6b5b1f74.6f562",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Ausloggen",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "gray",
+        "className": "",
+        "icon": "",
+        "payload": "keiner",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 970,
+        "y": 2040,
+        "wires": [
+            [
+                "28f5fd9a.e48802"
+            ]
+        ]
+    },
+    {
+        "id": "ef9351e4.b64a9",
+        "type": "ui_gauge",
+        "z": "70e0d7ed.51e808",
+        "name": "",
+        "group": "6b5b1f74.6f562",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "",
+        "label": "",
+        "format": "",
+        "min": 0,
+        "max": "1",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 910,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "e5d05722.067528",
+        "type": "ui_button",
+        "z": "70e0d7ed.51e808",
+        "name": "",
+        "group": "d1d9a7ea.ea1988",
+        "order": 1,
+        "width": "0",
+        "height": "0",
+        "passthru": false,
+        "label": "CSV Generieren",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "SELECT * FROM daten",
+        "topicType": "str",
+        "x": 960,
+        "y": 1560,
+        "wires": [
+            [
+                "bdbca26c.353b2"
+            ]
+        ]
+    },
+    {
+        "id": "d1d8801b.6d5de",
+        "type": "ui_button",
+        "z": "70e0d7ed.51e808",
+        "name": "",
+        "group": "d1d9a7ea.ea1988",
+        "order": 1,
+        "width": "0",
+        "height": "0",
+        "passthru": false,
+        "label": "Datenbank Löschen",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "DELETE from daten",
+        "x": 200,
+        "y": 1880,
+        "wires": [
+            [
+                "f05123c2.9813a"
+            ]
+        ]
+    },
+    {
+        "id": "244f0d5b.9e7332",
+        "type": "moment",
+        "z": "70e0d7ed.51e808",
+        "name": "",
+        "topic": "",
+        "input": "",
+        "inputType": "msg",
+        "inTz": "Europe/Berlin",
+        "adjAmount": 0,
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "",
+        "locale": "en-US",
+        "output": "",
+        "outputType": "msg",
+        "outTz": "Europe/Berlin",
+        "x": 770,
+        "y": 900,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "92e010bb.86886",
+        "type": "serial request",
+        "z": "70e0d7ed.51e808",
+        "name": "",
+        "serial": "227bf809.b629f8",
+        "x": 370,
+        "y": 420,
+        "wires": [
+            [
+                "a428570c.ba1898"
+            ]
+        ]
+    },
+    {
+        "id": "742e218531332969",
+        "type": "function",
+        "z": "3fa1b27d967748be",
+        "name": "",
+        "func": "var output = msg.payload.split(\" \");\n\nvar NodeID = parseInt(output[0]);\nvar RP1    = parseFloat(output[2]);\nvar Vrms   = parseFloat(output[15]);\n\nvar msg1 = {payload : NodeID};\nvar msg2 = {payload : RP1};\nvar msg3 = {payload : Vrms};\n\nreturn [msg2];",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 590,
+        "y": 160,
+        "wires": [
+            [
+                "fba9908d3cd9dc36"
+            ]
+        ]
+    },
+    {
+        "id": "6dddff1dfe58e9c8",
+        "type": "debug",
+        "z": "3fa1b27d967748be",
+        "d": true,
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 970,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "fba9908d3cd9dc36",
+        "type": "switch",
+        "z": "3fa1b27d967748be",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "25",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 170,
+        "y": 380,
+        "wires": [
+            [
+                "610afc0698df3de1"
+            ],
+            [
+                "074848623edc623f"
+            ]
+        ]
+    },
+    {
+        "id": "610afc0698df3de1",
+        "type": "change",
+        "z": "3fa1b27d967748be",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "1",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 380,
+        "y": 320,
+        "wires": [
+            [
+                "dc80939c6cc44d8f"
+            ]
+        ]
+    },
+    {
+        "id": "074848623edc623f",
+        "type": "change",
+        "z": "3fa1b27d967748be",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 380,
+        "y": 440,
+        "wires": [
+            [
+                "dc80939c6cc44d8f"
+            ]
+        ]
+    },
+    {
+        "id": "e892cfe6542517ae",
+        "type": "inject",
+        "z": "3fa1b27d967748be",
+        "name": "",
+        "repeat": "3",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f116fa7e1145f813",
+        "type": "serial request",
+        "z": "3fa1b27d967748be",
+        "name": "",
+        "serial": "227bf809.b629f8",
+        "x": 390,
+        "y": 160,
+        "wires": [
+            [
+                "742e218531332969"
+            ]
+        ]
+    },
+    {
+        "id": "dc80939c6cc44d8f",
+        "type": "rbe",
+        "z": "3fa1b27d967748be",
+        "name": "",
+        "func": "rbei",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 590,
+        "y": 380,
+        "wires": [
+            [
+                "6dddff1dfe58e9c8",
+                "7b1746d4d0992998",
+                "0d842759eda8410d"
+            ]
+        ]
+    },
+    {
+        "id": "2f2fab5bb3f95e92",
+        "type": "sqlite",
+        "z": "3fa1b27d967748be",
+        "mydb": "af9cb38.01d655",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "",
+        "x": 430,
+        "y": 1700,
+        "wires": [
+            [
+                "ab4ae1b16d96c18b"
+            ]
+        ]
+    },
+    {
+        "id": "ad9e10f0ba555141",
+        "type": "inject",
+        "z": "3fa1b27d967748be",
+        "name": "CREATE",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "CREATE TABLE daten(id INTEGER PRIMARY KEY AUTOINCREMENT, nutzer NUMERIC, time TIME, dauer TIME, maschine TEXT)",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 1580,
+        "wires": [
+            [
+                "2f2fab5bb3f95e92"
+            ]
+        ]
+    },
+    {
+        "id": "380102411f6a3730",
+        "type": "inject",
+        "z": "3fa1b27d967748be",
+        "name": "INSERT",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "INSERT INTO daten(nutzer, time, dauer, maschine) values ('Anton', 1611171060762, 2223, 'Kreissäge')",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 1640,
+        "wires": [
+            [
+                "2f2fab5bb3f95e92"
+            ]
+        ]
+    },
+    {
+        "id": "fe07a642cfa99a69",
+        "type": "inject",
+        "z": "3fa1b27d967748be",
+        "name": "SELECT",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "SELECT * FROM daten",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 1700,
+        "wires": [
+            [
+                "2f2fab5bb3f95e92"
+            ]
+        ]
+    },
+    {
+        "id": "54c7a954b16ad2f2",
+        "type": "inject",
+        "z": "3fa1b27d967748be",
+        "name": "DELETE",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "DELETE from daten",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 1760,
+        "wires": [
+            [
+                "2f2fab5bb3f95e92"
+            ]
+        ]
+    },
+    {
+        "id": "0f7f62babd19d82e",
+        "type": "inject",
+        "z": "3fa1b27d967748be",
+        "name": "DROP",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "DROP TABLE daten",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 1820,
+        "wires": [
+            [
+                "2f2fab5bb3f95e92"
+            ]
+        ]
+    },
+    {
+        "id": "ab4ae1b16d96c18b",
+        "type": "debug",
+        "z": "3fa1b27d967748be",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 670,
+        "y": 1700,
+        "wires": []
+    },
+    {
+        "id": "6c420eaa519ad2d4",
+        "type": "debug",
+        "z": "3fa1b27d967748be",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1150,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "7b1746d4d0992998",
+        "type": "switch",
+        "z": "3fa1b27d967748be",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 590,
+        "y": 520,
+        "wires": [
+            [
+                "f494a9d64ef89936"
+            ],
+            [
+                "e407b1aad52cb507"
+            ]
+        ]
+    },
+    {
+        "id": "f494a9d64ef89936",
+        "type": "function",
+        "z": "3fa1b27d967748be",
+        "name": "",
+        "func": "var start  = Math.floor(Date.now()/1000);\n\nglobal.set(\"startzeit\", start);\n\nvar msg1 = {payload : start};\n\n\nreturn [msg1];\n\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 770,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e407b1aad52cb507",
+        "type": "function",
+        "z": "3fa1b27d967748be",
+        "name": "",
+        "func": "var start = global.get(\"startzeit\");\nvar nutzer = global.get(\"nutzer\");\nvar end   = Math.floor(Date.now()/1000);\n\nvar dauer = end - start;\n\nvar msg1 = {payload : start};\nvar msg2 = {payload : end};\n\nsqlstatement = \"INSERT INTO daten(nutzer, time, dauer, maschine) values ('\" + nutzer + \"', \" + start + \", \" + dauer + \", 'Kreissäge')\";\n\nmsg.topic = sqlstatement;\n\n//msg.payload = {value:msg.payload, start:start, end:end, sql:sqlstatement};\n\n// return [msg1, msg2];\nreturn msg;\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 770,
+        "y": 540,
+        "wires": [
+            [
+                "f2e3090b35b087ab"
+            ]
+        ]
+    },
+    {
+        "id": "f2e3090b35b087ab",
+        "type": "sqlite",
+        "z": "3fa1b27d967748be",
+        "mydb": "af9cb38.01d655",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "",
+        "x": 950,
+        "y": 540,
+        "wires": [
+            [
+                "6c420eaa519ad2d4"
+            ]
+        ]
+    },
+    {
+        "id": "f9f7354a3e454269",
+        "type": "inject",
+        "z": "3fa1b27d967748be",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 410,
+        "y": 500,
+        "wires": [
+            [
+                "dc80939c6cc44d8f"
+            ]
+        ]
+    },
+    {
+        "id": "87b52876590c44c2",
+        "type": "inject",
+        "z": "3fa1b27d967748be",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 410,
+        "y": 540,
+        "wires": [
+            [
+                "dc80939c6cc44d8f"
+            ]
+        ]
+    },
+    {
+        "id": "9ac3dd3c21227a21",
+        "type": "inject",
+        "z": "3fa1b27d967748be",
+        "name": "SELECT",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "SELECT * FROM daten",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 1060,
+        "wires": [
+            [
+                "c34d75fe0cd8bb59"
+            ]
+        ]
+    },
+    {
+        "id": "c34d75fe0cd8bb59",
+        "type": "sqlite",
+        "z": "3fa1b27d967748be",
+        "mydb": "af9cb38.01d655",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "",
+        "x": 330,
+        "y": 1060,
+        "wires": [
+            [
+                "fa28613301f3f80e"
+            ]
+        ]
+    },
+    {
+        "id": "fa28613301f3f80e",
+        "type": "csv",
+        "z": "3fa1b27d967748be",
+        "name": "",
+        "sep": ",",
+        "hdrin": "",
+        "hdrout": true,
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "id, nutzer, time, dauer, maschine",
+        "skip": "0",
+        "strings": true,
+        "x": 510,
+        "y": 1060,
+        "wires": [
+            [
+                "60ac053b9d8989d8"
+            ]
+        ]
+    },
+    {
+        "id": "60ac053b9d8989d8",
+        "type": "file",
+        "z": "3fa1b27d967748be",
+        "name": "",
+        "filename": "/home/pi/.node-red/node_modules/node-red-dashboard/dist/usage.csv",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 870,
+        "y": 1060,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9d0751d767d70e5b",
+        "type": "ui_button",
+        "z": "3fa1b27d967748be",
+        "name": "",
+        "group": "6b5b1f74.6f562",
+        "order": 3,
+        "width": "4",
+        "height": "1",
+        "passthru": false,
+        "label": "Anton",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "Anton",
+        "payloadType": "str",
+        "topic": "",
+        "x": 144,
+        "y": 1224,
+        "wires": [
+            [
+                "bc2632dad09339d0"
+            ]
+        ]
+    },
+    {
+        "id": "bc2632dad09339d0",
+        "type": "function",
+        "z": "3fa1b27d967748be",
+        "name": "",
+        "func": "var nutzer  = msg.payload;\n\nglobal.set(\"nutzer\", nutzer);\n\nvar msg1 = {payload : nutzer};\n\n\nreturn [msg1];\n\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 304,
+        "y": 1164,
+        "wires": [
+            [
+                "a7d0b9f3e796e72d"
+            ]
+        ]
+    },
+    {
+        "id": "a7d0b9f3e796e72d",
+        "type": "ui_text",
+        "z": "3fa1b27d967748be",
+        "group": "6b5b1f74.6f562",
+        "order": 1,
+        "width": "0",
+        "height": "0",
+        "name": "",
+        "label": "Eingeloggt",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 464,
+        "y": 1164,
+        "wires": []
+    },
+    {
+        "id": "689c803cf37965e1",
+        "type": "inject",
+        "z": "3fa1b27d967748be",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "keiner",
+        "payloadType": "str",
+        "x": 150,
+        "y": 1160,
+        "wires": [
+            [
+                "bc2632dad09339d0"
+            ]
+        ]
+    },
+    {
+        "id": "fccb1b5a82fc9a69",
+        "type": "ui_button",
+        "z": "3fa1b27d967748be",
+        "name": "",
+        "group": "6b5b1f74.6f562",
+        "order": 4,
+        "width": "4",
+        "height": "1",
+        "passthru": false,
+        "label": "ATIC",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "ATIC",
+        "payloadType": "str",
+        "topic": "",
+        "x": 144,
+        "y": 1264,
+        "wires": [
+            [
+                "bc2632dad09339d0"
+            ]
+        ]
+    },
+    {
+        "id": "7f13ac92af30c5e9",
+        "type": "ui_button",
+        "z": "3fa1b27d967748be",
+        "name": "",
+        "group": "6b5b1f74.6f562",
+        "order": 5,
+        "width": "4",
+        "height": "1",
+        "passthru": false,
+        "label": "Gabriel",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "Gabriel",
+        "payloadType": "str",
+        "topic": "",
+        "x": 154,
+        "y": 1304,
+        "wires": [
+            [
+                "bc2632dad09339d0"
+            ]
+        ]
+    },
+    {
+        "id": "5823ddd79b50a4e1",
+        "type": "ui_button",
+        "z": "3fa1b27d967748be",
+        "name": "",
+        "group": "6b5b1f74.6f562",
+        "order": 6,
+        "width": "4",
+        "height": "1",
+        "passthru": false,
+        "label": "Momo",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "Momo",
+        "payloadType": "str",
+        "topic": "",
+        "x": 144,
+        "y": 1344,
+        "wires": [
+            [
+                "bc2632dad09339d0"
+            ]
+        ]
+    },
+    {
+        "id": "646c035abc256d73",
+        "type": "ui_button",
+        "z": "3fa1b27d967748be",
+        "name": "",
+        "group": "6b5b1f74.6f562",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Ausloggen",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "gray",
+        "icon": "",
+        "payload": "keiner",
+        "payloadType": "str",
+        "topic": "",
+        "x": 164,
+        "y": 1384,
+        "wires": [
+            [
+                "bc2632dad09339d0"
+            ]
+        ]
+    },
+    {
+        "id": "0d842759eda8410d",
+        "type": "ui_gauge",
+        "z": "3fa1b27d967748be",
+        "name": "",
+        "group": "6b5b1f74.6f562",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "",
+        "label": "",
+        "format": "",
+        "min": 0,
+        "max": "1",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 940,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "2f13ff6a916b3f9e",
+        "type": "ui_button",
+        "z": "3fa1b27d967748be",
+        "name": "",
+        "group": "d1d9a7ea.ea1988",
+        "order": 1,
+        "width": "0",
+        "height": "0",
+        "passthru": false,
+        "label": "CSV Generieren",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "SELECT * FROM daten",
+        "x": 160,
+        "y": 1000,
+        "wires": [
+            [
+                "c34d75fe0cd8bb59"
+            ]
+        ]
+    },
+    {
+        "id": "d4d54b5d4fbb8784",
+        "type": "ui_button",
+        "z": "3fa1b27d967748be",
+        "name": "",
+        "group": "d1d9a7ea.ea1988",
+        "order": 1,
+        "width": "0",
+        "height": "0",
+        "passthru": false,
+        "label": "Datenbank Löschen",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "DELETE from daten",
+        "x": 200,
+        "y": 1880,
+        "wires": [
+            [
+                "2f2fab5bb3f95e92"
+            ]
+        ]
+    },
+    {
+        "id": "d732bbd68e1c8e39",
+        "type": "moment",
+        "z": "3fa1b27d967748be",
+        "name": "",
+        "topic": "",
+        "input": "",
+        "inputType": "msg",
+        "inTz": "Europe/Berlin",
+        "adjAmount": 0,
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "",
+        "locale": "en-US",
+        "output": "",
+        "outputType": "msg",
+        "outTz": "Europe/Berlin",
+        "x": 780,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1c2b36180bdd1ae9",
+        "type": "debug",
+        "z": "a53ab117a50507b3",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 1050,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "e6470ed7a38945f1",
+        "type": "inject",
+        "z": "a53ab117a50507b3",
+        "name": "alarm trigger",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 426.9999771118164,
+        "y": 515.2222151756287,
+        "wires": [
+            [
+                "0efd31c06d4b1c22"
+            ]
+        ]
+    },
+    {
+        "id": "fc8e16d062f3f477",
+        "type": "function",
+        "z": "a53ab117a50507b3",
+        "name": "SimpleBlockingQueue",
+        "func": "context.queue = context.queue || [];\n\nvar totalAllowedQueueSize = 20;\nvar mqtt_connected = false;\nvar blocked = false;\n\n// mqtt out node\nvar nextNode = RED.nodes.getNode(\"ae7f8962.dd8b18\");\n// status check\nmqtt_connected = nextNode.brokerConn.connected;\nif (context.queue.length >= totalAllowedQueueSize) blocked = true;\n\nif (msg.payload.op == \"reset\"  ) {\n   context.queue = [];\n} else if ( msg.payload.op == \"trigger\" ) {\n    // dequeue\n    if ( context.queue.length === 0 ) msg = null; // no action\n    else {\n       if ( mqtt_connected ) msg.payload = context.queue.shift();\n    }\n} else {\n    // enqueue\n    if ( !blocked ) context.queue.push(msg.payload);\n}\n\nif (mqtt_connected) {\n    if( !blocked )\n        node.status({fill:\"green\",shape:\"ring\",text: '('+context.queue.length+') stored,connected' });\n    else \n        node.status({fill:\"red\",shape:\"ring\",text: 'blocked,('+context.queue.length+') stored,connected' });\n} else {\n    if( !blocked ) \n        node.status({fill:\"red\",shape:\"ring\",text: '('+context.queue.length+') stored,disconnected' });\n    else\n        node.status({fill:\"red\",shape:\"ring\",text: 'blocked,('+context.queue.length+') stored,disconnected' });\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 532.5555486679077,
+        "wires": [
+            [
+                "1c2b36180bdd1ae9",
+                "f39aef2e75c37880"
+            ]
+        ]
+    },
+    {
+        "id": "6b7fb96e7abc6677",
+        "type": "inject",
+        "z": "a53ab117a50507b3",
+        "name": "report trigger",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 426.9999694824219,
+        "y": 558.2222146987915,
+        "wires": [
+            [
+                "f85517a91ae73529"
+            ]
+        ]
+    },
+    {
+        "id": "0efd31c06d4b1c22",
+        "type": "function",
+        "z": "a53ab117a50507b3",
+        "name": "alarm generator",
+        "func": "\nvar trigger  = Math.floor(Math.random() * 6);\n\nmsg.payload.timestamp = Date.now();\nswitch ( trigger ) {\ncase 0 :\ncase 2 :\ncase 4 :\n    msg.payload.op = 'report';\n    msg.payload.priority = 1;\n    msg.payload.task = 'Gas Leak';\n    break;  \ncase 1 :\ncase 3 :\ncase 5 :\n    msg.payload.op = 'report';\n    msg.payload.priority = 2;\n    msg.payload.task = 'Water Leak';\n    break;    \ndefault:\n    msg.payload.op = 'report';\n    msg.payload.priority = 'low';\n    msg.payload.task = 'Gas Task';\n    break;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 616,
+        "y": 516.4444370269775,
+        "wires": [
+            [
+                "fc8e16d062f3f477"
+            ]
+        ]
+    },
+    {
+        "id": "f85517a91ae73529",
+        "type": "function",
+        "z": "a53ab117a50507b3",
+        "name": "mqtt out trigger",
+        "func": "msg.payload = { op : 'trigger' } ;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 615.9999961853027,
+        "y": 559.4444379806519,
+        "wires": [
+            [
+                "fc8e16d062f3f477"
+            ]
+        ]
+    },
+    {
+        "id": "f39aef2e75c37880",
+        "type": "mqtt out",
+        "z": "a53ab117a50507b3",
+        "name": "MQTT pub - node1/alarm",
+        "topic": "node1/alarm",
+        "qos": "",
+        "retain": "",
+        "broker": "d139ad3f.b28af",
+        "x": 1084,
+        "y": 581.1111183166504,
+        "wires": []
+    },
+    {
+        "id": "4ee440121715a6fe",
+        "type": "debug",
+        "z": "a53ab117a50507b3",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 636,
+        "y": 650.1111059188843,
+        "wires": []
+    },
+    {
+        "id": "fa6ab534ac4f32c3",
+        "type": "debug",
+        "z": "a53ab117a50507b3",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 663.9999961853027,
+        "y": 695.1111059188843,
+        "wires": []
+    },
+    {
+        "id": "f29c7353d3c373af",
+        "type": "mqtt in",
+        "z": "a53ab117a50507b3",
+        "name": "MQTT sub - node1/alarm",
+        "topic": "node1/alarm",
+        "qos": "2",
+        "broker": "d139ad3f.b28af",
+        "inputs": 0,
+        "x": 453,
+        "y": 695.2222166061401,
+        "wires": [
+            [
+                "fa6ab534ac4f32c3"
+            ]
+        ]
+    },
+    {
+        "id": "e1b22166372d3995",
+        "type": "inject",
+        "z": "a53ab117a50507b3",
+        "name": "reset trigger",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 428,
+        "y": 599.2222166061401,
+        "wires": [
+            [
+                "dc578435e33a8380"
+            ]
+        ]
+    },
+    {
+        "id": "dc578435e33a8380",
+        "type": "function",
+        "z": "a53ab117a50507b3",
+        "name": "reset trigger",
+        "func": "msg.payload = { op : 'reset' } ;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 605.9999847412109,
+        "y": 599.6527853012085,
+        "wires": [
+            [
+                "fc8e16d062f3f477"
+            ]
+        ]
+    },
+    {
+        "id": "1675b28812cb5115",
+        "type": "mosca in",
+        "z": "a53ab117a50507b3",
+        "mqtt_port": "1883",
+        "mqtt_ws_port": "",
+        "name": "",
+        "username": "",
+        "password": "",
+        "dburl": "",
+        "x": 443,
+        "y": 650.2222166061401,
+        "wires": [
+            [
+                "4ee440121715a6fe"
+            ]
+        ]
+    }
+]
