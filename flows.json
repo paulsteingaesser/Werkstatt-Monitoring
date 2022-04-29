@@ -982,6 +982,33 @@
         "wires": []
     },
     {
+        "id": "3740fe7d4c7b98c0",
+        "type": "inject",
+        "z": "e0803275bdcac180",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1720,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
         "id": "24269b0cd6bb6d94",
         "type": "comment",
         "z": "1da5016475402c1e",
