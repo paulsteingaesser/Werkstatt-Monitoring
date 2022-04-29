@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
+    "name": "Stromverbrauch_Monitoring_fuer_Maschinen",
+=======
     "name": "Werkstatt-Monitoring",
+>>>>>>> 334cb4819389bb662148982b77bb0d6f817da750
     "description": "A Node-RED Project",
     "version": "0.0.1",
     "dependencies": {},

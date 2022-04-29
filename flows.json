@@ -2380,8 +2380,6 @@
         "tostatus": false,
         "complete": "payload",
         "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
         "x": 970,
         "y": 320,
         "wires": []
@@ -2486,7 +2484,9 @@
         "x": 190,
         "y": 160,
         "wires": [
-            []
+            [
+                "f116fa7e1145f813"
+            ]
         ]
     },
     {
@@ -2512,9 +2512,7 @@
         "gap": "",
         "start": "",
         "inout": "out",
-        "septopics": true,
         "property": "payload",
-        "topi": "topic",
         "x": 590,
         "y": 380,
         "wires": [
@@ -2666,8 +2664,6 @@
         "tostatus": false,
         "complete": "payload",
         "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
         "x": 1150,
         "y": 540,
         "wires": []
@@ -2754,15 +2750,6 @@
         "type": "inject",
         "z": "3fa1b27d967748be",
         "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
         "repeat": "",
         "crontab": "",
         "once": false,
