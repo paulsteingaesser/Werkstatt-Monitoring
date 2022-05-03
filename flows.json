@@ -3416,8 +3416,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 210,
-        "y": 380,
+        "x": 510,
+        "y": 240,
         "wires": [
             [
                 "d27877569f238376"
@@ -3446,8 +3446,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 390,
-        "y": 320,
+        "x": 690,
+        "y": 200,
         "wires": [
             [
                 "d02e53f7e1c98970"
@@ -3473,8 +3473,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 390,
-        "y": 440,
+        "x": 690,
+        "y": 280,
         "wires": [
             [
                 "d02e53f7e1c98970"
@@ -3498,8 +3498,8 @@
         "topic": "",
         "payload": "30",
         "payloadType": "num",
-        "x": 180,
-        "y": 160,
+        "x": 120,
+        "y": 180,
         "wires": [
             [
                 "de44a2051b801b52"
@@ -3518,8 +3518,8 @@
         "septopics": true,
         "property": "payload",
         "topi": "topic",
-        "x": 600,
-        "y": 380,
+        "x": 870,
+        "y": 240,
         "wires": [
             [
                 "2329d7c887f5f353",
@@ -3541,8 +3541,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1160,
-        "y": 540,
+        "x": 1410,
+        "y": 320,
         "wires": []
     },
     {
@@ -3565,8 +3565,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 600,
-        "y": 520,
+        "x": 1050,
+        "y": 320,
         "wires": [
             [
                 "6d48af1112bb95b5"
@@ -3584,10 +3584,15 @@
         "func": "var start  = Math.floor(Date.now()/1000);\n\nglobal.set(\"startzeit\", start);\n\nvar msg1 = {payload : start};\n\n\nreturn [msg1];\n\n\n\n\n",
         "outputs": 1,
         "noerr": 0,
-        "x": 780,
-        "y": 500,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1220,
+        "y": 280,
         "wires": [
-            []
+            [
+                "0662217a96170239"
+            ]
         ]
     },
     {
@@ -3601,60 +3606,11 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 780,
-        "y": 540,
+        "x": 1220,
+        "y": 360,
         "wires": [
             [
                 "0662217a96170239"
-            ]
-        ]
-    },
-    {
-        "id": "d2b8b5a64208a0a5",
-        "type": "inject",
-        "z": "55b2ce4ea70984fe",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "1",
-        "payloadType": "num",
-        "x": 420,
-        "y": 500,
-        "wires": [
-            [
-                "d02e53f7e1c98970"
-            ]
-        ]
-    },
-    {
-        "id": "4cd056c0ad546adf",
-        "type": "inject",
-        "z": "55b2ce4ea70984fe",
-        "name": "",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "0",
-        "payloadType": "num",
-        "x": 420,
-        "y": 540,
-        "wires": [
-            [
-                "d02e53f7e1c98970"
             ]
         ]
     },
@@ -3667,7 +3623,7 @@
         "order": 2,
         "width": 0,
         "height": 0,
-        "gtype": "gage",
+        "gtype": "wave",
         "title": "",
         "label": "",
         "format": "",
@@ -3681,8 +3637,8 @@
         "seg1": "",
         "seg2": "",
         "className": "",
-        "x": 950,
-        "y": 420,
+        "x": 1050,
+        "y": 240,
         "wires": []
     },
     {
@@ -3702,8 +3658,8 @@
         "output": "",
         "outputType": "msg",
         "outTz": "Europe/Berlin",
-        "x": 810,
-        "y": 640,
+        "x": 240,
+        "y": 360,
         "wires": [
             []
         ]
@@ -3720,26 +3676,9 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 910,
-        "y": 160,
+        "x": 530,
+        "y": 140,
         "wires": []
-    },
-    {
-        "id": "3fb39f0217826977",
-        "type": "function",
-        "z": "55b2ce4ea70984fe",
-        "name": "RandNum",
-        "func": "var number = msg.payload\nmsg.payload = parseFloat(Math.floor(Math.random() * number - 1) + 1)\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 380,
-        "y": 100,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "f7c28187b1ba06d2",
@@ -3750,11 +3689,12 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 910,
-        "y": 360,
+        "x": 1070,
+        "y": 160,
         "wires": []
     },
     {
@@ -3768,13 +3708,30 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 390,
-        "y": 160,
+        "x": 330,
+        "y": 180,
         "wires": [
             [
-                "0c0e7f63d56c01d5",
-                "4636a8bef56ff67c"
+                "4636a8bef56ff67c",
+                "0c0e7f63d56c01d5"
             ]
+        ]
+    },
+    {
+        "id": "3fb39f0217826977",
+        "type": "function",
+        "z": "55b2ce4ea70984fe",
+        "name": "RandNum",
+        "func": "var number = msg.payload\nmsg.payload = parseFloat(Math.floor(Math.random() * number - 1) + 1)\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 140,
+        "wires": [
+            []
         ]
     }
 ]
