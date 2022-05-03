@@ -46,6 +46,14 @@
         "env": []
     },
     {
+        "id": "55b2ce4ea70984fe",
+        "type": "tab",
+        "label": "Testing",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "2b927ce4382b5b4a",
         "type": "sqlitedb",
         "db": "",
@@ -1009,6 +1017,16 @@
         ]
     },
     {
+        "id": "df34f4353b836352",
+        "type": "comment",
+        "z": "e0803275bdcac180",
+        "name": "Test",
+        "info": "",
+        "x": 450,
+        "y": 80,
+        "wires": []
+    },
+    {
         "id": "24269b0cd6bb6d94",
         "type": "comment",
         "z": "1da5016475402c1e",
@@ -1536,6 +1554,9 @@
         "func": "var output = msg.payload.split(\" \");\n\nvar NodeID = parseInt(output[0]);\nvar RP1    = parseFloat(output[2]);\nvar Vrms   = parseFloat(output[15]);\n\nvar msg1 = {payload : NodeID};\nvar msg2 = {payload : RP1};\nvar msg3 = {payload : Vrms};\n\nreturn [msg2];",
         "outputs": 1,
         "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
         "x": 560,
         "y": 420,
         "wires": [
@@ -2373,6 +2394,9 @@
         "func": "var output = msg.payload.split(\" \");\n\nvar NodeID = parseInt(output[0]);\nvar RP1    = parseFloat(output[2]);\nvar Vrms   = parseFloat(output[15]);\n\nvar msg1 = {payload : NodeID};\nvar msg2 = {payload : RP1};\nvar msg3 = {payload : Vrms};\n\nreturn [msg2];",
         "outputs": 1,
         "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
         "x": 590,
         "y": 160,
         "wires": [
@@ -3369,6 +3393,387 @@
         "wires": [
             [
                 "4ee440121715a6fe"
+            ]
+        ]
+    },
+    {
+        "id": "0c0e7f63d56c01d5",
+        "type": "switch",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "25",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 210,
+        "y": 380,
+        "wires": [
+            [
+                "d27877569f238376"
+            ],
+            [
+                "21e9a0ce6da2abde"
+            ]
+        ]
+    },
+    {
+        "id": "d27877569f238376",
+        "type": "change",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "1",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 390,
+        "y": 320,
+        "wires": [
+            [
+                "d02e53f7e1c98970"
+            ]
+        ]
+    },
+    {
+        "id": "21e9a0ce6da2abde",
+        "type": "change",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 390,
+        "y": 440,
+        "wires": [
+            [
+                "d02e53f7e1c98970"
+            ]
+        ]
+    },
+    {
+        "id": "476ec21445060499",
+        "type": "inject",
+        "z": "55b2ce4ea70984fe",
+        "name": "Test Inject",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "100",
+        "payloadType": "num",
+        "x": 180,
+        "y": 160,
+        "wires": [
+            [
+                "de44a2051b801b52"
+            ]
+        ]
+    },
+    {
+        "id": "d02e53f7e1c98970",
+        "type": "rbe",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "func": "rbei",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 600,
+        "y": 380,
+        "wires": [
+            [
+                "2329d7c887f5f353",
+                "f7c28187b1ba06d2",
+                "48adfc17be024cec"
+            ]
+        ]
+    },
+    {
+        "id": "0662217a96170239",
+        "type": "debug",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1160,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "2329d7c887f5f353",
+        "type": "switch",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 600,
+        "y": 520,
+        "wires": [
+            [
+                "6d48af1112bb95b5"
+            ],
+            [
+                "5f9f527e2ee9e2af"
+            ]
+        ]
+    },
+    {
+        "id": "6d48af1112bb95b5",
+        "type": "function",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "func": "var start  = Math.floor(Date.now()/1000);\n\nglobal.set(\"startzeit\", start);\n\nvar msg1 = {payload : start};\n\n\nreturn [msg1];\n\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 780,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5f9f527e2ee9e2af",
+        "type": "function",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "func": "var start = global.get(\"startzeit\");\nvar nutzer = global.get(\"nutzer\");\nvar end   = Math.floor(Date.now()/1000);\n\nvar dauer = end - start;\n\nvar msg1 = {payload : start};\nvar msg2 = {payload : end};\n\nsqlstatement = \"INSERT INTO daten(nutzer, time, dauer, maschine) values ('\" + nutzer + \"', \" + start + \", \" + dauer + \", 'Kreissäge')\";\n\nmsg.topic = sqlstatement;\n\n//msg.payload = {value:msg.payload, start:start, end:end, sql:sqlstatement};\n\n// return [msg1, msg2];\nreturn msg;\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 540,
+        "wires": [
+            [
+                "0662217a96170239"
+            ]
+        ]
+    },
+    {
+        "id": "d2b8b5a64208a0a5",
+        "type": "inject",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 420,
+        "y": 500,
+        "wires": [
+            [
+                "d02e53f7e1c98970"
+            ]
+        ]
+    },
+    {
+        "id": "4cd056c0ad546adf",
+        "type": "inject",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 420,
+        "y": 540,
+        "wires": [
+            [
+                "d02e53f7e1c98970"
+            ]
+        ]
+    },
+    {
+        "id": "48adfc17be024cec",
+        "type": "ui_gauge",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "group": "6b5b1f74.6f562",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "",
+        "label": "",
+        "format": "",
+        "min": 0,
+        "max": "1",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 950,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "91877fa0c133345d",
+        "type": "moment",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "topic": "",
+        "input": "",
+        "inputType": "msg",
+        "inTz": "Europe/Berlin",
+        "adjAmount": 0,
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "",
+        "locale": "en-US",
+        "output": "",
+        "outputType": "msg",
+        "outTz": "Europe/Berlin",
+        "x": 810,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4636a8bef56ff67c",
+        "type": "debug",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 910,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "3fb39f0217826977",
+        "type": "function",
+        "z": "55b2ce4ea70984fe",
+        "name": "RandNum",
+        "func": "var number = msg.payload\nmsg.payload = parseFloat(Math.floor(Math.random() * number - 1) + 1)\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f7c28187b1ba06d2",
+        "type": "debug",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 910,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "de44a2051b801b52",
+        "type": "function",
+        "z": "55b2ce4ea70984fe",
+        "name": "RandFloat",
+        "func": "var number = msg.payload\nmsg.payload = (Math.random() * (number - 1) + 1).toFixed(2).toString()\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 160,
+        "wires": [
+            [
+                "0c0e7f63d56c01d5",
+                "4636a8bef56ff67c"
             ]
         ]
     }
