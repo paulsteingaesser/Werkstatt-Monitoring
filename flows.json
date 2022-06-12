@@ -3541,8 +3541,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1410,
-        "y": 320,
+        "x": 1350,
+        "y": 360,
         "wires": []
     },
     {
@@ -3731,6 +3731,30 @@
         "x": 320,
         "y": 140,
         "wires": [
+            []
+        ]
+    },
+    {
+        "id": "18714dd186fd682c",
+        "type": "uibuilder",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "topic": "",
+        "url": "uibuiler_Test",
+        "fwdInMessages": false,
+        "allowScripts": false,
+        "allowStyles": false,
+        "copyIndex": true,
+        "templateFolder": "blank",
+        "extTemplate": "",
+        "showfolder": false,
+        "reload": false,
+        "sourceFolder": "src",
+        "deployedVersion": "5.0.2",
+        "x": 200,
+        "y": 760,
+        "wires": [
+            [],
             []
         ]
     }
