@@ -4,5 +4,13 @@
             "flowFile": "flows.json",
             "credentialsFile": "flows_cred.json"
         }
+    },
+    "dependencies": {
+        "node-red-contrib-aedes": "^0.8.2",
+        "node-red-contrib-moment": "^4.0.0",
+        "node-red-contrib-mqtt-broker": "^0.2.9",
+        "node-red-contrib-uibuilder": "^5.0.2",
+        "node-red-node-sqlite": "^1.0.3",
+        "sqlite-plugin-red": "^0.0.3"
     }
 }
