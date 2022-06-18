@@ -1,8 +1,1 @@
 *.backup
-
-node_modules/
-lib/
-
-*.config.users.json
-*.config.nodes.json
-*.config.runtime.json
