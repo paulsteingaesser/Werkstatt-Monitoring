@@ -40,6 +40,14 @@
         "env": []
     },
     {
+        "id": "c2489ab43bd02f0e",
+        "type": "tab",
+        "label": "Netzwerk-Dummy",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "2b927ce4382b5b4a",
         "type": "sqlitedb",
         "db": "",
@@ -219,6 +227,25 @@
         "name": "Auswertung",
         "icon": "dashboard",
         "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "2b7ac01b.fc984",
+        "type": "ui_group",
+        "name": "SENSORS",
+        "tab": "99ab8dc5.f435c",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "99ab8dc5.f435c",
+        "type": "ui_tab",
+        "name": "HTTP",
+        "icon": "dashboard",
+        "order": 1,
         "disabled": false,
         "hidden": false
     },
@@ -2091,6 +2118,315 @@
         "wires": [
             [],
             []
+        ]
+    },
+    {
+        "id": "599740b7.efde9",
+        "type": "http response",
+        "z": "c2489ab43bd02f0e",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 540,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "1618a829.76f638",
+        "type": "json",
+        "z": "c2489ab43bd02f0e",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": true,
+        "x": 530,
+        "y": 640,
+        "wires": [
+            [
+                "d0089cc7.d25ac"
+            ]
+        ]
+    },
+    {
+        "id": "c7410fa2.1c2fa",
+        "type": "debug",
+        "z": "c2489ab43bd02f0e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 970,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "75a22f74.f1aba",
+        "type": "ui_text",
+        "z": "c2489ab43bd02f0e",
+        "group": "2b7ac01b.fc984",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Sensor Name",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 980,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "1c8f9093.8bc2bf",
+        "type": "ui_gauge",
+        "z": "c2489ab43bd02f0e",
+        "name": "",
+        "group": "2b7ac01b.fc984",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "ºC",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "38",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 970,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "a5bd2706.54e108",
+        "type": "ui_gauge",
+        "z": "c2489ab43bd02f0e",
+        "name": "",
+        "group": "2b7ac01b.fc984",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humidity",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#0080ff",
+            "#0062c4",
+            "#002f5e"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 960,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "105ac2cc.7b3cfd",
+        "type": "ui_gauge",
+        "z": "c2489ab43bd02f0e",
+        "name": "",
+        "group": "2b7ac01b.fc984",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Pressure",
+        "label": "hPa",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "1200",
+        "colors": [
+            "#b366ff",
+            "#8000ff",
+            "#440088"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 960,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "d0089cc7.d25ac",
+        "type": "function",
+        "z": "c2489ab43bd02f0e",
+        "name": "JSON or URL Encoded",
+        "func": "var msg0 = { payload: msg.payload.api_key };\nvar msg1 = { payload: msg.payload.sensor };\nvar msg2 = { payload: msg.payload.value1 };\nvar msg3 = { payload: msg.payload.value2 };\nvar msg4 = { payload: msg.payload.value3 };\n\nreturn [msg0, msg1, msg2, msg3, msg4];",
+        "outputs": 5,
+        "noerr": 0,
+        "x": 730,
+        "y": 640,
+        "wires": [
+            [
+                "c7410fa2.1c2fa"
+            ],
+            [
+                "75a22f74.f1aba"
+            ],
+            [
+                "1c8f9093.8bc2bf"
+            ],
+            [
+                "a5bd2706.54e108"
+            ],
+            [
+                "105ac2cc.7b3cfd"
+            ]
+        ]
+    },
+    {
+        "id": "5d9ab0d2.66b92",
+        "type": "http in",
+        "z": "c2489ab43bd02f0e",
+        "name": "",
+        "url": "update-sensor",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 320,
+        "y": 571,
+        "wires": [
+            [
+                "599740b7.efde9",
+                "c7410fa2.1c2fa",
+                "1618a829.76f638"
+            ]
+        ]
+    },
+    {
+        "id": "7f5cf345.63f56c",
+        "type": "http response",
+        "z": "c2489ab43bd02f0e",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 660,
+        "y": 131,
+        "wires": []
+    },
+    {
+        "id": "6530621.95b429c",
+        "type": "http in",
+        "z": "c2489ab43bd02f0e",
+        "name": "",
+        "url": "/get-sensor",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 300,
+        "y": 431,
+        "wires": [
+            [
+                "9471d1a0.68588"
+            ]
+        ]
+    },
+    {
+        "id": "5ddc9f47.4b555",
+        "type": "http response",
+        "z": "c2489ab43bd02f0e",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 660,
+        "y": 391,
+        "wires": []
+    },
+    {
+        "id": "9471d1a0.68588",
+        "type": "function",
+        "z": "c2489ab43bd02f0e",
+        "name": "",
+        "func": "msg.payload = {\"value1\":24.25, \"value2\":49.54, \"value3\":1005.14};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 470,
+        "y": 431,
+        "wires": [
+            [
+                "5ddc9f47.4b555",
+                "13aea59.7430e5a"
+            ]
+        ]
+    },
+    {
+        "id": "13aea59.7430e5a",
+        "type": "debug",
+        "z": "c2489ab43bd02f0e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 459,
+        "wires": []
+    },
+    {
+        "id": "e71c7a7d.e7c598",
+        "type": "debug",
+        "z": "c2489ab43bd02f0e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 211,
+        "wires": []
+    },
+    {
+        "id": "c7807102.3f433",
+        "type": "http in",
+        "z": "c2489ab43bd02f0e",
+        "name": "",
+        "url": "/update-sensor",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 310,
+        "y": 171,
+        "wires": [
+            [
+                "60410cde.562a34"
+            ]
+        ]
+    },
+    {
+        "id": "60410cde.562a34",
+        "type": "function",
+        "z": "c2489ab43bd02f0e",
+        "name": "",
+        "func": "var userID = msg.payload.UserID;\nvar maschinenName = msg.payload.MaschinenName;\nvar dauer = msg.payload.Dauer;\nvar timestamp = new Date();\nvar ende = timestamp;\nvar calculation = timestamp.getTime() - dauer;\nvar anfang = new Date(calculation);\nvar strom = msg.payload.Strom;\n\nmsg.payload = \"Input: UserID= \" + userID + \"; MaschinenName= \" + maschinenName + \"; Anfang= \" + anfang + \"; Ende= \" + ende + \"; Dauer in Millisekunden= \" + dauer + \"; Strom=\" + strom + \" Wh\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 171,
+        "wires": [
+            [
+                "e71c7a7d.e7c598",
+                "7f5cf345.63f56c"
+            ]
         ]
     }
 ]

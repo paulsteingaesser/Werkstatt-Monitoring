@@ -11,7 +11,7 @@
 #define wifinetwork "Bill Clinternet";
 #define wifipassword "MartinRouterKing";
 
-String machineName = "Testmaschine";
+String machineName = "Testmaschine2";
 
 const char* ssid = wifinetwork;
 const char* password = wifipassword;

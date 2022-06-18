@@ -2128,7 +2128,7 @@
         "statusCode": "200",
         "headers": {},
         "x": 540,
-        "y": 400,
+        "y": 520,
         "wires": []
     },
     {
@@ -2140,7 +2140,7 @@
         "action": "obj",
         "pretty": true,
         "x": 530,
-        "y": 520,
+        "y": 640,
         "wires": [
             [
                 "d0089cc7.d25ac"
@@ -2158,7 +2158,7 @@
         "tostatus": false,
         "complete": "false",
         "x": 970,
-        "y": 420,
+        "y": 540,
         "wires": []
     },
     {
@@ -2174,7 +2174,7 @@
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "x": 980,
-        "y": 480,
+        "y": 600,
         "wires": []
     },
     {
@@ -2200,7 +2200,7 @@
         "seg1": "",
         "seg2": "",
         "x": 970,
-        "y": 540,
+        "y": 660,
         "wires": []
     },
     {
@@ -2226,7 +2226,7 @@
         "seg1": "",
         "seg2": "",
         "x": 960,
-        "y": 600,
+        "y": 720,
         "wires": []
     },
     {
@@ -2252,7 +2252,7 @@
         "seg1": "",
         "seg2": "",
         "x": 960,
-        "y": 660,
+        "y": 780,
         "wires": []
     },
     {
@@ -2264,7 +2264,7 @@
         "outputs": 5,
         "noerr": 0,
         "x": 730,
-        "y": 520,
+        "y": 640,
         "wires": [
             [
                 "c7410fa2.1c2fa"
@@ -2293,7 +2293,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 320,
-        "y": 451,
+        "y": 571,
         "wires": [
             [
                 "599740b7.efde9",
@@ -2306,11 +2306,11 @@
         "id": "7f5cf345.63f56c",
         "type": "http response",
         "z": "c2489ab43bd02f0e",
-        "name": "",
+        "name": "HTTP Antwort an den Mikrocontroller",
         "statusCode": "200",
         "headers": {},
-        "x": 660,
-        "y": 131,
+        "x": 930,
+        "y": 120,
         "wires": []
     },
     {
@@ -2323,7 +2323,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 300,
-        "y": 311,
+        "y": 431,
         "wires": [
             [
                 "9471d1a0.68588"
@@ -2338,7 +2338,7 @@
         "statusCode": "200",
         "headers": {},
         "x": 660,
-        "y": 271,
+        "y": 391,
         "wires": []
     },
     {
@@ -2350,7 +2350,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 470,
-        "y": 311,
+        "y": 431,
         "wires": [
             [
                 "5ddc9f47.4b555",
@@ -2372,7 +2372,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 670,
-        "y": 339,
+        "y": 459,
         "wires": []
     },
     {
@@ -2388,8 +2388,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 670,
-        "y": 211,
+        "x": 850,
+        "y": 220,
         "wires": []
     },
     {
@@ -2397,11 +2397,11 @@
         "type": "http in",
         "z": "c2489ab43bd02f0e",
         "name": "",
-        "url": "/update-sensor",
+        "url": "/sendDummyData",
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 310,
+        "x": 320,
         "y": 171,
         "wires": [
             [
@@ -2413,14 +2413,14 @@
         "id": "60410cde.562a34",
         "type": "function",
         "z": "c2489ab43bd02f0e",
-        "name": "",
+        "name": "Daten Auslesen und Konvertieren",
         "func": "var userID = msg.payload.UserID;\nvar maschinenName = msg.payload.MaschinenName;\nvar dauer = msg.payload.Dauer;\nvar timestamp = new Date();\nvar ende = timestamp;\nvar calculation = timestamp.getTime() - dauer;\nvar anfang = new Date(calculation);\nvar strom = msg.payload.Strom;\n\nmsg.payload = \"Input: UserID= \" + userID + \"; MaschinenName= \" + maschinenName + \"; Anfang= \" + anfang + \"; Ende= \" + ende + \"; Dauer in Millisekunden= \" + dauer + \"; Strom=\" + strom + \" Wh\";\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 510,
+        "x": 590,
         "y": 171,
         "wires": [
             [
@@ -2428,5 +2428,15 @@
                 "7f5cf345.63f56c"
             ]
         ]
+    },
+    {
+        "id": "95e8d5f1d79366c8",
+        "type": "comment",
+        "z": "c2489ab43bd02f0e",
+        "name": "Hinweis",
+        "info": "Der Mikrocontroller sendet einen GET Request an die Domain http://(IP des eigenen Rechners):1880/sendDummyData.\n\nDabei werden ein paar Daten angehängt.\nDiese können dann in der Funktion über den Message Payload abgefragt werden.\n\nDie Funktion kann als Vorlage für den eigentlichen Server verwendet werden oder einfach nur zum Testen.",
+        "x": 490,
+        "y": 120,
+        "wires": []
     }
 ]
