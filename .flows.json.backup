@@ -3417,7 +3417,7 @@
         "repair": false,
         "outputs": 2,
         "x": 510,
-        "y": 400,
+        "y": 240,
         "wires": [
             [
                 "d27877569f238376"
@@ -3447,7 +3447,7 @@
         "to": "",
         "reg": false,
         "x": 690,
-        "y": 340,
+        "y": 200,
         "wires": [
             [
                 "d02e53f7e1c98970"
@@ -3474,7 +3474,7 @@
         "to": "",
         "reg": false,
         "x": 690,
-        "y": 460,
+        "y": 280,
         "wires": [
             [
                 "d02e53f7e1c98970"
@@ -3518,8 +3518,8 @@
         "septopics": true,
         "property": "payload",
         "topi": "topic",
-        "x": 900,
-        "y": 400,
+        "x": 870,
+        "y": 240,
         "wires": [
             [
                 "2329d7c887f5f353",
@@ -3541,8 +3541,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1460,
-        "y": 560,
+        "x": 1350,
+        "y": 360,
         "wires": []
     },
     {
@@ -3565,8 +3565,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 900,
-        "y": 540,
+        "x": 1050,
+        "y": 320,
         "wires": [
             [
                 "6d48af1112bb95b5"
@@ -3587,8 +3587,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1080,
-        "y": 520,
+        "x": 1220,
+        "y": 280,
         "wires": [
             [
                 "0662217a96170239"
@@ -3606,8 +3606,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1080,
-        "y": 560,
+        "x": 1220,
+        "y": 360,
         "wires": [
             [
                 "0662217a96170239"
@@ -3637,8 +3637,8 @@
         "seg1": "",
         "seg2": "",
         "className": "",
-        "x": 1250,
-        "y": 440,
+        "x": 1050,
+        "y": 240,
         "wires": []
     },
     {
@@ -3658,12 +3658,10 @@
         "output": "",
         "outputType": "msg",
         "outTz": "Europe/Berlin",
-        "x": 750,
-        "y": 660,
+        "x": 240,
+        "y": 360,
         "wires": [
-            [
-                "6d48af1112bb95b5"
-            ]
+            []
         ]
     },
     {
@@ -3678,8 +3676,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 850,
-        "y": 180,
+        "x": 530,
+        "y": 140,
         "wires": []
     },
     {
@@ -3695,8 +3693,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1210,
-        "y": 380,
+        "x": 1070,
+        "y": 160,
         "wires": []
     },
     {
@@ -3730,9 +3728,33 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 340,
-        "y": 100,
+        "x": 320,
+        "y": 140,
         "wires": [
+            []
+        ]
+    },
+    {
+        "id": "18714dd186fd682c",
+        "type": "uibuilder",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "topic": "",
+        "url": "uibuiler_Test",
+        "fwdInMessages": false,
+        "allowScripts": false,
+        "allowStyles": false,
+        "copyIndex": true,
+        "templateFolder": "blank",
+        "extTemplate": "",
+        "showfolder": false,
+        "reload": false,
+        "sourceFolder": "src",
+        "deployedVersion": "5.0.2",
+        "x": 820,
+        "y": 800,
+        "wires": [
+            [],
             []
         ]
     }
