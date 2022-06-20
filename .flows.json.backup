@@ -2306,11 +2306,11 @@
         "id": "7f5cf345.63f56c",
         "type": "http response",
         "z": "c2489ab43bd02f0e",
-        "name": "HTTP Antwort an den Mikrocontroller",
+        "name": "",
         "statusCode": "200",
         "headers": {},
-        "x": 930,
-        "y": 120,
+        "x": 660,
+        "y": 131,
         "wires": []
     },
     {
@@ -2388,8 +2388,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 850,
-        "y": 220,
+        "x": 670,
+        "y": 211,
         "wires": []
     },
     {
@@ -2397,11 +2397,11 @@
         "type": "http in",
         "z": "c2489ab43bd02f0e",
         "name": "",
-        "url": "/sendDummyData",
+        "url": "/update-sensor",
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 320,
+        "x": 310,
         "y": 171,
         "wires": [
             [
@@ -2413,14 +2413,14 @@
         "id": "60410cde.562a34",
         "type": "function",
         "z": "c2489ab43bd02f0e",
-        "name": "Daten Auslesen und Konvertieren",
+        "name": "",
         "func": "var userID = msg.payload.UserID;\nvar maschinenName = msg.payload.MaschinenName;\nvar dauer = msg.payload.Dauer;\nvar timestamp = new Date();\nvar ende = timestamp;\nvar calculation = timestamp.getTime() - dauer;\nvar anfang = new Date(calculation);\nvar strom = msg.payload.Strom;\n\nmsg.payload = \"Input: UserID= \" + userID + \"; MaschinenName= \" + maschinenName + \"; Anfang= \" + anfang + \"; Ende= \" + ende + \"; Dauer in Millisekunden= \" + dauer + \"; Strom=\" + strom + \" Wh\";\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 590,
+        "x": 510,
         "y": 171,
         "wires": [
             [
@@ -2428,15 +2428,5 @@
                 "7f5cf345.63f56c"
             ]
         ]
-    },
-    {
-        "id": "95e8d5f1d79366c8",
-        "type": "comment",
-        "z": "c2489ab43bd02f0e",
-        "name": "Hinweis",
-        "info": "Der Mikrocontroller sendet einen GET Request an die Domain http://(IP des eigenen Rechners):1880/sendDummyData.\n\nDabei werden ein paar Daten angehängt.\nDiese können dann in der Funktion über den Message Payload abgefragt werden.\n\nDie Funktion kann als Vorlage für den eigentlichen Server verwendet werden oder einfach nur zum Testen.",
-        "x": 490,
-        "y": 120,
-        "wires": []
     }
 ]
