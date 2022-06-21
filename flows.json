@@ -2121,6 +2121,30 @@
         ]
     },
     {
+        "id": "e07f6af83b3ab4fb",
+        "type": "uibuilder",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "topic": "",
+        "url": "Template",
+        "fwdInMessages": false,
+        "allowScripts": false,
+        "allowStyles": false,
+        "copyIndex": true,
+        "templateFolder": "blank",
+        "extTemplate": "",
+        "showfolder": false,
+        "reload": false,
+        "sourceFolder": "src",
+        "deployedVersion": "5.0.2",
+        "x": 210,
+        "y": 920,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
         "id": "599740b7.efde9",
         "type": "http response",
         "z": "c2489ab43bd02f0e",
