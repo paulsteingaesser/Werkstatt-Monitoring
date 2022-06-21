@@ -48,6 +48,14 @@
         "env": []
     },
     {
+        "id": "4aea164ea6e84064",
+        "type": "tab",
+        "label": "DB",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "2b927ce4382b5b4a",
         "type": "sqlitedb",
         "db": "",
@@ -248,6 +256,12 @@
         "order": 1,
         "disabled": false,
         "hidden": false
+    },
+    {
+        "id": "fe1131055cdbcae8",
+        "type": "sqliteQueuedDb",
+        "db": "db",
+        "mode": "RWC"
     },
     {
         "id": "5327e533db022d58",
@@ -2438,5 +2452,506 @@
         "x": 490,
         "y": 120,
         "wires": []
+    },
+    {
+        "id": "f4e2312c77bbc3c2",
+        "type": "debug",
+        "z": "4aea164ea6e84064",
+        "name": "",
+        "x": 930,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "acc0803a236289ef",
+        "type": "inject",
+        "z": "4aea164ea6e84064",
+        "name": "CREATE user",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "CREATE TABLE user( userID INTEGER PRIMARY KEY AUTOINCREMENT, passwort TEXT, nachname TEXT NOT NULL, vorname TEXT NOT NULL, admin BOOLEAN NOT NULL, berechtigungsstufe INTEGER NOT NULL, firma TEXT )",
+        "payload": "",
+        "payloadType": "date",
+        "x": 350,
+        "y": 140,
+        "wires": [
+            [
+                "c724cd2b7f05c4ed"
+            ]
+        ]
+    },
+    {
+        "id": "c724cd2b7f05c4ed",
+        "type": "queuedsqlite",
+        "z": "4aea164ea6e84064",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "fixed",
+        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
+        "sql": "",
+        "name": "db",
+        "x": 590,
+        "y": 140,
+        "wires": [
+            [
+                "f4e2312c77bbc3c2"
+            ]
+        ]
+    },
+    {
+        "id": "e8ec25de4b0c5f81",
+        "type": "inject",
+        "z": "4aea164ea6e84064",
+        "name": "DROP user",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "DROP TABLE user",
+        "payload": "",
+        "payloadType": "date",
+        "x": 350,
+        "y": 640,
+        "wires": [
+            [
+                "88360bec47a66453"
+            ]
+        ]
+    },
+    {
+        "id": "905887007d521553",
+        "type": "debug",
+        "z": "4aea164ea6e84064",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "6af093226b5f8e84",
+        "type": "debug",
+        "z": "4aea164ea6e84064",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "74d48d22a57852a5",
+        "type": "inject",
+        "z": "4aea164ea6e84064",
+        "name": "CREATE maschine",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "CREATE TABLE maschine( maschineName TEXT PRIMARY KEY NOT NULL, berechtigungsstufe INTEGER NOT NULL, ruestzeit INTEGER NOT NULL, kosten INTEGER NOT NULL, materialverbrauch INTEGER , bereich TEXT, faktor INTEGER NOT NULL )",
+        "payload": "",
+        "payloadType": "date",
+        "x": 370,
+        "y": 240,
+        "wires": [
+            [
+                "18c429e14110f12b"
+            ]
+        ]
+    },
+    {
+        "id": "4f4e8b683ea0f343",
+        "type": "debug",
+        "z": "4aea164ea6e84064",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "95daa62d09ae0538",
+        "type": "inject",
+        "z": "4aea164ea6e84064",
+        "name": "CREATE data",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "CREATE TABLE data( userID INTEGER NOT NULL, maschineName TEXT NOT NULL, von DATE NOT NULL, bis DATE NOT NULL, dauer DATETIME NOT NULL, strom INTEGER NOT NULL, PRIMARY KEY (userID, maschineName) FOREIGN KEY(userID) REFERENCES user(userID), FOREIGN KEY(maschineName ) REFERENCES maschine(maschineName) )",
+        "payload": "",
+        "payloadType": "date",
+        "x": 350,
+        "y": 280,
+        "wires": [
+            [
+                "1642c78eb42d7be0"
+            ]
+        ]
+    },
+    {
+        "id": "50619b4dcb93095b",
+        "type": "inject",
+        "z": "4aea164ea6e84064",
+        "name": "DROP maschine",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "DROP TABLE maschine",
+        "payload": "",
+        "payloadType": "date",
+        "x": 360,
+        "y": 680,
+        "wires": [
+            [
+                "51ef5d38572ecdf5"
+            ]
+        ]
+    },
+    {
+        "id": "4a631652b0324444",
+        "type": "debug",
+        "z": "4aea164ea6e84064",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "ab297d9021b64770",
+        "type": "inject",
+        "z": "4aea164ea6e84064",
+        "name": "DROP data",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "DROP TABLE data",
+        "payload": "",
+        "payloadType": "date",
+        "x": 350,
+        "y": 720,
+        "wires": [
+            [
+                "53527e94c61c285c"
+            ]
+        ]
+    },
+    {
+        "id": "c90999d2c659014a",
+        "type": "debug",
+        "z": "4aea164ea6e84064",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "a86e23a1b486a5c4",
+        "type": "inject",
+        "z": "4aea164ea6e84064",
+        "name": "Set seq",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "INSERT INTO sqlite_sequence VALUES ('user',99)",
+        "payload": "",
+        "payloadType": "date",
+        "x": 350,
+        "y": 180,
+        "wires": [
+            [
+                "94937b95710a2a22"
+            ]
+        ]
+    },
+    {
+        "id": "2b64e8857cfd14ea",
+        "type": "debug",
+        "z": "4aea164ea6e84064",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 810,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "6f6bc7fd87fb4147",
+        "type": "inject",
+        "z": "4aea164ea6e84064",
+        "name": "Aktive FK",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "PRAGMA foreign_keys = ON;",
+        "payload": "",
+        "payloadType": "date",
+        "x": 360,
+        "y": 320,
+        "wires": [
+            [
+                "754cd89cb1700e3b"
+            ]
+        ]
+    },
+    {
+        "id": "c786a12c2ee31a83",
+        "type": "debug",
+        "z": "4aea164ea6e84064",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 830,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "94937b95710a2a22",
+        "type": "queuedsqlite",
+        "z": "4aea164ea6e84064",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "fixed",
+        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
+        "sql": "",
+        "name": "db",
+        "x": 610,
+        "y": 180,
+        "wires": [
+            [
+                "2b64e8857cfd14ea"
+            ]
+        ]
+    },
+    {
+        "id": "18c429e14110f12b",
+        "type": "queuedsqlite",
+        "z": "4aea164ea6e84064",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "fixed",
+        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
+        "sql": "",
+        "name": "db",
+        "x": 590,
+        "y": 240,
+        "wires": [
+            [
+                "6af093226b5f8e84"
+            ]
+        ]
+    },
+    {
+        "id": "1642c78eb42d7be0",
+        "type": "queuedsqlite",
+        "z": "4aea164ea6e84064",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "fixed",
+        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
+        "sql": "",
+        "name": "db",
+        "x": 590,
+        "y": 280,
+        "wires": [
+            [
+                "4f4e8b683ea0f343"
+            ]
+        ]
+    },
+    {
+        "id": "754cd89cb1700e3b",
+        "type": "queuedsqlite",
+        "z": "4aea164ea6e84064",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "fixed",
+        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
+        "sql": "",
+        "name": "db",
+        "x": 610,
+        "y": 320,
+        "wires": [
+            [
+                "c786a12c2ee31a83"
+            ]
+        ]
+    },
+    {
+        "id": "88360bec47a66453",
+        "type": "queuedsqlite",
+        "z": "4aea164ea6e84064",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "fixed",
+        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
+        "sql": "",
+        "name": "db",
+        "x": 570,
+        "y": 640,
+        "wires": [
+            [
+                "905887007d521553"
+            ]
+        ]
+    },
+    {
+        "id": "51ef5d38572ecdf5",
+        "type": "queuedsqlite",
+        "z": "4aea164ea6e84064",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "fixed",
+        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
+        "sql": "",
+        "name": "db",
+        "x": 570,
+        "y": 680,
+        "wires": [
+            [
+                "4a631652b0324444"
+            ]
+        ]
+    },
+    {
+        "id": "53527e94c61c285c",
+        "type": "queuedsqlite",
+        "z": "4aea164ea6e84064",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "fixed",
+        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
+        "sql": "",
+        "name": "db",
+        "x": 570,
+        "y": 720,
+        "wires": [
+            [
+                "c90999d2c659014a"
+            ]
+        ]
     }
 ]
