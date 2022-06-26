@@ -8,6 +8,30 @@
         "env": []
     },
     {
+        "id": "838e54b719ad8caa",
+        "type": "tab",
+        "label": "Netzwerk-Dummy",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "5d3034dc83dfbde2",
+        "type": "tab",
+        "label": "DB",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "5e0e164d5716495a",
+        "type": "tab",
+        "label": "Flow 4",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "3c770aff.9ba2a6",
         "type": "ui_tab",
         "name": "Anmeldung",
@@ -526,6 +550,1383 @@
         "wires": [
             [],
             []
+        ]
+    },
+    {
+        "id": "f86352c2acd99e68",
+        "type": "http response",
+        "z": "838e54b719ad8caa",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 540,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "feb822208cfa1124",
+        "type": "json",
+        "z": "838e54b719ad8caa",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": true,
+        "x": 530,
+        "y": 640,
+        "wires": [
+            [
+                "ebf385bd70afe870"
+            ]
+        ]
+    },
+    {
+        "id": "fa5d9b0a5e4fec29",
+        "type": "debug",
+        "z": "838e54b719ad8caa",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 970,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "3070a9f7c3e912b4",
+        "type": "ui_text",
+        "z": "838e54b719ad8caa",
+        "group": "2b7ac01b.fc984",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Sensor Name",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 980,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "6d3b1b988dfe8062",
+        "type": "ui_gauge",
+        "z": "838e54b719ad8caa",
+        "name": "",
+        "group": "2b7ac01b.fc984",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "ºC",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "38",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 970,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "e37fec3a9f818d52",
+        "type": "ui_gauge",
+        "z": "838e54b719ad8caa",
+        "name": "",
+        "group": "2b7ac01b.fc984",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humidity",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#0080ff",
+            "#0062c4",
+            "#002f5e"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 960,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "8b03c905b53f0ede",
+        "type": "ui_gauge",
+        "z": "838e54b719ad8caa",
+        "name": "",
+        "group": "2b7ac01b.fc984",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Pressure",
+        "label": "hPa",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "1200",
+        "colors": [
+            "#b366ff",
+            "#8000ff",
+            "#440088"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 960,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "ebf385bd70afe870",
+        "type": "function",
+        "z": "838e54b719ad8caa",
+        "name": "JSON or URL Encoded",
+        "func": "var msg0 = { payload: msg.payload.api_key };\nvar msg1 = { payload: msg.payload.sensor };\nvar msg2 = { payload: msg.payload.value1 };\nvar msg3 = { payload: msg.payload.value2 };\nvar msg4 = { payload: msg.payload.value3 };\n\nreturn [msg0, msg1, msg2, msg3, msg4];",
+        "outputs": 5,
+        "noerr": 0,
+        "x": 730,
+        "y": 640,
+        "wires": [
+            [
+                "fa5d9b0a5e4fec29"
+            ],
+            [
+                "3070a9f7c3e912b4"
+            ],
+            [
+                "6d3b1b988dfe8062"
+            ],
+            [
+                "e37fec3a9f818d52"
+            ],
+            [
+                "8b03c905b53f0ede"
+            ]
+        ]
+    },
+    {
+        "id": "0b9474555b528c56",
+        "type": "http in",
+        "z": "838e54b719ad8caa",
+        "name": "",
+        "url": "update-sensor",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 320,
+        "y": 571,
+        "wires": [
+            [
+                "f86352c2acd99e68",
+                "fa5d9b0a5e4fec29",
+                "feb822208cfa1124"
+            ]
+        ]
+    },
+    {
+        "id": "6dc9de411da24725",
+        "type": "http response",
+        "z": "838e54b719ad8caa",
+        "name": "HTTP Antwort an den Mikrocontroller",
+        "statusCode": "200",
+        "headers": {},
+        "x": 930,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "239e15fb2c0c49ae",
+        "type": "http in",
+        "z": "838e54b719ad8caa",
+        "name": "",
+        "url": "/get-sensor",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 300,
+        "y": 431,
+        "wires": [
+            [
+                "fdc9058fa5cef60b"
+            ]
+        ]
+    },
+    {
+        "id": "3fe3f4204abdd9f2",
+        "type": "http response",
+        "z": "838e54b719ad8caa",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 660,
+        "y": 391,
+        "wires": []
+    },
+    {
+        "id": "fdc9058fa5cef60b",
+        "type": "function",
+        "z": "838e54b719ad8caa",
+        "name": "",
+        "func": "msg.payload = {\"value1\":24.25, \"value2\":49.54, \"value3\":1005.14};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 470,
+        "y": 431,
+        "wires": [
+            [
+                "3fe3f4204abdd9f2",
+                "d85f36883d7b1c7e"
+            ]
+        ]
+    },
+    {
+        "id": "d85f36883d7b1c7e",
+        "type": "debug",
+        "z": "838e54b719ad8caa",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 459,
+        "wires": []
+    },
+    {
+        "id": "acbd09f7a15ccfad",
+        "type": "debug",
+        "z": "838e54b719ad8caa",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 850,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "3e926d2fc9bc5dcf",
+        "type": "http in",
+        "z": "838e54b719ad8caa",
+        "name": "",
+        "url": "/sendDummyData",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 320,
+        "y": 171,
+        "wires": [
+            [
+                "5f8fa0c6c734d247"
+            ]
+        ]
+    },
+    {
+        "id": "5f8fa0c6c734d247",
+        "type": "function",
+        "z": "838e54b719ad8caa",
+        "name": "Daten Auslesen und Konvertieren",
+        "func": "var userID = msg.payload.UserID;\nvar maschinenName = msg.payload.MaschinenName;\nvar dauer = msg.payload.Dauer;\nvar timestamp = new Date();\nvar ende = timestamp;\nvar calculation = timestamp.getTime() - dauer;\nvar anfang = new Date(calculation);\nvar strom = msg.payload.Strom;\n\nmsg.payload = \"Input: UserID= \" + userID + \"; MaschinenName= \" + maschinenName + \"; Anfang= \" + anfang + \"; Ende= \" + ende + \"; Dauer in Millisekunden= \" + dauer + \"; Strom=\" + strom + \" Wh\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 171,
+        "wires": [
+            [
+                "acbd09f7a15ccfad",
+                "6dc9de411da24725"
+            ]
+        ]
+    },
+    {
+        "id": "780f1733ac8f59d3",
+        "type": "comment",
+        "z": "838e54b719ad8caa",
+        "name": "Hinweis",
+        "info": "Der Mikrocontroller sendet einen GET Request an die Domain http://(IP des eigenen Rechners):1880/sendDummyData.\n\nDabei werden ein paar Daten angehängt.\nDiese können dann in der Funktion über den Message Payload abgefragt werden.\n\nDie Funktion kann als Vorlage für den eigentlichen Server verwendet werden oder einfach nur zum Testen.",
+        "x": 490,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "2d12f25bac6cbee9",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "DROP user",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "DROP TABLE user",
+        "payload": "",
+        "payloadType": "date",
+        "x": 310,
+        "y": 820,
+        "wires": [
+            [
+                "5821d7db833a81e8"
+            ]
+        ]
+    },
+    {
+        "id": "bea0e13dfef6afbe",
+        "type": "debug",
+        "z": "5d3034dc83dfbde2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "50569f90705cf2e0",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "DROP maschine",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "DROP TABLE maschine",
+        "payload": "",
+        "payloadType": "date",
+        "x": 320,
+        "y": 860,
+        "wires": [
+            [
+                "9ca2370021eb1490"
+            ]
+        ]
+    },
+    {
+        "id": "e09c72fe63a249e4",
+        "type": "debug",
+        "z": "5d3034dc83dfbde2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "11b413c05f8a7b74",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "DROP data",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "DROP TABLE data",
+        "payload": "",
+        "payloadType": "date",
+        "x": 310,
+        "y": 780,
+        "wires": [
+            [
+                "8211108a5057ad66"
+            ]
+        ]
+    },
+    {
+        "id": "85029132c12b3018",
+        "type": "debug",
+        "z": "5d3034dc83dfbde2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "5821d7db833a81e8",
+        "type": "queuedsqlite",
+        "z": "5d3034dc83dfbde2",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "fixed",
+        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
+        "sql": "",
+        "name": "db",
+        "x": 530,
+        "y": 820,
+        "wires": [
+            [
+                "bea0e13dfef6afbe"
+            ]
+        ]
+    },
+    {
+        "id": "9ca2370021eb1490",
+        "type": "queuedsqlite",
+        "z": "5d3034dc83dfbde2",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "fixed",
+        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
+        "sql": "",
+        "name": "db",
+        "x": 530,
+        "y": 860,
+        "wires": [
+            [
+                "e09c72fe63a249e4"
+            ]
+        ]
+    },
+    {
+        "id": "8211108a5057ad66",
+        "type": "queuedsqlite",
+        "z": "5d3034dc83dfbde2",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "fixed",
+        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
+        "sql": "",
+        "name": "db",
+        "x": 530,
+        "y": 780,
+        "wires": [
+            [
+                "85029132c12b3018"
+            ]
+        ]
+    },
+    {
+        "id": "126d0e4daa4b1a32",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "CREATE user",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "CREATE TABLE user( userID INTEGER PRIMARY KEY AUTOINCREMENT, passwort TEXT, nachname TEXT NOT NULL, vorname TEXT NOT NULL, admin BOOLEAN NOT NULL, berechtigungsstufe INTEGER NOT NULL, firma TEXT )",
+        "payload": "",
+        "payloadType": "date",
+        "x": 310,
+        "y": 160,
+        "wires": [
+            [
+                "4e5d80bf25155cb8"
+            ]
+        ]
+    },
+    {
+        "id": "ecb9e1f5928cd37f",
+        "type": "debug",
+        "z": "5d3034dc83dfbde2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "d66ccb9f4b938c66",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "CREATE maschine",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "CREATE TABLE maschine( maschinenName TEXT PRIMARY KEY NOT NULL, berechtigungsstufe INTEGER NOT NULL, ruestzeit INTEGER NOT NULL, kosten INTEGER NOT NULL, materialverbrauch INTEGER , bereich TEXT, faktor INTEGER NOT NULL )",
+        "payload": "",
+        "payloadType": "date",
+        "x": 330,
+        "y": 260,
+        "wires": [
+            [
+                "4b9b9160a160ff22"
+            ]
+        ]
+    },
+    {
+        "id": "fe183e4b592df32f",
+        "type": "debug",
+        "z": "5d3034dc83dfbde2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "fd9f05ab6dc50aa1",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "CREATE data",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "CREATE TABLE data( userID INTEGER NOT NULL, maschinenName TEXT NOT NULL, beginn\tINTEGER NOT NULL, ende INTEGER NOT NULL, dauer INTEGER NOT NULL, strom INTEGER NOT NULL, PRIMARY KEY (userID, maschinenName ) FOREIGN KEY(userID) REFERENCES user(userID), FOREIGN KEY(maschinenName  ) REFERENCES maschine(maschinenName ) )",
+        "payload": "",
+        "payloadType": "date",
+        "x": 310,
+        "y": 300,
+        "wires": [
+            [
+                "407a312b355bb423"
+            ]
+        ]
+    },
+    {
+        "id": "8e2aa5b90a457151",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "INSERT user",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "INSERT INTO user(passwort, nachname, vorname, admin, berechtigungsstufe, firma) VALUES( 12345, \"mustermann\", \"muster\", true, 5, NULL)",
+        "payload": "",
+        "payloadType": "date",
+        "x": 310,
+        "y": 500,
+        "wires": [
+            [
+                "6dcc0d80176ed276"
+            ]
+        ]
+    },
+    {
+        "id": "f20d1af15802b2cd",
+        "type": "debug",
+        "z": "5d3034dc83dfbde2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 770,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "d94b1e23be9d9b0d",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "INSERT maschine",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "INSERT INTO maschine VALUES(\"test maschine\", 2, 5, 0.99, NULL, \"holz\", 1)",
+        "payload": "",
+        "payloadType": "date",
+        "x": 330,
+        "y": 540,
+        "wires": [
+            [
+                "95a13bb85a1047a8"
+            ]
+        ]
+    },
+    {
+        "id": "165589e16cfe6252",
+        "type": "debug",
+        "z": "5d3034dc83dfbde2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 780,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "0382565c18dde0df",
+        "type": "debug",
+        "z": "5d3034dc83dfbde2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 780,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "b08bfac38124d829",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "Set seq",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "INSERT INTO sqlite_sequence VALUES ('user',99)",
+        "payload": "",
+        "payloadType": "date",
+        "x": 310,
+        "y": 200,
+        "wires": [
+            [
+                "a2fc9aca8832f97d"
+            ]
+        ]
+    },
+    {
+        "id": "c3162ff01007ba37",
+        "type": "debug",
+        "z": "5d3034dc83dfbde2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 790,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "31a7831af0c7b17b",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "Aktive FK",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "PRAGMA foreign_keys = ON;",
+        "payload": "",
+        "payloadType": "date",
+        "x": 320,
+        "y": 340,
+        "wires": [
+            [
+                "295aa77c2ff99c33"
+            ]
+        ]
+    },
+    {
+        "id": "b0cbc2d3c54276bc",
+        "type": "debug",
+        "z": "5d3034dc83dfbde2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 790,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "edea6b03024b3573",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "Incorrrect INSERT data ",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "PRAGMA foreign_keys = ON;",
+        "payload": "",
+        "payloadType": "date",
+        "x": 380,
+        "y": 620,
+        "wires": [
+            [
+                "9a4db932c1c3cc0e"
+            ]
+        ]
+    },
+    {
+        "id": "681a66ce7a2f547e",
+        "type": "debug",
+        "z": "5d3034dc83dfbde2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 930,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "a05222d8e4062555",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "INSERT data",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "INSERT INTO data VALUES(100, \"test maschine\", 600000, 800000, 5000,1200)",
+        "payload": "",
+        "payloadType": "date",
+        "x": 310,
+        "y": 580,
+        "wires": [
+            [
+                "8c50561cec5edfac"
+            ]
+        ]
+    },
+    {
+        "id": "a058b1db0a631448",
+        "type": "change",
+        "z": "5d3034dc83dfbde2",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "INSERT INTO data VALUES(1233, \"test maschine\", '2022-06-10 10:00:00', '2022-06-10 13:00:00', '05:00',1200)",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 530,
+        "y": 680,
+        "wires": [
+            [
+                "bdccecb66d282599"
+            ]
+        ]
+    },
+    {
+        "id": "4e5d80bf25155cb8",
+        "type": "queuedsqlite",
+        "z": "5d3034dc83dfbde2",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "fixed",
+        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
+        "sql": "",
+        "name": "db",
+        "x": 550,
+        "y": 160,
+        "wires": [
+            [
+                "9383b262ea8775b9"
+            ]
+        ]
+    },
+    {
+        "id": "a2fc9aca8832f97d",
+        "type": "queuedsqlite",
+        "z": "5d3034dc83dfbde2",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "fixed",
+        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
+        "sql": "",
+        "name": "db",
+        "x": 570,
+        "y": 200,
+        "wires": [
+            [
+                "c3162ff01007ba37"
+            ]
+        ]
+    },
+    {
+        "id": "4b9b9160a160ff22",
+        "type": "queuedsqlite",
+        "z": "5d3034dc83dfbde2",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "fixed",
+        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
+        "sql": "",
+        "name": "db",
+        "x": 550,
+        "y": 260,
+        "wires": [
+            [
+                "ecb9e1f5928cd37f"
+            ]
+        ]
+    },
+    {
+        "id": "407a312b355bb423",
+        "type": "queuedsqlite",
+        "z": "5d3034dc83dfbde2",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "fixed",
+        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
+        "sql": "",
+        "name": "db",
+        "x": 550,
+        "y": 300,
+        "wires": [
+            [
+                "fe183e4b592df32f"
+            ]
+        ]
+    },
+    {
+        "id": "295aa77c2ff99c33",
+        "type": "queuedsqlite",
+        "z": "5d3034dc83dfbde2",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "fixed",
+        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
+        "sql": "",
+        "name": "db",
+        "x": 570,
+        "y": 340,
+        "wires": [
+            [
+                "b0cbc2d3c54276bc"
+            ]
+        ]
+    },
+    {
+        "id": "6dcc0d80176ed276",
+        "type": "queuedsqlite",
+        "z": "5d3034dc83dfbde2",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "fixed",
+        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
+        "sql": "",
+        "name": "db",
+        "x": 550,
+        "y": 500,
+        "wires": [
+            [
+                "f20d1af15802b2cd"
+            ]
+        ]
+    },
+    {
+        "id": "95a13bb85a1047a8",
+        "type": "queuedsqlite",
+        "z": "5d3034dc83dfbde2",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "fixed",
+        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
+        "sql": "",
+        "name": "db",
+        "x": 550,
+        "y": 540,
+        "wires": [
+            [
+                "165589e16cfe6252"
+            ]
+        ]
+    },
+    {
+        "id": "8c50561cec5edfac",
+        "type": "queuedsqlite",
+        "z": "5d3034dc83dfbde2",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "fixed",
+        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
+        "sql": "",
+        "name": "db",
+        "x": 550,
+        "y": 580,
+        "wires": [
+            [
+                "0382565c18dde0df"
+            ]
+        ]
+    },
+    {
+        "id": "9a4db932c1c3cc0e",
+        "type": "queuedsqlite",
+        "z": "5d3034dc83dfbde2",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "fixed",
+        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
+        "sql": "",
+        "name": "db",
+        "x": 630,
+        "y": 620,
+        "wires": [
+            [
+                "681a66ce7a2f547e",
+                "a058b1db0a631448"
+            ]
+        ]
+    },
+    {
+        "id": "bdccecb66d282599",
+        "type": "queuedsqlite",
+        "z": "5d3034dc83dfbde2",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "fixed",
+        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
+        "sql": "",
+        "name": "db",
+        "x": 670,
+        "y": 680,
+        "wires": [
+            [
+                "681a66ce7a2f547e"
+            ]
+        ]
+    },
+    {
+        "id": "9383b262ea8775b9",
+        "type": "debug",
+        "z": "5d3034dc83dfbde2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 790,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "438e0ca4fdb8d452",
+        "type": "comment",
+        "z": "5d3034dc83dfbde2",
+        "name": "Tabellen erstellen:",
+        "info": "",
+        "x": 190,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "2510bb3d12f78820",
+        "type": "comment",
+        "z": "5d3034dc83dfbde2",
+        "name": "Testdaten eintragen:",
+        "info": "",
+        "x": 190,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "29484a905b1dc024",
+        "type": "comment",
+        "z": "5d3034dc83dfbde2",
+        "name": "FK muss bei jedem INSERT aktiviert werden",
+        "info": "",
+        "x": 1210,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "66e8676fc65f55ec",
+        "type": "comment",
+        "z": "5d3034dc83dfbde2",
+        "name": "Tabellen löschen:",
+        "info": "",
+        "x": 180,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "ee09f7292ecf9d31",
+        "type": "debug",
+        "z": "5e0e164d5716495a",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 1050,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "9a64cb1df0664ff0",
+        "type": "inject",
+        "z": "5e0e164d5716495a",
+        "name": "alarm trigger",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 426.9999771118164,
+        "y": 515.2222151756287,
+        "wires": [
+            [
+                "4c2ede7a9a75fb31"
+            ]
+        ]
+    },
+    {
+        "id": "c49c5dc3ad58b42f",
+        "type": "function",
+        "z": "5e0e164d5716495a",
+        "name": "SimpleBlockingQueue",
+        "func": "context.queue = context.queue || [];\n\nvar totalAllowedQueueSize = 20;\nvar mqtt_connected = false;\nvar blocked = false;\n\n// mqtt out node\nvar nextNode = RED.nodes.getNode(\"ae7f8962.dd8b18\");\n// status check\nmqtt_connected = nextNode.brokerConn.connected;\nif (context.queue.length >= totalAllowedQueueSize) blocked = true;\n\nif (msg.payload.op == \"reset\"  ) {\n   context.queue = [];\n} else if ( msg.payload.op == \"trigger\" ) {\n    // dequeue\n    if ( context.queue.length === 0 ) msg = null; // no action\n    else {\n       if ( mqtt_connected ) msg.payload = context.queue.shift();\n    }\n} else {\n    // enqueue\n    if ( !blocked ) context.queue.push(msg.payload);\n}\n\nif (mqtt_connected) {\n    if( !blocked )\n        node.status({fill:\"green\",shape:\"ring\",text: '('+context.queue.length+') stored,connected' });\n    else \n        node.status({fill:\"red\",shape:\"ring\",text: 'blocked,('+context.queue.length+') stored,connected' });\n} else {\n    if( !blocked ) \n        node.status({fill:\"red\",shape:\"ring\",text: '('+context.queue.length+') stored,disconnected' });\n    else\n        node.status({fill:\"red\",shape:\"ring\",text: 'blocked,('+context.queue.length+') stored,disconnected' });\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 532.5555486679077,
+        "wires": [
+            [
+                "ee09f7292ecf9d31",
+                "ef2ebc8978b49091"
+            ]
+        ]
+    },
+    {
+        "id": "94cbad4c1f96de84",
+        "type": "inject",
+        "z": "5e0e164d5716495a",
+        "name": "report trigger",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 426.9999694824219,
+        "y": 558.2222146987915,
+        "wires": [
+            [
+                "f3c17f9936a58a30"
+            ]
+        ]
+    },
+    {
+        "id": "4c2ede7a9a75fb31",
+        "type": "function",
+        "z": "5e0e164d5716495a",
+        "name": "alarm generator",
+        "func": "\nvar trigger  = Math.floor(Math.random() * 6);\n\nmsg.payload.timestamp = Date.now();\nswitch ( trigger ) {\ncase 0 :\ncase 2 :\ncase 4 :\n    msg.payload.op = 'report';\n    msg.payload.priority = 1;\n    msg.payload.task = 'Gas Leak';\n    break;  \ncase 1 :\ncase 3 :\ncase 5 :\n    msg.payload.op = 'report';\n    msg.payload.priority = 2;\n    msg.payload.task = 'Water Leak';\n    break;    \ndefault:\n    msg.payload.op = 'report';\n    msg.payload.priority = 'low';\n    msg.payload.task = 'Gas Task';\n    break;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 616,
+        "y": 516.4444370269775,
+        "wires": [
+            [
+                "c49c5dc3ad58b42f"
+            ]
+        ]
+    },
+    {
+        "id": "f3c17f9936a58a30",
+        "type": "function",
+        "z": "5e0e164d5716495a",
+        "name": "mqtt out trigger",
+        "func": "msg.payload = { op : 'trigger' } ;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 615.9999961853027,
+        "y": 559.4444379806519,
+        "wires": [
+            [
+                "c49c5dc3ad58b42f"
+            ]
+        ]
+    },
+    {
+        "id": "ef2ebc8978b49091",
+        "type": "mqtt out",
+        "z": "5e0e164d5716495a",
+        "name": "MQTT pub - node1/alarm",
+        "topic": "node1/alarm",
+        "qos": "",
+        "retain": "",
+        "broker": "d139ad3f.b28af",
+        "x": 1084,
+        "y": 581.1111183166504,
+        "wires": []
+    },
+    {
+        "id": "d47973dc0adb6027",
+        "type": "debug",
+        "z": "5e0e164d5716495a",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 636,
+        "y": 650.1111059188843,
+        "wires": []
+    },
+    {
+        "id": "3b54e82450271903",
+        "type": "debug",
+        "z": "5e0e164d5716495a",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 663.9999961853027,
+        "y": 695.1111059188843,
+        "wires": []
+    },
+    {
+        "id": "fffc46067855fbb1",
+        "type": "mqtt in",
+        "z": "5e0e164d5716495a",
+        "name": "MQTT sub - node1/alarm",
+        "topic": "node1/alarm",
+        "qos": "2",
+        "broker": "d139ad3f.b28af",
+        "inputs": 0,
+        "x": 453,
+        "y": 695.2222166061401,
+        "wires": [
+            [
+                "3b54e82450271903"
+            ]
+        ]
+    },
+    {
+        "id": "c130ab914b8f1db3",
+        "type": "inject",
+        "z": "5e0e164d5716495a",
+        "name": "reset trigger",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 428,
+        "y": 599.2222166061401,
+        "wires": [
+            [
+                "6a67673ff7982afe"
+            ]
+        ]
+    },
+    {
+        "id": "6a67673ff7982afe",
+        "type": "function",
+        "z": "5e0e164d5716495a",
+        "name": "reset trigger",
+        "func": "msg.payload = { op : 'reset' } ;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 605.9999847412109,
+        "y": 599.6527853012085,
+        "wires": [
+            [
+                "c49c5dc3ad58b42f"
+            ]
+        ]
+    },
+    {
+        "id": "ad8b8e5a0adc9507",
+        "type": "mosca in",
+        "z": "5e0e164d5716495a",
+        "mqtt_port": "1883",
+        "mqtt_ws_port": "",
+        "name": "",
+        "username": "",
+        "password": "",
+        "dburl": "",
+        "x": 443,
+        "y": 650.2222166061401,
+        "wires": [
+            [
+                "d47973dc0adb6027"
+            ]
         ]
     }
 ]
