@@ -553,6 +553,78 @@
         ]
     },
     {
+        "id": "c09594e2487d35a2",
+        "type": "uibuilder",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "topic": "",
+        "url": "login",
+        "fwdInMessages": false,
+        "allowScripts": false,
+        "allowStyles": false,
+        "copyIndex": true,
+        "templateFolder": "blank",
+        "extTemplate": "",
+        "showfolder": false,
+        "reload": false,
+        "sourceFolder": "src",
+        "deployedVersion": "5.0.2",
+        "x": 540,
+        "y": 940,
+        "wires": [
+            [
+                "5543c55d1be31a28"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "5543c55d1be31a28",
+        "type": "debug",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "399ab220e2eb7218",
+        "type": "inject",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 300,
+        "y": 920,
+        "wires": [
+            [
+                "c09594e2487d35a2"
+            ]
+        ]
+    },
+    {
         "id": "f86352c2acd99e68",
         "type": "http response",
         "z": "838e54b719ad8caa",
