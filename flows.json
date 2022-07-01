@@ -635,7 +635,7 @@
         "type": "function",
         "z": "55b2ce4ea70984fe",
         "name": "",
-        "func": "\n\n\n\n\n\n/* msg.topic= \"SELECT passwort FROM user WHERE userID='100'\"; */\nreturn msg.topic;",
+        "func": "\nreturn msg.topic;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
