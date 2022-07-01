@@ -646,7 +646,7 @@
         "wires": [
             [
                 "061533cafa2fd683",
-                "5543c55d1be31a28"
+                "99f84edbdcee4471"
             ]
         ]
     },
@@ -1031,10 +1031,27 @@
         "sql": "",
         "name": "db",
         "x": 890,
-        "y": 500,
+        "y": 460,
         "wires": [
             []
         ]
+    },
+    {
+        "id": "99f84edbdcee4471",
+        "type": "debug",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "topic",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1160,
+        "y": 600,
+        "wires": []
     },
     {
         "id": "f86352c2acd99e68",
