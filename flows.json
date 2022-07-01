@@ -635,7 +635,7 @@
         "type": "function",
         "z": "55b2ce4ea70984fe",
         "name": "",
-        "func": "var userid=\"\";\nvar password=\"\";\n\nif (msg.topic==1){\n     msg.payload=userid;\n}\n\nif (msg.topic==2){\n     msg.payload=password;\n}\nreturn msg.payload;",
+        "func": "var userid=\"\";\nvar password=\"\";\n\nif (msg.topic==1){\n     userid=msg.payload;\n}\n\nif (msg.topic==2){\n     password=msg.payload;\n}\nreturn msg.payload;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
