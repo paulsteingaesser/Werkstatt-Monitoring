@@ -191,6 +191,12 @@
         "mode": "RWC"
     },
     {
+        "id": "e03e87e4bc6a7ec3",
+        "type": "sqlitedb",
+        "db": "",
+        "mode": "RWC"
+    },
+    {
         "id": "0c0e7f63d56c01d5",
         "type": "switch",
         "z": "55b2ce4ea70984fe",
@@ -335,8 +341,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1350,
-        "y": 360,
+        "x": 1430,
+        "y": 320,
         "wires": []
     },
     {
@@ -452,8 +458,8 @@
         "output": "",
         "outputType": "msg",
         "outTz": "Europe/Berlin",
-        "x": 240,
-        "y": 360,
+        "x": 140,
+        "y": 420,
         "wires": [
             []
         ]
@@ -545,8 +551,8 @@
         "reload": false,
         "sourceFolder": "src",
         "deployedVersion": "5.0.2",
-        "x": 200,
-        "y": 760,
+        "x": 120,
+        "y": 460,
         "wires": [
             [],
             []
@@ -569,15 +575,13 @@
         "reload": false,
         "sourceFolder": "src",
         "deployedVersion": "5.0.2",
-        "x": 520,
-        "y": 920,
+        "x": 340,
+        "y": 640,
         "wires": [
             [
-                "5543c55d1be31a28"
+                "d20221c9ddaca7e2"
             ],
-            [
-                "81dc8d31b3ae2b5a"
-            ]
+            []
         ]
     },
     {
@@ -593,8 +597,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 750,
-        "y": 840,
+        "x": 1170,
+        "y": 680,
         "wires": []
     },
     {
@@ -618,8 +622,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 300,
-        "y": 920,
+        "x": 120,
+        "y": 640,
         "wires": [
             [
                 "c09594e2487d35a2"
@@ -627,7 +631,229 @@
         ]
     },
     {
-        "id": "81dc8d31b3ae2b5a",
+        "id": "405b2fa8f745e239",
+        "type": "function",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "func": "sqlstatement= \"SELECT passwort FROM user WHERE userID='100'\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 600,
+        "wires": [
+            [
+                "061533cafa2fd683",
+                "5543c55d1be31a28"
+            ]
+        ]
+    },
+    {
+        "id": "d20221c9ddaca7e2",
+        "type": "switch",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 570,
+        "y": 640,
+        "wires": [
+            [
+                "405b2fa8f745e239"
+            ],
+            [
+                "6c5e27066a7ca0d1"
+            ]
+        ]
+    },
+    {
+        "id": "6c5e27066a7ca0d1",
+        "type": "function",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 680,
+        "wires": [
+            [
+                "5543c55d1be31a28"
+            ]
+        ]
+    },
+    {
+        "id": "9a8a5a122cb98b24",
+        "type": "inject",
+        "z": "55b2ce4ea70984fe",
+        "name": "CREATE user",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "CREATE TABLE user( userID INTEGER PRIMARY KEY AUTOINCREMENT, passwort TEXT, nachname TEXT NOT NULL, vorname TEXT NOT NULL, admin BOOLEAN NOT NULL, berechtigungsstufe INTEGER NOT NULL, firma TEXT )",
+        "payload": "",
+        "payloadType": "date",
+        "x": 690,
+        "y": 860,
+        "wires": [
+            [
+                "4177d47657e1badc"
+            ]
+        ]
+    },
+    {
+        "id": "0cdd8770abc90b3c",
+        "type": "debug",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1150,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "37aff40bf3f7ee6b",
+        "type": "inject",
+        "z": "55b2ce4ea70984fe",
+        "name": "CREATE maschine",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "CREATE TABLE maschine( maschinenName TEXT PRIMARY KEY NOT NULL, berechtigungsstufe INTEGER NOT NULL, ruestzeit INTEGER NOT NULL, kosten INTEGER NOT NULL, materialverbrauch INTEGER , bereich TEXT, faktor INTEGER NOT NULL )",
+        "payload": "",
+        "payloadType": "date",
+        "x": 710,
+        "y": 960,
+        "wires": [
+            [
+                "8361b23783256c87"
+            ]
+        ]
+    },
+    {
+        "id": "b3f3230a06f7a95d",
+        "type": "debug",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1150,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "13ebd6bfc6153102",
+        "type": "inject",
+        "z": "55b2ce4ea70984fe",
+        "name": "CREATE data",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "CREATE TABLE data( userID INTEGER NOT NULL, maschinenName TEXT NOT NULL, beginn\tINTEGER NOT NULL, ende INTEGER NOT NULL, dauer INTEGER NOT NULL, strom INTEGER NOT NULL, PRIMARY KEY (userID, maschinenName ) FOREIGN KEY(userID) REFERENCES user(userID), FOREIGN KEY(maschinenName  ) REFERENCES maschine(maschinenName ) )",
+        "payload": "",
+        "payloadType": "date",
+        "x": 690,
+        "y": 1000,
+        "wires": [
+            [
+                "eb1e5090c31b33aa"
+            ]
+        ]
+    },
+    {
+        "id": "f10ab35f916367fe",
+        "type": "inject",
+        "z": "55b2ce4ea70984fe",
+        "name": "Set seq",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "INSERT INTO sqlite_sequence VALUES ('user',99)",
+        "payload": "",
+        "payloadType": "date",
+        "x": 690,
+        "y": 900,
+        "wires": [
+            [
+                "eed3ba14cac55b95"
+            ]
+        ]
+    },
+    {
+        "id": "1964d25efdeac5b8",
         "type": "debug",
         "z": "55b2ce4ea70984fe",
         "name": "",
@@ -638,9 +864,177 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 730,
-        "y": 980,
+        "x": 1170,
+        "y": 900,
         "wires": []
+    },
+    {
+        "id": "024eed59958a2f67",
+        "type": "inject",
+        "z": "55b2ce4ea70984fe",
+        "name": "Aktive FK",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "PRAGMA foreign_keys = ON;",
+        "payload": "",
+        "payloadType": "date",
+        "x": 700,
+        "y": 1040,
+        "wires": [
+            [
+                "32bc3f4e2b20a0df"
+            ]
+        ]
+    },
+    {
+        "id": "0352c0fa441c0ef1",
+        "type": "debug",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1170,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "4177d47657e1badc",
+        "type": "queuedsqlite",
+        "z": "55b2ce4ea70984fe",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "fixed",
+        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
+        "sql": "",
+        "name": "db",
+        "x": 930,
+        "y": 860,
+        "wires": [
+            [
+                "e6f124e4a56b8778"
+            ]
+        ]
+    },
+    {
+        "id": "eed3ba14cac55b95",
+        "type": "queuedsqlite",
+        "z": "55b2ce4ea70984fe",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "fixed",
+        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
+        "sql": "",
+        "name": "db",
+        "x": 950,
+        "y": 900,
+        "wires": [
+            [
+                "1964d25efdeac5b8"
+            ]
+        ]
+    },
+    {
+        "id": "8361b23783256c87",
+        "type": "queuedsqlite",
+        "z": "55b2ce4ea70984fe",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "fixed",
+        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
+        "sql": "",
+        "name": "db",
+        "x": 930,
+        "y": 960,
+        "wires": [
+            [
+                "0cdd8770abc90b3c"
+            ]
+        ]
+    },
+    {
+        "id": "eb1e5090c31b33aa",
+        "type": "queuedsqlite",
+        "z": "55b2ce4ea70984fe",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "fixed",
+        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
+        "sql": "",
+        "name": "db",
+        "x": 930,
+        "y": 1000,
+        "wires": [
+            [
+                "b3f3230a06f7a95d"
+            ]
+        ]
+    },
+    {
+        "id": "32bc3f4e2b20a0df",
+        "type": "queuedsqlite",
+        "z": "55b2ce4ea70984fe",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "fixed",
+        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
+        "sql": "",
+        "name": "db",
+        "x": 950,
+        "y": 1040,
+        "wires": [
+            [
+                "0352c0fa441c0ef1"
+            ]
+        ]
+    },
+    {
+        "id": "e6f124e4a56b8778",
+        "type": "debug",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1170,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "061533cafa2fd683",
+        "type": "queuedsqlite",
+        "z": "55b2ce4ea70984fe",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "fixed",
+        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
+        "sql": "",
+        "name": "db",
+        "x": 890,
+        "y": 500,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "f86352c2acd99e68",
