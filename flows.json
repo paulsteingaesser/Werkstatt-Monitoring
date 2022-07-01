@@ -635,14 +635,14 @@
         "type": "function",
         "z": "55b2ce4ea70984fe",
         "name": "",
-        "func": "\nreturn msg.topic;",
+        "func": "var userid=\"\";\nvar password=\"\";\n\nif (msg.topic==1){\n     userid= msg.payload;\n}\n\nif (msg.topic==2){\n     password= msg.payload;\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
         "x": 720,
-        "y": 600,
+        "y": 640,
         "wires": [
             [
                 "061533cafa2fd683",
@@ -679,26 +679,7 @@
                 "405b2fa8f745e239"
             ],
             [
-                "6c5e27066a7ca0d1"
-            ]
-        ]
-    },
-    {
-        "id": "6c5e27066a7ca0d1",
-        "type": "function",
-        "z": "55b2ce4ea70984fe",
-        "name": "",
-        "func": "\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 720,
-        "y": 680,
-        "wires": [
-            [
-                "5543c55d1be31a28"
+                "405b2fa8f745e239"
             ]
         ]
     },
