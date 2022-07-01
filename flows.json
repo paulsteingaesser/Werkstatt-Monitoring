@@ -635,13 +635,13 @@
         "type": "function",
         "z": "55b2ce4ea70984fe",
         "name": "",
-        "func": "var userid=\"\";\nvar password=\"\";\n\nif (msg.topic==1){\n     userid=msg.payload;\n}\n\nif (msg.topic==2){\n     password=msg.payload;\n}\nreturn msg;",
+        "func": "var userid=\"\";\nvar password=\"\";\nvar passwordQuery=\"\";\nvar useridQuery=\"\";\n\nif (msg.topic==1){\n     userid=msg.payload;\n}\n\nif (msg.topic==2){\n     password=msg.payload;\n     var passwordQuery= \"SELECT FROM user WHERE userid=\"userid\" AND passwort=\"password\"\"\n     msg.payload\n}\nreturn msg;",
         "outputs": 1,
-        "noerr": 0,
+        "noerr": 5,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 720,
+        "x": 620,
         "y": 640,
         "wires": [
             [
@@ -1008,7 +1008,7 @@
         "sql": "",
         "name": "db",
         "x": 890,
-        "y": 460,
+        "y": 540,
         "wires": [
             []
         ]
