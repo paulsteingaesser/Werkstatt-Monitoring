@@ -569,13 +569,15 @@
         "reload": false,
         "sourceFolder": "src",
         "deployedVersion": "5.0.2",
-        "x": 540,
-        "y": 940,
+        "x": 520,
+        "y": 920,
         "wires": [
             [
                 "5543c55d1be31a28"
             ],
-            []
+            [
+                "81dc8d31b3ae2b5a"
+            ]
         ]
     },
     {
@@ -623,6 +625,22 @@
                 "c09594e2487d35a2"
             ]
         ]
+    },
+    {
+        "id": "81dc8d31b3ae2b5a",
+        "type": "debug",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 980,
+        "wires": []
     },
     {
         "id": "f86352c2acd99e68",
