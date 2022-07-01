@@ -598,14 +598,14 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1170,
-        "y": 680,
+        "y": 640,
         "wires": []
     },
     {
         "id": "399ab220e2eb7218",
         "type": "inject",
         "z": "55b2ce4ea70984fe",
-        "name": "",
+        "name": "Test Injection",
         "props": [
             {
                 "p": "payload"
@@ -622,7 +622,7 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 120,
+        "x": 130,
         "y": 640,
         "wires": [
             [
@@ -635,9 +635,9 @@
         "type": "function",
         "z": "55b2ce4ea70984fe",
         "name": "",
-        "func": "sqlstatement= \"SELECT passwort FROM user WHERE userID='100'\";\nreturn msg;",
+        "func": "\n\n\n\n\n\n/* msg.topic= \"SELECT passwort FROM user WHERE userID='100'\";\nreturn msg.topic;",
         "outputs": 1,
-        "noerr": 0,
+        "noerr": 3,
         "initialize": "",
         "finalize": "",
         "libs": [],
