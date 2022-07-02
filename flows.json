@@ -589,8 +589,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 790,
-        "y": 640,
+        "x": 770,
+        "y": 540,
         "wires": []
     },
     {
@@ -614,11 +614,12 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 170,
+        "x": 110,
         "y": 640,
         "wires": [
             [
-                "c09594e2487d35a2"
+                "c09594e2487d35a2",
+                "5543c55d1be31a28"
             ]
         ]
     },
