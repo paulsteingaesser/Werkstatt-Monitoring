@@ -597,8 +597,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1170,
-        "y": 640,
+        "x": 790,
+        "y": 620,
         "wires": []
     },
     {
@@ -622,7 +622,7 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 130,
+        "x": 170,
         "y": 640,
         "wires": [
             [
@@ -635,48 +635,19 @@
         "type": "function",
         "z": "55b2ce4ea70984fe",
         "name": "",
-        "func": "var userid=\"\";\nvar password=\"\";\nvar passwordQuery=\"\";\nvar useridQuery=\"\";\n\nif (msg.topic==1){\n     userid=msg.payload;\n}\n\nif (msg.topic==2){\n     password=msg.payload;\n     passwordQuery = \"SELECT * FROM user WHERE userID=\"+userid+\" AND passwort=\"+password;\n\n}\nreturn msg;",
+        "func": "var userid=\"\";\nvar password=\"\";\nvar passwordQuery=\"\";\nvar useridQuery=\"\";\n\nif (msg.topic==1){\n     userid=msg.payload;\n}\n\nif (msg.topic==2){\n     password=msg.payload;\n     passwordQuery = \"SELECT * FROM user WHERE userID=\"+userid+\" AND passwort=\"+password;\n        \n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 620,
+        "x": 500,
         "y": 640,
         "wires": [
             [
                 "061533cafa2fd683",
                 "5543c55d1be31a28"
             ]
-        ]
-    },
-    {
-        "id": "d20221c9ddaca7e2",
-        "type": "switch",
-        "z": "55b2ce4ea70984fe",
-        "name": "",
-        "property": "topic",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "2",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 490,
-        "y": 780,
-        "wires": [
-            [],
-            []
         ]
     },
     {
@@ -700,30 +671,13 @@
         "topic": "CREATE TABLE user( userID INTEGER PRIMARY KEY AUTOINCREMENT, passwort TEXT, nachname TEXT NOT NULL, vorname TEXT NOT NULL, admin BOOLEAN NOT NULL, berechtigungsstufe INTEGER NOT NULL, firma TEXT )",
         "payload": "",
         "payloadType": "date",
-        "x": 690,
-        "y": 860,
+        "x": 170,
+        "y": 900,
         "wires": [
             [
                 "4177d47657e1badc"
             ]
         ]
-    },
-    {
-        "id": "0cdd8770abc90b3c",
-        "type": "debug",
-        "z": "55b2ce4ea70984fe",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1150,
-        "y": 960,
-        "wires": []
     },
     {
         "id": "37aff40bf3f7ee6b",
@@ -746,30 +700,13 @@
         "topic": "CREATE TABLE maschine( maschinenName TEXT PRIMARY KEY NOT NULL, berechtigungsstufe INTEGER NOT NULL, ruestzeit INTEGER NOT NULL, kosten INTEGER NOT NULL, materialverbrauch INTEGER , bereich TEXT, faktor INTEGER NOT NULL )",
         "payload": "",
         "payloadType": "date",
-        "x": 710,
-        "y": 960,
+        "x": 190,
+        "y": 860,
         "wires": [
             [
-                "8361b23783256c87"
+                "4177d47657e1badc"
             ]
         ]
-    },
-    {
-        "id": "b3f3230a06f7a95d",
-        "type": "debug",
-        "z": "55b2ce4ea70984fe",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1150,
-        "y": 1000,
-        "wires": []
     },
     {
         "id": "13ebd6bfc6153102",
@@ -792,11 +729,11 @@
         "topic": "CREATE TABLE data( userID INTEGER NOT NULL, maschinenName TEXT NOT NULL, beginn\tINTEGER NOT NULL, ende INTEGER NOT NULL, dauer INTEGER NOT NULL, strom INTEGER NOT NULL, PRIMARY KEY (userID, maschinenName ) FOREIGN KEY(userID) REFERENCES user(userID), FOREIGN KEY(maschinenName  ) REFERENCES maschine(maschinenName ) )",
         "payload": "",
         "payloadType": "date",
-        "x": 690,
-        "y": 1000,
+        "x": 170,
+        "y": 940,
         "wires": [
             [
-                "eb1e5090c31b33aa"
+                "4177d47657e1badc"
             ]
         ]
     },
@@ -821,29 +758,13 @@
         "topic": "INSERT INTO sqlite_sequence VALUES ('user',99)",
         "payload": "",
         "payloadType": "date",
-        "x": 690,
-        "y": 900,
+        "x": 150,
+        "y": 980,
         "wires": [
             [
-                "eed3ba14cac55b95"
+                "4177d47657e1badc"
             ]
         ]
-    },
-    {
-        "id": "1964d25efdeac5b8",
-        "type": "debug",
-        "z": "55b2ce4ea70984fe",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1170,
-        "y": 900,
-        "wires": []
     },
     {
         "id": "024eed59958a2f67",
@@ -866,30 +787,13 @@
         "topic": "PRAGMA foreign_keys = ON;",
         "payload": "",
         "payloadType": "date",
-        "x": 700,
-        "y": 1040,
+        "x": 160,
+        "y": 1020,
         "wires": [
             [
-                "32bc3f4e2b20a0df"
+                "4177d47657e1badc"
             ]
         ]
-    },
-    {
-        "id": "0352c0fa441c0ef1",
-        "type": "debug",
-        "z": "55b2ce4ea70984fe",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1170,
-        "y": 1040,
-        "wires": []
     },
     {
         "id": "4177d47657e1badc",
@@ -901,83 +805,11 @@
         "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
         "sql": "",
         "name": "db",
-        "x": 930,
+        "x": 490,
         "y": 860,
         "wires": [
             [
                 "e6f124e4a56b8778"
-            ]
-        ]
-    },
-    {
-        "id": "eed3ba14cac55b95",
-        "type": "queuedsqlite",
-        "z": "55b2ce4ea70984fe",
-        "mydb": "fe1131055cdbcae8",
-        "sqlquery": "msg.topic",
-        "dbName": "fixed",
-        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
-        "sql": "",
-        "name": "db",
-        "x": 950,
-        "y": 900,
-        "wires": [
-            [
-                "1964d25efdeac5b8"
-            ]
-        ]
-    },
-    {
-        "id": "8361b23783256c87",
-        "type": "queuedsqlite",
-        "z": "55b2ce4ea70984fe",
-        "mydb": "fe1131055cdbcae8",
-        "sqlquery": "msg.topic",
-        "dbName": "fixed",
-        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
-        "sql": "",
-        "name": "db",
-        "x": 930,
-        "y": 960,
-        "wires": [
-            [
-                "0cdd8770abc90b3c"
-            ]
-        ]
-    },
-    {
-        "id": "eb1e5090c31b33aa",
-        "type": "queuedsqlite",
-        "z": "55b2ce4ea70984fe",
-        "mydb": "fe1131055cdbcae8",
-        "sqlquery": "msg.topic",
-        "dbName": "fixed",
-        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
-        "sql": "",
-        "name": "db",
-        "x": 930,
-        "y": 1000,
-        "wires": [
-            [
-                "b3f3230a06f7a95d"
-            ]
-        ]
-    },
-    {
-        "id": "32bc3f4e2b20a0df",
-        "type": "queuedsqlite",
-        "z": "55b2ce4ea70984fe",
-        "mydb": "fe1131055cdbcae8",
-        "sqlquery": "msg.topic",
-        "dbName": "fixed",
-        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
-        "sql": "",
-        "name": "db",
-        "x": 950,
-        "y": 1040,
-        "wires": [
-            [
-                "0352c0fa441c0ef1"
             ]
         ]
     },
@@ -993,7 +825,7 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1170,
+        "x": 670,
         "y": 860,
         "wires": []
     },
@@ -1007,10 +839,12 @@
         "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
         "sql": "",
         "name": "db",
-        "x": 890,
+        "x": 650,
         "y": 540,
         "wires": [
-            []
+            [
+                "5543c55d1be31a28"
+            ]
         ]
     },
     {
@@ -1026,8 +860,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1160,
-        "y": 600,
+        "x": 760,
+        "y": 700,
         "wires": []
     },
     {
