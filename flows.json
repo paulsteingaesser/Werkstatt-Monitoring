@@ -1607,7 +1607,7 @@
         "mydb": "fe1131055cdbcae8",
         "sqlquery": "msg.topic",
         "dbName": "fixed",
-        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
+        "db": ".node-red\\projects\\WerkstattMonitoring28_6\\db",
         "sql": "",
         "name": "db",
         "x": 550,
