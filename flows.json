@@ -598,7 +598,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 790,
-        "y": 620,
+        "y": 640,
         "wires": []
     },
     {
@@ -645,7 +645,6 @@
         "y": 640,
         "wires": [
             [
-                "061533cafa2fd683",
                 "5543c55d1be31a28"
             ]
         ]
@@ -839,8 +838,8 @@
         "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
         "sql": "",
         "name": "db",
-        "x": 650,
-        "y": 540,
+        "x": 590,
+        "y": 500,
         "wires": [
             [
                 "5543c55d1be31a28"
