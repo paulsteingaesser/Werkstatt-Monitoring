@@ -1018,26 +1018,10 @@
         "y": 820,
         "wires": [
             [
-                "5821d7db833a81e8"
+                "5821d7db833a81e8",
+                "4e5d80bf25155cb8"
             ]
         ]
-    },
-    {
-        "id": "bea0e13dfef6afbe",
-        "type": "debug",
-        "z": "5d3034dc83dfbde2",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 770,
-        "y": 820,
-        "wires": []
     },
     {
         "id": "50569f90705cf2e0",
@@ -1064,26 +1048,10 @@
         "y": 860,
         "wires": [
             [
-                "9ca2370021eb1490"
+                "9ca2370021eb1490",
+                "4e5d80bf25155cb8"
             ]
         ]
-    },
-    {
-        "id": "e09c72fe63a249e4",
-        "type": "debug",
-        "z": "5d3034dc83dfbde2",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 770,
-        "y": 860,
-        "wires": []
     },
     {
         "id": "11b413c05f8a7b74",
@@ -1110,26 +1078,10 @@
         "y": 780,
         "wires": [
             [
-                "8211108a5057ad66"
+                "8211108a5057ad66",
+                "4e5d80bf25155cb8"
             ]
         ]
-    },
-    {
-        "id": "85029132c12b3018",
-        "type": "debug",
-        "z": "5d3034dc83dfbde2",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 770,
-        "y": 780,
-        "wires": []
     },
     {
         "id": "5821d7db833a81e8",
@@ -1144,9 +1096,7 @@
         "x": 530,
         "y": 820,
         "wires": [
-            [
-                "bea0e13dfef6afbe"
-            ]
+            []
         ]
     },
     {
@@ -1162,9 +1112,7 @@
         "x": 530,
         "y": 860,
         "wires": [
-            [
-                "e09c72fe63a249e4"
-            ]
+            []
         ]
     },
     {
@@ -1180,9 +1128,7 @@
         "x": 530,
         "y": 780,
         "wires": [
-            [
-                "85029132c12b3018"
-            ]
+            []
         ]
     },
     {
@@ -1215,23 +1161,6 @@
         ]
     },
     {
-        "id": "ecb9e1f5928cd37f",
-        "type": "debug",
-        "z": "5d3034dc83dfbde2",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 770,
-        "y": 260,
-        "wires": []
-    },
-    {
         "id": "d66ccb9f4b938c66",
         "type": "inject",
         "z": "5d3034dc83dfbde2",
@@ -1256,26 +1185,9 @@
         "y": 260,
         "wires": [
             [
-                "4b9b9160a160ff22"
+                "4e5d80bf25155cb8"
             ]
         ]
-    },
-    {
-        "id": "fe183e4b592df32f",
-        "type": "debug",
-        "z": "5d3034dc83dfbde2",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 770,
-        "y": 300,
-        "wires": []
     },
     {
         "id": "fd9f05ab6dc50aa1",
@@ -1302,7 +1214,7 @@
         "y": 300,
         "wires": [
             [
-                "407a312b355bb423"
+                "4e5d80bf25155cb8"
             ]
         ]
     },
@@ -1331,23 +1243,9 @@
         "y": 500,
         "wires": [
             [
-                "6dcc0d80176ed276"
+                "4e5d80bf25155cb8"
             ]
         ]
-    },
-    {
-        "id": "f20d1af15802b2cd",
-        "type": "debug",
-        "z": "5d3034dc83dfbde2",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "x": 770,
-        "y": 500,
-        "wires": []
     },
     {
         "id": "d94b1e23be9d9b0d",
@@ -1374,37 +1272,9 @@
         "y": 540,
         "wires": [
             [
-                "95a13bb85a1047a8"
+                "4e5d80bf25155cb8"
             ]
         ]
-    },
-    {
-        "id": "165589e16cfe6252",
-        "type": "debug",
-        "z": "5d3034dc83dfbde2",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "x": 780,
-        "y": 540,
-        "wires": []
-    },
-    {
-        "id": "0382565c18dde0df",
-        "type": "debug",
-        "z": "5d3034dc83dfbde2",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "x": 780,
-        "y": 580,
-        "wires": []
     },
     {
         "id": "b08bfac38124d829",
@@ -1427,29 +1297,13 @@
         "topic": "INSERT INTO sqlite_sequence VALUES ('user',99)",
         "payload": "",
         "payloadType": "date",
-        "x": 310,
-        "y": 200,
+        "x": 270,
+        "y": 220,
         "wires": [
             [
-                "a2fc9aca8832f97d"
+                "4e5d80bf25155cb8"
             ]
         ]
-    },
-    {
-        "id": "c3162ff01007ba37",
-        "type": "debug",
-        "z": "5d3034dc83dfbde2",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 790,
-        "y": 200,
-        "wires": []
     },
     {
         "id": "31a7831af0c7b17b",
@@ -1476,26 +1330,9 @@
         "y": 340,
         "wires": [
             [
-                "295aa77c2ff99c33"
+                "4e5d80bf25155cb8"
             ]
         ]
-    },
-    {
-        "id": "b0cbc2d3c54276bc",
-        "type": "debug",
-        "z": "5d3034dc83dfbde2",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 790,
-        "y": 340,
-        "wires": []
     },
     {
         "id": "edea6b03024b3573",
@@ -1518,11 +1355,12 @@
         "topic": "PRAGMA foreign_keys = ON;",
         "payload": "",
         "payloadType": "date",
-        "x": 380,
+        "x": 340,
         "y": 620,
         "wires": [
             [
-                "9a4db932c1c3cc0e"
+                "9a4db932c1c3cc0e",
+                "4e5d80bf25155cb8"
             ]
         ]
     },
@@ -1536,8 +1374,8 @@
         "console": false,
         "tostatus": false,
         "complete": "false",
-        "x": 930,
-        "y": 640,
+        "x": 970,
+        "y": 620,
         "wires": []
     },
     {
@@ -1565,7 +1403,7 @@
         "y": 580,
         "wires": [
             [
-                "8c50561cec5edfac"
+                "4e5d80bf25155cb8"
             ]
         ]
     },
@@ -1603,140 +1441,14 @@
         "mydb": "fe1131055cdbcae8",
         "sqlquery": "msg.topic",
         "dbName": "fixed",
-        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
+        "db": ".node-red\\projects\\MonitoringApp_Stand22-06-22\\db",
         "sql": "",
         "name": "db",
-        "x": 550,
-        "y": 160,
+        "x": 690,
+        "y": 480,
         "wires": [
             [
                 "9383b262ea8775b9"
-            ]
-        ]
-    },
-    {
-        "id": "a2fc9aca8832f97d",
-        "type": "queuedsqlite",
-        "z": "5d3034dc83dfbde2",
-        "mydb": "fe1131055cdbcae8",
-        "sqlquery": "msg.topic",
-        "dbName": "fixed",
-        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
-        "sql": "",
-        "name": "db",
-        "x": 570,
-        "y": 200,
-        "wires": [
-            [
-                "c3162ff01007ba37"
-            ]
-        ]
-    },
-    {
-        "id": "4b9b9160a160ff22",
-        "type": "queuedsqlite",
-        "z": "5d3034dc83dfbde2",
-        "mydb": "fe1131055cdbcae8",
-        "sqlquery": "msg.topic",
-        "dbName": "fixed",
-        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
-        "sql": "",
-        "name": "db",
-        "x": 550,
-        "y": 260,
-        "wires": [
-            [
-                "ecb9e1f5928cd37f"
-            ]
-        ]
-    },
-    {
-        "id": "407a312b355bb423",
-        "type": "queuedsqlite",
-        "z": "5d3034dc83dfbde2",
-        "mydb": "fe1131055cdbcae8",
-        "sqlquery": "msg.topic",
-        "dbName": "fixed",
-        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
-        "sql": "",
-        "name": "db",
-        "x": 550,
-        "y": 300,
-        "wires": [
-            [
-                "fe183e4b592df32f"
-            ]
-        ]
-    },
-    {
-        "id": "295aa77c2ff99c33",
-        "type": "queuedsqlite",
-        "z": "5d3034dc83dfbde2",
-        "mydb": "fe1131055cdbcae8",
-        "sqlquery": "msg.topic",
-        "dbName": "fixed",
-        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
-        "sql": "",
-        "name": "db",
-        "x": 570,
-        "y": 340,
-        "wires": [
-            [
-                "b0cbc2d3c54276bc"
-            ]
-        ]
-    },
-    {
-        "id": "6dcc0d80176ed276",
-        "type": "queuedsqlite",
-        "z": "5d3034dc83dfbde2",
-        "mydb": "fe1131055cdbcae8",
-        "sqlquery": "msg.topic",
-        "dbName": "fixed",
-        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
-        "sql": "",
-        "name": "db",
-        "x": 550,
-        "y": 500,
-        "wires": [
-            [
-                "f20d1af15802b2cd"
-            ]
-        ]
-    },
-    {
-        "id": "95a13bb85a1047a8",
-        "type": "queuedsqlite",
-        "z": "5d3034dc83dfbde2",
-        "mydb": "fe1131055cdbcae8",
-        "sqlquery": "msg.topic",
-        "dbName": "fixed",
-        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
-        "sql": "",
-        "name": "db",
-        "x": 550,
-        "y": 540,
-        "wires": [
-            [
-                "165589e16cfe6252"
-            ]
-        ]
-    },
-    {
-        "id": "8c50561cec5edfac",
-        "type": "queuedsqlite",
-        "z": "5d3034dc83dfbde2",
-        "mydb": "fe1131055cdbcae8",
-        "sqlquery": "msg.topic",
-        "dbName": "fixed",
-        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
-        "sql": "",
-        "name": "db",
-        "x": 550,
-        "y": 580,
-        "wires": [
-            [
-                "0382565c18dde0df"
             ]
         ]
     },
@@ -1819,8 +1531,8 @@
         "z": "5d3034dc83dfbde2",
         "name": "FK muss bei jedem INSERT aktiviert werden",
         "info": "",
-        "x": 1210,
-        "y": 640,
+        "x": 1270,
+        "y": 620,
         "wires": []
     },
     {
