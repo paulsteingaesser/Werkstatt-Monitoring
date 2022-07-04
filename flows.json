@@ -1323,7 +1323,7 @@
         "console": false,
         "tostatus": false,
         "complete": "false",
-        "x": 970,
+        "x": 1030,
         "y": 620,
         "wires": []
     },
@@ -1375,8 +1375,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 530,
-        "y": 680,
+        "x": 710,
+        "y": 700,
         "wires": [
             [
                 "bdccecb66d282599"
@@ -1430,8 +1430,8 @@
         "db": "C:\\Users\\User\\.node-red\\projects\\MonitoringApp_Stand22-06-22\\db",
         "sql": "",
         "name": "db",
-        "x": 670,
-        "y": 680,
+        "x": 890,
+        "y": 700,
         "wires": [
             [
                 "681a66ce7a2f547e"
@@ -1480,7 +1480,7 @@
         "z": "5d3034dc83dfbde2",
         "name": "FK muss bei jedem INSERT aktiviert werden",
         "info": "",
-        "x": 1270,
+        "x": 1370,
         "y": 620,
         "wires": []
     },
