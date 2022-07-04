@@ -1018,7 +1018,6 @@
         "y": 820,
         "wires": [
             [
-                "5821d7db833a81e8",
                 "4e5d80bf25155cb8"
             ]
         ]
@@ -1048,7 +1047,6 @@
         "y": 860,
         "wires": [
             [
-                "9ca2370021eb1490",
                 "4e5d80bf25155cb8"
             ]
         ]
@@ -1078,57 +1076,8 @@
         "y": 780,
         "wires": [
             [
-                "8211108a5057ad66",
                 "4e5d80bf25155cb8"
             ]
-        ]
-    },
-    {
-        "id": "5821d7db833a81e8",
-        "type": "queuedsqlite",
-        "z": "5d3034dc83dfbde2",
-        "mydb": "fe1131055cdbcae8",
-        "sqlquery": "msg.topic",
-        "dbName": "fixed",
-        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
-        "sql": "",
-        "name": "db",
-        "x": 530,
-        "y": 820,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "9ca2370021eb1490",
-        "type": "queuedsqlite",
-        "z": "5d3034dc83dfbde2",
-        "mydb": "fe1131055cdbcae8",
-        "sqlquery": "msg.topic",
-        "dbName": "fixed",
-        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
-        "sql": "",
-        "name": "db",
-        "x": 530,
-        "y": 860,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "8211108a5057ad66",
-        "type": "queuedsqlite",
-        "z": "5d3034dc83dfbde2",
-        "mydb": "fe1131055cdbcae8",
-        "sqlquery": "msg.topic",
-        "dbName": "fixed",
-        "db": ".node-red\\projects\\Werkstatt-Monitoring\\db",
-        "sql": "",
-        "name": "db",
-        "x": 530,
-        "y": 780,
-        "wires": [
-            []
         ]
     },
     {
@@ -1441,7 +1390,7 @@
         "mydb": "fe1131055cdbcae8",
         "sqlquery": "msg.topic",
         "dbName": "fixed",
-        "db": ".node-red\\projects\\MonitoringApp_Stand22-06-22\\db",
+        "db": "C:\\Users\\User\\.node-red\\projects\\MonitoringApp_Stand22-06-22",
         "sql": "",
         "name": "db",
         "x": 690,
