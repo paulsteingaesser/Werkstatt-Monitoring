@@ -558,8 +558,8 @@
         "topic": "",
         "url": "login",
         "fwdInMessages": false,
-        "allowScripts": false,
-        "allowStyles": false,
+        "allowScripts": true,
+        "allowStyles": true,
         "copyIndex": true,
         "templateFolder": "blank",
         "extTemplate": "",
@@ -619,8 +619,7 @@
         "y": 640,
         "wires": [
             [
-                "c09594e2487d35a2",
-                "abfa1e411356d4cb"
+                "c09594e2487d35a2"
             ]
         ]
     },
