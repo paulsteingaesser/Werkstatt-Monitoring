@@ -567,11 +567,12 @@
         "reload": false,
         "sourceFolder": "src",
         "deployedVersion": "5.0.2",
-        "x": 340,
+        "x": 300,
         "y": 640,
         "wires": [
             [
-                "405b2fa8f745e239"
+                "405b2fa8f745e239",
+                "abfa1e411356d4cb"
             ],
             []
         ]
@@ -618,8 +619,7 @@
         "y": 640,
         "wires": [
             [
-                "c09594e2487d35a2",
-                "5543c55d1be31a28"
+                "c09594e2487d35a2"
             ]
         ]
     },
@@ -635,7 +635,26 @@
         "finalize": "",
         "libs": [],
         "x": 500,
-        "y": 640,
+        "y": 600,
+        "wires": [
+            [
+                "5543c55d1be31a28"
+            ]
+        ]
+    },
+    {
+        "id": "abfa1e411356d4cb",
+        "type": "function",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 680,
         "wires": [
             [
                 "5543c55d1be31a28"
