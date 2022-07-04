@@ -584,14 +584,14 @@
         "name": "",
         "active": true,
         "tosidebar": true,
-        "console": false,
-        "tostatus": false,
+        "console": true,
+        "tostatus": true,
         "complete": "payload",
         "targetType": "msg",
-        "statusVal": "",
+        "statusVal": "payload",
         "statusType": "auto",
-        "x": 670,
-        "y": 520,
+        "x": 800,
+        "y": 620,
         "wires": []
     },
     {
@@ -619,7 +619,8 @@
         "y": 640,
         "wires": [
             [
-                "c09594e2487d35a2"
+                "c09594e2487d35a2",
+                "abfa1e411356d4cb"
             ]
         ]
     },
@@ -637,9 +638,7 @@
         "x": 500,
         "y": 600,
         "wires": [
-            [
-                "5543c55d1be31a28"
-            ]
+            []
         ]
     },
     {
@@ -647,13 +646,13 @@
         "type": "function",
         "z": "55b2ce4ea70984fe",
         "name": "",
-        "func": "\nreturn msg;",
+        "func": "return msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 500,
+        "x": 520,
         "y": 680,
         "wires": [
             [
