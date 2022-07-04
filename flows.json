@@ -628,7 +628,7 @@
         "type": "function",
         "z": "55b2ce4ea70984fe",
         "name": "",
-        "func": "var userid=\"\";\nvar password=\"\";\nvar sqlQuery=\"\";\n\n\nif (msg.topic==\"1\"){\n     userid=msg.payload;\n}\n\nif (msg.topic==\"2\"){\n     password=msg.payload;\n     sqlQuery = \"SELECT * FROM user WHERE userID=\"+userid+\" AND passwort=\"+password;\n\n}\nreturn msg;",
+        "func": "var userid=\"\";\nvar password=\"\";\nvar sqlQuery=\"\";\n\n\nif (msg.topic==\"1\"){\n     userid=msg.payload;\n}\n\nif (msg.topic==\"2\"){\n     password=msg.payload;\n    // sqlQuery = \"SELECT * FROM user WHERE userID=\"+userid+\" AND passwort=\"+password;\n\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
