@@ -590,7 +590,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 670,
-        "y": 500,
+        "y": 520,
         "wires": []
     },
     {
@@ -638,45 +638,9 @@
         "y": 640,
         "wires": [
             [
-                "5543c55d1be31a28",
-                "99f84edbdcee4471",
-                "e7be5dde4d078f69"
+                "5543c55d1be31a28"
             ]
         ]
-    },
-    {
-        "id": "99f84edbdcee4471",
-        "type": "debug",
-        "z": "55b2ce4ea70984fe",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "topic",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 660,
-        "y": 680,
-        "wires": []
-    },
-    {
-        "id": "e7be5dde4d078f69",
-        "type": "debug",
-        "z": "55b2ce4ea70984fe",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 650,
-        "y": 740,
-        "wires": []
     },
     {
         "id": "f86352c2acd99e68",
