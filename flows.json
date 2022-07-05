@@ -644,7 +644,7 @@
         "type": "function",
         "z": "55b2ce4ea70984fe",
         "name": "",
-        "func": "if (msg.payload==\"A message from the sharp end!\"\n){\n    msg.payload=\"YES\"\n    return msg;\n}\n",
+        "func": "if (msg.payload==\"A message from the sharp end!\"\n){\n    msg.payload=\"YES\"\n    return msg;\n}else{return msg;}\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
