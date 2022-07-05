@@ -659,6 +659,30 @@
         ]
     },
     {
+        "id": "e3a23f8e7e241cfa",
+        "type": "uibuilder",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "topic": "",
+        "url": "loginTest",
+        "fwdInMessages": false,
+        "allowScripts": true,
+        "allowStyles": true,
+        "copyIndex": true,
+        "templateFolder": "blank",
+        "extTemplate": "",
+        "showfolder": false,
+        "reload": false,
+        "sourceFolder": "src",
+        "deployedVersion": "5.0.2",
+        "x": 310,
+        "y": 740,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
         "id": "f86352c2acd99e68",
         "type": "http response",
         "z": "838e54b719ad8caa",
