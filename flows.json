@@ -633,8 +633,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 520,
-        "y": 740,
+        "x": 700,
+        "y": 760,
         "wires": [
             [
                 "5543c55d1be31a28"
@@ -681,10 +681,28 @@
         "y": 740,
         "wires": [
             [
-                "405b2fa8f745e239"
+                "405b2fa8f745e239",
+                "7439ad949b1cfd7f"
             ],
             []
         ]
+    },
+    {
+        "id": "7439ad949b1cfd7f",
+        "type": "debug",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 450,
+        "y": 840,
+        "wires": []
     },
     {
         "id": "f86352c2acd99e68",
