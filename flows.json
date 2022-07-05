@@ -1503,5 +1503,627 @@
         "x": 180,
         "y": 740,
         "wires": []
+    },
+    {
+        "id": "f74a913511604bab",
+        "type": "ui_text_input",
+        "z": "5d3034dc83dfbde2",
+        "name": "",
+        "label": "UserID",
+        "tooltip": "",
+        "group": "b66f7e8f9f613abd",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 440,
+        "y": 1180,
+        "wires": [
+            [
+                "a2cb12e9876e4ae5"
+            ]
+        ]
+    },
+    {
+        "id": "668e640c1100b511",
+        "type": "ui_text_input",
+        "z": "5d3034dc83dfbde2",
+        "name": "",
+        "label": "Password",
+        "tooltip": "",
+        "group": "b66f7e8f9f613abd",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "password",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 440,
+        "y": 1220,
+        "wires": [
+            [
+                "95bb6f154e49a726"
+            ]
+        ]
+    },
+    {
+        "id": "a815951266310898",
+        "type": "function",
+        "z": "5d3034dc83dfbde2",
+        "name": "CheckPassword",
+        "func": "if ( msg.payload != \"\"){   \n    if (msg.payload[0].true == 1){\n        var msg = { \"topic\": \"SELECT passwort FROM user WHERE userID =\" + global.get(\"loginUserID\") +\" \"}\n         msg.payload = \"\";\n        \n    }\n    } else {\n        var msg = {payload: \"User doesn't exist\"}\n    \n    }\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 1320,
+        "wires": [
+            [
+                "5dcd1b774ec5651d"
+            ]
+        ]
+    },
+    {
+        "id": "9fde212bdefc3452",
+        "type": "ui_button",
+        "z": "5d3034dc83dfbde2",
+        "name": "",
+        "group": "b66f7e8f9f613abd",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Login",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "orange",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 430,
+        "y": 1260,
+        "wires": [
+            [
+                "e7a9b147145853fc"
+            ]
+        ]
+    },
+    {
+        "id": "08ae59b715667b7a",
+        "type": "debug",
+        "z": "5d3034dc83dfbde2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1070,
+        "y": 1320,
+        "wires": []
+    },
+    {
+        "id": "cd43de9917611e4f",
+        "type": "queuedsqlite",
+        "z": "5d3034dc83dfbde2",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "fixed",
+        "db": "C:\\Users\\User\\.node-red\\projects\\MonitoringApp_Stand22-06-22\\db",
+        "sql": "",
+        "name": "db_1",
+        "x": 850,
+        "y": 1380,
+        "wires": [
+            [
+                "f963684813e0aa9e"
+            ]
+        ]
+    },
+    {
+        "id": "a2cb12e9876e4ae5",
+        "type": "function",
+        "z": "5d3034dc83dfbde2",
+        "name": "",
+        "func": "\nif (msg.payload !== \"\"){\n    global.set(\"loginUserID\", msg.payload)\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 1180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "95bb6f154e49a726",
+        "type": "function",
+        "z": "5d3034dc83dfbde2",
+        "name": "",
+        "func": "\nif (msg.payload !== \"\"){\n    global.set(\"loginPasswort\", msg.payload)\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 1220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f963684813e0aa9e",
+        "type": "function",
+        "z": "5d3034dc83dfbde2",
+        "name": "checkingPassFunk",
+        "func": "dbPasswort = msg.payload[0].passwort;\nif (dbPasswort ==  global.get(\"loginPasswort\") ){\n    var msg = {payload: \"Login succeeded\"}\n} else {\n    var msg = {payload: \"Password is incorrect\"}\n}\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 870,
+        "y": 1440,
+        "wires": [
+            [
+                "e9c1900dd988ee2e"
+            ]
+        ]
+    },
+    {
+        "id": "e9c1900dd988ee2e",
+        "type": "debug",
+        "z": "5d3034dc83dfbde2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1090,
+        "y": 1440,
+        "wires": []
+    },
+    {
+        "id": "e7a9b147145853fc",
+        "type": "function",
+        "z": "5d3034dc83dfbde2",
+        "name": "CheckUserExists",
+        "func": "var msg = { \"topic\": \"SELECT true FROM user WHERE userID =\" + global.get(\"loginUserID\") +\" \"}\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 1260,
+        "wires": [
+            [
+                "0883fd50db75437a"
+            ]
+        ]
+    },
+    {
+        "id": "0883fd50db75437a",
+        "type": "queuedsqlite",
+        "z": "5d3034dc83dfbde2",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "fixed",
+        "db": "C:\\Users\\User\\.node-red\\projects\\MonitoringApp_Stand22-06-22\\db",
+        "sql": "",
+        "name": "db_1",
+        "x": 850,
+        "y": 1260,
+        "wires": [
+            [
+                "a815951266310898"
+            ]
+        ]
+    },
+    {
+        "id": "5dcd1b774ec5651d",
+        "type": "switch",
+        "z": "5d3034dc83dfbde2",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nempty"
+            },
+            {
+                "t": "empty"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 850,
+        "y": 1320,
+        "wires": [
+            [
+                "08ae59b715667b7a"
+            ],
+            [
+                "cd43de9917611e4f"
+            ]
+        ]
+    },
+    {
+        "id": "df7623d9dac50e07",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "Entering UserID",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "100",
+        "payloadType": "str",
+        "x": 580,
+        "y": 1760,
+        "wires": [
+            [
+                "0c8a8c872730d4f9"
+            ]
+        ]
+    },
+    {
+        "id": "9b1975ff8c3df123",
+        "type": "debug",
+        "z": "5d3034dc83dfbde2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1190,
+        "y": 1620,
+        "wires": []
+    },
+    {
+        "id": "3ed08b3c36479a39",
+        "type": "queuedsqlite",
+        "z": "5d3034dc83dfbde2",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "fixed",
+        "db": "C:\\Users\\User\\.node-red\\projects\\MonitoringApp_Stand22-06-22\\db",
+        "sql": "",
+        "name": "db_1",
+        "x": 1030,
+        "y": 1620,
+        "wires": [
+            [
+                "9b1975ff8c3df123"
+            ]
+        ]
+    },
+    {
+        "id": "0c8a8c872730d4f9",
+        "type": "function",
+        "z": "5d3034dc83dfbde2",
+        "name": "Select Data",
+        "func": "var msg = { \"topic\": \"SELECT maschinenName, beginn, ende, dauer, strom FROM user JOIN data USING (userID) WHERE userID =\" + msg.payload +\"  ORDER BY beginn \"}\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 1760,
+        "wires": [
+            [
+                "3ed08b3c36479a39"
+            ]
+        ]
+    },
+    {
+        "id": "47a2a528fa9c0fe7",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "All Users",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "SELECT *  FROM user;",
+        "payload": "",
+        "payloadType": "date",
+        "x": 560,
+        "y": 1560,
+        "wires": [
+            [
+                "3ed08b3c36479a39"
+            ]
+        ]
+    },
+    {
+        "id": "94fd9cd1e44505e1",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "All Machines",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "SELECT *  FROM maschine;",
+        "payload": "",
+        "payloadType": "date",
+        "x": 570,
+        "y": 1600,
+        "wires": [
+            [
+                "3ed08b3c36479a39"
+            ]
+        ]
+    },
+    {
+        "id": "22677356c7161f24",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "Entering maschinenName",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "test maschine",
+        "payloadType": "str",
+        "x": 610,
+        "y": 1840,
+        "wires": [
+            [
+                "20b839be78fc75e7"
+            ]
+        ]
+    },
+    {
+        "id": "20b839be78fc75e7",
+        "type": "function",
+        "z": "5d3034dc83dfbde2",
+        "name": "Select Data",
+        "func": "var msg = { \"topic\": \"SELECT userID, beginn, ende, dauer, strom FROM data JOIN maschine USING (maschinenName) WHERE maschinenName = '\"+ msg.payload +\"' ORDER BY beginn \"}\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 1840,
+        "wires": [
+            [
+                "3ed08b3c36479a39"
+            ]
+        ]
+    },
+    {
+        "id": "0344bdd3b6028f84",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "Entering UserID",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "100",
+        "payloadType": "str",
+        "x": 580,
+        "y": 1800,
+        "wires": [
+            [
+                "8a456ebe17b827b7"
+            ]
+        ]
+    },
+    {
+        "id": "8a456ebe17b827b7",
+        "type": "function",
+        "z": "5d3034dc83dfbde2",
+        "name": "Select Data",
+        "func": "var msg = { \"topic\": \"SELECT *  FROM user where userID=\" + msg.payload +\"\" };\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 770,
+        "y": 1800,
+        "wires": [
+            [
+                "3ed08b3c36479a39"
+            ]
+        ]
+    },
+    {
+        "id": "1e696e2d86d25f78",
+        "type": "comment",
+        "z": "5d3034dc83dfbde2",
+        "name": "Alle Einträge von einem User:",
+        "info": "",
+        "x": 340,
+        "y": 1760,
+        "wires": []
+    },
+    {
+        "id": "6a40ec5af5692054",
+        "type": "comment",
+        "z": "5d3034dc83dfbde2",
+        "name": "Persönliche Daten eines Nutzers zurück geben:",
+        "info": "",
+        "x": 280,
+        "y": 1800,
+        "wires": []
+    },
+    {
+        "id": "f5f552c01c218618",
+        "type": "comment",
+        "z": "5d3034dc83dfbde2",
+        "name": "Alle Einträge zu einer Maschine:",
+        "info": "",
+        "x": 330,
+        "y": 1840,
+        "wires": []
+    },
+    {
+        "id": "2783d5b32bf507fe",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "Anzahl der Nutzer",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "SELECT COUNT(*) FROM user",
+        "payload": "",
+        "payloadType": "date",
+        "x": 590,
+        "y": 1640,
+        "wires": [
+            [
+                "3ed08b3c36479a39"
+            ]
+        ]
+    },
+    {
+        "id": "0d430526aa02fa29",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "Anzahl der Maschinen",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "SELECT COUNT(*) FROM maschine",
+        "payload": "",
+        "payloadType": "date",
+        "x": 600,
+        "y": 1680,
+        "wires": [
+            [
+                "3ed08b3c36479a39"
+            ]
+        ]
+    },
+    {
+        "id": "40b177f26311f07e",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "Summe von Dauer",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "SELECT SUM(dauer) FROM data",
+        "payload": "",
+        "payloadType": "date",
+        "x": 590,
+        "y": 1720,
+        "wires": [
+            [
+                "3ed08b3c36479a39"
+            ]
+        ]
+    },
+    {
+        "id": "993b183a89975e59",
+        "type": "comment",
+        "z": "5d3034dc83dfbde2",
+        "name": "DB Queries:",
+        "info": "## ",
+        "x": 170,
+        "y": 1140,
+        "wires": []
     }
 ]
