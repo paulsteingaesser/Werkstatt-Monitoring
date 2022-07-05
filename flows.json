@@ -1400,7 +1400,7 @@
         "mydb": "fe1131055cdbcae8",
         "sqlquery": "msg.topic",
         "dbName": "fixed",
-        "db": "C:\\Users\\User\\.node-red\\projects\\MonitoringApp_Stand22-06-22\\db",
+        "db": "../.node-red/projects/Werkstatt-Monitoring/db",
         "sql": "",
         "name": "db",
         "x": 690,
