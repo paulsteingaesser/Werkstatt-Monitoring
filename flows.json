@@ -571,8 +571,7 @@
         "y": 640,
         "wires": [
             [
-                "405b2fa8f745e239",
-                "abfa1e411356d4cb"
+                "405b2fa8f745e239"
             ],
             []
         ]
@@ -590,8 +589,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 790,
-        "y": 620,
+        "x": 770,
+        "y": 640,
         "wires": []
     },
     {
@@ -635,26 +634,7 @@
         "finalize": "",
         "libs": [],
         "x": 520,
-        "y": 600,
-        "wires": [
-            [
-                "5543c55d1be31a28"
-            ]
-        ]
-    },
-    {
-        "id": "abfa1e411356d4cb",
-        "type": "function",
-        "z": "55b2ce4ea70984fe",
-        "name": "",
-        "func": "return msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 520,
-        "y": 680,
+        "y": 640,
         "wires": [
             [
                 "5543c55d1be31a28"
