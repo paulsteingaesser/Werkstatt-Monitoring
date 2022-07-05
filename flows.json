@@ -571,7 +571,7 @@
         "y": 640,
         "wires": [
             [
-                "405b2fa8f745e239"
+                "09e8bd67a7340431"
             ],
             []
         ]
@@ -628,6 +628,23 @@
         "z": "55b2ce4ea70984fe",
         "name": "",
         "func": "var userid=\"\";\nvar password=\"\";\nvar sqlQuery=\"\";\n\n\nif (msg.topic==1){\n     userid=msg.payload;\n}\n\nif (msg.topic==\"2\"){\n     password=msg.payload;\n    // sqlQuery = \"SELECT * FROM user WHERE userID=\"+userid+\" AND passwort=\"+password;\n\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 760,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "09e8bd67a7340431",
+        "type": "function",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "func": "\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
