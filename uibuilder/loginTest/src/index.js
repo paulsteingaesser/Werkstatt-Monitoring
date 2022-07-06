@@ -40,11 +40,7 @@ window.login = function login() {
     var username=document.getElementById('username').value;
     var password=document.getElementById('password').value;
     uibuilder.send({
-        'topic': '1',
-        'payload': username,
-    })
-        uibuilder.send({
-        'topic': '2',
+        'topic': username,
         'payload': password,
     })
 }
