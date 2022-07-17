@@ -540,7 +540,6 @@
         "templateFolder": "blank",
         "extTemplate": "",
         "showfolder": false,
-        "oldUrl": "uibuiler_Test",
         "reload": false,
         "sourceFolder": "src",
         "deployedVersion": "5.0.2",
