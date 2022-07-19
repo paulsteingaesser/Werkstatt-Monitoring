@@ -2,7 +2,7 @@
     {
         "id": "55b2ce4ea70984fe",
         "type": "tab",
-        "label": "Testing",
+        "label": "Server",
         "disabled": false,
         "info": "",
         "env": []
@@ -22,6 +22,35 @@
         "disabled": false,
         "info": "",
         "env": []
+    },
+    {
+        "id": "2a14cb53da10968a",
+        "type": "subflow",
+        "name": "Subflow 1",
+        "info": "",
+        "in": [
+            {
+                "x": 50,
+                "y": 30,
+                "wires": [
+                    {
+                        "id": "c44e7fbcfa9eb5ba"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 640,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "ae6b9eec80b9e3bc",
+                        "port": 0
+                    }
+                ]
+            }
+        ]
     },
     {
         "id": "3c770aff.9ba2a6",
@@ -183,10 +212,34 @@
         "mode": "RWC"
     },
     {
-        "id": "e03e87e4bc6a7ec3",
-        "type": "sqlitedb",
-        "db": "",
-        "mode": "RWC"
+        "id": "ae6b9eec80b9e3bc",
+        "type": "function",
+        "z": "2a14cb53da10968a",
+        "name": "format directory path",
+        "func": "\nmsg.database = msg.projectdir + \"/db\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c44e7fbcfa9eb5ba",
+        "type": "projectdir",
+        "z": "2a14cb53da10968a",
+        "name": "Get local project directory",
+        "x": 230,
+        "y": 60,
+        "wires": [
+            [
+                "ae6b9eec80b9e3bc"
+            ]
+        ]
     },
     {
         "id": "0c0e7f63d56c01d5",
@@ -563,7 +616,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1050,
+        "x": 1310,
         "y": 640,
         "wires": []
     },
@@ -578,11 +631,11 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 500,
-        "y": 620,
+        "x": 520,
+        "y": 600,
         "wires": [
             [
-                "f0e3a7f5285a3a6d"
+                "0983c6aa457d0bd2"
             ]
         ]
     },
@@ -647,7 +700,7 @@
         "name": "",
         "label": "Password",
         "tooltip": "",
-        "group": "b66f7e8f9f613abd",
+        "group": "6b5b1f74.6f562",
         "order": 2,
         "width": 0,
         "height": 0,
@@ -726,7 +779,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 970,
+        "x": 990,
         "y": 1060,
         "wires": []
     },
@@ -736,11 +789,11 @@
         "z": "55b2ce4ea70984fe",
         "mydb": "fe1131055cdbcae8",
         "sqlquery": "msg.topic",
-        "dbName": "fixed",
+        "dbName": "msg.database",
         "db": "C:\\Users\\User\\.node-red\\projects\\MonitoringApp_Stand22-06-22\\db",
         "sql": "",
         "name": "db_1",
-        "x": 750,
+        "x": 1010,
         "y": 1120,
         "wires": [
             [
@@ -833,7 +886,7 @@
         "y": 1000,
         "wires": [
             [
-                "7cdded0f48dd0f66"
+                "e76bf16c4ab81203"
             ]
         ]
     },
@@ -843,11 +896,11 @@
         "z": "55b2ce4ea70984fe",
         "mydb": "fe1131055cdbcae8",
         "sqlquery": "msg.topic",
-        "dbName": "fixed",
+        "dbName": "msg.database",
         "db": "C:\\Users\\User\\.node-red\\projects\\MonitoringApp_Stand22-06-22\\db",
         "sql": "",
         "name": "db_1",
-        "x": 750,
+        "x": 1070,
         "y": 1000,
         "wires": [
             [
@@ -880,7 +933,7 @@
                 "6f60a0e070951e8a"
             ],
             [
-                "e761a33db9a6418b"
+                "0e5baf56dadb6591"
             ]
         ]
     },
@@ -922,7 +975,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1090,
+        "x": 1350,
         "y": 1360,
         "wires": []
     },
@@ -932,11 +985,11 @@
         "z": "55b2ce4ea70984fe",
         "mydb": "fe1131055cdbcae8",
         "sqlquery": "msg.topic",
-        "dbName": "fixed",
+        "dbName": "msg.database",
         "db": "C:\\Users\\User\\.node-red\\projects\\MonitoringApp_Stand22-06-22\\db",
         "sql": "",
         "name": "db_1",
-        "x": 930,
+        "x": 1190,
         "y": 1360,
         "wires": [
             [
@@ -959,7 +1012,7 @@
         "y": 1500,
         "wires": [
             [
-                "0b39fa65ad79fce4"
+                "811c802b0d934a99"
             ]
         ]
     },
@@ -988,7 +1041,7 @@
         "y": 1300,
         "wires": [
             [
-                "0b39fa65ad79fce4"
+                "811c802b0d934a99"
             ]
         ]
     },
@@ -1017,7 +1070,7 @@
         "y": 1340,
         "wires": [
             [
-                "0b39fa65ad79fce4"
+                "811c802b0d934a99"
             ]
         ]
     },
@@ -1061,7 +1114,7 @@
         "y": 1580,
         "wires": [
             [
-                "0b39fa65ad79fce4"
+                "811c802b0d934a99"
             ]
         ]
     },
@@ -1105,7 +1158,7 @@
         "y": 1540,
         "wires": [
             [
-                "0b39fa65ad79fce4"
+                "811c802b0d934a99"
             ]
         ]
     },
@@ -1164,7 +1217,7 @@
         "y": 1380,
         "wires": [
             [
-                "0b39fa65ad79fce4"
+                "811c802b0d934a99"
             ]
         ]
     },
@@ -1193,7 +1246,7 @@
         "y": 1420,
         "wires": [
             [
-                "0b39fa65ad79fce4"
+                "811c802b0d934a99"
             ]
         ]
     },
@@ -1222,7 +1275,7 @@
         "y": 1460,
         "wires": [
             [
-                "0b39fa65ad79fce4"
+                "811c802b0d934a99"
             ]
         ]
     },
@@ -1242,12 +1295,12 @@
         "z": "55b2ce4ea70984fe",
         "mydb": "fe1131055cdbcae8",
         "sqlquery": "msg.topic",
-        "dbName": "fixed",
+        "dbName": "msg.database",
         "db": "C:\\Users\\User\\.node-red\\projects\\MonitoringApp_Stand22-06-22\\db",
         "sql": "",
         "name": "db_1",
-        "x": 650,
-        "y": 620,
+        "x": 950,
+        "y": 600,
         "wires": [
             [
                 "fbcbb6837c1d343b"
@@ -1265,12 +1318,64 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 840,
+        "x": 1120,
         "y": 640,
         "wires": [
             [
                 "5543c55d1be31a28",
                 "e3a23f8e7e241cfa"
+            ]
+        ]
+    },
+    {
+        "id": "0983c6aa457d0bd2",
+        "type": "subflow:2a14cb53da10968a",
+        "z": "55b2ce4ea70984fe",
+        "name": "find db path in local directory",
+        "x": 740,
+        "y": 600,
+        "wires": [
+            [
+                "f0e3a7f5285a3a6d"
+            ]
+        ]
+    },
+    {
+        "id": "e76bf16c4ab81203",
+        "type": "subflow:2a14cb53da10968a",
+        "z": "55b2ce4ea70984fe",
+        "name": "find db path in local directory",
+        "x": 860,
+        "y": 1000,
+        "wires": [
+            [
+                "7cdded0f48dd0f66"
+            ]
+        ]
+    },
+    {
+        "id": "0e5baf56dadb6591",
+        "type": "subflow:2a14cb53da10968a",
+        "z": "55b2ce4ea70984fe",
+        "name": "find db path in local directory",
+        "x": 800,
+        "y": 1120,
+        "wires": [
+            [
+                "e761a33db9a6418b"
+            ]
+        ]
+    },
+    {
+        "id": "811c802b0d934a99",
+        "type": "subflow:2a14cb53da10968a",
+        "z": "55b2ce4ea70984fe",
+        "name": "find db path in local directory",
+        "x": 980,
+        "y": 1360,
+        "wires": [
+            [
+                "0b39fa65ad79fce4"
             ]
         ]
     },
@@ -1603,7 +1708,7 @@
         "console": false,
         "tostatus": false,
         "complete": "false",
-        "x": 1030,
+        "x": 1370,
         "y": 620,
         "wires": []
     },
@@ -1626,7 +1731,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 710,
+        "x": 1050,
         "y": 660,
         "wires": [
             [
@@ -1640,12 +1745,12 @@
         "z": "5d3034dc83dfbde2",
         "mydb": "fe1131055cdbcae8",
         "sqlquery": "msg.topic",
-        "dbName": "fixed",
-        "db": "C:\\Users\\User\\.node-red\\projects\\MonitoringApp_Stand22-06-22\\db",
+        "dbName": "msg.database",
+        "db": "\\Users\\JT\\.node-red/projects/Werkstatt-Monitoring/db",
         "sql": "",
         "name": "db",
-        "x": 690,
-        "y": 480,
+        "x": 1050,
+        "y": 460,
         "wires": [
             [
                 "9383b262ea8775b9"
@@ -1658,11 +1763,11 @@
         "z": "5d3034dc83dfbde2",
         "mydb": "fe1131055cdbcae8",
         "sqlquery": "msg.topic",
-        "dbName": "fixed",
+        "dbName": "msg.database",
         "db": "C:\\Users\\User\\.node-red\\projects\\MonitoringApp_Stand22-06-22\\db",
         "sql": "",
         "name": "db",
-        "x": 710,
+        "x": 1050,
         "y": 620,
         "wires": [
             [
@@ -1677,11 +1782,11 @@
         "z": "5d3034dc83dfbde2",
         "mydb": "fe1131055cdbcae8",
         "sqlquery": "msg.topic",
-        "dbName": "fixed",
+        "dbName": "msg.database",
         "db": "C:\\Users\\User\\.node-red\\projects\\MonitoringApp_Stand22-06-22\\db",
         "sql": "",
         "name": "db",
-        "x": 870,
+        "x": 1210,
         "y": 660,
         "wires": [
             [
@@ -1701,8 +1806,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 870,
-        "y": 480,
+        "x": 1230,
+        "y": 460,
         "wires": []
     },
     {
@@ -1731,7 +1836,7 @@
         "z": "5d3034dc83dfbde2",
         "name": "FK muss bei jedem INSERT aktiviert werden",
         "info": "",
-        "x": 1310,
+        "x": 1650,
         "y": 620,
         "wires": []
     },
@@ -1770,7 +1875,7 @@
         "y": 160,
         "wires": [
             [
-                "4e5d80bf25155cb8"
+                "b816126764fa4b06"
             ]
         ]
     },
@@ -1799,7 +1904,7 @@
         "y": 240,
         "wires": [
             [
-                "4e5d80bf25155cb8"
+                "b816126764fa4b06"
             ]
         ]
     },
@@ -1828,7 +1933,7 @@
         "y": 280,
         "wires": [
             [
-                "4e5d80bf25155cb8"
+                "b816126764fa4b06"
             ]
         ]
     },
@@ -1857,7 +1962,7 @@
         "y": 500,
         "wires": [
             [
-                "4e5d80bf25155cb8"
+                "b816126764fa4b06"
             ]
         ]
     },
@@ -1886,7 +1991,7 @@
         "y": 540,
         "wires": [
             [
-                "4e5d80bf25155cb8"
+                "b816126764fa4b06"
             ]
         ]
     },
@@ -1911,11 +2016,11 @@
         "topic": "INSERT INTO sqlite_sequence VALUES ('user',99)",
         "payload": "",
         "payloadType": "date",
-        "x": 330,
+        "x": 290,
         "y": 200,
         "wires": [
             [
-                "4e5d80bf25155cb8"
+                "b816126764fa4b06"
             ]
         ]
     },
@@ -1940,11 +2045,11 @@
         "topic": "PRAGMA foreign_keys = ON;",
         "payload": "",
         "payloadType": "date",
-        "x": 340,
+        "x": 300,
         "y": 320,
         "wires": [
             [
-                "4e5d80bf25155cb8"
+                "b816126764fa4b06"
             ]
         ]
     },
@@ -1969,11 +2074,11 @@
         "topic": "PRAGMA foreign_keys = ON;",
         "payload": "",
         "payloadType": "date",
-        "x": 360,
+        "x": 320,
         "y": 620,
         "wires": [
             [
-                "9a4db932c1c3cc0e"
+                "364886b0aca328cd"
             ]
         ]
     },
@@ -2002,7 +2107,7 @@
         "y": 580,
         "wires": [
             [
-                "4e5d80bf25155cb8"
+                "b816126764fa4b06"
             ]
         ]
     },
@@ -2024,7 +2129,7 @@
         "payload": "100",
         "payloadType": "str",
         "x": 520,
-        "y": 1760,
+        "y": 1880,
         "wires": [
             [
                 "16a17ec75e5c2325"
@@ -2044,8 +2149,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1130,
-        "y": 1620,
+        "x": 1490,
+        "y": 1800,
         "wires": []
     },
     {
@@ -2060,10 +2165,10 @@
         "finalize": "",
         "libs": [],
         "x": 690,
-        "y": 1760,
+        "y": 1880,
         "wires": [
             [
-                "e13f58bcd3c4ceb0"
+                "f7c697c81fda5de7"
             ]
         ]
     },
@@ -2089,10 +2194,10 @@
         "payload": "",
         "payloadType": "date",
         "x": 500,
-        "y": 1560,
+        "y": 1680,
         "wires": [
             [
-                "e13f58bcd3c4ceb0"
+                "f7c697c81fda5de7"
             ]
         ]
     },
@@ -2118,10 +2223,10 @@
         "payload": "",
         "payloadType": "date",
         "x": 510,
-        "y": 1600,
+        "y": 1720,
         "wires": [
             [
-                "e13f58bcd3c4ceb0"
+                "f7c697c81fda5de7"
             ]
         ]
     },
@@ -2143,7 +2248,7 @@
         "payload": "test maschine",
         "payloadType": "str",
         "x": 540,
-        "y": 1840,
+        "y": 1960,
         "wires": [
             [
                 "07b0c52ed034c4b8"
@@ -2162,10 +2267,10 @@
         "finalize": "",
         "libs": [],
         "x": 750,
-        "y": 1840,
+        "y": 1960,
         "wires": [
             [
-                "e13f58bcd3c4ceb0"
+                "f7c697c81fda5de7"
             ]
         ]
     },
@@ -2187,7 +2292,7 @@
         "payload": "100",
         "payloadType": "str",
         "x": 520,
-        "y": 1800,
+        "y": 1920,
         "wires": [
             [
                 "e87ee1fa3f347497"
@@ -2206,10 +2311,10 @@
         "finalize": "",
         "libs": [],
         "x": 710,
-        "y": 1800,
+        "y": 1920,
         "wires": [
             [
-                "e13f58bcd3c4ceb0"
+                "f7c697c81fda5de7"
             ]
         ]
     },
@@ -2220,7 +2325,7 @@
         "name": "Alle Einträge von einem User:",
         "info": "",
         "x": 280,
-        "y": 1760,
+        "y": 1880,
         "wires": []
     },
     {
@@ -2230,7 +2335,7 @@
         "name": "Persönliche Daten eines Nutzers zurück geben:",
         "info": "",
         "x": 220,
-        "y": 1800,
+        "y": 1920,
         "wires": []
     },
     {
@@ -2240,7 +2345,7 @@
         "name": "Alle Einträge zu einer Maschine:",
         "info": "",
         "x": 270,
-        "y": 1840,
+        "y": 1960,
         "wires": []
     },
     {
@@ -2265,10 +2370,10 @@
         "payload": "",
         "payloadType": "date",
         "x": 530,
-        "y": 1640,
+        "y": 1760,
         "wires": [
             [
-                "e13f58bcd3c4ceb0"
+                "f7c697c81fda5de7"
             ]
         ]
     },
@@ -2294,10 +2399,10 @@
         "payload": "",
         "payloadType": "date",
         "x": 540,
-        "y": 1680,
+        "y": 1800,
         "wires": [
             [
-                "e13f58bcd3c4ceb0"
+                "f7c697c81fda5de7"
             ]
         ]
     },
@@ -2323,10 +2428,10 @@
         "payload": "",
         "payloadType": "date",
         "x": 530,
-        "y": 1720,
+        "y": 1840,
         "wires": [
             [
-                "e13f58bcd3c4ceb0"
+                "f7c697c81fda5de7"
             ]
         ]
     },
@@ -2355,7 +2460,7 @@
         "y": 860,
         "wires": [
             [
-                "4e5d80bf25155cb8"
+                "b816126764fa4b06"
             ]
         ]
     },
@@ -2384,7 +2489,7 @@
         "y": 820,
         "wires": [
             [
-                "4e5d80bf25155cb8"
+                "b816126764fa4b06"
             ]
         ]
     },
@@ -2413,7 +2518,7 @@
         "y": 780,
         "wires": [
             [
-                "4e5d80bf25155cb8"
+                "b816126764fa4b06"
             ]
         ]
     },
@@ -2423,14 +2528,16 @@
         "z": "5d3034dc83dfbde2",
         "mydb": "fe1131055cdbcae8",
         "sqlquery": "msg.topic",
-        "dbName": "fixed",
+        "dbName": "msg.database",
         "db": "C:\\Users\\User\\.node-red\\projects\\MonitoringApp_Stand22-06-22\\db",
         "sql": "",
         "name": "db",
-        "x": 990,
-        "y": 1620,
+        "x": 1350,
+        "y": 1800,
         "wires": [
-            []
+            [
+                "9a67a9a52a31daff"
+            ]
         ]
     },
     {
@@ -2450,7 +2557,7 @@
         "name": "",
         "label": "UserID",
         "tooltip": "",
-        "group": "b66f7e8f9f613abd",
+        "group": "6b5b1f74.6f562",
         "order": 1,
         "width": 0,
         "height": 0,
@@ -2476,7 +2583,7 @@
         "name": "",
         "label": "Password",
         "tooltip": "",
-        "group": "b66f7e8f9f613abd",
+        "group": "6b5b1f74.6f562",
         "order": 2,
         "width": 0,
         "height": 0,
@@ -2519,7 +2626,7 @@
         "type": "ui_button",
         "z": "5d3034dc83dfbde2",
         "name": "",
-        "group": "b66f7e8f9f613abd",
+        "group": "6b5b1f74.6f562",
         "order": 3,
         "width": 0,
         "height": 0,
@@ -2605,7 +2712,7 @@
         "finalize": "",
         "libs": [],
         "x": 810,
-        "y": 1460,
+        "y": 1480,
         "wires": [
             [
                 "23e1f826ae14953e"
@@ -2626,7 +2733,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1030,
-        "y": 1460,
+        "y": 1480,
         "wires": []
     },
     {
@@ -2644,7 +2751,7 @@
         "y": 1280,
         "wires": [
             [
-                "f6783a467b16ddad"
+                "72c42dd26197c21f"
             ]
         ]
     },
@@ -2673,7 +2780,7 @@
                 "010526cddd61ddde"
             ],
             [
-                "e59402810e90d97e"
+                "64b90d11fd2956d4"
             ]
         ]
     },
@@ -2683,11 +2790,11 @@
         "z": "5d3034dc83dfbde2",
         "mydb": "fe1131055cdbcae8",
         "sqlquery": "msg.topic",
-        "dbName": "fixed",
+        "dbName": "msg.database",
         "db": "C:\\Users\\User\\.node-red\\projects\\MonitoringApp_Stand22-06-22\\db",
         "sql": "",
         "name": "db",
-        "x": 790,
+        "x": 1130,
         "y": 1280,
         "wires": [
             [
@@ -2701,15 +2808,80 @@
         "z": "5d3034dc83dfbde2",
         "mydb": "fe1131055cdbcae8",
         "sqlquery": "msg.topic",
-        "dbName": "fixed",
+        "dbName": "msg.database",
         "db": "C:\\Users\\User\\.node-red\\projects\\MonitoringApp_Stand22-06-22\\db",
         "sql": "",
         "name": "db",
-        "x": 790,
-        "y": 1400,
+        "x": 910,
+        "y": 1420,
         "wires": [
             [
                 "3e05a542f835d05b"
+            ]
+        ]
+    },
+    {
+        "id": "f7c697c81fda5de7",
+        "type": "subflow:2a14cb53da10968a",
+        "z": "5d3034dc83dfbde2",
+        "name": "find db path in local directory",
+        "x": 1160,
+        "y": 1800,
+        "wires": [
+            [
+                "e13f58bcd3c4ceb0"
+            ]
+        ]
+    },
+    {
+        "id": "72c42dd26197c21f",
+        "type": "subflow:2a14cb53da10968a",
+        "z": "5d3034dc83dfbde2",
+        "name": "find db path in local directory",
+        "x": 900,
+        "y": 1280,
+        "wires": [
+            [
+                "f6783a467b16ddad"
+            ]
+        ]
+    },
+    {
+        "id": "64b90d11fd2956d4",
+        "type": "subflow:2a14cb53da10968a",
+        "z": "5d3034dc83dfbde2",
+        "name": "find db path in local directory",
+        "x": 680,
+        "y": 1420,
+        "wires": [
+            [
+                "e59402810e90d97e"
+            ]
+        ]
+    },
+    {
+        "id": "b816126764fa4b06",
+        "type": "subflow:2a14cb53da10968a",
+        "z": "5d3034dc83dfbde2",
+        "name": "find db path in local directory",
+        "x": 820,
+        "y": 460,
+        "wires": [
+            [
+                "4e5d80bf25155cb8"
+            ]
+        ]
+    },
+    {
+        "id": "364886b0aca328cd",
+        "type": "subflow:2a14cb53da10968a",
+        "z": "5d3034dc83dfbde2",
+        "name": "find db path in local directory",
+        "x": 820,
+        "y": 620,
+        "wires": [
+            [
+                "9a4db932c1c3cc0e"
             ]
         ]
     }
