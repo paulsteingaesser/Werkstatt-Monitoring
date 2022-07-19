@@ -568,35 +568,6 @@
         "wires": []
     },
     {
-        "id": "399ab220e2eb7218",
-        "type": "inject",
-        "z": "55b2ce4ea70984fe",
-        "name": "Test Injection",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 110,
-        "y": 640,
-        "wires": [
-            [
-                "e3a23f8e7e241cfa"
-            ]
-        ]
-    },
-    {
         "id": "405b2fa8f745e239",
         "type": "function",
         "z": "55b2ce4ea70984fe",
@@ -608,7 +579,7 @@
         "finalize": "",
         "libs": [],
         "x": 500,
-        "y": 640,
+        "y": 620,
         "wires": [
             [
                 "f0e3a7f5285a3a6d"
@@ -638,7 +609,9 @@
             [
                 "405b2fa8f745e239"
             ],
-            []
+            [
+                "5543c55d1be31a28"
+            ]
         ]
     },
     {
@@ -1274,7 +1247,7 @@
         "sql": "",
         "name": "db_1",
         "x": 650,
-        "y": 640,
+        "y": 620,
         "wires": [
             [
                 "fbcbb6837c1d343b"
@@ -1286,7 +1259,7 @@
         "type": "function",
         "z": "55b2ce4ea70984fe",
         "name": "",
-        "func": "if (msg.payload==\"\"){\n    msg.payload=\"invalid user identification or password.\"\n}\nelse{\n    msg.payload=\"Login succesful. Redirecting...\"\n}\nreturn msg;",
+        "func": "if (msg.payload==\"\"){\n    msg.payload=\"denied\"\n}\nelse{\n    msg.payload=\"success\"\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
