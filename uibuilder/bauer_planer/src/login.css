@@ -1,0 +1,5 @@
+/* Load the defaults from `<userDir>/node_modules/node-red-contrib-uibuilder/front-end/src/uib-styles.css` */
+@import url("./uib-styles.css");
+.syntax-highlight{
+    background-color:#ffffff;
+}
