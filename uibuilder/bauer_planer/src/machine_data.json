@@ -1,0 +1,18 @@
+[
+	{
+		"id": "0",
+		"name": "Säge",
+		"level": "1",
+		"time": "2 min",
+		"cost": "2 €",
+		"etc": "none"
+	},
+	{
+		"id": "1",
+		"name": "Schweißgerät",
+		"level": "3",
+		"time": "5 min",
+		"cost": "",
+		"etc": "none"
+	}
+]
