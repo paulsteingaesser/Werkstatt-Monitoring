@@ -4,23 +4,20 @@
 		"vorname": "Jan Torge",
 		"nachname": "Schneider",
 		"level": "3",
-		"access": "Admin",
-		"etc": "none"
+		"access": "Admin"
 	},
 	{
 		"id": "101",
 		"vorname": "Max",
 		"nachname": "Mustermann",
 		"level": "1",
-		"access": "User",
-		"etc": "none"
+		"access": "User"
 	},
 	{
 		"id": "102",
 		"vorname": "Martin",
 		"nachname": "Geibel",
 		"level": "3",
-		"access": "Admin",
-		"etc": "none"
+		"access": "Admin"
 	}
 ]
