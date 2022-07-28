@@ -9,18 +9,16 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>bauer + planer - Nutzer</title>
+    <title>bauer + planer - Monitoring</title>
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="css/styles.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.20.2/dist/bootstrap-table.min.css">
+    <link href="../../css/styles.min.css" rel="stylesheet">
 
 </head>
 
@@ -33,7 +31,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../../index.html">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -45,7 +43,7 @@
 
         <!-- Nav Item - Übersicht -->
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="../../index.html">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Übersicht</span></a>
         </li>
@@ -59,8 +57,8 @@
         <!--        </div>-->
 
         <!-- Nav Item - Nutzer -->
-        <li class="nav-item active">
-            <a class="nav-link" href="nutzer.html">
+        <li class="nav-item">
+            <a class="nav-link" href="../nutzer/nutzer.html">
                 <i class="fas fa-fw fa-cog"></i>
                 <span>Nutzer</span>
             </a>
@@ -68,24 +66,24 @@
 
         <!-- Nav Item - Maschinen -->
         <li class="nav-item">
-            <a class="nav-link" href="maschinen.html">
+            <a class="nav-link" href="../maschinen/maschinen.html">
                 <i class="fas fa-fw fa-cog"></i>
                 <span>Maschinen</span>
             </a>
         </li>
 
 <!--        &lt;!&ndash; Nav Item - Monitoring &ndash;&gt;
-        <li class="nav-item">
+        <li class="nav-item active">
             <a class="nav-link" href="monitoring.html">
                 <i class="fas fa-fw fa-cog"></i>
                 <span>Monitoring</span>
             </a>
         </li>-->
 
-<!--        &lt;!&ndash; Sidebar Toggler (Sidebar) &ndash;&gt;-->
-<!--        <div class="text-center d-none d-md-inline">-->
-<!--            <button class="rounded-circle border-0" id="sidebarToggle"></button>-->
-<!--        </div>-->
+        <!--        &lt;!&ndash; Sidebar Toggler (Sidebar) &ndash;&gt;-->
+        <!--        <div class="text-center d-none d-md-inline">-->
+        <!--            <button class="rounded-circle border-0" id="sidebarToggle"></button>-->
+        <!--        </div>-->
 
     </ul>
     <!-- End of Sidebar -->
@@ -98,7 +96,7 @@
 
             <!-- Topbar -->
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                <h1 class="h3 mb-0 text-gray-800">Nutzerverwaltung</h1>
+                <h1 class="h3 mb-0 text-gray-800">Monitoring</h1>
 
                 <!-- Sidebar Toggle (Topbar) -->
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -141,7 +139,7 @@
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">John Doe</span>
                             <img class="img-profile rounded-circle"
-                                 src="img/undraw_profile.svg">
+                                 src="../../img/undraw_profile.svg">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -161,35 +159,9 @@
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
-                <div class="card shadow mb-4">
-                    <table
-                            data-toggle="table"
-                            data-pagination="true"
-                            data-search="false"
-                            data-url="user_data.json"
-                            data-height="800"
-                            data-show-footer="true">
-                            <!--data-detail-view="true"-->
-                            <!--data-detail-formatter="detailFormatter"-->
-                            
-                            <thead>
-<!--                            <tr>
-                                <th rowspan="2" data-checkbox="true" data-valign="middle"></th>
-                                <th colspan="7" data-align="center">Header</th>
-                            </tr>-->
-                            <tr>
-                                <th data-field="id" data-sortable="true">ID</th>
-                                <th data-field="vorname" data-sortable="true">Vorname</th>
-                                <th data-field="nachname" data-sortable="true">Nachname</th>
-                                <th data-field="level" data-sortable="true">Berechtigungsstufe</th>
-                                <th data-field="access" data-sortable="true">Zugang</th>
-                                <th data-field="action" data-formatter="actionFormatter">Action</th>
-                            </tr>
-                            </thead>
-                        </table>
-                    </div>
-                </div>
-                
+
+
+            </div>
             <!-- /.container-fluid -->
 
         </div>
@@ -230,29 +202,23 @@
             <div class="modal-body">Wählen Sie "Abmelden", wenn Sie bereit sind, Ihre aktuelle Sitzung zu beenden.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Abbrechen</button>
-                <a class="btn btn-primary" href="login.html">Abmelden</a>
+                <a class="btn btn-primary" href="../login/login.html">Abmelden</a>
             </div>
         </div>
     </div>
 </div>
 
 <!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../vendor/jquery/jquery.min.js"></script>
+<script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-<!-- Popper-->
-<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
-
-<!-- Bootstrap Table-->
-<script src="https://unpkg.com/bootstrap-table@1.20.2/dist/bootstrap-table.min.js"></script>
+<script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- #region Supporting Scripts. These MUST be in the right order. Note no leading / -->
-<script src="../uibuilder/vendor/socket.io/socket.io.js">/* REQUIRED: Socket.IO is loaded only once for all instances. Without this, you don't get a websocket connection */</script>
-<script src="./uibuilderfe.min.js">/* REQUIRED: remove 'min.' to use dev version */</script>
-<script src="./index.js">/* OPTIONAL: Put your custom code here */</script>
+<script src="../../../uibuilder/vendor/socket.io/socket.io.js">/* REQUIRED: Socket.IO is loaded only once for all instances. Without this, you don't get a websocket connection */</script>
+<script src="../../uibuilderfe.min.js">/* REQUIRED: remove 'min.' to use dev version */</script>
+<script src="../../index.js">/* OPTIONAL: Put your custom code here */</script>
 <!-- #endregion -->
 
 </body>
