@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>bauer + planer - Maschinen</title>
+    <title>bauer + planer - Übersicht</title>
 
     <!-- Custom fonts for this template-->
     <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -19,8 +19,6 @@
 
     <!-- Custom styles for this template-->
     <link href="../../css/styles.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.20.2/dist/bootstrap-table.min.css">
 
 </head>
 
@@ -33,7 +31,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../übersicht/übersicht.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="übersicht.html">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -44,8 +42,8 @@
         <hr class="sidebar-divider my-0">
 
         <!-- Nav Item - Übersicht -->
-        <li class="nav-item">
-            <a class="nav-link" href="../übersicht/übersicht.html">
+        <li class="nav-item active">
+            <a class="nav-link" href="übersicht.html">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Übersicht</span></a>
         </li>
@@ -53,10 +51,10 @@
         <!-- Divider -->
         <hr class="sidebar-divider">
 
-        <!--        &lt;!&ndash; Heading &ndash;&gt;-->
-        <!--        <div class="sidebar-heading">-->
-        <!--            Interface-->
-        <!--        </div>-->
+<!--        &lt;!&ndash; Heading &ndash;&gt;-->
+<!--        <div class="sidebar-heading">-->
+<!--            Interface-->
+<!--        </div>-->
 
         <!-- Nav Item - Nutzer -->
         <li class="nav-item">
@@ -67,8 +65,8 @@
         </li>
 
         <!-- Nav Item - Maschinen -->
-        <li class="nav-item active">
-            <a class="nav-link" href="maschinen.html">
+        <li class="nav-item">
+            <a class="nav-link" href="../maschinen/maschinen.html">
                 <i class="fas fa-fw fa-cog"></i>
                 <span>Maschinen</span>
             </a>
@@ -81,11 +79,11 @@
                 <span>Monitoring</span>
             </a>
         </li>-->
-
-        <!--        &lt;!&ndash; Sidebar Toggler (Sidebar) &ndash;&gt;-->
-        <!--        <div class="text-center d-none d-md-inline">-->
-        <!--            <button class="rounded-circle border-0" id="sidebarToggle"></button>-->
-        <!--        </div>-->
+        
+<!--        &lt;!&ndash; Sidebar Toggler (Sidebar) &ndash;&gt;-->
+<!--        <div class="text-center d-none d-md-inline">-->
+<!--            <button class="rounded-circle border-0" id="sidebarToggle"></button>-->
+<!--        </div>-->
 
     </ul>
     <!-- End of Sidebar -->
@@ -98,7 +96,7 @@
 
             <!-- Topbar -->
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                <h1 class="h3 mb-0 text-gray-800">Maschinenverwaltung</h1>
+                <h1 class="h3 mb-0 text-gray-800">Übersicht</h1>
 
                 <!-- Sidebar Toggle (Topbar) -->
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -131,7 +129,7 @@
                             </form>
                         </div>
                     </li>
-
+                    
 
                     <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -161,49 +159,121 @@
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
-                <div class="card shadow mb-4">
-                    <table
-                            data-toggle="table"
-                            data-pagination="true"
-                            data-search="false"
-                            data-url="machine_data.json"
-                            data-height="800"
-                            data-show-footer="true">
-                        <!--data-detail-view="true"-->
-                        <!--data-detail-formatter="detailFormatter"-->
 
-                        <thead>
-<!--                        <tr>
-                            <th rowspan="2" data-checkbox="true" data-valign="middle"></th>
-                            <th colspan="7" data-align="center">Header</th>
-                        </tr>-->
-                        <tr>
-                            <th data-field="id" data-sortable="true">ID</th>
-                            <th data-field="name" data-sortable="true">Name</th>
-                            <th data-field="level" data-sortable="true">Berechtigungsstufe</th>
-                            <th data-field="time" data-sortable="true">Rüstzeit</th>
-                            <th data-field="cost" data-sortable="false">Kosten</th>
-                            <th data-field="action" data-formatter="actionFormatter">Action</th>
-                        </tr>
-                        </thead>
-                    </table>
+                <!-- Page Heading -->
+                <p class="mb-4">Willkomen User!</p>
+                <p class="mb-4">Anzahl der Nutzer: X</p>
+                <p class="mb-4">Anzahl der Maschinen: X</p>
+                <p class="mb-4">Einträge aus dem letzten Monat:</p>
+
+                <!-- Tabelle -->
+                <div class="card shadow mb-4">
+                    <div class="card-body">
+                        <style>
+
+                            .scrollbar {
+                                position: relative;
+                                height: 400px;
+                                overflow: auto;
+                            }
+                        </style>
+                        <div class="table-responsive scrollbar mb3 ps ps--active-y">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Position</th>
+                                    <th>Office</th>
+                                    <th>Age</th>
+                                    <th>Start date</th>
+                                    <th>Salary</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>Tiger Nixon</td>
+                                    <td>System Architect</td>
+                                    <td>Edinburgh</td>
+                                    <td>61</td>
+                                    <td>2011/04/25</td>
+                                    <td>$320,800</td>
+                                </tr>
+                                <tr>
+                                    <td>Garrett Winters</td>
+                                    <td>Accountant</td>
+                                    <td>Tokyo</td>
+                                    <td>63</td>
+                                    <td>2011/07/25</td>
+                                    <td>$170,750</td>
+                                </tr>
+                                <tr>
+                                    <td>Ashton Cox</td>
+                                    <td>Junior Technical Author</td>
+                                    <td>San Francisco</td>
+                                    <td>66</td>
+                                    <td>2009/01/12</td>
+                                    <td>$86,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Cedric Kelly</td>
+                                    <td>Senior Javascript Developer</td>
+                                    <td>Edinburgh</td>
+                                    <td>22</td>
+                                    <td>2012/03/29</td>
+                                    <td>$433,060</td>
+                                </tr>
+                                <tr>
+                                    <td>Airi Satou</td>
+                                    <td>Accountant</td>
+                                    <td>Tokyo</td>
+                                    <td>33</td>
+                                    <td>2008/11/28</td>
+                                    <td>$162,700</td>
+                                </tr>
+                                <tr>
+                                    <td>Brielle Williamson</td>
+                                    <td>Integration Specialist</td>
+                                    <td>New York</td>
+                                    <td>61</td>
+                                    <td>2012/12/02</td>
+                                    <td>$372,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Herrod Chandler</td>
+                                    <td>Sales Assistant</td>
+                                    <td>San Francisco</td>
+                                    <td>59</td>
+                                    <td>2012/08/06</td>
+                                    <td>$137,500</td>
+                                </tr>
+                                <tr>
+                                    <td>Rhona Davidson</td>
+                                    <td>Integration Specialist</td>
+                                    <td>Tokyo</td>
+                                    <td>55</td>
+                                    <td>2010/10/14</td>
+                                    <td>$327,900</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
-
             <!-- /.container-fluid -->
 
         </div>
         <!-- End of Main Content -->
 
-        <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; bauer + planer 2022</span>
-                </div>
+    <!-- Footer -->
+    <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright &copy; bauer + planer 2022</span>
             </div>
-        </footer>
-        <!-- End of Footer -->
+        </div>
+    </footer>
+    <!-- End of Footer -->
 
     </div>
     <!-- End of Content Wrapper -->
@@ -242,12 +312,6 @@
 
 <!-- Core plugin JavaScript-->
 <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
-
-<!-- Popper-->
-<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
-
-<!-- Bootstrap Table-->
-<script src="https://unpkg.com/bootstrap-table@1.20.2/dist/bootstrap-table.min.js"></script>
 
 <!-- #region Supporting Scripts. These MUST be in the right order. Note no leading / -->
 <script src="../../../uibuilder/vendor/socket.io/socket.io.js">/* REQUIRED: Socket.IO is loaded only once for all instances. Without this, you don't get a websocket connection */</script>
