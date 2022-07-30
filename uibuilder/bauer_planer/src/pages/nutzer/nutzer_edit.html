@@ -98,7 +98,7 @@
 
             <!-- Topbar -->
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                <h1 class="h3 mb-0 text-gray-800">Nutzerverwaltung</h1>
+                <h1 class="h3 mb-0 text-gray-800">Nutzer bearbeiten</h1>
 
                 <!-- Sidebar Toggle (Topbar) -->
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -162,34 +162,50 @@
             <!-- Begin Page Content -->
             <div class="container-fluid">
                 <div class="card shadow p-4">
-                    <table
-                            data-toggle="table"
-                            data-pagination="true"
-                            data-search="false"
-                            data-url="user_data.json"
-                            data-height="800"
-                            data-show-footer="true">
-                            <!--data-detail-view="true"-->
-                            <!--data-detail-formatter="detailFormatter"-->
-                            
-                            <thead>
-<!--                            <tr>
-                                <th rowspan="2" data-checkbox="true" data-valign="middle"></th>
-                                <th colspan="7" data-align="center">Header</th>
-                            </tr>-->
-                            <tr>
-                                <th data-field="id" data-sortable="true">ID</th>
-                                <th data-field="vorname" data-sortable="true">Vorname</th>
-                                <th data-field="nachname" data-sortable="true">Nachname</th>
-                                <th data-field="level" data-sortable="true">Berechtigungsstufe</th>
-                                <th data-field="access" data-sortable="true">Zugang</th>
-                                <th data-field="action" data-formatter="actionFormatter">Action</th>
-                            </tr>
-                            </thead>
-                        </table>
+                    <!-- Form -->
+                    <form>
+                        <div class="form-group">
+                            <label for="inputVorname">Vorname</label>
+                            <input type="text" class="form-control" id="inputVorname" placeholder="Vorname">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputNachname">Nachname</label>
+                            <input type="text" class="form-control" id="inputNachname" placeholder="Nachname">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPasswort">Passwort (optional)</label>
+                            <input type="password" class="form-control" id="inputPasswort" placeholder="Passwort">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputFirma">Firma (optional)</label>
+                            <input type="text" class="form-control" id="inputFirma" placeholder="Firma">
+                        </div>
+                        <div class="mb-4 form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Adminrechte
+                            </label>
+                        </div>
+                        <!-- Dropdown Menu -->
+                        <div class="mb-4 dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Berechtigungsstufe
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">1</a>
+                                <a class="dropdown-item" href="#">2</a>
+                                <a class="dropdown-item" href="#">3</a>
+                            </div>
+                        </div>
+                        
+                    </form>
+                    <div>
+                        <!-- Edit and Remove Buttons -->
+                        <a href="nutzer.html" type="button" class="mr-4 btn btn-primary" role="button" ><i class="fas fa-arrow-left"></i></a>
+                        <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i></button>
                     </div>
-                <a href="nutzer_edit.html" class="mt-4 btn btn-primary" role="button">Nutzer hinzufügen</a>
                 </div>
+            </div>
 
             
                 

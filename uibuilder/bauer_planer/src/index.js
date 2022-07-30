@@ -68,6 +68,18 @@ function actionFormatter(index, row) {
     return html.join('')
 }
 
+// Function updates the label for the dropdown menu button with selected item
+$(function(){
+
+    $(".dropdown-menu a").click(function(){
+
+        $(".btn-secondary:first-child").text($(this).text());
+        $(".btn-secondary:first-child").val($(this).text());
+
+    });
+
+});
+
 // Send a message back to Node-RED
 window.fnSendToNR = function fnSendToNR(payload) {
     uibuilder.send({
