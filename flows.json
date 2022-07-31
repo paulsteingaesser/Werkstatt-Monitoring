@@ -1440,7 +1440,7 @@
         "statusCode": "200",
         "headers": {},
         "x": 540,
-        "y": 520,
+        "y": 840,
         "wires": []
     },
     {
@@ -1452,7 +1452,7 @@
         "action": "obj",
         "pretty": true,
         "x": 530,
-        "y": 640,
+        "y": 960,
         "wires": [
             [
                 "ebf385bd70afe870"
@@ -1470,7 +1470,7 @@
         "tostatus": false,
         "complete": "false",
         "x": 970,
-        "y": 540,
+        "y": 860,
         "wires": []
     },
     {
@@ -1486,7 +1486,7 @@
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "x": 980,
-        "y": 600,
+        "y": 920,
         "wires": []
     },
     {
@@ -1512,7 +1512,7 @@
         "seg1": "",
         "seg2": "",
         "x": 970,
-        "y": 660,
+        "y": 980,
         "wires": []
     },
     {
@@ -1538,7 +1538,7 @@
         "seg1": "",
         "seg2": "",
         "x": 960,
-        "y": 720,
+        "y": 1040,
         "wires": []
     },
     {
@@ -1564,7 +1564,7 @@
         "seg1": "",
         "seg2": "",
         "x": 960,
-        "y": 780,
+        "y": 1100,
         "wires": []
     },
     {
@@ -1576,7 +1576,7 @@
         "outputs": 5,
         "noerr": 0,
         "x": 730,
-        "y": 640,
+        "y": 960,
         "wires": [
             [
                 "fa5d9b0a5e4fec29"
@@ -1605,7 +1605,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 320,
-        "y": 571,
+        "y": 891,
         "wires": [
             [
                 "f86352c2acd99e68",
@@ -1635,7 +1635,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 300,
-        "y": 431,
+        "y": 751,
         "wires": [
             [
                 "fdc9058fa5cef60b"
@@ -1650,7 +1650,7 @@
         "statusCode": "200",
         "headers": {},
         "x": 660,
-        "y": 391,
+        "y": 711,
         "wires": []
     },
     {
@@ -1662,7 +1662,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 470,
-        "y": 431,
+        "y": 751,
         "wires": [
             [
                 "3fe3f4204abdd9f2",
@@ -1684,7 +1684,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 670,
-        "y": 459,
+        "y": 779,
         "wires": []
     },
     {
@@ -1709,11 +1709,11 @@
         "type": "http in",
         "z": "838e54b719ad8caa",
         "name": "",
-        "url": "/sendDummyData",
+        "url": "/sendData",
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 320,
+        "x": 300,
         "y": 171,
         "wires": [
             [
@@ -1726,7 +1726,7 @@
         "type": "function",
         "z": "838e54b719ad8caa",
         "name": "Daten Auslesen und Konvertieren",
-        "func": "var userID = msg.payload.UserID;\nvar maschinenName = msg.payload.MaschinenName;\nvar dauer = msg.payload.Dauer;\nvar timestamp = new Date();\nvar ende = timestamp;\nvar calculation = timestamp.getTime() - dauer;\nvar anfang = new Date(calculation);\nvar strom = msg.payload.Strom;\n\nmsg.payload = \"Input: UserID= \" + userID + \"; MaschinenName= \" + maschinenName + \"; Anfang= \" + anfang + \"; Ende= \" + ende + \"; Dauer in Millisekunden= \" + dauer + \"; Strom=\" + strom + \" Wh\";\n\nreturn msg;",
+        "func": "var userID = msg.payload.userid;\nvar maschinenName = msg.payload.machineName;\nvar dauer = msg.payload.duration;\nvar timestamp = new Date();\nvar ende = timestamp;\nvar calculation = timestamp.getTime() - dauer;\nvar anfang = new Date(calculation);\nvar strom = msg.payload.power;\n\nmsg.payload = \"Input: UserID= \" + userID + \"; MaschinenName= \" + maschinenName + \"; Anfang= \" + anfang + \"; Ende= \" + ende + \"; Dauer in Millisekunden= \" + dauer + \"; Strom=\" + strom + \" Wh\";\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1746,9 +1746,131 @@
         "type": "comment",
         "z": "838e54b719ad8caa",
         "name": "Hinweis",
-        "info": "Der Mikrocontroller sendet einen GET Request an die Domain http://(IP des eigenen Rechners):1880/sendDummyData.\n\nDabei werden ein paar Daten angehängt.\nDiese können dann in der Funktion über den Message Payload abgefragt werden.\n\nDie Funktion kann als Vorlage für den eigentlichen Server verwendet werden oder einfach nur zum Testen.",
+        "info": "Der Mikrocontroller sendet einen GET Request an die Domain http://(IP des eigenen Rechners):1880/sendData.\n\nDabei werden ein paar Daten angehängt.\nDiese können dann in der Funktion über den Message Payload abgefragt werden.\n\nDie Funktion kann als Vorlage für den eigentlichen Server verwendet werden oder einfach nur zum Testen.",
         "x": 490,
         "y": 120,
+        "wires": []
+    },
+    {
+        "id": "bb365524f4051b03",
+        "type": "http response",
+        "z": "838e54b719ad8caa",
+        "name": "HTTP Antwort an den Mikrocontroller",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1530,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "bed83e8525383d7f",
+        "type": "debug",
+        "z": "838e54b719ad8caa",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 970,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "b14f5f1a0678a762",
+        "type": "http in",
+        "z": "838e54b719ad8caa",
+        "name": "",
+        "url": "/checkIfUserExists",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 320,
+        "y": 360,
+        "wires": [
+            [
+                "97f6d413dc809019"
+            ]
+        ]
+    },
+    {
+        "id": "97f6d413dc809019",
+        "type": "function",
+        "z": "838e54b719ad8caa",
+        "name": "Daten Auslesen und Querry für userCheck bauen",
+        "func": "var userID = msg.payload.userid;\nvar maschinenName = msg.payload.machineName;\n\n//Hier SQL Querry einbauen?\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 360,
+        "wires": [
+            [
+                "bed83e8525383d7f",
+                "b7b7c7dd0dd1fd1c"
+            ]
+        ]
+    },
+    {
+        "id": "b7b7c7dd0dd1fd1c",
+        "type": "function",
+        "z": "838e54b719ad8caa",
+        "name": "Datenbank Ausgabe auswerten",
+        "func": "/*\nif(userExists && permissionIsHighEnough){\n    //ad something to msg.payload like userExists = true and permission = true\n} else if(userExists && permissionIsNOTHighEnough){\n    //ad something to msg.payload like userExists = true and permission = false\n} else {\n    //ad something to msg.payload like userExists = false and permission = false\n}\n\n*/\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1190,
+        "y": 360,
+        "wires": [
+            [
+                "bb365524f4051b03",
+                "ced57a5f39c0999b"
+            ]
+        ]
+    },
+    {
+        "id": "8b38b9b837dad7e8",
+        "type": "comment",
+        "z": "838e54b719ad8caa",
+        "name": "Hier Datenbank zwischen",
+        "info": "",
+        "x": 950,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "ced57a5f39c0999b",
+        "type": "debug",
+        "z": "838e54b719ad8caa",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1450,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "9482d54a3342bafd",
+        "type": "comment",
+        "z": "838e54b719ad8caa",
+        "name": "Payload von msg wird an MC gesendet!",
+        "info": "",
+        "x": 1430,
+        "y": 280,
         "wires": []
     },
     {

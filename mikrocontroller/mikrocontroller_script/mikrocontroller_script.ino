@@ -24,7 +24,8 @@ const char* password = wifipassword;
 
 //Servername oder IP mit Pfad
 //TODO keine feste IP sondern am besten ein Domain Name verwenden!
-String serverName = "http://192.168.10.82:1880/sendDummyData";
+String serverName = "http://192.168.10.82:1880/";
+//TODO make checkIfUserExists and sendData variable
 
 
 //--- User and Machine config ---
@@ -64,8 +65,9 @@ bool startedPowerConsumption = false;
 enum ledStates {
   red,
   green,
-  orange,
-  blinkRed
+  yellow,
+  blinkRed,
+  errorBlinkOrange
 };
 
 
@@ -159,19 +161,39 @@ void checkNumPadInput() {
 void checkLogin() {
 
   //Send request to server with numbers as id and machinename and check if user exists and permission is high enough
+  String serverPath = serverName + "checkIfUserExists" + "?userid=" + userId + "&machineName=" + machineName;
 
-  //Wait for answer
+  String payload = httpGETRequest(serverPath);
 
-  //if user exists and permission is correct, buffer user id -> LEDs green
+  #ifdef debugging
+    Serial.print("Payload: ");
+    Serial.println(payload);
+  #endif
 
-  //if user exists and permission is not high enough, buffer user id -> LEDs blink orange
+  if(payload == ""){
+    
+    //if user exists and permission is correct, buffer user id -> LEDs green
+    updateLEDs(green);
+    isLoggedIn = true;
+  }
+  else if(payload == ""){
+    
+    //if user exists and permission is not high enough, buffer user id -> LEDs blink yellow
+    updateLEDs(yellow);
+    isLoggedIn = true;
+  }
+  else if(payload == ""){
 
-  //if user does not exists -> LEDs blink short time red, than back to constant red
+    //if user does not exists -> LEDs blink short time red, than back to constant red
+    updateLEDs(blinkRed);
+  }
+  else{
+
+    //Error occured
+    updateLEDs(errorBlinkOrange);
+  }
 }
 
-void onLogin() {
-
-}
 
 void logout() {
 
@@ -186,8 +208,9 @@ void logout() {
 
 
   //collectDataAndCreateString(duration , calculatePower());
-  //Reset variables -> reset()
-
+  //Check if Data send corret, otherwise -> updateLEDs(errorBlinkOrange);
+  reset();
+  isLoggedIn = false;
   updateLEDs(red);
 }
 
@@ -353,7 +376,7 @@ double messureCurrent(int inputPin) {
 
 void collectDataAndCreateString(long duration, double power) {
 
-   String serverPath = serverName + "?userid=" + userId + "&machineName=" + machineName + "&duration=" + duration + "&power=" + String(power);
+  String serverPath = serverName + "sendData" + "?userid=" + userId + "&machineName=" + machineName + "&duration=" + duration + "&power=" + String(power);
 
   String payload = httpGETRequest(serverPath);
 
@@ -409,9 +432,11 @@ void updateLEDs(ledStates ledState){
       break;
     case green:
       break;
-    case orange:
+    case yellow:
       break;
     case blinkRed:
+      break;
+    case errorBlinkOrange:
       break;
     default:
       break;   
