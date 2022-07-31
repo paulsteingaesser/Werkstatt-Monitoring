@@ -168,8 +168,34 @@
                     data-height="800"
                     data-show-footer="true">
           
+                <div class="card shadow p-4">
+                    <table
+                            data-toggle="table"
+                            data-pagination="true"
+                            data-search="false"
+                            data-url="machine_data.json"
+                            data-height="800"
+                            data-show-footer="true">
+                        <!--data-detail-view="true"-->
+                        <!--data-detail-formatter="detailFormatter"-->
+
+                        <thead>
+<!--                        <tr>
+                            <th rowspan="2" data-checkbox="true" data-valign="middle"></th>
+                            <th colspan="7" data-align="center">Header</th>
+                        </tr>-->
+                        <tr>
+                            <th data-field="id" data-sortable="true">ID</th>
+                            <th data-field="name" data-sortable="true">Name</th>
+                            <th data-field="level" data-sortable="true">Berechtigungsstufe</th>
+                            <th data-field="time" data-sortable="true">Rüstzeit</th>
+                            <th data-field="cost" data-sortable="false">Kosten</th>
+                            <th data-field="action" data-formatter="actionFormatter">Action</th>
+                        </tr>
+                        </thead>
                     </table>
                 </div>
+                <a href="maschinen_edit.html" class="mt-4 btn btn-primary" role="button">Maschine hinzufügen</a>
             </div>
 
             <!-- /.container-fluid -->

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>bauer + planer - Nutzer</title>
+    <title>bauer + planer - Maschinen</title>
 
     <!-- Custom fonts for this template-->
     <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -59,16 +59,16 @@
         <!--        </div>-->
 
         <!-- Nav Item - Nutzer -->
-        <li class="nav-item active">
-            <a class="nav-link" href="nutzer.html">
+        <li class="nav-item">
+            <a class="nav-link" href="../nutzer/nutzer.html">
                 <i class="fas fa-fw fa-cog"></i>
                 <span>Nutzer</span>
             </a>
         </li>
 
         <!-- Nav Item - Maschinen -->
-        <li class="nav-item">
-            <a class="nav-link" href="../maschinen/maschinen.html">
+        <li class="nav-item active">
+            <a class="nav-link" href="maschinen.html">
                 <i class="fas fa-fw fa-cog"></i>
                 <span>Maschinen</span>
             </a>
@@ -82,10 +82,10 @@
             </a>
         </li>-->
 
-<!--        &lt;!&ndash; Sidebar Toggler (Sidebar) &ndash;&gt;-->
-<!--        <div class="text-center d-none d-md-inline">-->
-<!--            <button class="rounded-circle border-0" id="sidebarToggle"></button>-->
-<!--        </div>-->
+        <!--        &lt;!&ndash; Sidebar Toggler (Sidebar) &ndash;&gt;-->
+        <!--        <div class="text-center d-none d-md-inline">-->
+        <!--            <button class="rounded-circle border-0" id="sidebarToggle"></button>-->
+        <!--        </div>-->
 
     </ul>
     <!-- End of Sidebar -->
@@ -98,7 +98,7 @@
 
             <!-- Topbar -->
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                <h1 class="h3 mb-0 text-gray-800">Nutzerverwaltung</h1>
+                <h1 class="h3 mb-0 text-gray-800">Maschinenverwaltung</h1>
 
                 <!-- Sidebar Toggle (Topbar) -->
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -161,47 +161,53 @@
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
-                <div class="card shadow mb-4">
-                    <table id="table" 
-                    data-pagination="true"
-                    data-search="false"                   
-                    data-height="800"
-                    data-show-footer="true">
-          
-                    </table>
-                    
                 <div class="card shadow p-4">
-                    <table
-                            data-toggle="table"
-                            data-pagination="true"
-                            data-search="false"
-                            data-url="user_data.json"
-                            data-height="800"
-                            data-show-footer="true">
-                            <!--data-detail-view="true"-->
-                            <!--data-detail-formatter="detailFormatter"-->
-                            
-                            <thead>
-<!--                            <tr>
-                                <th rowspan="2" data-checkbox="true" data-valign="middle"></th>
-                                <th colspan="7" data-align="center">Header</th>
-                            </tr>-->
-                            <tr>
-                                <th data-field="id" data-sortable="true">ID</th>
-                                <th data-field="vorname" data-sortable="true">Vorname</th>
-                                <th data-field="nachname" data-sortable="true">Nachname</th>
-                                <th data-field="level" data-sortable="true">Berechtigungsstufe</th>
-                                <th data-field="access" data-sortable="true">Zugang</th>
-                                <th data-field="action" data-formatter="actionFormatter">Action</th>
-                            </tr>
-                            </thead>
-                        </table>
+                    <!-- Form -->
+                    <form>
+                        <div class="form-group">
+                            <label for="inputMaschinenname">Maschinenname</label>
+                            <input type="text" class="form-control" id="inputMaschinenname" placeholder="Maschinenname">
+                        </div>
+                        <!-- Dropdown Menu -->
+                        <div class="mb-4 dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Berechtigungsstufe
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">1</a>
+                                <a class="dropdown-item" href="#">2</a>
+                                <a class="dropdown-item" href="#">3</a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputRüstzeiten">Rüstzeiten (wird immer addiert)</label>
+                            <input type="text" class="form-control" id="inputRüstzeiten" placeholder="Rüstzeiten">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputKosten">Kosten (optional)</label>
+                            <input type="text" class="form-control" id="inputKosten" placeholder="Watt/h, Fixkosten oder Materialkosten">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputMaterialverbrauch">Materialverbrauch (optional)</label>
+                            <input type="text" class="form-control" id="inputMaterialverbrauch" placeholder="Verschleiß oder Verbauch/Zeit">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputBereich">Bereich (optional)</label>
+                            <input type="text" class="form-control" id="inputBereich" placeholder="Raum/Bereich">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputFaktor">Faktor (optional)</label>
+                            <input type="text" class="form-control" id="inputFaktor" placeholder="Faktor">
+                        </div>
+                    </form>
+                    <div>
+                        <!-- Edit and Remove Buttons -->
+                        <a href="maschinen.html" type="button" class="mr-4 btn btn-primary" role="button" ><i class="fas fa-arrow-left"></i></a>
+                        <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i></button>
                     </div>
-                <a href="nutzer_edit.html" class="mt-4 btn btn-primary" role="button">Nutzer hinzufügen</a>
                 </div>
+            </div>
 
-            
-                
             <!-- /.container-fluid -->
 
         </div>
@@ -264,7 +270,7 @@
 <!-- #region Supporting Scripts. These MUST be in the right order. Note no leading / -->
 <script src="../../../uibuilder/vendor/socket.io/socket.io.js">/* REQUIRED: Socket.IO is loaded only once for all instances. Without this, you don't get a websocket connection */</script>
 <script src="../../uibuilderfe.min.js">/* REQUIRED: remove 'min.' to use dev version */</script>
-<script src="nutzer.js">/* OPTIONAL: Put your custom code here */</script>
+<script src="../../index.js">/* OPTIONAL: Put your custom code here */</script>
 <!-- #endregion -->
 
 </body>
