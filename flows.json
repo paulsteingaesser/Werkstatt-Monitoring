@@ -599,7 +599,9 @@
         "x": 120,
         "y": 460,
         "wires": [
-            [],
+            [
+                "62cb54b2da55f518"
+            ],
             []
         ]
     },
@@ -631,8 +633,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 520,
-        "y": 600,
+        "x": 500,
+        "y": 560,
         "wires": [
             [
                 "0983c6aa457d0bd2"
@@ -797,7 +799,8 @@
         "y": 1120,
         "wires": [
             [
-                "64d35f1199b7e43d"
+                "64d35f1199b7e43d",
+                "6f60a0e070951e8a"
             ]
         ]
     },
@@ -882,7 +885,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 590,
+        "x": 510,
         "y": 1000,
         "wires": [
             [
@@ -900,11 +903,12 @@
         "db": "C:\\Users\\User\\.node-red\\projects\\MonitoringApp_Stand22-06-22\\db",
         "sql": "",
         "name": "db_1",
-        "x": 1070,
+        "x": 970,
         "y": 1000,
         "wires": [
             [
-                "4520e742bdf7a246"
+                "4520e742bdf7a246",
+                "6f60a0e070951e8a"
             ]
         ]
     },
@@ -1345,7 +1349,7 @@
         "type": "subflow:2a14cb53da10968a",
         "z": "55b2ce4ea70984fe",
         "name": "find db path in local directory",
-        "x": 860,
+        "x": 760,
         "y": 1000,
         "wires": [
             [
@@ -1378,6 +1382,55 @@
                 "0b39fa65ad79fce4"
             ]
         ]
+    },
+    {
+        "id": "b9cf832bb689f99d",
+        "type": "queuedsqlite",
+        "z": "55b2ce4ea70984fe",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "msg.database",
+        "db": "C:\\Users\\User\\.node-red\\projects\\MonitoringApp_Stand22-06-22\\db",
+        "sql": "",
+        "name": "db_1",
+        "x": 590,
+        "y": 460,
+        "wires": [
+            [
+                "18714dd186fd682c",
+                "40548839ac496a07"
+            ]
+        ]
+    },
+    {
+        "id": "62cb54b2da55f518",
+        "type": "subflow:2a14cb53da10968a",
+        "z": "55b2ce4ea70984fe",
+        "name": "find db path in local directory",
+        "x": 380,
+        "y": 460,
+        "wires": [
+            [
+                "b9cf832bb689f99d"
+            ]
+        ]
+    },
+    {
+        "id": "40548839ac496a07",
+        "type": "debug",
+        "z": "55b2ce4ea70984fe",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 460,
+        "wires": []
     },
     {
         "id": "f86352c2acd99e68",
@@ -1827,7 +1880,7 @@
         "name": "Testdaten eintragen:",
         "info": "",
         "x": 190,
-        "y": 360,
+        "y": 280,
         "wires": []
     },
     {
@@ -1959,7 +2012,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 290,
-        "y": 400,
+        "y": 320,
         "wires": [
             [
                 "0e854629aa4dc9fc"
@@ -1988,7 +2041,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 300,
-        "y": 440,
+        "y": 400,
         "wires": [
             [
                 "0e854629aa4dc9fc"
@@ -3656,6 +3709,64 @@
         "wires": [
             [
                 "1adcb43543e66c45"
+            ]
+        ]
+    },
+    {
+        "id": "45d8b6a1cec5ca73",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "INSERT user",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "INSERT INTO user(password, lastname, firstName, admin, permission, company) VALUES( Null, \"Doe\", \"John\", false, 2, NULL)",
+        "payload": "",
+        "payloadType": "date",
+        "x": 290,
+        "y": 360,
+        "wires": [
+            [
+                "0e854629aa4dc9fc"
+            ]
+        ]
+    },
+    {
+        "id": "ffb60fddf111f41d",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "INSERT machine",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "INSERT INTO machine VALUES(\"Schweißgerät\", 5, 2, 3, NULL, \"Metal\", 1)",
+        "payload": "",
+        "payloadType": "date",
+        "x": 300,
+        "y": 440,
+        "wires": [
+            [
+                "0e854629aa4dc9fc"
             ]
         ]
     }
