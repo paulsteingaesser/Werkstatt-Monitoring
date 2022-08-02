@@ -80,9 +80,7 @@ function adminFormat(value, row, index) {
     if (value==1){return "Admin";
 }else {
     return "";
-}
-        
- }
+}}
  
 // run this function when the document is loaded
 window.onload = function() {

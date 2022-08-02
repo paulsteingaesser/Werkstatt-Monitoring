@@ -1758,7 +1758,7 @@
         "name": "HTTP Antwort an den Mikrocontroller",
         "statusCode": "200",
         "headers": {},
-        "x": 1530,
+        "x": 1790,
         "y": 320,
         "wires": []
     },
@@ -1801,7 +1801,7 @@
         "type": "function",
         "z": "838e54b719ad8caa",
         "name": "Daten Auslesen und Querry für userCheck bauen",
-        "func": "var userID = msg.payload.userid;\nvar maschinenName = msg.payload.machineName;\n\n//Hier SQL Querry einbauen?\n\nreturn msg;",
+        "func": "var userID = msg.payload.userid;\nvar maschinenName = msg.payload.machineName;\n\nmsg.topic = \"SELECT ( SELECT COUNT(*) FROM user WHERE userid =\"+userID+\") AS userExists, (SELECT count(*) FROM user JOIN machine on (user.permission >= machine.permission) WHERE userid =\"+userID+\" AND machineName='\"+maschinenName+\"') as permissionIsHighEnough\";\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1812,27 +1812,7 @@
         "wires": [
             [
                 "bed83e8525383d7f",
-                "b7b7c7dd0dd1fd1c"
-            ]
-        ]
-    },
-    {
-        "id": "b7b7c7dd0dd1fd1c",
-        "type": "function",
-        "z": "838e54b719ad8caa",
-        "name": "Datenbank Ausgabe auswerten",
-        "func": "/*\nif(userExists && permissionIsHighEnough){\n    //ad something to msg.payload like userExists = true and permission = true\n} else if(userExists && permissionIsNOTHighEnough){\n    //ad something to msg.payload like userExists = true and permission = false\n} else {\n    //ad something to msg.payload like userExists = false and permission = false\n}\n\n*/\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1190,
-        "y": 360,
-        "wires": [
-            [
-                "bb365524f4051b03",
-                "ced57a5f39c0999b"
+                "eaacb4e3ebe5efde"
             ]
         ]
     },
@@ -1859,7 +1839,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1450,
+        "x": 1710,
         "y": 400,
         "wires": []
     },
@@ -1869,9 +1849,58 @@
         "z": "838e54b719ad8caa",
         "name": "Payload von msg wird an MC gesendet!",
         "info": "",
-        "x": 1430,
+        "x": 1690,
         "y": 280,
         "wires": []
+    },
+    {
+        "id": "7ea94c6be75dbe55",
+        "type": "queuedsqlite",
+        "z": "838e54b719ad8caa",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "msg.database",
+        "db": "C:\\Users\\User\\.node-red\\projects\\MonitoringApp_Stand22-06-22\\db",
+        "sql": "",
+        "name": "db",
+        "x": 1230,
+        "y": 360,
+        "wires": [
+            [
+                "bb365524f4051b03",
+                "ced57a5f39c0999b"
+            ]
+        ]
+    },
+    {
+        "id": "eaacb4e3ebe5efde",
+        "type": "subflow:2a14cb53da10968a",
+        "z": "838e54b719ad8caa",
+        "name": "find db path in local directory",
+        "x": 1020,
+        "y": 360,
+        "wires": [
+            [
+                "7ea94c6be75dbe55"
+            ]
+        ]
+    },
+    {
+        "id": "058f4fce25fb1968",
+        "type": "function",
+        "z": "838e54b719ad8caa",
+        "name": "Datenbank Ausgabe auswerten",
+        "func": "var userExists = msg.payload[0].userExists;\nvar permissionIsHighEnough = msg.payload[0].permissionIsHighEnough;\n\n\nif(userExists && permissionIsHighEnough){\n    //ad something to msg.payload like userExists = true and permission = true\n    msg.payload = \"userExists = true and permission = true\"\n} else if(userExists && !permissionIsHighEnough){\n    //ad something to msg.payload like userExists = true and permission = false\n        msg.payload = \"userExists = true and permission = false\"\n} else {\n    //ad something to msg.payload like userExists = false and permission = false\n        msg.payload = \"userExists = false and permission = false\"\n}\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1390,
+        "y": 300,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "7dbfda298598df33",
@@ -3889,6 +3918,106 @@
         "wires": [
             [
                 "0e854629aa4dc9fc"
+            ]
+        ]
+    },
+    {
+        "id": "062e1fadf2d0e360",
+        "type": "function",
+        "z": "5d3034dc83dfbde2",
+        "name": "",
+        "func": "var userID = msg.payload.userid;\nvar maschinenName = msg.payload.machineName;\n\nmsg.topic = \"SELECT ( SELECT COUNT(*) FROM user WHERE userid =\"+userID+\") AS userExists, (SELECT count(*) FROM user JOIN machine on (user.permission >= machine.permission) WHERE userid =\"+userID+\" AND machineName='\"+maschinenName+\"') as permissionIsHighEnough\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 2740,
+        "wires": [
+            [
+                "f42b56dc21b643d3"
+            ]
+        ]
+    },
+    {
+        "id": "cfde61dcaec3a913",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "Entering UserID",
+        "props": [
+            {
+                "p": "payload.userid",
+                "v": "1012",
+                "vt": "num"
+            },
+            {
+                "p": "payload.machineName",
+                "v": "Schweißgerät",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 480,
+        "y": 2740,
+        "wires": [
+            [
+                "062e1fadf2d0e360"
+            ]
+        ]
+    },
+    {
+        "id": "2bbd741e1f665a13",
+        "type": "queuedsqlite",
+        "z": "5d3034dc83dfbde2",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "msg.database",
+        "db": "C:\\Users\\User\\.node-red\\projects\\MonitoringApp_Stand22-06-22\\db",
+        "sql": "",
+        "name": "db",
+        "x": 1070,
+        "y": 2740,
+        "wires": [
+            [
+                "9c997e10abe5c642",
+                "2248ea642e4e9d67"
+            ]
+        ]
+    },
+    {
+        "id": "f42b56dc21b643d3",
+        "type": "subflow:2a14cb53da10968a",
+        "z": "5d3034dc83dfbde2",
+        "name": "find db path in local directory",
+        "x": 880,
+        "y": 2740,
+        "wires": [
+            [
+                "2bbd741e1f665a13"
+            ]
+        ]
+    },
+    {
+        "id": "2248ea642e4e9d67",
+        "type": "function",
+        "z": "5d3034dc83dfbde2",
+        "name": "Datenbank Ausgabe auswerten",
+        "func": "var userExists = msg.payload[0].userExists;\nvar permissionIsHighEnough = msg.payload[0].permissionIsHighEnough;\n\n\nif(userExists && permissionIsHighEnough){\n    //ad something to msg.payload like userExists = true and permission = true\n    msg.payload = \"userExists = true and permission = true\"\n} else if(userExists && !permissionIsHighEnough){\n    //ad something to msg.payload like userExists = true and permission = false\n        msg.payload = \"userExists = true and permission = false\"\n} else {\n    //ad something to msg.payload like userExists = false and permission = false\n        msg.payload = \"userExists = false and permission = false\"\n}\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1290,
+        "y": 2740,
+        "wires": [
+            [
+                "9c997e10abe5c642"
             ]
         ]
     }

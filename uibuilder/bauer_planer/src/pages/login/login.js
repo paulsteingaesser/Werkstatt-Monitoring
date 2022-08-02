@@ -61,6 +61,7 @@ window.fnSendToNR = function fnSendToNR(payload) {
         'payload': payload,
     })
 }
+
 var username;
 var password;
 window.login = function login() {
@@ -74,10 +75,11 @@ window.login = function login() {
 }
 
 
+
 // run this function when the document is loaded
 window.onload = function() {
     // Start up uibuilder - see the docs for the optional parameters
-    uibuilder.start()
+    uibuilder.start();
 
     // Listen for incoming messages from Node-RED
     uibuilder.onChange('msg', function(msg){
@@ -98,7 +100,8 @@ window.onload = function() {
         }else if (msg.name == "checkPass"){
                     if ( msg.payload[0]["password"] ==  password ){
                         window.location.href="../übersicht/übersicht.html";
-                        console.log("Login succeeded")
+                        console.log("Login succeeded");
+                        localStorage.setItem("username",username);
                     } else {
                         console.log("Password is incorrect")
                     }
