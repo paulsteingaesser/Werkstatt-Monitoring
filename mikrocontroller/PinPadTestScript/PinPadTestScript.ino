@@ -12,8 +12,8 @@ char keys[ROW_NUMBER][COLUM_NUMBER] = {
   {'r', '0', 'g'}
 };
 
-byte pin_rows[ROW_NUMBER] = {9, 8, 7, 6}; //connect to the row pinouts of the keypad
-byte pin_column[COLUM_NUMBER] = {5, 4, 3}; //connect to the column pinouts of the keypad
+byte pin_rows[ROW_NUMBER] = {5, 17, 15, 2}; //connect to the row pinouts of the keypad
+byte pin_column[COLUM_NUMBER] = {16, 4, 0}; //connect to the column pinouts of the keypad
 
 Keypad keypad = Keypad( makeKeymap(keys), pin_rows, pin_column, ROW_NUMBER, COLUM_NUMBER );
 
@@ -33,9 +33,9 @@ void loop() {
   if (key){
     Serial.println(key);
 
-    if(key == '*') {
+    if(key == 'r') {
       input_password = ""; // clear input password
-    } else if(key == '#') {
+    } else if(key == 'g') {
       if(password == input_password) {
         Serial.println("password is correct");
         // DO YOUR WORK HERE
