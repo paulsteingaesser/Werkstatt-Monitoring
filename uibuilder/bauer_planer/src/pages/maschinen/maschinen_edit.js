@@ -76,18 +76,20 @@ window.fnSendToNR = function fnSendToNR(payload) {
     })
 }
 
-function addNewUser(){
-    var firstName = document.getElementById('inputVorname').value;
-    var lastname = document.getElementById('inputNachname').value;
-    var password = document.getElementById('inputPasswort').value;
-    var company = document.getElementById('inputFirma').value;
-    var admin = document.getElementById('inputAdmin').checked;
-    
+function addNewMachine(){
+    var machineName = document.getElementById('inputMaschinenname').value;
     var permission = document.getElementById('berechtigungsstufe').value;
+    var setUpTime = document.getElementById('inputRüstzeiten').value;
+    var cost = document.getElementById('inputKosten').value;
+    var materialConsumption = document.getElementById('inputMaterialverbrauch').value;
+    var area = document.getElementById('inputBereich').value;
+    var factor = document.getElementById('inputFaktor').value;
+
     uibuilder.send({
-        'topic': 'INSERT INTO user(password, lastname, firstName, admin, permission, company) VALUES("'+password+'", "'+lastname+'", "'+firstName+'", '+admin+', '+permission+', "'+company+'")'
+        'topic': 'INSERT INTO machine VALUES("'+machineName+'", "'+permission+'", "'+setUpTime+'", "'+cost+'", "'+materialConsumption+'", "'+area+'", "'+factor+'")'
     })
 
+    alert("Neue Maschine ist hinzufügt");
 }
 
 // run this function when the document is loaded

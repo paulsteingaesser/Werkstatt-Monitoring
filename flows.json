@@ -3106,8 +3106,8 @@
         "topic": "",
         "payload": "1650113340",
         "payloadType": "str",
-        "x": 550,
-        "y": 2020,
+        "x": 590,
+        "y": 2080,
         "wires": [
             [
                 "fe9c056336bd191f",
@@ -3132,8 +3132,8 @@
         "output": "",
         "outputType": "msg",
         "outTz": "Europe/Berlin",
-        "x": 780,
-        "y": 2040,
+        "x": 820,
+        "y": 2100,
         "wires": [
             [
                 "4ea3c5183da93785"
@@ -3152,8 +3152,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 990,
-        "y": 2020,
+        "x": 1030,
+        "y": 2080,
         "wires": []
     },
     {
@@ -3173,8 +3173,8 @@
         "topic": "",
         "payload": "2022-04-22 16:00",
         "payloadType": "str",
-        "x": 570,
-        "y": 2100,
+        "x": 610,
+        "y": 2160,
         "wires": [
             [
                 "b81337e6f0d45f20"
@@ -3198,8 +3198,8 @@
         "output": "",
         "outputType": "msg",
         "outTz": "Europe/Berlin",
-        "x": 780,
-        "y": 2100,
+        "x": 820,
+        "y": 2160,
         "wires": [
             [
                 "078e5446238161bb"
@@ -3218,8 +3218,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 990,
-        "y": 2100,
+        "x": 1030,
+        "y": 2160,
         "wires": []
     },
     {
@@ -3233,8 +3233,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 800,
-        "y": 2180,
+        "x": 840,
+        "y": 2240,
         "wires": [
             [
                 "078e5446238161bb"
@@ -3262,8 +3262,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 540,
-        "y": 2180,
+        "x": 580,
+        "y": 2240,
         "wires": [
             [
                 "eddbcfd47fba54ee"
@@ -3276,8 +3276,8 @@
         "z": "5d3034dc83dfbde2",
         "name": "Time converting:",
         "info": "",
-        "x": 220,
-        "y": 2020,
+        "x": 380,
+        "y": 2080,
         "wires": []
     },
     {
@@ -3297,8 +3297,8 @@
         "topic": "",
         "payload": "18000000",
         "payloadType": "str",
-        "x": 540,
-        "y": 2240,
+        "x": 580,
+        "y": 2300,
         "wires": [
             [
                 "8639e53d8c9029b8"
@@ -3322,8 +3322,8 @@
         "output": "",
         "outputType": "msg",
         "outTz": "Europe/Berlin",
-        "x": 780,
-        "y": 2240,
+        "x": 820,
+        "y": 2300,
         "wires": [
             [
                 "1ec28b3e9561843a"
@@ -3342,8 +3342,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 990,
-        "y": 2240,
+        "x": 1030,
+        "y": 2300,
         "wires": []
     },
     {
@@ -3357,8 +3357,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 800,
-        "y": 2280,
+        "x": 840,
+        "y": 2340,
         "wires": [
             [
                 "540c4819ab00eb87"
@@ -3377,8 +3377,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 970,
-        "y": 2280,
+        "x": 1010,
+        "y": 2340,
         "wires": []
     },
     {
@@ -3398,8 +3398,8 @@
         "topic": "",
         "payload": "1647438540000",
         "payloadType": "num",
-        "x": 560,
-        "y": 2280,
+        "x": 600,
+        "y": 2340,
         "wires": [
             [
                 "a030ecc9f1ee9bf2",
@@ -3441,8 +3441,8 @@
         "topic": "",
         "payload": "2022-04-22 20:00",
         "payloadType": "str",
-        "x": 570,
-        "y": 2140,
+        "x": 610,
+        "y": 2200,
         "wires": [
             [
                 "b81337e6f0d45f20"
@@ -3592,8 +3592,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 810,
-        "y": 2320,
+        "x": 850,
+        "y": 2380,
         "wires": [
             [
                 "540c4819ab00eb87"
@@ -4107,5 +4107,142 @@
                 "0e854629aa4dc9fc"
             ]
         ]
+    },
+    {
+        "id": "7ad8bbe3127c92b3",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "DELETE FROM machine",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "DELETE FROM machine where machineName=\"Rohrbiegemaschine\"",
+        "payload": "",
+        "payloadType": "date",
+        "x": 590,
+        "y": 880,
+        "wires": [
+            [
+                "0e854629aa4dc9fc"
+            ]
+        ]
+    },
+    {
+        "id": "350471f6999ce3e2",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "Entering machineName",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "test maschine",
+        "payloadType": "str",
+        "x": 540,
+        "y": 1940,
+        "wires": [
+            [
+                "1d0e02b732b0d06f"
+            ]
+        ]
+    },
+    {
+        "id": "1d0e02b732b0d06f",
+        "type": "function",
+        "z": "5d3034dc83dfbde2",
+        "name": "Select Data",
+        "func": "var msg = { \"topic\": \"DELETE FROM machine WHERE machineName = '\"+ msg.payload +\"' \"}\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 1940,
+        "wires": [
+            [
+                "06248a2bf64d415b"
+            ]
+        ]
+    },
+    {
+        "id": "85a052a93c7a8ab9",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "Entering UserID",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "104",
+        "payloadType": "str",
+        "x": 520,
+        "y": 1900,
+        "wires": [
+            [
+                "3739466ce2b865f2"
+            ]
+        ]
+    },
+    {
+        "id": "3739466ce2b865f2",
+        "type": "function",
+        "z": "5d3034dc83dfbde2",
+        "name": "Select Data",
+        "func": "var msg = { \"topic\": \"DELETE FROM user where userid=\" + msg.payload +\"\" };\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 1900,
+        "wires": [
+            [
+                "06248a2bf64d415b"
+            ]
+        ]
+    },
+    {
+        "id": "87799b4390aa606e",
+        "type": "comment",
+        "z": "5d3034dc83dfbde2",
+        "name": "Löschen von Nutzern",
+        "info": "",
+        "x": 320,
+        "y": 1900,
+        "wires": []
+    },
+    {
+        "id": "eb5a35ac0a1bb824",
+        "type": "comment",
+        "z": "5d3034dc83dfbde2",
+        "name": "Löschen von Machinen",
+        "info": "",
+        "x": 320,
+        "y": 1940,
+        "wires": []
     }
 ]
