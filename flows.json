@@ -4231,7 +4231,7 @@
         "z": "5d3034dc83dfbde2",
         "name": "Löschen von Nutzern",
         "info": "",
-        "x": 320,
+        "x": 300,
         "y": 1900,
         "wires": []
     },
@@ -4241,8 +4241,176 @@
         "z": "5d3034dc83dfbde2",
         "name": "Löschen von Machinen",
         "info": "",
-        "x": 320,
+        "x": 300,
         "y": 1940,
         "wires": []
+    },
+    {
+        "id": "85035fb37cdfb259",
+        "type": "function",
+        "z": "5d3034dc83dfbde2",
+        "name": "Select Data",
+        "func": "var msg = { \"topic\": \"UPDATE machine SET permission=\"+msg.payload.permission+\", setUpTime=\"+msg.payload.setUpTime+\", cost=\"+msg.payload.cost+\", materialConsumption=\"+msg.payload.materialConsumption+\", area='\"+msg.payload.area+\"', factor=\"+msg.payload.factor+\" WHERE machineName = '\"+msg.payload.machineName+\"'\" };\n\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 2020,
+        "wires": [
+            [
+                "06248a2bf64d415b"
+            ]
+        ]
+    },
+    {
+        "id": "e777d4d2b280a417",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "Entering the values",
+        "props": [
+            {
+                "p": "payload.userid",
+                "v": "102",
+                "vt": "num"
+            },
+            {
+                "p": "payload.password",
+                "v": "Jan",
+                "vt": "str"
+            },
+            {
+                "p": "payload.lastname",
+                "v": "Schneider",
+                "vt": "str"
+            },
+            {
+                "p": "payload.firstName",
+                "v": "Jan",
+                "vt": "str"
+            },
+            {
+                "p": "payload.admin",
+                "v": "false",
+                "vt": "str"
+            },
+            {
+                "p": "payload.permission",
+                "v": "3",
+                "vt": "num"
+            },
+            {
+                "p": "payload.company",
+                "v": "HAW Hamburg",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 530,
+        "y": 1980,
+        "wires": [
+            [
+                "c4c3377a728fe17b"
+            ]
+        ]
+    },
+    {
+        "id": "c4c3377a728fe17b",
+        "type": "function",
+        "z": "5d3034dc83dfbde2",
+        "name": "Select Data",
+        "func": "var msg = { \"topic\": \"UPDATE user SET password='\"+msg.payload.password+\"', lastname='\"+msg.payload.lastname+\"', firstName='\"+msg.payload.firstName+\"', admin=\"+msg.payload.admin+\", permission=\"+msg.payload.permission+\", company='\"+msg.payload.company+\"' WHERE userid = \"+msg.payload.userid+\"\" };\n\nreturn msg;\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 1980,
+        "wires": [
+            [
+                "06248a2bf64d415b"
+            ]
+        ]
+    },
+    {
+        "id": "4257800a0f41f52d",
+        "type": "comment",
+        "z": "5d3034dc83dfbde2",
+        "name": "Update von Nutzern",
+        "info": "",
+        "x": 290,
+        "y": 1980,
+        "wires": []
+    },
+    {
+        "id": "2e2396b5a1c54d65",
+        "type": "comment",
+        "z": "5d3034dc83dfbde2",
+        "name": "Update von Machinen",
+        "info": "",
+        "x": 300,
+        "y": 2020,
+        "wires": []
+    },
+    {
+        "id": "c9e2e364f33fb8e2",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "Entering the values",
+        "props": [
+            {
+                "p": "payload.machineName",
+                "v": "Säge",
+                "vt": "str"
+            },
+            {
+                "p": "payload.permission",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "p": "payload.setUpTime",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "p": "payload.cost",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "p": "payload.materialConsumption",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "p": "payload.area",
+                "v": "Holz",
+                "vt": "str"
+            },
+            {
+                "p": "payload.factor",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 530,
+        "y": 2020,
+        "wires": [
+            [
+                "85035fb37cdfb259"
+            ]
+        ]
     }
 ]
