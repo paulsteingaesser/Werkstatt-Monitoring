@@ -1758,7 +1758,7 @@
         "name": "HTTP Antwort an den Mikrocontroller",
         "statusCode": "200",
         "headers": {},
-        "x": 1530,
+        "x": 1790,
         "y": 320,
         "wires": []
     },
@@ -1801,7 +1801,7 @@
         "type": "function",
         "z": "838e54b719ad8caa",
         "name": "Daten Auslesen und Querry für userCheck bauen",
-        "func": "var userID = msg.payload.userid;\nvar maschinenName = msg.payload.machineName;\n\n//Hier SQL Querry einbauen?\n\nreturn msg;",
+        "func": "var userID = msg.payload.userid;\nvar maschinenName = msg.payload.machineName;\n\nmsg.topic = \"SELECT ( SELECT COUNT(*) FROM user WHERE userid =\"+userID+\") AS userExists, (SELECT count(*) FROM user JOIN machine on (user.permission >= machine.permission) WHERE userid =\"+userID+\" AND machineName='\"+maschinenName+\"') as permissionIsHighEnough\";\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1812,27 +1812,7 @@
         "wires": [
             [
                 "bed83e8525383d7f",
-                "b7b7c7dd0dd1fd1c"
-            ]
-        ]
-    },
-    {
-        "id": "b7b7c7dd0dd1fd1c",
-        "type": "function",
-        "z": "838e54b719ad8caa",
-        "name": "Datenbank Ausgabe auswerten",
-        "func": "/*\nif(userExists && permissionIsHighEnough){\n    //ad something to msg.payload like userExists = true and permission = true\n} else if(userExists && permissionIsNOTHighEnough){\n    //ad something to msg.payload like userExists = true and permission = false\n} else {\n    //ad something to msg.payload like userExists = false and permission = false\n}\n\n*/\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1190,
-        "y": 360,
-        "wires": [
-            [
-                "bb365524f4051b03",
-                "ced57a5f39c0999b"
+                "eaacb4e3ebe5efde"
             ]
         ]
     },
@@ -1859,7 +1839,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1450,
+        "x": 1710,
         "y": 400,
         "wires": []
     },
@@ -1869,9 +1849,58 @@
         "z": "838e54b719ad8caa",
         "name": "Payload von msg wird an MC gesendet!",
         "info": "",
-        "x": 1430,
+        "x": 1690,
         "y": 280,
         "wires": []
+    },
+    {
+        "id": "7ea94c6be75dbe55",
+        "type": "queuedsqlite",
+        "z": "838e54b719ad8caa",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "msg.database",
+        "db": "C:\\Users\\User\\.node-red\\projects\\MonitoringApp_Stand22-06-22\\db",
+        "sql": "",
+        "name": "db",
+        "x": 1230,
+        "y": 360,
+        "wires": [
+            [
+                "bb365524f4051b03",
+                "ced57a5f39c0999b"
+            ]
+        ]
+    },
+    {
+        "id": "eaacb4e3ebe5efde",
+        "type": "subflow:2a14cb53da10968a",
+        "z": "838e54b719ad8caa",
+        "name": "find db path in local directory",
+        "x": 1020,
+        "y": 360,
+        "wires": [
+            [
+                "7ea94c6be75dbe55"
+            ]
+        ]
+    },
+    {
+        "id": "058f4fce25fb1968",
+        "type": "function",
+        "z": "838e54b719ad8caa",
+        "name": "Datenbank Ausgabe auswerten",
+        "func": "var userExists = msg.payload[0].userExists;\nvar permissionIsHighEnough = msg.payload[0].permissionIsHighEnough;\n\n\nif(userExists && permissionIsHighEnough){\n    //ad something to msg.payload like userExists = true and permission = true\n    msg.payload = \"userExists = true and permission = true\"\n} else if(userExists && !permissionIsHighEnough){\n    //ad something to msg.payload like userExists = true and permission = false\n        msg.payload = \"userExists = true and permission = false\"\n} else {\n    //ad something to msg.payload like userExists = false and permission = false\n        msg.payload = \"userExists = false and permission = false\"\n}\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1390,
+        "y": 300,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "7dbfda298598df33",
@@ -2021,8 +2050,8 @@
         "z": "5d3034dc83dfbde2",
         "name": "Tabellen löschen:",
         "info": "",
-        "x": 180,
-        "y": 700,
+        "x": 200,
+        "y": 840,
         "wires": []
     },
     {
@@ -2043,7 +2072,7 @@
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
-        "topic": "CREATE TABLE user( userid INTEGER PRIMARY KEY AUTOINCREMENT, password TEXT, lastname TEXT NOT NULL, firstName TEXT NOT NULL, admin BOOLEAN NOT NULL, permission INTEGER NOT NULL, company TEXT )",
+        "topic": "CREATE TABLE user( userid INTEGER PRIMARY KEY AUTOINCREMENT, password TEXT NOT NULL, lastname TEXT NOT NULL, firstName TEXT NOT NULL, admin BOOLEAN NOT NULL, permission INTEGER NOT NULL, company TEXT )",
         "payload": "",
         "payloadType": "date",
         "x": 310,
@@ -2163,7 +2192,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 300,
-        "y": 400,
+        "y": 480,
         "wires": [
             [
                 "0e854629aa4dc9fc"
@@ -2250,7 +2279,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 320,
-        "y": 640,
+        "y": 760,
         "wires": [
             [
                 "c48ee34242888ca3"
@@ -2279,7 +2308,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 320,
-        "y": 480,
+        "y": 600,
         "wires": [
             [
                 "0e854629aa4dc9fc"
@@ -2631,8 +2660,8 @@
         "topic": "DROP TABLE user",
         "payload": "",
         "payloadType": "date",
-        "x": 290,
-        "y": 820,
+        "x": 310,
+        "y": 960,
         "wires": [
             [
                 "0e854629aa4dc9fc"
@@ -2660,8 +2689,8 @@
         "topic": "DROP TABLE machine",
         "payload": "",
         "payloadType": "date",
-        "x": 300,
-        "y": 780,
+        "x": 320,
+        "y": 920,
         "wires": [
             [
                 "0e854629aa4dc9fc"
@@ -2689,8 +2718,8 @@
         "topic": "DROP TABLE data",
         "payload": "",
         "payloadType": "date",
-        "x": 290,
-        "y": 740,
+        "x": 310,
+        "y": 880,
         "wires": [
             [
                 "0e854629aa4dc9fc"
@@ -3077,8 +3106,8 @@
         "topic": "",
         "payload": "1650113340",
         "payloadType": "str",
-        "x": 550,
-        "y": 2020,
+        "x": 590,
+        "y": 2080,
         "wires": [
             [
                 "fe9c056336bd191f",
@@ -3103,8 +3132,8 @@
         "output": "",
         "outputType": "msg",
         "outTz": "Europe/Berlin",
-        "x": 780,
-        "y": 2040,
+        "x": 820,
+        "y": 2100,
         "wires": [
             [
                 "4ea3c5183da93785"
@@ -3123,8 +3152,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 990,
-        "y": 2020,
+        "x": 1030,
+        "y": 2080,
         "wires": []
     },
     {
@@ -3144,8 +3173,8 @@
         "topic": "",
         "payload": "2022-04-22 16:00",
         "payloadType": "str",
-        "x": 570,
-        "y": 2100,
+        "x": 610,
+        "y": 2160,
         "wires": [
             [
                 "b81337e6f0d45f20"
@@ -3169,8 +3198,8 @@
         "output": "",
         "outputType": "msg",
         "outTz": "Europe/Berlin",
-        "x": 780,
-        "y": 2100,
+        "x": 820,
+        "y": 2160,
         "wires": [
             [
                 "078e5446238161bb"
@@ -3189,8 +3218,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 990,
-        "y": 2100,
+        "x": 1030,
+        "y": 2160,
         "wires": []
     },
     {
@@ -3204,8 +3233,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 800,
-        "y": 2180,
+        "x": 840,
+        "y": 2240,
         "wires": [
             [
                 "078e5446238161bb"
@@ -3233,8 +3262,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 540,
-        "y": 2180,
+        "x": 580,
+        "y": 2240,
         "wires": [
             [
                 "eddbcfd47fba54ee"
@@ -3247,8 +3276,8 @@
         "z": "5d3034dc83dfbde2",
         "name": "Time converting:",
         "info": "",
-        "x": 220,
-        "y": 2020,
+        "x": 380,
+        "y": 2080,
         "wires": []
     },
     {
@@ -3268,8 +3297,8 @@
         "topic": "",
         "payload": "18000000",
         "payloadType": "str",
-        "x": 540,
-        "y": 2240,
+        "x": 580,
+        "y": 2300,
         "wires": [
             [
                 "8639e53d8c9029b8"
@@ -3293,8 +3322,8 @@
         "output": "",
         "outputType": "msg",
         "outTz": "Europe/Berlin",
-        "x": 780,
-        "y": 2240,
+        "x": 820,
+        "y": 2300,
         "wires": [
             [
                 "1ec28b3e9561843a"
@@ -3313,8 +3342,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 990,
-        "y": 2240,
+        "x": 1030,
+        "y": 2300,
         "wires": []
     },
     {
@@ -3328,8 +3357,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 800,
-        "y": 2280,
+        "x": 840,
+        "y": 2340,
         "wires": [
             [
                 "540c4819ab00eb87"
@@ -3348,8 +3377,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 970,
-        "y": 2280,
+        "x": 1010,
+        "y": 2340,
         "wires": []
     },
     {
@@ -3369,8 +3398,8 @@
         "topic": "",
         "payload": "1647438540000",
         "payloadType": "num",
-        "x": 560,
-        "y": 2280,
+        "x": 600,
+        "y": 2340,
         "wires": [
             [
                 "a030ecc9f1ee9bf2",
@@ -3412,8 +3441,8 @@
         "topic": "",
         "payload": "2022-04-22 20:00",
         "payloadType": "str",
-        "x": 570,
-        "y": 2140,
+        "x": 610,
+        "y": 2200,
         "wires": [
             [
                 "b81337e6f0d45f20"
@@ -3563,8 +3592,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 810,
-        "y": 2320,
+        "x": 850,
+        "y": 2380,
         "wires": [
             [
                 "540c4819ab00eb87"
@@ -3676,7 +3705,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 310,
-        "y": 520,
+        "y": 640,
         "wires": [
             [
                 "0e854629aa4dc9fc"
@@ -3705,7 +3734,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 310,
-        "y": 560,
+        "y": 680,
         "wires": [
             [
                 "0e854629aa4dc9fc"
@@ -3734,7 +3763,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 310,
-        "y": 600,
+        "y": 720,
         "wires": [
             [
                 "0e854629aa4dc9fc"
@@ -3852,7 +3881,7 @@
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
-        "topic": "INSERT INTO user(password, lastname, firstName, admin, permission, company) VALUES( Null, \"Doe\", \"John\", false, 2, NULL)",
+        "topic": "INSERT INTO user(password, lastname, firstName, admin, permission, company) VALUES( \"\", \"Doe\", \"John\", false, 2, NULL)",
         "payload": "",
         "payloadType": "date",
         "x": 290,
@@ -3885,10 +3914,502 @@
         "payload": "",
         "payloadType": "date",
         "x": 300,
+        "y": 520,
+        "wires": [
+            [
+                "0e854629aa4dc9fc"
+            ]
+        ]
+    },
+    {
+        "id": "062e1fadf2d0e360",
+        "type": "function",
+        "z": "5d3034dc83dfbde2",
+        "name": "",
+        "func": "var userID = msg.payload.userid;\nvar maschinenName = msg.payload.machineName;\n\nmsg.topic = \"SELECT ( SELECT COUNT(*) FROM user WHERE userid =\"+userID+\") AS userExists, (SELECT count(*) FROM user JOIN machine on (user.permission >= machine.permission) WHERE userid =\"+userID+\" AND machineName='\"+maschinenName+\"') as permissionIsHighEnough\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 2740,
+        "wires": [
+            [
+                "f42b56dc21b643d3"
+            ]
+        ]
+    },
+    {
+        "id": "cfde61dcaec3a913",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "Entering UserID",
+        "props": [
+            {
+                "p": "payload.userid",
+                "v": "1012",
+                "vt": "num"
+            },
+            {
+                "p": "payload.machineName",
+                "v": "Schweißgerät",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 480,
+        "y": 2740,
+        "wires": [
+            [
+                "062e1fadf2d0e360"
+            ]
+        ]
+    },
+    {
+        "id": "2bbd741e1f665a13",
+        "type": "queuedsqlite",
+        "z": "5d3034dc83dfbde2",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "msg.database",
+        "db": "C:\\Users\\User\\.node-red\\projects\\MonitoringApp_Stand22-06-22\\db",
+        "sql": "",
+        "name": "db",
+        "x": 1070,
+        "y": 2740,
+        "wires": [
+            [
+                "9c997e10abe5c642",
+                "2248ea642e4e9d67"
+            ]
+        ]
+    },
+    {
+        "id": "f42b56dc21b643d3",
+        "type": "subflow:2a14cb53da10968a",
+        "z": "5d3034dc83dfbde2",
+        "name": "find db path in local directory",
+        "x": 880,
+        "y": 2740,
+        "wires": [
+            [
+                "2bbd741e1f665a13"
+            ]
+        ]
+    },
+    {
+        "id": "2248ea642e4e9d67",
+        "type": "function",
+        "z": "5d3034dc83dfbde2",
+        "name": "Datenbank Ausgabe auswerten",
+        "func": "var userExists = msg.payload[0].userExists;\nvar permissionIsHighEnough = msg.payload[0].permissionIsHighEnough;\n\n\nif(userExists && permissionIsHighEnough){\n    //ad something to msg.payload like userExists = true and permission = true\n    msg.payload = \"userExists = true and permission = true\"\n} else if(userExists && !permissionIsHighEnough){\n    //ad something to msg.payload like userExists = true and permission = false\n        msg.payload = \"userExists = true and permission = false\"\n} else {\n    //ad something to msg.payload like userExists = false and permission = false\n        msg.payload = \"userExists = false and permission = false\"\n}\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1290,
+        "y": 2740,
+        "wires": [
+            [
+                "9c997e10abe5c642"
+            ]
+        ]
+    },
+    {
+        "id": "2172d5fde8ac17e0",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "INSERT user",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "INSERT INTO user(password, lastname, firstName, admin, permission, company) VALUES( \"janTorge\", \"Jan\", \"Schneider\", true, 5, \"HAW\")",
+        "payload": "",
+        "payloadType": "date",
+        "x": 290,
+        "y": 400,
+        "wires": [
+            [
+                "0e854629aa4dc9fc"
+            ]
+        ]
+    },
+    {
+        "id": "f05dd48957da22f4",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "INSERT machine",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "INSERT INTO machine VALUES(\"Säge\", 1, 1, 0, 0.49, \"Holz\", 1)",
+        "payload": "",
+        "payloadType": "date",
+        "x": 300,
+        "y": 560,
+        "wires": [
+            [
+                "0e854629aa4dc9fc"
+            ]
+        ]
+    },
+    {
+        "id": "03193aab14237227",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "INSERT user",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "INSERT INTO user(password, lastname, firstName, admin, permission, company) VALUES( \"tesla\", \"Elon\", \"Musk\", false, 1, \"Tesla\")",
+        "payload": "",
+        "payloadType": "date",
+        "x": 290,
         "y": 440,
         "wires": [
             [
                 "0e854629aa4dc9fc"
+            ]
+        ]
+    },
+    {
+        "id": "7ad8bbe3127c92b3",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "DELETE FROM machine",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "DELETE FROM machine where machineName=\"Rohrbiegemaschine\"",
+        "payload": "",
+        "payloadType": "date",
+        "x": 590,
+        "y": 880,
+        "wires": [
+            [
+                "0e854629aa4dc9fc"
+            ]
+        ]
+    },
+    {
+        "id": "350471f6999ce3e2",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "Entering machineName",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "test maschine",
+        "payloadType": "str",
+        "x": 540,
+        "y": 1940,
+        "wires": [
+            [
+                "1d0e02b732b0d06f"
+            ]
+        ]
+    },
+    {
+        "id": "1d0e02b732b0d06f",
+        "type": "function",
+        "z": "5d3034dc83dfbde2",
+        "name": "Select Data",
+        "func": "var msg = { \"topic\": \"DELETE FROM machine WHERE machineName = '\"+ msg.payload +\"' \"}\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 1940,
+        "wires": [
+            [
+                "06248a2bf64d415b"
+            ]
+        ]
+    },
+    {
+        "id": "85a052a93c7a8ab9",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "Entering UserID",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "104",
+        "payloadType": "str",
+        "x": 520,
+        "y": 1900,
+        "wires": [
+            [
+                "3739466ce2b865f2"
+            ]
+        ]
+    },
+    {
+        "id": "3739466ce2b865f2",
+        "type": "function",
+        "z": "5d3034dc83dfbde2",
+        "name": "Select Data",
+        "func": "var msg = { \"topic\": \"DELETE FROM user where userid=\" + msg.payload +\"\" };\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 1900,
+        "wires": [
+            [
+                "06248a2bf64d415b"
+            ]
+        ]
+    },
+    {
+        "id": "87799b4390aa606e",
+        "type": "comment",
+        "z": "5d3034dc83dfbde2",
+        "name": "Löschen von Nutzern",
+        "info": "",
+        "x": 300,
+        "y": 1900,
+        "wires": []
+    },
+    {
+        "id": "eb5a35ac0a1bb824",
+        "type": "comment",
+        "z": "5d3034dc83dfbde2",
+        "name": "Löschen von Machinen",
+        "info": "",
+        "x": 300,
+        "y": 1940,
+        "wires": []
+    },
+    {
+        "id": "85035fb37cdfb259",
+        "type": "function",
+        "z": "5d3034dc83dfbde2",
+        "name": "Select Data",
+        "func": "var msg = { \"topic\": \"UPDATE machine SET permission=\"+msg.payload.permission+\", setUpTime=\"+msg.payload.setUpTime+\", cost=\"+msg.payload.cost+\", materialConsumption=\"+msg.payload.materialConsumption+\", area='\"+msg.payload.area+\"', factor=\"+msg.payload.factor+\" WHERE machineName = '\"+msg.payload.machineName+\"'\" };\n\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 2020,
+        "wires": [
+            [
+                "06248a2bf64d415b"
+            ]
+        ]
+    },
+    {
+        "id": "e777d4d2b280a417",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "Entering the values",
+        "props": [
+            {
+                "p": "payload.userid",
+                "v": "102",
+                "vt": "num"
+            },
+            {
+                "p": "payload.password",
+                "v": "Jan",
+                "vt": "str"
+            },
+            {
+                "p": "payload.lastname",
+                "v": "Schneider",
+                "vt": "str"
+            },
+            {
+                "p": "payload.firstName",
+                "v": "Jan",
+                "vt": "str"
+            },
+            {
+                "p": "payload.admin",
+                "v": "false",
+                "vt": "str"
+            },
+            {
+                "p": "payload.permission",
+                "v": "3",
+                "vt": "num"
+            },
+            {
+                "p": "payload.company",
+                "v": "HAW Hamburg",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 530,
+        "y": 1980,
+        "wires": [
+            [
+                "c4c3377a728fe17b"
+            ]
+        ]
+    },
+    {
+        "id": "c4c3377a728fe17b",
+        "type": "function",
+        "z": "5d3034dc83dfbde2",
+        "name": "Select Data",
+        "func": "var msg = { \"topic\": \"UPDATE user SET password='\"+msg.payload.password+\"', lastname='\"+msg.payload.lastname+\"', firstName='\"+msg.payload.firstName+\"', admin=\"+msg.payload.admin+\", permission=\"+msg.payload.permission+\", company='\"+msg.payload.company+\"' WHERE userid = \"+msg.payload.userid+\"\" };\n\nreturn msg;\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 1980,
+        "wires": [
+            [
+                "06248a2bf64d415b"
+            ]
+        ]
+    },
+    {
+        "id": "4257800a0f41f52d",
+        "type": "comment",
+        "z": "5d3034dc83dfbde2",
+        "name": "Update von Nutzern",
+        "info": "",
+        "x": 290,
+        "y": 1980,
+        "wires": []
+    },
+    {
+        "id": "2e2396b5a1c54d65",
+        "type": "comment",
+        "z": "5d3034dc83dfbde2",
+        "name": "Update von Machinen",
+        "info": "",
+        "x": 300,
+        "y": 2020,
+        "wires": []
+    },
+    {
+        "id": "c9e2e364f33fb8e2",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "Entering the values",
+        "props": [
+            {
+                "p": "payload.machineName",
+                "v": "Säge",
+                "vt": "str"
+            },
+            {
+                "p": "payload.permission",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "p": "payload.setUpTime",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "p": "payload.cost",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "p": "payload.materialConsumption",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "p": "payload.area",
+                "v": "Holz",
+                "vt": "str"
+            },
+            {
+                "p": "payload.factor",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 530,
+        "y": 2020,
+        "wires": [
+            [
+                "85035fb37cdfb259"
             ]
         ]
     }

@@ -72,18 +72,18 @@
             </a>
         </li>
 
-<!--        &lt;!&ndash; Nav Item - Monitoring &ndash;&gt;
+        <!-- Nav Item - Monitoring -->
         <li class="nav-item active">
             <a class="nav-link" href="monitoring.html">
                 <i class="fas fa-fw fa-cog"></i>
                 <span>Monitoring</span>
             </a>
-        </li>-->
+        </li>
 
-        <!--        &lt;!&ndash; Sidebar Toggler (Sidebar) &ndash;&gt;-->
-        <!--        <div class="text-center d-none d-md-inline">-->
-        <!--            <button class="rounded-circle border-0" id="sidebarToggle"></button>-->
-        <!--        </div>-->
+                <!-- Sidebar Toggler (Sidebar) -->
+                <div class="text-center d-none d-md-inline">
+                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+                </div>
 
     </ul>
     <!-- End of Sidebar -->
@@ -159,6 +159,94 @@
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
+                <div class="container-fluid">
+                    <div class="card shadow mb-4">
+                        
+                        <div class="card-body">
+                            <style>
+
+                                .scrollbar1 {
+                                    position: relative;
+                                    height: 120px;
+                                    overflow: auto;
+                                }
+                                .scrollbar2 {
+                                    position: relative;
+                                    height: 300px;
+                                    overflow: auto;
+                                }
+                            </style>
+                            <p class="mb-4">Aktueller Monat <span class="mb-4"></span></p>
+
+                            <!-- Data Table -->
+                            <div class="table-responsive scrollbar1 mb3 ps ps--active-y">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                    <tr>
+                                        <th>Maschinenstunden</th>
+                                        <th>Wattstunden</th>
+                                        <th>Stromkosten</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>65 h</td>
+                                        <td>10 kWh</td>
+                                        <td>500 €</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Date Picker -->
+                            <div class="justify-content-between mt-4" id="d">
+                                Alle Einträge von
+                                <input type = "date" id = "date1" class="ml-2 mr-2">
+                                <script>
+                                    document.getElementById("date1").valueAsDate = new Date() // Displays current date
+                                </script>
+                                bis
+                                <input type = "date" id = "date2" class="ml-2 mr-2">
+                            </div>
+                            
+                            <!-- Liste / Tabelle -->
+                            <div class="table-responsive scrollbar2 mb3 mt-4 ps ps--active-y">
+                                <ul class="list-group">
+                                    <li class="list-group-item"> 
+                                        - Lorem ipsum dolor sit amet, consetetur sadipscing elitr
+                                    </li>
+                                    <li class="list-group-item">
+                                        - Lorem ipsum dolor sit amet, consetetur sadipscing elitr
+                                    </li>
+                                    <li class="list-group-item">
+                                        - Lorem ipsum dolor sit amet, consetetur sadipscing elitr
+                                    </li>
+                                    <li class="list-group-item">
+                                        - Lorem ipsum dolor sit amet, consetetur sadipscing elitr
+                                    </li>
+                                    <li class="list-group-item">
+                                        - Lorem ipsum dolor sit amet, consetetur sadipscing elitr
+                                    </li>
+                                    <li class="list-group-item">
+                                        - Lorem ipsum dolor sit amet, consetetur sadipscing elitr
+                                    </li>
+                                    <li class="list-group-item">
+                                        - Lorem ipsum dolor sit amet, consetetur sadipscing elitr
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            
+                            <div class="mt-4">
+                                <p> CSV Export </p>
+                                <button class="btn btn-primary mr-2"><i class="fas fa-download"></i> Ausgewählter Zeitraum</button>
+                                <button class="btn btn-primary ml-2"><i class="fas fa-download"></i> Gesamter Zeitraum</button>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
 
 
             </div>

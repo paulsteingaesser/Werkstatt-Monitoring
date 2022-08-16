@@ -61,6 +61,7 @@ window.fnSendToNR = function fnSendToNR(payload) {
         'payload': payload,
     })
 }
+
 var username;
 var password;
 window.login = function login() {
@@ -73,11 +74,20 @@ window.login = function login() {
     })
 }
 
+function navigator(boo) {
+   if (boo){
+        window.location.href="../übersicht/übersicht.html";
+        console.log("Login succeeded as Admin");
+    }else{
+        //window.location.href="../übersicht/übersicht.html";
+        console.log("Login succeeded as user");
+    }
+}
 
 // run this function when the document is loaded
 window.onload = function() {
     // Start up uibuilder - see the docs for the optional parameters
-    uibuilder.start()
+    uibuilder.start();
 
     // Listen for incoming messages from Node-RED
     uibuilder.onChange('msg', function(msg){
@@ -86,10 +96,10 @@ window.onload = function() {
    
         if (msg.name == "checkUser"){
                 if(msg.payload == ""){
-                    console.log("User doesn't exist")
+                    console.log("User doesn't exist");
                 }else if (msg.payload[0]["true"] == 1){
                     uibuilder.send({
-                        'topic': "SELECT password FROM user WHERE userID =" +username,
+                        'topic': "SELECT password, admin FROM user WHERE userID =" +username,
                         'name' : "checkPass"
                     })
                     console.log("User exist")
@@ -97,8 +107,8 @@ window.onload = function() {
 
         }else if (msg.name == "checkPass"){
                     if ( msg.payload[0]["password"] ==  password ){
-                        window.location.href="../übersicht/übersicht.html";
-                        console.log("Login succeeded")
+                        navigator(msg.payload[0]["admin"])
+                        localStorage.setItem("username",username);
                     } else {
                         console.log("Password is incorrect")
                     }
