@@ -103,6 +103,21 @@ window.onload = function() {
         // dump the msg as text to the "msg" html element
         const eMsg_2 = document.getElementById('fullName')
         eMsg_2.innerHTML = stringFormat(window.syntaxHighlight(msg.payload[0]["fullName"]))
+
+        // dump the msg as text to the "msg" html element
+        const eMsg_3 = document.getElementById('powerCosts')
+        //TODO replace with value from database
+        eMsg_3.innerHTML = 1.5;
     })
 
+}
+
+function changePowerCosts(){
+    var inputPowerCosts = document.getElementById('inputPowerCosts').value;
+   
+    //TODO Console.log löschen und Wert an Datenbank Senden!
+    console.log(inputPowerCosts);
+
+    const eMsg_2 = document.getElementById('powerCosts')
+    eMsg_2.innerHTML = inputPowerCosts;
 }
