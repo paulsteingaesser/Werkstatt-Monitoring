@@ -97,21 +97,21 @@ window.onload = function() {
         $('#table').bootstrapTable({
             columns: [{
               field: 'userid',
-              title: 'userid',
+              title: 'User-ID',
               sortable: "true"
             },{
                 field: 'lastname',
-                title: 'nachname',
+                title: 'Nachname',
                 sortable: "true"
 
             }, {
                 field: 'firstName',
-                title: 'vorname',
+                title: 'Vorname',
                 sortable: "true"
 
             }, {
                 field: 'admin',
-                title: 'admin',
+                title: 'Admin',
                 sortable: "true",
                 formatter: "adminFormat"
 

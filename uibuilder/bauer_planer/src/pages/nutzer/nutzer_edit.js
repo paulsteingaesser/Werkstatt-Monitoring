@@ -76,17 +76,44 @@ window.fnSendToNR = function fnSendToNR(payload) {
     })
 }
 
+function inputEmptyCheck(inputtxt) {
+    if (inputtxt == null || inputtxt == "") {
+        return false;}
+    else{
+        return true;
+    }
+}
+function inputLetterCheck(inputtxt) {
+    if((!/[^a-zA-Z]/.test(inputtxt))){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
 function addNewUser(){
     var firstName = document.getElementById('inputVorname').value;
     var lastname = document.getElementById('inputNachname').value;
     var password = document.getElementById('inputPasswort').value;
     var company = document.getElementById('inputFirma').value;
     var admin = document.getElementById('inputAdmin').checked;
-    
     var permission = document.getElementById('berechtigungsstufe').value;
-    uibuilder.send({
-        'topic': 'INSERT INTO user(password, lastname, firstName, admin, permission, company) VALUES("'+password+'", "'+lastname+'", "'+firstName+'", '+admin+', '+permission+', "'+company+'")'
-    })
+
+
+    if (!inputEmptyCheck(firstName) || !inputEmptyCheck(lastname)) {
+        alert("Bitte füllen Sie alle Pflichtfelder aus");
+    }else if(!inputLetterCheck(firstName) || !inputLetterCheck(lastname)){
+        alert("Dürfen keine Sonderzeichnen oder Nummern bei Namen eingegeben werden!"); 
+    }else{
+        uibuilder.send({
+            'topic': 'INSERT INTO user(password, lastname, firstName, admin, permission, company) VALUES("'+password+'", "'+lastname+'", "'+firstName+'", '+admin+', '+permission+', "'+company+'")'
+        })
+        alert("Neuer Nutzer ist erforderlich hinzugefügt."); 
+        window.location.href="nutzer.html";
+    }
+
+    
 
 }
 
