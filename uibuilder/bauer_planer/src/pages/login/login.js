@@ -62,27 +62,60 @@ window.fnSendToNR = function fnSendToNR(payload) {
     })
 }
 
+var username;
+var password;
 window.login = function login() {
-    var username=document.getElementById('username').value;
-    var password=document.getElementById('password').value;
+    username=document.getElementById('username').value;
+    password=document.getElementById('password').value;
+
     uibuilder.send({
-        'topic': username,
-        'payload': password,
+        'topic': "SELECT true FROM user WHERE userID ="+username,
+        'name': "checkUser"
     })
 }
 
+function navigator(boo) {
+   if (boo){
+        window.location.href="../übersicht/übersicht.html";
+        console.log("Login succeeded as Admin");
+    }else{
+        //window.location.href="../übersicht/übersicht.html";
+        console.log("Login succeeded as user");
+    }
+}
 
 // run this function when the document is loaded
 window.onload = function() {
     // Start up uibuilder - see the docs for the optional parameters
-    uibuilder.start()
+    uibuilder.start();
 
     // Listen for incoming messages from Node-RED
     uibuilder.onChange('msg', function(msg){
         console.info('[indexjs:uibuilder.onChange] msg received from Node-RED server:', msg.payload)
+   
+   
+        if (msg.name == "checkUser"){
+                if(msg.payload == ""){
+                    console.log("User doesn't exist");
+                }else if (msg.payload[0]["true"] == 1){
+                    uibuilder.send({
+                        'topic': "SELECT password, admin FROM user WHERE userID =" +username,
+                        'name' : "checkPass"
+                    })
+                    console.log("User exist")
+                }
 
+        }else if (msg.name == "checkPass"){
+                    if ( msg.payload[0]["password"] ==  password ){
+                        navigator(msg.payload[0]["admin"])
+                        localStorage.setItem("username",username);
+                    } else {
+                        console.log("Password is incorrect")
+                    }
+                }
+    
         // dump the msg as text to the "msg" html element
-        const eMsg = document.getElementById('msg')
-        eMsg.innerHTML = loginMsg(msg)
+        //const eMsg = document.getElementById('msg')
+        //eMsg.innerHTML = loginMsg(msg)
         })
 }

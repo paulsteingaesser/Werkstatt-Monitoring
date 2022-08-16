@@ -68,18 +68,6 @@ function actionFormatter(index, row) {
     return html.join('')
 }
 
-// Function updates the label for the dropdown menu button with selected item
-$(function(){
-
-    $(".dropdown-menu a").click(function(){
-
-        $(".btn-secondary:first-child").text($(this).text());
-        $(".btn-secondary:first-child").val($(this).text());
-
-    });
-
-});
-
 // Send a message back to Node-RED
 window.fnSendToNR = function fnSendToNR(payload) {
     uibuilder.send({
@@ -92,13 +80,46 @@ window.fnSendToNR = function fnSendToNR(payload) {
 window.onload = function() {
     // Start up uibuilder - see the docs for the optional parameters
     uibuilder.start()
-
+    uibuilder.send({
+        'topic': "SELECT *  FROM machine"
+    })
     // Listen for incoming messages from Node-RED
     uibuilder.onChange('msg', function(msg){
         console.info('[indexjs:uibuilder.onChange] msg received from Node-RED server:', msg)
 
-        // dump the msg as text to the "msg" html element
-        const eMsg = document.getElementById('msg')
-        eMsg.innerHTML = window.syntaxHighlight(msg)
+        $('#table').bootstrapTable({
+            columns: [{
+              field: 'machineName',
+              title: 'Maschine',
+              sortable: "true"
+            },{
+                field: 'permission',
+                title: 'Berechtigungsstufe',
+                sortable: "true"
+            }, {
+                field: 'setUpTime',
+                title: 'Rüstzeit',
+                sortable: "true"
+            }, {
+                field: 'cost',
+                title: 'Kosten',
+                sortable: "true",
+            }, {
+              field: 'materialConsumption',
+              title: 'Materialverbrauch',
+              sortable: "true"
+            }, {
+              field: 'area',
+              title: 'Bereich',
+              sortable: "true"
+            },{
+                field: 'factor',
+                title: 'Faktor',
+                sortable: "true"
+            }],
+
+            data: msg.payload
+          })
     })
+
 }

@@ -68,18 +68,6 @@ function actionFormatter(index, row) {
     return html.join('')
 }
 
-// Function updates the label for the dropdown menu button with selected item
-$(function(){
-
-    $(".dropdown-menu a").click(function(){
-
-        $(".btn-secondary:first-child").text($(this).text());
-        $(".btn-secondary:first-child").val($(this).text());
-
-    });
-
-});
-
 // Send a message back to Node-RED
 window.fnSendToNR = function fnSendToNR(payload) {
     uibuilder.send({
@@ -88,17 +76,58 @@ window.fnSendToNR = function fnSendToNR(payload) {
     })
 }
 
+function adminFormat(value, row, index) {
+    if (value==1){return "Admin";
+}else {
+    return "";
+}}
+ 
 // run this function when the document is loaded
 window.onload = function() {
     // Start up uibuilder - see the docs for the optional parameters
     uibuilder.start()
+    uibuilder.send({
+        'topic': "SELECT *  FROM user"
+    })
 
     // Listen for incoming messages from Node-RED
     uibuilder.onChange('msg', function(msg){
         console.info('[indexjs:uibuilder.onChange] msg received from Node-RED server:', msg)
 
-        // dump the msg as text to the "msg" html element
-        const eMsg = document.getElementById('msg')
-        eMsg.innerHTML = window.syntaxHighlight(msg)
+        $('#table').bootstrapTable({
+            columns: [{
+              field: 'userid',
+              title: 'userid',
+              sortable: "true"
+            },{
+                field: 'lastname',
+                title: 'nachname',
+                sortable: "true"
+
+            }, {
+                field: 'firstName',
+                title: 'vorname',
+                sortable: "true"
+
+            }, {
+                field: 'admin',
+                title: 'admin',
+                sortable: "true",
+                formatter: "adminFormat"
+
+            }, {
+              field: 'permission',
+              title: 'Berechtigungsstufe',
+              sortable: "true"
+
+            }, {
+              field: 'company',
+              title: 'Firma',
+              sortable: "true"
+
+            }],
+            data: msg.payload
+          })
+
     })
 }

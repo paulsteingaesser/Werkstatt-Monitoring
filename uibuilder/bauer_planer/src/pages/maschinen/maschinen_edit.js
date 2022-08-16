@@ -68,24 +68,28 @@ function actionFormatter(index, row) {
     return html.join('')
 }
 
-// Function updates the label for the dropdown menu button with selected item
-$(function(){
-
-    $(".dropdown-menu a").click(function(){
-
-        $(".btn-secondary:first-child").text($(this).text());
-        $(".btn-secondary:first-child").val($(this).text());
-
-    });
-
-});
-
 // Send a message back to Node-RED
 window.fnSendToNR = function fnSendToNR(payload) {
     uibuilder.send({
         'topic': 'msg-from-uibuilder-front-end',
         'payload': payload,
     })
+}
+
+function addNewMachine(){
+    var machineName = document.getElementById('inputMaschinenname').value;
+    var permission = document.getElementById('berechtigungsstufe').value;
+    var setUpTime = document.getElementById('inputRüstzeiten').value;
+    var cost = document.getElementById('inputKosten').value;
+    var materialConsumption = document.getElementById('inputMaterialverbrauch').value;
+    var area = document.getElementById('inputBereich').value;
+    var factor = document.getElementById('inputFaktor').value;
+
+    uibuilder.send({
+        'topic': 'INSERT INTO machine VALUES("'+machineName+'", "'+permission+'", "'+setUpTime+'", "'+cost+'", "'+materialConsumption+'", "'+area+'", "'+factor+'")'
+    })
+
+    alert("Neue Maschine ist hinzufügt");
 }
 
 // run this function when the document is loaded
@@ -97,8 +101,5 @@ window.onload = function() {
     uibuilder.onChange('msg', function(msg){
         console.info('[indexjs:uibuilder.onChange] msg received from Node-RED server:', msg)
 
-        // dump the msg as text to the "msg" html element
-        const eMsg = document.getElementById('msg')
-        eMsg.innerHTML = window.syntaxHighlight(msg)
     })
 }

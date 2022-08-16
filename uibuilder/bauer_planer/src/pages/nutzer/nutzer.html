@@ -12,13 +12,15 @@
     <title>bauer + planer - Nutzer</title>
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../../css/styles.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.20.2/dist/bootstrap-table.min.css">
 
 </head>
 
@@ -31,7 +33,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../übersicht/übersicht.html">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -43,7 +45,7 @@
 
         <!-- Nav Item - Übersicht -->
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="../übersicht/übersicht.html">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Übersicht</span></a>
         </li>
@@ -66,7 +68,7 @@
 
         <!-- Nav Item - Maschinen -->
         <li class="nav-item">
-            <a class="nav-link" href="maschinen.html">
+            <a class="nav-link" href="../maschinen/maschinen.html">
                 <i class="fas fa-fw fa-cog"></i>
                 <span>Maschinen</span>
             </a>
@@ -74,7 +76,7 @@
 
         <!-- Nav Item - Monitoring -->
         <li class="nav-item">
-            <a class="nav-link" href="monitoring.html">
+            <a class="nav-link" href="../monitoring/monitoring.html">
                 <i class="fas fa-fw fa-cog"></i>
                 <span>Monitoring</span>
             </a>
@@ -96,6 +98,7 @@
 
             <!-- Topbar -->
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <h1 class="h3 mb-0 text-gray-800">Nutzerverwaltung</h1>
 
                 <!-- Sidebar Toggle (Topbar) -->
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -132,23 +135,12 @@
 
                     <div class="topbar-divider d-none d-sm-block"></div>
 
-                    <!-- Nav Item - User Information -->
-                    <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">John Doe</span>
-                            <img class="img-profile rounded-circle"
-                                 src="img/undraw_profile.svg">
+                     <!-- Nav Item - User Information -->
+                     <li class="nav-item dropdown no-arrow">
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Logout
                         </a>
-                        <!-- Dropdown - User Information -->
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                             aria-labelledby="userDropdown">
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Logout
-                            </a>
-                        </div>
                     </li>
 
                 </ul>
@@ -158,31 +150,36 @@
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
+                <div class="card shadow mb-4">
+                    <table id="table" 
+                    data-pagination="true"
+                    data-search="false"                   
+                    data-height="75%"
+                    data-show-footer="true">
+                    </table>
+                </div>
+                <a href="nutzer_edit.html" class="mt-4 btn btn-primary" role="button">Nutzer hinzufügen</a>
+                </div>
 
-                <!-- Page Heading -->
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Nutzerverwaltung</h1>
+            
+                
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; bauer + planer 2022</span>
                 </div>
             </div>
-        </div>
+        </footer>
+        <!-- End of Footer -->
+
     </div>
-    <!-- /.container-fluid -->
-
-</div>
-<!-- End of Main Content -->
-
-<!-- Footer -->
-<footer class="sticky-footer bg-white">
-    <div class="container my-auto">
-        <div class="copyright text-center my-auto">
-            <span>Copyright &copy; bauer + planer 2022</span>
-        </div>
-    </div>
-</footer>
-<!-- End of Footer -->
-
-</div>
-<!-- End of Content Wrapper -->
+    <!-- End of Content Wrapper -->
 
 </div>
 <!-- End of Page Wrapper -->
@@ -206,33 +203,29 @@
             <div class="modal-body">Wählen Sie "Abmelden", wenn Sie bereit sind, Ihre aktuelle Sitzung zu beenden.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Abbrechen</button>
-                <a class="btn btn-primary" href="login.html">Abmelden</a>
+                <a class="btn btn-primary" href="../login/login.html">Abmelden</a>
             </div>
         </div>
     </div>
 </div>
 
 <!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../vendor/jquery/jquery.min.js"></script>
+<script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
 
-<!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
+<!-- Popper-->
+<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
 
-<!-- Page level plugins -->
-<script src="vendor/chart.js/Chart.min.js"></script>
-
-<!-- Page level custom scripts -->
-<script src="js/demo/chart-area-demo.js"></script>
-<script src="js/demo/chart-pie-demo.js"></script>
+<!-- Bootstrap Table-->
+<script src="https://unpkg.com/bootstrap-table@1.20.2/dist/bootstrap-table.min.js"></script>
 
 <!-- #region Supporting Scripts. These MUST be in the right order. Note no leading / -->
-<script src="../uibuilder/vendor/socket.io/socket.io.js">/* REQUIRED: Socket.IO is loaded only once for all instances. Without this, you don't get a websocket connection */</script>
-<script src="./uibuilderfe.min.js">/* REQUIRED: remove 'min.' to use dev version */</script>
-<script src="./index.js">/* OPTIONAL: Put your custom code here */</script>
+<script src="../../../uibuilder/vendor/socket.io/socket.io.js">/* REQUIRED: Socket.IO is loaded only once for all instances. Without this, you don't get a websocket connection */</script>
+<script src="../../uibuilderfe.min.js">/* REQUIRED: remove 'min.' to use dev version */</script>
+<script src="nutzer.js">/* OPTIONAL: Put your custom code here */</script>
 <!-- #endregion -->
 
 </body>

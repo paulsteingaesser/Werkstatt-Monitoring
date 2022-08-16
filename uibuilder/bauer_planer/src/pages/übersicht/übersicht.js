@@ -68,18 +68,6 @@ function actionFormatter(index, row) {
     return html.join('')
 }
 
-// Function updates the label for the dropdown menu button with selected item
-$(function(){
-
-    $(".dropdown-menu a").click(function(){
-
-        $(".btn-secondary:first-child").text($(this).text());
-        $(".btn-secondary:first-child").val($(this).text());
-
-    });
-
-});
-
 // Send a message back to Node-RED
 window.fnSendToNR = function fnSendToNR(payload) {
     uibuilder.send({
@@ -88,17 +76,33 @@ window.fnSendToNR = function fnSendToNR(payload) {
     })
 }
 
+function stringFormat(str) {
+    return str.replace(/['"]+/g, '');
+}
+ 
 // run this function when the document is loaded
 window.onload = function() {
+    console.log(localStorage.getItem("username"));
     // Start up uibuilder - see the docs for the optional parameters
     uibuilder.start()
-
+    uibuilder.send({
+        'topic': "SELECT ( SELECT COUNT(*) FROM user) AS numberOfUsers,( SELECT firstName || ' ' || lastname FROM user where userid = "+ localStorage.getItem("username") +") AS fullName, (SELECT COUNT(*) FROM machine) AS numberOfMachines"
+    })
     // Listen for incoming messages from Node-RED
     uibuilder.onChange('msg', function(msg){
         console.info('[indexjs:uibuilder.onChange] msg received from Node-RED server:', msg)
 
         // dump the msg as text to the "msg" html element
-        const eMsg = document.getElementById('msg')
-        eMsg.innerHTML = window.syntaxHighlight(msg)
+        const eMsg_0 = document.getElementById('numberOfUsers')
+        eMsg_0.innerHTML = window.syntaxHighlight(msg.payload[0]["numberOfUsers"])
+
+        // dump the msg as text to the "msg" html element
+        const eMsg_1 = document.getElementById('numberOfMachines')
+        eMsg_1.innerHTML = window.syntaxHighlight(msg.payload[0]["numberOfMachines"])
+
+        // dump the msg as text to the "msg" html element
+        const eMsg_2 = document.getElementById('fullName')
+        eMsg_2.innerHTML = stringFormat(window.syntaxHighlight(msg.payload[0]["fullName"]))
     })
+
 }
