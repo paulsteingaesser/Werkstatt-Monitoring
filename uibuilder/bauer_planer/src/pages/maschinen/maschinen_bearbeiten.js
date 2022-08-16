@@ -76,75 +76,39 @@ window.fnSendToNR = function fnSendToNR(payload) {
     })
 }
 
-function adminFormat(value, row, index) {
-    if (value==1){return "Admin";
-}else {
-    return "";
-}}
- 
+function addNewMachine(){
+    var machineName = document.getElementById('inputMaschinenname').value;
+    var permission = document.getElementById('berechtigungsstufe').value;
+    var setUpTime = document.getElementById('inputRüstzeiten').value;
+    var cost = document.getElementById('inputKosten').value;
+    var materialConsumption = document.getElementById('inputMaterialverbrauch').value;
+    var area = document.getElementById('inputBereich').value;
+    var factor = document.getElementById('inputFaktor').value;
+
+    uibuilder.send({
+        'topic': 'INSERT INTO machine VALUES("'+machineName+'", "'+permission+'", "'+setUpTime+'", "'+cost+'", "'+materialConsumption+'", "'+area+'", "'+factor+'")'
+    })
+
+    alert("Neue Maschine ist hinzufügt");
+}
+
 // run this function when the document is loaded
 window.onload = function() {
     // Start up uibuilder - see the docs for the optional parameters
     uibuilder.start()
-    uibuilder.send({
-        'topic': "SELECT *  FROM user"
-    })
 
     // Listen for incoming messages from Node-RED
     uibuilder.onChange('msg', function(msg){
         console.info('[indexjs:uibuilder.onChange] msg received from Node-RED server:', msg)
 
-        $('#table').bootstrapTable({
-            columns: [{
-                field: 'userid',
-                title: 'userid',
-                sortable: "true"
-            },{
-                field: 'lastname',
-                title: 'nachname',
-                sortable: "true"
-
-            }, {
-                field: 'firstName',
-                title: 'vorname',
-                sortable: "true"
-
-            }, {
-                field: 'admin',
-                title: 'admin',
-                sortable: "true",
-                formatter: "adminFormat"
-
-            }, {
-                field: 'permission',
-                title: 'Berechtigungsstufe',
-                sortable: "true"
-
-            }, {
-                field: 'company',
-                title: 'Firma',
-                sortable: "true"
-
-            }, {
-                field: 'operate',
-                title: 'Bearbeiten',
-                align: 'left',
-                valign: 'middle',
-                clickToSelect: false,
-                formatter : function(value,row,index) {
-                    var editButton = '<a href="nutzer_bearbeiten.html?userid='+row.userid+'" type="button" class="mr-4 btn btn-primary" role="button" ><i class="fas fa-wrench" aria-hidden="true"></i></a>';
-                    var deleteButton = '<button onclick="deleteUser('+row.userid+')" type="button" class="btn btn-primary"><i class="fas fa-trash" aria-hidden="true"></i></button>'
-                    return editButton + deleteButton;
-
-                }
-
-            }],
-            data: msg.payload
-          })
-
     })
 }
 
-function deleteUser(userid){
-    console.log(userid);
-}
+document.body.addEventListener('keypress', function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        
+        document.getElementById("addMachineButton").click();
+    }
+});

@@ -186,7 +186,7 @@
                     <div>
                         <!-- Edit and Remove Buttons -->
                         <a href="nutzer.html" type="button" class="mr-4 btn btn-primary" role="button" ><i class="fas fa-arrow-left"></i></a>
-                        <button id="addUserButton" onclick="addNewUser()" type="button" class="btn btn-primary"><i class="fas fa-plus"></i></button>
+                        <button id="addUserButton" onclick="editUser()" type="button" class="btn btn-primary"><i class="fas fa-check"></i></button>
                     </div>
                 </div>
             </div>
@@ -255,7 +255,7 @@
 <!-- #region Supporting Scripts. These MUST be in the right order. Note no leading / -->
 <script src="../../../uibuilder/vendor/socket.io/socket.io.js">/* REQUIRED: Socket.IO is loaded only once for all instances. Without this, you don't get a websocket connection */</script>
 <script src="../../uibuilderfe.min.js">/* REQUIRED: remove 'min.' to use dev version */</script>
-<script src="nutzer_edit.js">/* OPTIONAL: Put your custom code here */</script>
+<script src="nutzer_bearbeiten.js">/* OPTIONAL: Put your custom code here */</script>
 <!-- #endregion -->
 
 </body>

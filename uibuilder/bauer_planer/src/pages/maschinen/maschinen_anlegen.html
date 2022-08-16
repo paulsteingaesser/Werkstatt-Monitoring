@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>bauer + planer - Nutzer</title>
+    <title>bauer + planer - Maschinen</title>
 
     <!-- Custom fonts for this template-->
     <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -59,16 +59,16 @@
         <!--        </div>-->
 
         <!-- Nav Item - Nutzer -->
-        <li class="nav-item active">
-            <a class="nav-link" href="nutzer.html">
+        <li class="nav-item">
+            <a class="nav-link" href="../nutzer/nutzer.html">
                 <i class="fas fa-fw fa-cog"></i>
                 <span>Nutzer</span>
             </a>
         </li>
 
         <!-- Nav Item - Maschinen -->
-        <li class="nav-item">
-            <a class="nav-link" href="../maschinen/maschinen.html">
+        <li class="nav-item active">
+            <a class="nav-link" href="maschinen.html">
                 <i class="fas fa-fw fa-cog"></i>
                 <span>Maschinen</span>
             </a>
@@ -82,10 +82,10 @@
             </a>
         </li>
 
-        <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
+                <!-- Sidebar Toggler (Sidebar) -->
+                <div class="text-center d-none d-md-inline">
+                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+                </div>
 
     </ul>
     <!-- End of Sidebar -->
@@ -98,7 +98,7 @@
 
             <!-- Topbar -->
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                <h1 class="h3 mb-0 text-gray-800">Nutzerverwaltung</h1>
+                <h1 class="h3 mb-0 text-gray-800">Maschine hinzufügen</h1>
 
                 <!-- Sidebar Toggle (Topbar) -->
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -135,8 +135,8 @@
 
                     <div class="topbar-divider d-none d-sm-block"></div>
 
-                     <!-- Nav Item - User Information -->
-                     <li class="nav-item dropdown no-arrow">
+                    <!-- Nav Item - User Information -->
+                    <li class="nav-item dropdown no-arrow">
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                             Logout
@@ -150,19 +150,52 @@
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
-                <div class="card shadow mb-4">
-                    <table id="table" 
-                        data-pagination="true"
-                        data-search="false"                   
-                        data-height="75%"
-                        data-show-footer="true">
-                    </table>
+                <div class="card shadow p-4">
+                    <!-- Form -->
+                    <form>
+                        <div class="form-group">
+                            <label for="inputMaschinenname">Maschinenname</label>
+                            <input type="text" class="form-control" id="inputMaschinenname" placeholder="Maschinenname">
+                        </div>
+                        <!-- Dropdown Menu -->
+                            <div class="mb-4 dropdown">
+                                <label style="margin-right: 10px;"> Berechtigungsstufe: </label>
+                                <select  class="btn btn-secondary dropdown-toggle" id="berechtigungsstufe">
+                                    <option class="dropdown-item" value="1">1</option>
+                                    <option class="dropdown-item" value="2">2</option>
+                                    <option class="dropdown-item"  value="3">3</option>
+                                </select>
+                            </div>
+                  
+                        <div class="form-group">
+                            <label for="inputRüstzeiten">Rüstzeiten (wird immer addiert)</label>
+                            <input type="text" class="form-control" id="inputRüstzeiten" placeholder="Rüstzeiten">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputKosten">Kosten (optional)</label>
+                            <input type="text" class="form-control" id="inputKosten" placeholder="Watt/h, Fixkosten oder Materialkosten">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputMaterialverbrauch">Materialverbrauch (optional)</label>
+                            <input type="text" class="form-control" id="inputMaterialverbrauch" placeholder="Verschleiß oder Verbauch/Zeit">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputBereich">Bereich (optional)</label>
+                            <input type="text" class="form-control" id="inputBereich" placeholder="Raum/Bereich">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputFaktor">Faktor (optional)</label>
+                            <input type="text" class="form-control" id="inputFaktor" placeholder="Faktor">
+                        </div>
+                    </form>
+                    <div>
+                        <!-- Edit and Remove Buttons -->
+                        <a href="maschinen.html" type="button" class="mr-4 btn btn-primary" role="button" ><i class="fas fa-arrow-left"></i></a>
+                        <button id="addMachineButton" onclick="addNewMachine()" type="button" class="btn btn-primary"><i class="fas fa-plus"></i></button>
+                    </div>
                 </div>
-                <a href="nutzer_anlegen.html" class="mt-4 btn btn-primary" role="button">Nutzer hinzufügen</a>
-                </div>
+            </div>
 
-            
-                
             <!-- /.container-fluid -->
 
         </div>
@@ -225,7 +258,7 @@
 <!-- #region Supporting Scripts. These MUST be in the right order. Note no leading / -->
 <script src="../../../uibuilder/vendor/socket.io/socket.io.js">/* REQUIRED: Socket.IO is loaded only once for all instances. Without this, you don't get a websocket connection */</script>
 <script src="../../uibuilderfe.min.js">/* REQUIRED: remove 'min.' to use dev version */</script>
-<script src="nutzer.js">/* OPTIONAL: Put your custom code here */</script>
+<script src="maschinen_anlegen.js">/* OPTIONAL: Put your custom code here */</script>
 <!-- #endregion -->
 
 </body>

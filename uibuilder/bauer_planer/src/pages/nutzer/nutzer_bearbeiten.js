@@ -76,75 +76,60 @@ window.fnSendToNR = function fnSendToNR(payload) {
     })
 }
 
-function adminFormat(value, row, index) {
-    if (value==1){return "Admin";
-}else {
-    return "";
-}}
- 
+function editUser(){
+    var firstName = document.getElementById('inputVorname').value;
+    var lastname = document.getElementById('inputNachname').value;
+    var password = document.getElementById('inputPasswort').value;
+    var company = document.getElementById('inputFirma').value;
+    var admin = document.getElementById('inputAdmin').checked;
+    
+    var permission = document.getElementById('berechtigungsstufe').value;
+
+    //TODO Hier einmal die Daten an die Datenbank schicken und den Eintrag updaten
+    /*
+    uibuilder.send({
+        'topic': 'INSERT INTO user(password, lastname, firstName, admin, permission, company) VALUES("'+password+'", "'+lastname+'", "'+firstName+'", '+admin+', '+permission+', "'+company+'")'
+    })
+    */
+}
+
 // run this function when the document is loaded
 window.onload = function() {
     // Start up uibuilder - see the docs for the optional parameters
     uibuilder.start()
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const userid = urlParams.get('userid')
+    console.log("Test: "+userid);
+
+    
     uibuilder.send({
-        'topic': "SELECT *  FROM user"
+        'topic': "SELECT * FROM user WHERE userid=" + userid
     })
+    
 
     // Listen for incoming messages from Node-RED
     uibuilder.onChange('msg', function(msg){
         console.info('[indexjs:uibuilder.onChange] msg received from Node-RED server:', msg)
 
-        $('#table').bootstrapTable({
-            columns: [{
-                field: 'userid',
-                title: 'userid',
-                sortable: "true"
-            },{
-                field: 'lastname',
-                title: 'nachname',
-                sortable: "true"
 
-            }, {
-                field: 'firstName',
-                title: 'vorname',
-                sortable: "true"
+        document.getElementById('inputVorname').value = msg.payload[0].firstName;
+        document.getElementById('inputNachname').value = msg.payload[0].lastname;
+        document.getElementById('inputPasswort').value = msg.payload[0].password;
+        document.getElementById('inputFirma').value = msg.payload[0].company;
+        document.getElementById('inputAdmin').checked = msg.payload[0].admin;
+        document.getElementById('berechtigungsstufe').value = msg.payload[0].permission;
 
-            }, {
-                field: 'admin',
-                title: 'admin',
-                sortable: "true",
-                formatter: "adminFormat"
-
-            }, {
-                field: 'permission',
-                title: 'Berechtigungsstufe',
-                sortable: "true"
-
-            }, {
-                field: 'company',
-                title: 'Firma',
-                sortable: "true"
-
-            }, {
-                field: 'operate',
-                title: 'Bearbeiten',
-                align: 'left',
-                valign: 'middle',
-                clickToSelect: false,
-                formatter : function(value,row,index) {
-                    var editButton = '<a href="nutzer_bearbeiten.html?userid='+row.userid+'" type="button" class="mr-4 btn btn-primary" role="button" ><i class="fas fa-wrench" aria-hidden="true"></i></a>';
-                    var deleteButton = '<button onclick="deleteUser('+row.userid+')" type="button" class="btn btn-primary"><i class="fas fa-trash" aria-hidden="true"></i></button>'
-                    return editButton + deleteButton;
-
-                }
-
-            }],
-            data: msg.payload
-          })
-
+        document.getElementById('inputPasswort').type = "text";
     })
 }
 
-function deleteUser(userid){
-    console.log(userid);
-}
+document.body.addEventListener('keypress', function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        
+        document.getElementById("addUserButton").click();
+    }
+});
