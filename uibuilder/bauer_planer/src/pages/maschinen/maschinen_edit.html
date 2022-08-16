@@ -137,21 +137,10 @@
 
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">John Doe</span>
-                            <img class="img-profile rounded-circle"
-                                 src="../../img/undraw_profile.svg">
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Logout
                         </a>
-                        <!-- Dropdown - User Information -->
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                             aria-labelledby="userDropdown">
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Logout
-                            </a>
-                        </div>
                     </li>
 
                 </ul>
@@ -169,16 +158,15 @@
                             <input type="text" class="form-control" id="inputMaschinenname" placeholder="Maschinenname">
                         </div>
                         <!-- Dropdown Menu -->
-                        <div class="mb-4 dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Berechtigungsstufe
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">1</a>
-                                <a class="dropdown-item" href="#">2</a>
-                                <a class="dropdown-item" href="#">3</a>
+                            <div class="mb-4 dropdown">
+                                <label style="margin-right: 10px;"> Berechtigungsstufe: </label>
+                                <select  class="btn btn-secondary dropdown-toggle" id="berechtigungsstufe">
+                                    <option class="dropdown-item" value="1">1</option>
+                                    <option class="dropdown-item" value="2">2</option>
+                                    <option class="dropdown-item"  value="3">3</option>
+                                </select>
                             </div>
-                        </div>
+                  
                         <div class="form-group">
                             <label for="inputRüstzeiten">Rüstzeiten (wird immer addiert)</label>
                             <input type="text" class="form-control" id="inputRüstzeiten" placeholder="Rüstzeiten">
@@ -203,7 +191,7 @@
                     <div>
                         <!-- Edit and Remove Buttons -->
                         <a href="maschinen.html" type="button" class="mr-4 btn btn-primary" role="button" ><i class="fas fa-arrow-left"></i></a>
-                        <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i></button>
+                        <button onclick="addNewMachine()" type="button" class="btn btn-primary"><i class="fas fa-plus"></i></button>
                     </div>
                 </div>
             </div>
@@ -270,7 +258,7 @@
 <!-- #region Supporting Scripts. These MUST be in the right order. Note no leading / -->
 <script src="../../../uibuilder/vendor/socket.io/socket.io.js">/* REQUIRED: Socket.IO is loaded only once for all instances. Without this, you don't get a websocket connection */</script>
 <script src="../../uibuilderfe.min.js">/* REQUIRED: remove 'min.' to use dev version */</script>
-<script src="../../index.js">/* OPTIONAL: Put your custom code here */</script>
+<script src="maschinen_edit.js">/* OPTIONAL: Put your custom code here */</script>
 <!-- #endregion -->
 
 </body>

@@ -76,58 +76,30 @@ window.fnSendToNR = function fnSendToNR(payload) {
     })
 }
 
-function adminFormat(value, row, index) {
-    if (value==1){return "Admin";
-}else {
-    return "";
-}}
- 
+function addNewMachine(){
+    var machineName = document.getElementById('inputMaschinenname').value;
+    var permission = document.getElementById('berechtigungsstufe').value;
+    var setUpTime = document.getElementById('inputRüstzeiten').value;
+    var cost = document.getElementById('inputKosten').value;
+    var materialConsumption = document.getElementById('inputMaterialverbrauch').value;
+    var area = document.getElementById('inputBereich').value;
+    var factor = document.getElementById('inputFaktor').value;
+
+    uibuilder.send({
+        'topic': 'INSERT INTO machine VALUES("'+machineName+'", "'+permission+'", "'+setUpTime+'", "'+cost+'", "'+materialConsumption+'", "'+area+'", "'+factor+'")'
+    })
+
+    alert("Neue Maschine ist hinzufügt");
+}
+
 // run this function when the document is loaded
 window.onload = function() {
     // Start up uibuilder - see the docs for the optional parameters
     uibuilder.start()
-    uibuilder.send({
-        'topic': "SELECT *  FROM user"
-    })
 
     // Listen for incoming messages from Node-RED
     uibuilder.onChange('msg', function(msg){
         console.info('[indexjs:uibuilder.onChange] msg received from Node-RED server:', msg)
-
-        $('#table').bootstrapTable({
-            columns: [{
-              field: 'userid',
-              title: 'userid',
-              sortable: "true"
-            },{
-                field: 'lastname',
-                title: 'nachname',
-                sortable: "true"
-
-            }, {
-                field: 'firstName',
-                title: 'vorname',
-                sortable: "true"
-
-            }, {
-                field: 'admin',
-                title: 'admin',
-                sortable: "true",
-                formatter: "adminFormat"
-
-            }, {
-              field: 'permission',
-              title: 'Berechtigungsstufe',
-              sortable: "true"
-
-            }, {
-              field: 'company',
-              title: 'Firma',
-              sortable: "true"
-
-            }],
-            data: msg.payload
-          })
 
     })
 }

@@ -76,58 +76,28 @@ window.fnSendToNR = function fnSendToNR(payload) {
     })
 }
 
-function adminFormat(value, row, index) {
-    if (value==1){return "Admin";
-}else {
-    return "";
-}}
- 
+function addNewUser(){
+    var firstName = document.getElementById('inputVorname').value;
+    var lastname = document.getElementById('inputNachname').value;
+    var password = document.getElementById('inputPasswort').value;
+    var company = document.getElementById('inputFirma').value;
+    var admin = document.getElementById('inputAdmin').checked;
+    
+    var permission = document.getElementById('berechtigungsstufe').value;
+    uibuilder.send({
+        'topic': 'INSERT INTO user(password, lastname, firstName, admin, permission, company) VALUES("'+password+'", "'+lastname+'", "'+firstName+'", '+admin+', '+permission+', "'+company+'")'
+    })
+
+}
+
 // run this function when the document is loaded
 window.onload = function() {
     // Start up uibuilder - see the docs for the optional parameters
     uibuilder.start()
-    uibuilder.send({
-        'topic': "SELECT *  FROM user"
-    })
 
     // Listen for incoming messages from Node-RED
     uibuilder.onChange('msg', function(msg){
         console.info('[indexjs:uibuilder.onChange] msg received from Node-RED server:', msg)
-
-        $('#table').bootstrapTable({
-            columns: [{
-              field: 'userid',
-              title: 'userid',
-              sortable: "true"
-            },{
-                field: 'lastname',
-                title: 'nachname',
-                sortable: "true"
-
-            }, {
-                field: 'firstName',
-                title: 'vorname',
-                sortable: "true"
-
-            }, {
-                field: 'admin',
-                title: 'admin',
-                sortable: "true",
-                formatter: "adminFormat"
-
-            }, {
-              field: 'permission',
-              title: 'Berechtigungsstufe',
-              sortable: "true"
-
-            }, {
-              field: 'company',
-              title: 'Firma',
-              sortable: "true"
-
-            }],
-            data: msg.payload
-          })
 
     })
 }
