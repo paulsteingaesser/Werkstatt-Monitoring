@@ -77,12 +77,14 @@ window.fnSendToNR = function fnSendToNR(payload) {
 }
 
 function inputEmptyCheck(inputtxt) {
-    if (inputtxt == null || inputtxt == "") {
-        return false;}
+    console.log(inputtxt.length);
+    if (inputtxt == null || inputtxt == "" || inputtxt.length <= 2) {
+        return true;}
     else{
-        return true;
+        return false;
     }
 }
+
 function inputLetterCheck(inputtxt) {
     if((!/[^a-zA-Z]/.test(inputtxt))){
         return true;
@@ -90,6 +92,24 @@ function inputLetterCheck(inputtxt) {
     else{
         return false;
     }
+}
+
+function adminPassCheck(admin, password){
+    if(admin && !inputEmptyCheck(password)){
+        return true;
+    }else if (admin && inputEmptyCheck(password)){
+        return false;
+    }else if (!admin && inputEmptyCheck(password)){
+        return true;
+    }else if (!admin && !inputEmptyCheck(password)){
+        return false;
+    }
+}
+function snackbarMessage(str){
+    var x = document.getElementById("snackbar");
+    x.innerHTML= str;
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 }
 
 function addNewUser(){
@@ -101,18 +121,24 @@ function addNewUser(){
     var permission = document.getElementById('berechtigungsstufe').value;
 
 
-    if (!inputEmptyCheck(firstName) || !inputEmptyCheck(lastname)) {
-        alert("Bitte füllen Sie alle Pflichtfelder aus");
+    if (inputEmptyCheck(lastname)) {
+        snackbarMessage("Ein Pflichtfeld ist nicht ausgefüllt!");
     }else if(!inputLetterCheck(firstName) || !inputLetterCheck(lastname)){
-        alert("Dürfen keine Sonderzeichnen oder Nummern bei Namen eingegeben werden!"); 
+        snackbarMessage("Dürfen keine Sonderzeichnen oder Nummern bei den Namen eingegeben werden!"); 
+    }else if(!adminPassCheck(admin, password)){
+        snackbarMessage("Passwort & Admin probleme!"); 
+
     }else{
         uibuilder.send({
             'topic': 'INSERT INTO user(password, lastname, firstName, admin, permission, company) VALUES("'+password+'", "'+lastname+'", "'+firstName+'", '+admin+', '+permission+', "'+company+'")'
         })
-        alert("Neuer Nutzer ist erforderlich hinzugefügt."); 
-        window.location.href="nutzer.html";
-    }
+        snackbarMessage("Neuer Nutzer ist erforderlich hinzugefügt."); 
+        setTimeout(function() { window.location.href="nutzer.html"; }, 1000);
 
+        
+    }
+ 
+   
     
 
 }

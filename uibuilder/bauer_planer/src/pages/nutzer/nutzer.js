@@ -146,5 +146,7 @@ window.onload = function() {
 }
 
 function deleteUser(userid){
-    console.log(userid);
+    uibuilder.send({
+        'topic': 'DELETE FROM user where userid=' + userid +''
+    })
 }
