@@ -76,6 +76,33 @@ window.fnSendToNR = function fnSendToNR(payload) {
     })
 }
 
+function inputEmptyCheck(inputtxt) {
+    console.log(inputtxt.length);
+    if (inputtxt == null || inputtxt == "" || inputtxt.length <= 2) {
+        return true;}
+    else{
+        return false;
+    }
+}
+
+function inputLetterCheck(inputtxt) {
+    if((!/[^a-zA-Z]/.test(inputtxt))){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+
+function snackbarMessage(str){
+    var x = document.getElementById("snackbar");
+    x.innerHTML= str;
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+
+
 function addNewMachine(){
     var machineName = document.getElementById('inputMaschinenname').value;
     var permission = document.getElementById('berechtigungsstufe').value;
@@ -85,12 +112,22 @@ function addNewMachine(){
     var area = document.getElementById('inputBereich').value;
     var factor = document.getElementById('inputFaktor').value;
 
-    uibuilder.send({
+    if(inputEmptyCheck(machineName)){
+        snackbarMessage("Maschinenname darf nicht leer oder zu kürz sein!")
+    }
+    else if(inputLetterCheck(setUpTime) || inputLetterCheck(cost) || inputLetterCheck(materialConsumption) || inputLetterCheck(factor)){
+        snackbarMessage("Falsche Werte eingegeben!")
+    }else{ 
+        uibuilder.send({
         'topic': 'INSERT INTO machine VALUES("'+machineName+'", "'+permission+'", "'+setUpTime+'", "'+cost+'", "'+materialConsumption+'", "'+area+'", "'+factor+'")'
-    })
+        })
+        snackbarMessage("Neue Maschine ist hinzufügt");
+        setTimeout(function() { window.location.href="maschinen.html"; }, 1000);
 
-    alert("Neue Maschine ist hinzufügt");
+    }
+   
 }
+
 
 // run this function when the document is loaded
 window.onload = function() {

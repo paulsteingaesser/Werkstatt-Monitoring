@@ -96,22 +96,22 @@ window.onload = function() {
 
         $('#table').bootstrapTable({
             columns: [{
-                field: 'userid',
-                title: 'userid',
-                sortable: "true"
+              field: 'userid',
+              title: 'User-ID',
+              sortable: "true"
             },{
                 field: 'lastname',
-                title: 'nachname',
+                title: 'Nachname',
                 sortable: "true"
 
             }, {
                 field: 'firstName',
-                title: 'vorname',
+                title: 'Vorname',
                 sortable: "true"
 
             }, {
                 field: 'admin',
-                title: 'admin',
+                title: 'Admin',
                 sortable: "true",
                 formatter: "adminFormat"
 
@@ -146,5 +146,7 @@ window.onload = function() {
 }
 
 function deleteUser(userid){
-    console.log(userid);
+    uibuilder.send({
+        'topic': 'DELETE FROM user where userid=' + userid +''
+    })
 }
