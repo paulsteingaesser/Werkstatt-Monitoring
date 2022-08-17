@@ -103,3 +103,12 @@ window.onload = function() {
 
     })
 }
+
+document.body.addEventListener('keypress', function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        
+        document.getElementById("addMachineButton").click();
+    }
+});

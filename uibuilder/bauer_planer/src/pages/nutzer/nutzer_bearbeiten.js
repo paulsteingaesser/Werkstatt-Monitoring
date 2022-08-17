@@ -76,45 +76,21 @@ window.fnSendToNR = function fnSendToNR(payload) {
     })
 }
 
-function inputEmptyCheck(inputtxt) {
-    if (inputtxt == null || inputtxt == "") {
-        return false;}
-    else{
-        return true;
-    }
-}
-function inputLetterCheck(inputtxt) {
-    if((!/[^a-zA-Z]/.test(inputtxt))){
-        return true;
-    }
-    else{
-        return false;
-    }
-}
-
-function addNewUser(){
+function editUser(){
     var firstName = document.getElementById('inputVorname').value;
     var lastname = document.getElementById('inputNachname').value;
     var password = document.getElementById('inputPasswort').value;
     var company = document.getElementById('inputFirma').value;
     var admin = document.getElementById('inputAdmin').checked;
+    
     var permission = document.getElementById('berechtigungsstufe').value;
 
-
-    if (!inputEmptyCheck(firstName) || !inputEmptyCheck(lastname)) {
-        alert("Bitte füllen Sie alle Pflichtfelder aus");
-    }else if(!inputLetterCheck(firstName) || !inputLetterCheck(lastname)){
-        alert("Dürfen keine Sonderzeichnen oder Nummern bei Namen eingegeben werden!"); 
-    }else{
-        uibuilder.send({
-            'topic': 'INSERT INTO user(password, lastname, firstName, admin, permission, company) VALUES("'+password+'", "'+lastname+'", "'+firstName+'", '+admin+', '+permission+', "'+company+'")'
-        })
-        alert("Neuer Nutzer ist erforderlich hinzugefügt."); 
-        window.location.href="nutzer.html";
-    }
-
-    
-
+    //TODO Hier einmal die Daten an die Datenbank schicken und den Eintrag updaten
+    /*
+    uibuilder.send({
+        'topic': 'INSERT INTO user(password, lastname, firstName, admin, permission, company) VALUES("'+password+'", "'+lastname+'", "'+firstName+'", '+admin+', '+permission+', "'+company+'")'
+    })
+    */
 }
 
 // run this function when the document is loaded
@@ -122,9 +98,38 @@ window.onload = function() {
     // Start up uibuilder - see the docs for the optional parameters
     uibuilder.start()
 
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const userid = urlParams.get('userid')
+    console.log("Test: "+userid);
+
+    
+    uibuilder.send({
+        'topic': "SELECT * FROM user WHERE userid=" + userid
+    })
+    
+
     // Listen for incoming messages from Node-RED
     uibuilder.onChange('msg', function(msg){
         console.info('[indexjs:uibuilder.onChange] msg received from Node-RED server:', msg)
 
+
+        document.getElementById('inputVorname').value = msg.payload[0].firstName;
+        document.getElementById('inputNachname').value = msg.payload[0].lastname;
+        document.getElementById('inputPasswort').value = msg.payload[0].password;
+        document.getElementById('inputFirma').value = msg.payload[0].company;
+        document.getElementById('inputAdmin').checked = msg.payload[0].admin;
+        document.getElementById('berechtigungsstufe').value = msg.payload[0].permission;
+
+        document.getElementById('inputPasswort').type = "text";
     })
 }
+
+document.body.addEventListener('keypress', function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        
+        document.getElementById("addUserButton").click();
+    }
+});

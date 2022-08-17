@@ -76,48 +76,64 @@ window.fnSendToNR = function fnSendToNR(payload) {
     })
 }
 
-function stringFormat(str) {
-    return str.replace(/['"]+/g, '');
+function inputEmptyCheck(inputtxt) {
+    if (inputtxt == null || inputtxt == "") {
+        return false;}
+    else{
+        return true;
+    }
 }
- 
+function inputLetterCheck(inputtxt) {
+    if((!/[^a-zA-Z]/.test(inputtxt))){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+function addNewUser(){
+    var firstName = document.getElementById('inputVorname').value;
+    var lastname = document.getElementById('inputNachname').value;
+    var password = document.getElementById('inputPasswort').value;
+    var company = document.getElementById('inputFirma').value;
+    var admin = document.getElementById('inputAdmin').checked;
+    var permission = document.getElementById('berechtigungsstufe').value;
+
+
+    if (!inputEmptyCheck(firstName) || !inputEmptyCheck(lastname)) {
+        alert("Bitte füllen Sie alle Pflichtfelder aus");
+    }else if(!inputLetterCheck(firstName) || !inputLetterCheck(lastname)){
+        alert("Dürfen keine Sonderzeichnen oder Nummern bei Namen eingegeben werden!"); 
+    }else{
+        uibuilder.send({
+            'topic': 'INSERT INTO user(password, lastname, firstName, admin, permission, company) VALUES("'+password+'", "'+lastname+'", "'+firstName+'", '+admin+', '+permission+', "'+company+'")'
+        })
+        alert("Neuer Nutzer ist erforderlich hinzugefügt."); 
+        window.location.href="nutzer.html";
+    }
+
+    
+
+}
+
 // run this function when the document is loaded
 window.onload = function() {
-    console.log(localStorage.getItem("username"));
     // Start up uibuilder - see the docs for the optional parameters
     uibuilder.start()
-    uibuilder.send({
-        'topic': "SELECT ( SELECT COUNT(*) FROM user) AS numberOfUsers,( SELECT firstName || ' ' || lastname FROM user where userid = "+ localStorage.getItem("username") +") AS fullName, (SELECT COUNT(*) FROM machine) AS numberOfMachines"
-    })
+
     // Listen for incoming messages from Node-RED
     uibuilder.onChange('msg', function(msg){
         console.info('[indexjs:uibuilder.onChange] msg received from Node-RED server:', msg)
 
-        // dump the msg as text to the "msg" html element
-        const eMsg_0 = document.getElementById('numberOfUsers')
-        eMsg_0.innerHTML = window.syntaxHighlight(msg.payload[0]["numberOfUsers"])
-
-        // dump the msg as text to the "msg" html element
-        const eMsg_1 = document.getElementById('numberOfMachines')
-        eMsg_1.innerHTML = window.syntaxHighlight(msg.payload[0]["numberOfMachines"])
-
-        // dump the msg as text to the "msg" html element
-        const eMsg_2 = document.getElementById('fullName')
-        eMsg_2.innerHTML = stringFormat(window.syntaxHighlight(msg.payload[0]["fullName"]))
-
-        // dump the msg as text to the "msg" html element
-        const eMsg_3 = document.getElementById('powerCosts')
-        //TODO replace with value from database
-        eMsg_3.innerHTML = 1.5;
     })
-
 }
 
-function changePowerCosts(){
-    var inputPowerCosts = document.getElementById('inputPowerCosts').value;
-   
-    //TODO Console.log löschen und Wert an Datenbank Senden!
-    console.log(inputPowerCosts);
-
-    const eMsg_2 = document.getElementById('powerCosts')
-    eMsg_2.innerHTML = inputPowerCosts;
-}
+document.body.addEventListener('keypress', function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        
+        document.getElementById("addUserButton").click();
+    }
+});

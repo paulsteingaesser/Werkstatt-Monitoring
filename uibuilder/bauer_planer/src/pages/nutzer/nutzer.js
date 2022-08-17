@@ -116,18 +116,35 @@ window.onload = function() {
                 formatter: "adminFormat"
 
             }, {
-              field: 'permission',
-              title: 'Berechtigungsstufe',
-              sortable: "true"
+                field: 'permission',
+                title: 'Berechtigungsstufe',
+                sortable: "true"
 
             }, {
-              field: 'company',
-              title: 'Firma',
-              sortable: "true"
+                field: 'company',
+                title: 'Firma',
+                sortable: "true"
+
+            }, {
+                field: 'operate',
+                title: 'Bearbeiten',
+                align: 'left',
+                valign: 'middle',
+                clickToSelect: false,
+                formatter : function(value,row,index) {
+                    var editButton = '<a href="nutzer_bearbeiten.html?userid='+row.userid+'" type="button" class="mr-4 btn btn-primary" role="button" ><i class="fas fa-wrench" aria-hidden="true"></i></a>';
+                    var deleteButton = '<button onclick="deleteUser('+row.userid+')" type="button" class="btn btn-primary"><i class="fas fa-trash" aria-hidden="true"></i></button>'
+                    return editButton + deleteButton;
+
+                }
 
             }],
             data: msg.payload
           })
 
     })
+}
+
+function deleteUser(userid){
+    console.log(userid);
 }

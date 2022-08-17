@@ -119,3 +119,12 @@ window.onload = function() {
         //eMsg.innerHTML = loginMsg(msg)
         })
 }
+
+document.body.addEventListener('keypress', function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        
+        document.getElementById("loginButton").click();
+    }
+});
