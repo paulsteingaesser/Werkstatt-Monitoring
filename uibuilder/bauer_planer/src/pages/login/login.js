@@ -62,24 +62,25 @@ window.fnSendToNR = function fnSendToNR(payload) {
     })
 }
 
-var username;
+var userID;
 var password;
+
 window.login = function login() {
-    username=document.getElementById('username').value;
+    userID=document.getElementById('userID').value;
     password=document.getElementById('password').value;
 
     uibuilder.send({
-        'topic': "SELECT true FROM user WHERE userID ="+username,
+        'topic': "SELECT true FROM user WHERE userID ="+userID,
         'name': "checkUser"
     })
 }
 
-function navigator(boo) {
-   if (boo){
+function navigator(admin) {
+   if (admin){
         window.location.href="../übersicht/übersicht.html";
         console.log("Login succeeded as Admin");
     }else{
-        //window.location.href="../übersicht/übersicht.html";
+        window.location.href="../übersicht/übersichtNormalerNutzer.html";
         console.log("Login succeeded as user");
     }
 }
@@ -99,7 +100,7 @@ window.onload = function() {
                     console.log("User doesn't exist");
                 }else if (msg.payload[0]["true"] == 1){
                     uibuilder.send({
-                        'topic': "SELECT password, admin FROM user WHERE userID =" +username,
+                        'topic': "SELECT password, admin, firstName, lastname  FROM user WHERE userID =" +userID,
                         'name' : "checkPass"
                     })
                     console.log("User exist")
@@ -107,16 +108,15 @@ window.onload = function() {
 
         }else if (msg.name == "checkPass"){
                     if ( msg.payload[0]["password"] ==  password ){
-                        navigator(msg.payload[0]["admin"])
-                        localStorage.setItem("username",username);
+                        navigator(msg.payload[0]["admin"]);
+                        var fullName = msg.payload[0]["firstName"] + " " + msg.payload[0]["lastname"];
+                        localStorage.setItem("fullName", fullName);
+                        localStorage.setItem("admin", msg.payload[0]["admin"]);
+                        localStorage.setItem("userID", userID);
                     } else {
                         console.log("Password is incorrect")
                     }
                 }
-    
-        // dump the msg as text to the "msg" html element
-        //const eMsg = document.getElementById('msg')
-        //eMsg.innerHTML = loginMsg(msg)
         })
 }
 

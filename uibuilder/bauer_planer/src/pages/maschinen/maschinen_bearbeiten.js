@@ -76,7 +76,7 @@ window.fnSendToNR = function fnSendToNR(payload) {
     })
 }
 
-function addNewMachine(){
+function editMachine(){
     var machineName = document.getElementById('inputMaschinenname').value;
     var permission = document.getElementById('berechtigungsstufe').value;
     var setUpTime = document.getElementById('inputRüstzeiten').value;
@@ -85,9 +85,13 @@ function addNewMachine(){
     var area = document.getElementById('inputBereich').value;
     var factor = document.getElementById('inputFaktor').value;
 
+
+    /*
     uibuilder.send({
         'topic': 'INSERT INTO machine VALUES("'+machineName+'", "'+permission+'", "'+setUpTime+'", "'+cost+'", "'+materialConsumption+'", "'+area+'", "'+factor+'")'
     })
+    */
+
 
     alert("Neue Maschine ist hinzufügt");
 }
@@ -97,10 +101,27 @@ window.onload = function() {
     // Start up uibuilder - see the docs for the optional parameters
     uibuilder.start()
 
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const machine = urlParams.get('machine')
+    console.log("Test: "+machine);
+
+    
+    uibuilder.send({
+        'topic': "SELECT * FROM machine WHERE machineName=" + "'" + machine + "'"
+    })
+    
     // Listen for incoming messages from Node-RED
     uibuilder.onChange('msg', function(msg){
         console.info('[indexjs:uibuilder.onChange] msg received from Node-RED server:', msg)
-
+        
+        document.getElementById('inputMaschinenname').value = msg.payload[0].machineName;
+        document.getElementById('berechtigungsstufe').value = msg.payload[0].permission;
+        document.getElementById('inputRüstzeiten').value = msg.payload[0].setUpTime;
+        document.getElementById('inputKosten').value = msg.payload[0].cost;
+        document.getElementById('inputMaterialverbrauch').value = msg.payload[0].materialConsumption;
+        document.getElementById('inputBereich').value = msg.payload[0].area;
+        document.getElementById('inputFaktor').value = msg.payload[0].factor;
     })
 }
 

@@ -82,7 +82,9 @@ function stringFormat(str) {
  
 // run this function when the document is loaded
 window.onload = function() {
-    console.log(localStorage.getItem("username"));
+
+    const eMsg_2 = document.getElementById('fullName')
+    eMsg_2.innerHTML = stringFormat(window.syntaxHighlight(localStorage.getItem("fullName")))
     // Start up uibuilder - see the docs for the optional parameters
     uibuilder.start()
     uibuilder.send({
@@ -99,10 +101,6 @@ window.onload = function() {
         // dump the msg as text to the "msg" html element
         const eMsg_1 = document.getElementById('numberOfMachines')
         eMsg_1.innerHTML = window.syntaxHighlight(msg.payload[0]["numberOfMachines"])
-
-        // dump the msg as text to the "msg" html element
-        const eMsg_2 = document.getElementById('fullName')
-        eMsg_2.innerHTML = stringFormat(window.syntaxHighlight(msg.payload[0]["fullName"]))
 
         // dump the msg as text to the "msg" html element
         const eMsg_3 = document.getElementById('powerCosts')

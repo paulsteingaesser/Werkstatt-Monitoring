@@ -76,65 +76,78 @@ window.fnSendToNR = function fnSendToNR(payload) {
     })
 }
 
+function stringFormat(str) {
+    return str.replace(/['"]+/g, '');
+}
+ 
 // run this function when the document is loaded
 window.onload = function() {
+    console.log(localStorage.getItem("fullName"));
+    console.log(localStorage.getItem("admin"));
+    console.log(localStorage.getItem("userID"));
+
+    const eMsg_2 = document.getElementById('fullName')
+    eMsg_2.innerHTML = stringFormat(window.syntaxHighlight(localStorage.getItem("fullName")))
     // Start up uibuilder - see the docs for the optional parameters
     uibuilder.start()
+
+    
     uibuilder.send({
-        'topic': "SELECT *  FROM machine"
+        'topic': "SELECT * FROM data WHERE userid =" + localStorage.getItem("userID")
     })
+    
     // Listen for incoming messages from Node-RED
     uibuilder.onChange('msg', function(msg){
-        console.info('[indexjs:uibuilder.onChange] msg received from Node-RED server:', msg)
+        console.info('[indexjs:uibuilder.onChange] msg received from Node-RED server:', msg);
 
         $('#table').bootstrapTable({
             columns: [{
-                field: 'machineName',
-                title: 'Maschine',
+                field: 'userid',
+                title: 'UserID',
                 sortable: "true"
             },{
-                field: 'permission',
-                title: 'Berechtigungsstufe',
+                field: 'machineName',
+                title: 'Maschinenname',
                 sortable: "true"
             }, {
-                field: 'setUpTime',
-                title: 'Rüstzeit',
+                field: 'start',
+                title: 'Start',
                 sortable: "true"
             }, {
-                field: 'cost',
-                title: 'Kosten',
+                field: 'end',
+                title: 'Ende',
                 sortable: "true",
             }, {
-                field: 'materialConsumption',
-                title: 'Materialverbrauch',
+                field: 'duration',
+                title: 'Dauer',
                 sortable: "true"
             }, {
-                field: 'area',
-                title: 'Bereich',
+                field: 'power',
+                title: 'Strom',
                 sortable: "true"
-            },{
-                field: 'factor',
-                title: 'Faktor',
-                sortable: "true"
-            }, {
-                field: 'operate',
-                title: 'Bearbeiten',
-                align: 'left',
-                valign: 'middle',
-                clickToSelect: false,
-                formatter : function(value,row,index) {
-                    var editButton = '<a href="maschinen_bearbeiten.html?machine='+row.machineName+'" type="button" class="mr-4 btn btn-primary" role="button" ><i class="fas fa-wrench" aria-hidden="true"></i></a>';
-                    var deleteButton = '<button onclick="deleteMachine('+ "'" + row.machineName + "'" +')" type="button" class="btn btn-primary"><i class="fas fa-trash" aria-hidden="true"></i></button>'
-                    return editButton + deleteButton;
-                }
             }],
             data: msg.payload
           })
     })
+
 }
 
-function deleteMachine(machineName){
-    //TODO Maschine aus der Datenbank löschen.
-    //Frage: Wird die entsprechende Maschine auch dynamisch, also sofort auch aus der Liste entfernt?
-    console.log(machineName);
+function changePowerCosts(){
+    var inputPowerCosts = document.getElementById('inputPowerCosts').value;
+   
+    //TODO Console.log löschen und Wert an Datenbank Senden!
+    console.log(inputPowerCosts);
+
+    const eMsg_2 = document.getElementById('powerCosts')
+    eMsg_2.innerHTML = inputPowerCosts;
 }
+
+/*
+function checkAdmin(adminPath, normalPath){
+    if(localStorage.getItem("admin") === 1){
+        window.location.href="../übersicht/übersicht.html";
+    } else {
+        window.location.href="../übersicht/übersichtNormalerNutzer.html";
+    }
+}
+*/
