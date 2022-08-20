@@ -77,20 +77,22 @@ window.fnSendToNR = function fnSendToNR(payload) {
 }
 
 function editUser(){
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const userid = urlParams.get('userid');
+
     var firstName = document.getElementById('inputVorname').value;
     var lastname = document.getElementById('inputNachname').value;
     var password = document.getElementById('inputPasswort').value;
     var company = document.getElementById('inputFirma').value;
-    var admin = document.getElementById('inputAdmin').checked;
-    
+    var admin = document.getElementById('inputAdmin').checked;    
     var permission = document.getElementById('berechtigungsstufe').value;
 
-    //TODO Hier einmal die Daten an die Datenbank schicken und den Eintrag updaten
-    /*
     uibuilder.send({
-        'topic': 'INSERT INTO user(password, lastname, firstName, admin, permission, company) VALUES("'+password+'", "'+lastname+'", "'+firstName+'", '+admin+', '+permission+', "'+company+'")'
-    })
-    */
+        'topic': 'UPDATE user SET password="'+password+'",lastname= "'+lastname+'",firstname ="'+firstName+'",admin= '+admin+',permission= '+permission+',company= "'+company+'" WHERE userid = '+userid+''
+    });
+
+    window.location.href="nutzer.html";
 }
 
 // run this function when the document is loaded

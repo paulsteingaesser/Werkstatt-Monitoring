@@ -96,9 +96,9 @@ window.onload = function() {
 
         $('#table').bootstrapTable({
             columns: [{
-                field: 'userid',
-                title: 'UserID',
-                sortable: "true"
+              field: 'userid',
+              title: 'User-ID',
+              sortable: "true"
             },{
                 field: 'lastname',
                 title: 'Nachname',
@@ -146,5 +146,7 @@ window.onload = function() {
 }
 
 function deleteUser(userid){
-    console.log(userid);
+    uibuilder.send({
+        'topic': 'DELETE FROM user where userid=' + userid +''
+    })
 }

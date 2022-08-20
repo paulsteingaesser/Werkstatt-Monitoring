@@ -76,17 +76,70 @@ window.fnSendToNR = function fnSendToNR(payload) {
     })
 }
 
+function inputEmptyCheck(inputtxt) {
+    console.log(inputtxt.length);
+    if (inputtxt == null || inputtxt == "" || inputtxt.length <= 2) {
+        return true;}
+    else{
+        return false;
+    }
+}
+
+function inputLetterCheck(inputtxt) {
+    if((!/[^a-zA-Z]/.test(inputtxt))){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+function adminPassCheck(admin, password){
+    if(admin && !inputEmptyCheck(password)){
+        return true;
+    }else if (admin && inputEmptyCheck(password)){
+        return false;
+    }else if (!admin && inputEmptyCheck(password)){
+        return true;
+    }else if (!admin && !inputEmptyCheck(password)){
+        return false;
+    }
+}
+function snackbarMessage(str){
+    var x = document.getElementById("snackbar");
+    x.innerHTML= str;
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+
 function addNewUser(){
     var firstName = document.getElementById('inputVorname').value;
     var lastname = document.getElementById('inputNachname').value;
     var password = document.getElementById('inputPasswort').value;
     var company = document.getElementById('inputFirma').value;
     var admin = document.getElementById('inputAdmin').checked;
-    
     var permission = document.getElementById('berechtigungsstufe').value;
-    uibuilder.send({
-        'topic': 'INSERT INTO user(password, lastname, firstName, admin, permission, company) VALUES("'+password+'", "'+lastname+'", "'+firstName+'", '+admin+', '+permission+', "'+company+'")'
-    })
+
+
+    if (inputEmptyCheck(lastname)) {
+        snackbarMessage("Ein Pflichtfeld ist nicht ausgefüllt!");
+    }else if(!inputLetterCheck(firstName) || !inputLetterCheck(lastname)){
+        snackbarMessage("Dürfen keine Sonderzeichnen oder Nummern bei den Namen eingegeben werden!"); 
+    }else if(!adminPassCheck(admin, password)){
+        snackbarMessage("Passwort & Admin probleme!"); 
+
+    }else{
+        uibuilder.send({
+            'topic': 'INSERT INTO user(password, lastname, firstName, admin, permission, company) VALUES("'+password+'", "'+lastname+'", "'+firstName+'", '+admin+', '+permission+', "'+company+'")'
+        })
+        snackbarMessage("Neuer Nutzer ist erforderlich hinzugefügt."); 
+        setTimeout(function() { window.location.href="nutzer.html"; }, 1000);
+
+        
+    }
+ 
+   
+    
 
 }
 
