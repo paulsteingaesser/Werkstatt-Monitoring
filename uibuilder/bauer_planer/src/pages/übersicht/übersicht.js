@@ -86,7 +86,7 @@ window.onload = function() {
     // Start up uibuilder - see the docs for the optional parameters
     uibuilder.start()
     uibuilder.send({
-        'topic': "SELECT ( SELECT COUNT(*) FROM user) AS numberOfUsers,( SELECT firstName || ' ' || lastname FROM user where userid = "+ localStorage.getItem("username") +") AS fullName, (SELECT COUNT(*) FROM machine) AS numberOfMachines"
+        'topic': "SELECT ( SELECT COUNT(*) FROM user) AS numberOfUsers,( SELECT firstName || ' ' || lastname FROM user where userid = "+ localStorage.getItem("username") +") AS fullName,( SELECT powerCost FROM config) AS powerCost, (SELECT COUNT(*) FROM machine) AS numberOfMachines"
     })
     // Listen for incoming messages from Node-RED
     uibuilder.onChange('msg', function(msg){
@@ -107,7 +107,7 @@ window.onload = function() {
         // dump the msg as text to the "msg" html element
         const eMsg_3 = document.getElementById('powerCosts')
         //TODO replace with value from database
-        eMsg_3.innerHTML = 1.5;
+        eMsg_3.innerHTML = window.syntaxHighlight(msg.payload[0]["powerCost"])
     })
 
 }
@@ -117,6 +117,9 @@ function changePowerCosts(){
    
     //TODO Console.log löschen und Wert an Datenbank Senden!
     console.log(inputPowerCosts);
+    uibuilder.send({
+        'topic': "UPDATE config SET powerCost = "+inputPowerCosts+""
+    })
 
     const eMsg_2 = document.getElementById('powerCosts')
     eMsg_2.innerHTML = inputPowerCosts;

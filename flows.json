@@ -2020,7 +2020,7 @@
         "z": "5d3034dc83dfbde2",
         "name": "Tabellen erstellen:",
         "info": "",
-        "x": 190,
+        "x": 90,
         "y": 20,
         "wires": []
     },
@@ -2030,8 +2030,8 @@
         "z": "5d3034dc83dfbde2",
         "name": "Testdaten eintragen:",
         "info": "",
-        "x": 190,
-        "y": 280,
+        "x": 90,
+        "y": 300,
         "wires": []
     },
     {
@@ -2075,8 +2075,8 @@
         "topic": "CREATE TABLE user( userid INTEGER PRIMARY KEY AUTOINCREMENT, password TEXT NOT NULL, lastname TEXT NOT NULL, firstName TEXT, admin BOOLEAN NOT NULL, permission INTEGER NOT NULL, company TEXT )",
         "payload": "",
         "payloadType": "date",
-        "x": 310,
-        "y": 60,
+        "x": 290,
+        "y": 40,
         "wires": [
             [
                 "0e854629aa4dc9fc"
@@ -2101,11 +2101,11 @@
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
-        "topic": "CREATE TABLE machine( machineName TEXT PRIMARY KEY NOT NULL, permission INTEGER NOT NULL, setUpTime INTEGER NOT NULL, cost INTEGER NOT NULL, materialConsumption INTEGER , area TEXT, factor INTEGER NOT NULL )",
+        "topic": "CREATE TABLE machine( machineName TEXT PRIMARY KEY NOT NULL, permission INTEGER NOT NULL, setUpTime INTEGER NOT NULL, cost INTEGER NOT NULL, materialConsumption INTEGER , area TEXT, factor REAL NOT NULL )",
         "payload": "",
         "payloadType": "date",
-        "x": 330,
-        "y": 140,
+        "x": 310,
+        "y": 120,
         "wires": [
             [
                 "0e854629aa4dc9fc"
@@ -2133,8 +2133,8 @@
         "topic": "CREATE TABLE data( userid INTEGER NOT NULL, machineName TEXT NOT NULL, start INTEGER NOT NULL, end INTEGER NOT NULL,setUpTime INTEGER NOT NULL, duration INTEGER NOT NULL, power INTEGER NOT NULL, PRIMARY KEY (userid, machineName, start ) FOREIGN KEY(userid) REFERENCES user(userid), FOREIGN KEY(machineName) REFERENCES machine(machineName) )",
         "payload": "",
         "payloadType": "date",
-        "x": 310,
-        "y": 180,
+        "x": 290,
+        "y": 160,
         "wires": [
             [
                 "0e854629aa4dc9fc"
@@ -2220,8 +2220,8 @@
         "topic": "INSERT INTO sqlite_sequence VALUES ('user',99)",
         "payload": "",
         "payloadType": "date",
-        "x": 290,
-        "y": 100,
+        "x": 270,
+        "y": 80,
         "wires": [
             [
                 "0e854629aa4dc9fc"
@@ -2249,8 +2249,8 @@
         "topic": "PRAGMA foreign_keys = ON;",
         "payload": "",
         "payloadType": "date",
-        "x": 300,
-        "y": 220,
+        "x": 280,
+        "y": 200,
         "wires": [
             [
                 "0e854629aa4dc9fc"
@@ -4410,6 +4410,64 @@
         "wires": [
             [
                 "85035fb37cdfb259"
+            ]
+        ]
+    },
+    {
+        "id": "a159593f4b7ae8ae",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "CREATE config",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "CREATE TABLE config( powerCost REAL NOT NULL)",
+        "payload": "",
+        "payloadType": "date",
+        "x": 300,
+        "y": 240,
+        "wires": [
+            [
+                "0e854629aa4dc9fc"
+            ]
+        ]
+    },
+    {
+        "id": "64b7bb23dfdc69b8",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "INSERT powerCost",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "INSERT INTO config VALUES(1.5)",
+        "payload": "",
+        "payloadType": "date",
+        "x": 310,
+        "y": 800,
+        "wires": [
+            [
+                "0e854629aa4dc9fc"
             ]
         ]
     }
