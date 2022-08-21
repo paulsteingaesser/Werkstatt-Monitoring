@@ -79,6 +79,14 @@ window.fnSendToNR = function fnSendToNR(payload) {
 function stringFormat(str) {
     return str.replace(/['"]+/g, '');
 }
+
+function wattFormatter(value) {
+    return value + " W";
+}
+
+function calculateKWH(value, row) {
+    return (row.power *  row.duration / 3600000).toFixed(2)  + " kWh";
+}
  
 // run this function when the document is loaded
 window.onload = function() {
@@ -91,43 +99,75 @@ window.onload = function() {
     // Start up uibuilder - see the docs for the optional parameters
     uibuilder.start()
 
+    var querryForDataTable = "SELECT * FROM data WHERE userid=" + localStorage.getItem("userID") + " ORDER BY start DESC limit 500";
+    var querryForUserTable = "SELECT permission, company FROM user WHERE userid=" + localStorage.getItem("userID");
     
     uibuilder.send({
-        'topic': "SELECT * FROM data WHERE userid =" + localStorage.getItem("userID")
+        'topic': querryForDataTable,
+        'usecase': "dataTable"
+    });
+
+    uibuilder.send({
+        'topic': querryForUserTable,
+        'usecase': "userTable"
     })
     
     // Listen for incoming messages from Node-RED
     uibuilder.onChange('msg', function(msg){
         console.info('[indexjs:uibuilder.onChange] msg received from Node-RED server:', msg);
 
-        $('#table').bootstrapTable({
-            columns: [{
-                field: 'userid',
-                title: 'UserID',
-                sortable: "true"
-            },{
-                field: 'machineName',
-                title: 'Maschinenname',
-                sortable: "true"
-            }, {
-                field: 'start',
-                title: 'Start',
-                sortable: "true"
-            }, {
-                field: 'end',
-                title: 'Ende',
-                sortable: "true",
-            }, {
-                field: 'duration',
-                title: 'Dauer',
-                sortable: "true"
-            }, {
-                field: 'power',
-                title: 'Strom',
-                sortable: "true"
-            }],
-            data: msg.payload
-          })
+        if(msg.usecase == "dataTable") {
+            $('#dataTable').bootstrapTable({
+                columns: [{
+                    field: 'userid',
+                    title: 'UserID',
+                    sortable: "true"
+                },{
+                    field: 'machineName',
+                    title: 'Maschinenname',
+                    sortable: "true"
+                }, {
+                    field: 'start',
+                    title: 'Start',
+                    sortable: "true",
+                    formatter: "convertMillisToDate"
+                }, {
+                    field: 'end',
+                    title: 'Ende',
+                    sortable: "true",
+                    formatter: "convertMillisToDate"
+                }, {
+                    field: 'duration',
+                    title: 'Dauer',
+                    sortable: "true",
+                    formatter: "convertMillisToMinutesSeconds"
+                }, {
+                    field: 'power',
+                    title: 'Strom in Watt',
+                    sortable: "true",
+                    formatter: "wattFormatter"
+                }, {
+                    field: 'kWh',
+                    title: 'kWh',
+                    sortable: "true",
+                    formatter: "calculateKWH"
+                }],
+                data: msg.payload
+            })
+        }
+        
+        if(msg.usecase == "userTable") {
+            $('#userTable').bootstrapTable({
+                columns: [{
+                    field: 'company',
+                    title: 'Firma',
+                },{
+                    field: 'permission',
+                    title: 'Berechtigungsstufe',
+                }],
+                data: msg.payload
+              })
+        }
     })
 
 }

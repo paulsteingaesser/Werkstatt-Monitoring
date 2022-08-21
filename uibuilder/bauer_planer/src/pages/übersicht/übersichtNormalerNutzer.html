@@ -125,9 +125,13 @@
 
                 <!-- Page Heading -->
                 <p class="mb-4">Willkomen <span id="fullName" class="mb-4"></span></p>
-                
 
-                <table id="table" 
+                <table  class="table table-hover=false" id="userTable"
+                    data-search="false"                   
+                    data-height="75%">
+                </table>
+
+                <table id="dataTable" 
                     data-pagination="true"
                     data-search="false"                   
                     data-height="75%"
@@ -196,6 +200,7 @@
 <script src="../../../uibuilder/vendor/socket.io/socket.io.js">/* REQUIRED: Socket.IO is loaded only once for all instances. Without this, you don't get a websocket connection */</script>
 <script src="../../uibuilderfe.min.js">/* REQUIRED: remove 'min.' to use dev version */</script>
 <script src="übersichtNormalerNutzer.js">/* OPTIONAL: Put your custom code here */</script>
+<script src="../../generalFunctions.js"></script>
 
 <!-- #endregion -->
 
