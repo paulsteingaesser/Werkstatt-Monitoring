@@ -1622,7 +1622,7 @@
         "statusCode": "200",
         "headers": {},
         "x": 930,
-        "y": 120,
+        "y": 240,
         "wires": []
     },
     {
@@ -1700,7 +1700,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 850,
+        "x": 1430,
         "y": 220,
         "wires": []
     },
@@ -1714,7 +1714,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 300,
-        "y": 171,
+        "y": 160,
         "wires": [
             [
                 "5f8fa0c6c734d247"
@@ -1726,18 +1726,18 @@
         "type": "function",
         "z": "838e54b719ad8caa",
         "name": "Daten Auslesen und Konvertieren",
-        "func": "var userID = msg.payload.userid;\nvar maschinenName = msg.payload.machineName;\nvar loginTime = msg.payload.loginTime;\nvar dauer = msg.payload.duration;\nloginTime = loginTime - dauer;\nvar timestamp = new Date();\nvar ende = timestamp;\nvar calculation = timestamp.getTime() - dauer;\nvar anfang = new Date(calculation);\nvar strom = msg.payload.power;\n\nmsg.payload = \"Input: UserID= \" + userID + \"; MaschinenName= \" + maschinenName + \"; Anfang= \" + anfang + \"; Ende= \" + ende + \"; Eingeloggt= \" + loginTime + \"; Dauer in Millisekunden= \" + dauer + \"; Strom=\" + strom + \" Wh\";\n\nreturn msg;",
+        "func": "var userid = msg.payload.userid;\n\nvar maschinenName = decodeURIComponent(escape(msg.payload.machineName));\nmsg.payload.machineName = maschinenName;\n\nvar setupTime = msg.payload.setupTime;\n\nvar duration = msg.payload.duration;\n\nvar end = new Date();\n\nvar startInMillis = end.getTime() - duration;\n\nvar start = new Date(startInMillis);\n\nvar power = msg.payload.power;\n\n//Strings wie machinenName muss in Anführungszeichen gesetzt werden. Das ASCII Zeichen dafür ist '\\u0022'\nmsg.topic = \"INSERT INTO data VALUES (\" + userid + \",\" + '\\u0022' + maschinenName + '\\u0022' + \",\" + start.getTime() + \",\" + end.getTime() + \",\" + setupTime + \",\" + duration + \",\" + power + \")\";\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 590,
-        "y": 171,
+        "x": 580,
+        "y": 160,
         "wires": [
             [
-                "acbd09f7a15ccfad",
-                "6dc9de411da24725"
+                "e13b242999997d42",
+                "c154bb19629e66ae"
             ]
         ]
     },
@@ -1748,7 +1748,7 @@
         "name": "Hinweis",
         "info": "Der Mikrocontroller sendet einen GET Request an die Domain http://(IP des eigenen Rechners):1880/sendData.\n\nDabei werden ein paar Daten angehängt.\nDiese können dann in der Funktion über den Message Payload abgefragt werden.\n\nDie Funktion kann als Vorlage für den eigentlichen Server verwendet werden oder einfach nur zum Testen.",
         "x": 490,
-        "y": 120,
+        "y": 100,
         "wires": []
     },
     {
@@ -1759,7 +1759,7 @@
         "statusCode": "200",
         "headers": {},
         "x": 1790,
-        "y": 320,
+        "y": 460,
         "wires": []
     },
     {
@@ -1776,7 +1776,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 970,
-        "y": 460,
+        "y": 600,
         "wires": []
     },
     {
@@ -1789,7 +1789,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 320,
-        "y": 360,
+        "y": 500,
         "wires": [
             [
                 "97f6d413dc809019"
@@ -1801,14 +1801,14 @@
         "type": "function",
         "z": "838e54b719ad8caa",
         "name": "Daten Auslesen und Querry für userCheck bauen",
-        "func": "var userID = msg.payload.userid;\nvar maschinenName = decodeURIComponent(escape(msg.payload.machineName));\n\nmsg.topic = \"SELECT ( SELECT COUNT(*) FROM user WHERE userid =\"+userID+\") AS userExists, (SELECT count(*) FROM user JOIN machine on (user.permission >= machine.permission) WHERE userid =\"+userID+\" AND machineName='\"+maschinenName+\"') as permissionIsHighEnough\";\n\nreturn msg;",
+        "func": "var userID = msg.payload.userid;\nvar maschinenName = decodeURIComponent(escape(msg.payload.machineName));\nmsg.payload.machineName = maschinenName;\n\nmsg.topic = \"SELECT ( SELECT COUNT(*) FROM user WHERE userid =\"+userID+\") AS userExists, (SELECT count(*) FROM user JOIN machine on (user.permission >= machine.permission) WHERE userid =\"+userID+\" AND machineName='\"+maschinenName+\"') as permissionIsHighEnough\";\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
         "x": 640,
-        "y": 360,
+        "y": 500,
         "wires": [
             [
                 "bed83e8525383d7f",
@@ -1823,7 +1823,7 @@
         "name": "Hier Datenbank zwischen",
         "info": "",
         "x": 950,
-        "y": 320,
+        "y": 460,
         "wires": []
     },
     {
@@ -1840,7 +1840,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1710,
-        "y": 400,
+        "y": 540,
         "wires": []
     },
     {
@@ -1850,7 +1850,7 @@
         "name": "Payload von msg wird an MC gesendet!",
         "info": "",
         "x": 1690,
-        "y": 280,
+        "y": 420,
         "wires": []
     },
     {
@@ -1864,7 +1864,7 @@
         "sql": "",
         "name": "db",
         "x": 1230,
-        "y": 360,
+        "y": 500,
         "wires": [
             [
                 "bb365524f4051b03",
@@ -1878,7 +1878,7 @@
         "z": "838e54b719ad8caa",
         "name": "find db path in local directory",
         "x": 1020,
-        "y": 360,
+        "y": 500,
         "wires": [
             [
                 "7ea94c6be75dbe55"
@@ -1897,10 +1897,74 @@
         "finalize": "",
         "libs": [],
         "x": 1390,
-        "y": 300,
+        "y": 440,
         "wires": [
             []
         ]
+    },
+    {
+        "id": "e13b242999997d42",
+        "type": "subflow:2a14cb53da10968a",
+        "z": "838e54b719ad8caa",
+        "name": "find db path in local directory",
+        "x": 440,
+        "y": 240,
+        "wires": [
+            [
+                "0e101688abf96118"
+            ]
+        ]
+    },
+    {
+        "id": "0e101688abf96118",
+        "type": "queuedsqlite",
+        "z": "838e54b719ad8caa",
+        "mydb": "fe1131055cdbcae8",
+        "sqlquery": "msg.topic",
+        "dbName": "msg.database",
+        "db": "C:\\Users\\User\\.node-red\\projects\\MonitoringApp_Stand22-06-22\\db",
+        "sql": "",
+        "name": "db",
+        "x": 650,
+        "y": 240,
+        "wires": [
+            [
+                "6dc9de411da24725",
+                "f8fa8106181a0a4a"
+            ]
+        ]
+    },
+    {
+        "id": "c154bb19629e66ae",
+        "type": "debug",
+        "z": "838e54b719ad8caa",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "f8fa8106181a0a4a",
+        "type": "debug",
+        "z": "838e54b719ad8caa",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 850,
+        "y": 280,
+        "wires": []
     },
     {
         "id": "7dbfda298598df33",

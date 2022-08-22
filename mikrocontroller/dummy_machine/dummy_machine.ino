@@ -11,7 +11,7 @@
 #define wifinetwork "Bill Clinternet";
 #define wifipassword "MartinRouterKing";
 
-String machineName = "S\u00e4ge";
+String machineName = "Säge";
 
 const char* ssid = wifinetwork;
 const char* password = wifipassword;
@@ -75,7 +75,7 @@ void setup() {
 void loop() {
 
   if ((millis() - lastTime) > timerDelay) {
-    serverPath = serverName + "sendData?userid=100&machineName=" + machineName + "&loginTime=1661184348896&duration=50000&power=1600";
+    serverPath = serverName + "sendData?userid=101&machineName=" + machineName + "&setupTime=600000&duration=50000&power=1600";
     sendData();
   }
 }

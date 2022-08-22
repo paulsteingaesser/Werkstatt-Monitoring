@@ -117,7 +117,7 @@ String inputID;
 
 
 //--- Timer ---
-long timeOfLogin = 0;
+long setupTime = 0;
 long timeOfFirstMessurement = 0;
 long timeOfLastMessurement = 0;
 //#define blinkTimer
@@ -243,14 +243,14 @@ void checkLogin() {
     //if user exists and permission is correct, buffer user id -> LEDs green
     updateLEDs(green);
     isLoggedIn = true;
-    timeOfLogin = millis();
+    setupTime = millis();
   }
   else if(payload == ""){
     
     //if user exists and permission is not high enough, buffer user id -> LEDs blink yellow
     updateLEDs(yellow);
     isLoggedIn = true;
-    timeOfLogin = millis();
+    setupTime = millis();
   }
   else if(payload == ""){
 
@@ -278,7 +278,7 @@ void testPassword(){
     state = green;
     updateLEDs(green);
     isLoggedIn = true;
-    timeOfLogin = millis();
+    setupTime = millis();
   } else {
     state = wrongLoginBlinkRed;
     blinkTimer = millis();
@@ -292,8 +292,6 @@ void testPassword(){
 void logout() {
 
   if(checkIfThereWasPowerConsumption()){
-    
-    timeOfLogin = millis() - timeOfLogin;
 
     //Save duration if its still running
     if(timeOfFirstMessurement != 0){
@@ -321,7 +319,7 @@ bool checkIfThereWasPowerConsumption(){
 
 void reset() {
   
-  timeOfLogin = 0;
+  setupTime = 0;
   timeOfLastMessurement = 0;
   timeOfFirstMessurement = 0;
   duration = 0;
@@ -335,9 +333,9 @@ void collectDataAndCreateString(double power) {
   
   String serverPath;
   if(isLoggedIn){
-    serverPath = serverName + "sendData" + "?userid=" + userId + "&machineName=" + machineName + "&loginTime=" + timeOfLogin + "&duration=" + duration + "&power=" + String(power);
+    serverPath = serverName + "sendData" + "?userid=" + userId + "&machineName=" + machineName + "&setupTime=" + setupTime + "&duration=" + duration + "&power=" + String(power);
   }else{
-    serverPath = serverName + "sendData" + "?userid=" + defaultId + "&machineName=" + machineName + "&loginTime=" + timeOfLogin + "&duration=" + duration + "&power=" + String(power);
+    serverPath = serverName + "sendData" + "?userid=" + defaultId + "&machineName=" + machineName + "&setupTime=" + setupTime + "&duration=" + duration + "&power=" + String(power);
   }
 
   String payload = httpGETRequest(serverPath);
@@ -359,7 +357,7 @@ void checkAutoLogoutTimer() {
     if(millis() > timeOfLastMessurement + autoLogoutWithUserWithMessurement && timeOfLastMessurement != 0){
       logout();
     }
-    if(millis() > timeOfLogin + autoLogoutWithUserWithoutMessurement){
+    if(millis() > setupTime + autoLogoutWithUserWithoutMessurement){
       logout();
     }
   }
@@ -447,6 +445,10 @@ void checkPowerConsumptionState(bool newCurrent){
   //Check if there is new Input and there was no power consumption before
   if (newCurrent && !startedPowerConsumption) {
 
+    //If this is the first messurement, end the setupTime
+    if(!checkIfThereWasPowerConsumption()){
+      setupTime = millis() - setupTime;
+    }
     startedPowerConsumption = true;
     timeOfFirstMessurement = millis();
     timeOfLastMessurement = 0;
