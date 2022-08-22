@@ -11,13 +11,13 @@
 #define wifinetwork "Bill Clinternet";
 #define wifipassword "MartinRouterKing";
 
-String machineName = "Testmaschine2";
+String machineName = "S\u00e4ge";
 
 const char* ssid = wifinetwork;
 const char* password = wifipassword;
 
 //Servername oder IP mit Pfad
-String serverName = "http://192.168.10.82:1880/sendDummyData";
+String serverName = "http://192.168.10.82:1880/";
 
 // the following variables are unsigned longs because the time, measured in
 // milliseconds, will quickly become a bigger number than can be stored in an int.
@@ -26,6 +26,8 @@ unsigned long lastTime = 0;
 //unsigned long timerDelay = 600000;
 // Set timer to 5 seconds (30000)
 unsigned long timerDelay = 30000;
+
+String serverPath;
 
 #include <Arduino_JSON.h>
 #include <WiFi.h>
@@ -64,53 +66,60 @@ void setup() {
     Serial.print("Connected to WiFi network with IP address: ");
     Serial.println(WiFi.localIP());
   }
+
+  delay(10000);
+  serverPath = serverName + "checkIfUserExists?userid=100&machineName=" + machineName;
+  sendData();
 }
 
 void loop() {
 
- if ((millis() - lastTime) > timerDelay) {
-    //Check WiFi connection status
-    if(WiFi.status()== WL_CONNECTED){
-      HTTPClient http;
+  if ((millis() - lastTime) > timerDelay) {
+    serverPath = serverName + "sendData?userid=100&machineName=" + machineName + "&loginTime=1661184348896&duration=50000&power=1600";
+    sendData();
+  }
+}
 
-      String serverPath = serverName + "?UserID=100&MaschinenName=" + machineName + "&Dauer=600000&Strom=100";
-      
-      // Your Domain name with URL path or IP address with path
-      http.begin(serverPath.c_str());
-      
-      // Send HTTP GET request
-      int httpResponseCode = http.GET();
-      
-      if (httpResponseCode>0) {
-        if(debugging)
-        {
-          Serial.print("HTTP Response code: ");
-          Serial.println(httpResponseCode);
-        }
-        
-        String payload = http.getString();
-        
-        if(debugging)
-        {
-          Serial.println(payload);
-        }
+void sendData(){
+  //Check WiFi connection status
+  if(WiFi.status()== WL_CONNECTED){
+    HTTPClient http;
+
+    // Your Domain name with URL path or IP address with path
+    http.begin(serverPath.c_str());
+    
+    // Send HTTP GET request
+    int httpResponseCode = http.GET();
+    
+    if (httpResponseCode>0) {
+      if(debugging)
+      {
+        Serial.print("HTTP Response code: ");
+        Serial.println(httpResponseCode);
       }
-      else {
-        if(debugging)
-        {
-          Serial.print("Error code: ");
-          Serial.println(httpResponseCode);
-        }
+      
+      String payload = http.getString();
+      
+      if(debugging)
+      {
+        Serial.println(payload);
       }
-      // Free resources
-      http.end();
     }
     else {
       if(debugging)
       {
-        Serial.println("WiFi Disconnected");
+        Serial.print("Error code: ");
+        Serial.println(httpResponseCode);
       }
     }
-    lastTime = millis();
+    // Free resources
+    http.end();
   }
+  else {
+    if(debugging)
+    {
+      Serial.println("WiFi Disconnected");
+    }
+  }
+  lastTime = millis();
 }

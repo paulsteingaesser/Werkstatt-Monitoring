@@ -15,8 +15,8 @@
 //Define how many phases are messured. (How many sensors are connected)
 //If you dont use three connectors comment out the inputPins you dont use. Like: "//#define inPinI3 34;" if you dont user Pin 34.
 #define inPinI1 39
-#define inPinI2 35
-#define inPinI3 34
+//#define inPinI2 35
+//#define inPinI3 34
 
 //If you want to see outputs and logs, the mikrocontroller must be connected to a pc.
 //There you can watch the live logs and outputs on a seriell monitor (for example in the Arduino IDE).
@@ -41,6 +41,7 @@ String serverName = "http://192.168.10.82:1880/";
 //--- User and Machine config ---
 #define machineName "Testmaschine"
 int userId;
+int defaultId = 100;
 bool isLoggedIn = false;
 long duration = 0;
 
@@ -58,10 +59,10 @@ double ICAL = 1;
 double I_RATIO = (long double)CT_TURNS / CT_BURDEN_RESISTOR * 3.3 / 4096 * ICAL;
 
 //Filter variables
-double lastFilteredI, filteredI = 0;
-double sqI, sumI;
+double lastFiltered, filtered = 0;
+double rms, sum;
 //Sample variables
-int lastSampleI, sampleI = 0;
+int lastSample, sample = 0;
 double Irms1 = 0;
 double Irms2 = 0;
 double Irms3 = 0;
@@ -116,13 +117,18 @@ String inputID;
 
 
 //--- Timer ---
+long timeOfLogin = 0;
 long timeOfFirstMessurement = 0;
 long timeOfLastMessurement = 0;
 //#define blinkTimer
 //Wait this time in milliseconds after the last messured input to automaticaly logout the user and send Data to server
-#define autoLogoutWithUser 300000
+#define autoLogoutWithUserWithMessurement 600000
+//Wait this time in milliseconds to automaticaly logout the user (no messurement in this time)
+#define autoLogoutWithUserWithoutMessurement 900000
 //Wait this time in milliseconds after the last messured input to automaticaly if no user is logged in, but the machine was in use
 #define autoLogoutWithoutUser 180000
+
+
 
 void setup() {
 
@@ -183,17 +189,11 @@ void setup() {
 
 void loop() {
 
-  //Messen
+  checkCurrent();
 
-  //checkLogin -> extra Thread?
+  checkPinPadInput();
 
-  //Ist jemand eingelogt und Strom wird verbraucht, dann speichern und Zeit nehmen
-
-  //Wenn jemand eingeloggt war, pürfe, ob ausgeloggt wurde oder ein automatischer Timer abgelaufen ist -> Sende Daten
-
-  //Wenn niemand eingeloggt war, aber Strom verbraucht wird, speichern
-
-  //Wenn niemand eingeloggt war, aber Strom vebraucht wurde und timer abgelaufen ist und nutzzeit gewisse größe überschreitet -> Sende Daten
+  checkAutoLogoutTimer();
 }
 
 void checkPinPadInput(){
@@ -205,19 +205,18 @@ void checkPinPadInput(){
 
     if(key == 'r') {
       if(isLoggedIn){
-        state = red;
-        updateLEDs(red);
-        isLoggedIn = false;
         logout();
       }
       inputID = ""; // clear input id
 
-    } else if(key == 'g') {
+    } else if(key == 'g' && !isLoggedIn) {
       
       checkLogin();
       
     } else {
-      inputID += key; // append new character to input password string
+      if(!isLoggedIn){
+        inputID += key; // append new character to input password string
+      }
     }
   }
 }
@@ -244,22 +243,30 @@ void checkLogin() {
     //if user exists and permission is correct, buffer user id -> LEDs green
     updateLEDs(green);
     isLoggedIn = true;
+    timeOfLogin = millis();
   }
   else if(payload == ""){
     
     //if user exists and permission is not high enough, buffer user id -> LEDs blink yellow
     updateLEDs(yellow);
     isLoggedIn = true;
+    timeOfLogin = millis();
   }
   else if(payload == ""){
 
     //if user does not exists -> LEDs blink short time red, than back to constant red
-    updateLEDs(wrongLoginBlinkRed);
+    state = wrongLoginBlinkRed;
+    blinkTimer = millis();
+    userId = 0;
+    inputID = "";
   }
   else{
 
     //Error occured
-    updateLEDs(systemErrorBlinkBlue);
+    state = systemErrorBlinkBlue;
+    blinkTimer = millis();
+    userId = 0;
+    inputID = "";
   }
   */
 }
@@ -271,6 +278,7 @@ void testPassword(){
     state = green;
     updateLEDs(green);
     isLoggedIn = true;
+    timeOfLogin = millis();
   } else {
     state = wrongLoginBlinkRed;
     blinkTimer = millis();
@@ -283,187 +291,54 @@ void testPassword(){
 
 void logout() {
 
-  //if nothing was messured, du nothing. Else
+  if(checkIfThereWasPowerConsumption()){
+    
+    timeOfLogin = millis() - timeOfLogin;
 
-  //Stop Timer and save duration
-  if(timeOfFirstMessurement != 0){
-
-    duration = duration + millis() - timeOfFirstMessurement;
-    timeOfFirstMessurement = 0;
+    //Save duration if its still running
+    if(timeOfFirstMessurement != 0){
+      duration = duration + millis() - timeOfFirstMessurement;
+    }
+    collectDataAndCreateString(calculatePower());
   }
-
-
-  //collectDataAndCreateString(duration , calculatePower());
-  //Check if Data send corret, otherwise -> updateLEDs(errorBlinkOrange);
+  
   reset();
   isLoggedIn = false;
-  updateLEDs(red);
-}
-
-void checkPauseTimer() {
-
-  if(isLoggedIn){
-    if(millis() < timeOfLastMessurement + autoLogoutWithUser){
-      logout();
-    }
-  }
-  else{
-    if(millis() < timeOfLastMessurement + autoLogoutWithoutUser){
-      sendDataAutomatically();
-    }
+  
+  if(state != systemErrorBlinkBlue){
+    updateLEDs(red);
+    state = red;
   }
 }
 
-void sendDataAutomatically() {
-
-  //Send data with info for general account
-
-  //Reset variables -> reset()
+bool checkIfThereWasPowerConsumption(){
+  if(Irms1 != 0 || Irms2 != 0 || Irms3 != 0){
+    return true;
+  }else{
+    return false;
+  }
 }
 
 void reset() {
-  //Reset variables, timer, userdata
+  
+  timeOfLogin = 0;
+  timeOfLastMessurement = 0;
   timeOfFirstMessurement = 0;
   duration = 0;
+  Irms1 = 0;
+  Irms2 = 0;
+  Irms3 = 0;
+  userId = 0;
 }
 
-double calculatePower() {
-
-  return VOLTAGE * (Irms1 + Irms1 + Irms1);
-}
-
-void checkCurrent() {
-
-  //extra Thread?
-  while (true) {
-    
-    bool newInputCurrent = false;
-
-    #ifdef inPinI1
-      double messuredCurrent1 = messureCurrent(inPinI1);
-    #endif
-    #ifdef inPinI2
-      double messuredCurrent2 = messureCurrent(inPinI2);    
-    #endif
-    #ifdef inPinI3
-      double messuredCurrent3 = messureCurrent(inPinI3);  
-    #endif
-
-    #ifdef debugging
-      #ifdef inPinI1
-        Serial.println("Irms1: " + String(messuredCurrent1));
-        Serial.println("Watt1: " + String(messuredCurrent1 * VOLTAGE));
-      #endif
-      #ifdef inPinI2
-        Serial.println("Irms2: " + String(messuredCurrent2));
-        Serial.println("Watt2: " + String(messuredCurrent2 * VOLTAGE));
-      #endif
-      #ifdef inPinI3
-        Serial.println("Irms3: " + String(messuredCurrent3));
-        Serial.println("Watt3: " + String(messuredCurrent3 * VOLTAGE));
-      #endif
-    #endif
-
-    #ifdef inPinI1
-      if (messuredCurrent1 > offsetCurrent) {
-        calcualteAverageCurrent(messuredCurrent1, &Irms1);
-        newInputCurrent = true;
-      }
-    #endif
-    
-    #ifdef inPinI2
-      if (messuredCurrent2 > offsetCurrent) {
-        calcualteAverageCurrent(messuredCurrent2, &Irms2);
-        newInputCurrent = true;
-      }
-    #endif
-    
-    #ifdef inPinI3
-      if (messuredCurrent3 > offsetCurrent) {
-        calcualteAverageCurrent(messuredCurrent3, &Irms3);
-        newInputCurrent = true;
-      }
-    #endif
-    
-    if (newInputCurrent && !startedPowerConsumption) {
-
-      startedPowerConsumption = true;
-      timeOfFirstMessurement = millis();
-      timeOfLastMessurement = 0;
-    }
-    
-    if(!newInputCurrent && startedPowerConsumption){
-      
-      startedPowerConsumption = false;
-      duration = duration + millis() - timeOfFirstMessurement;
-      timeOfFirstMessurement = 0;
-      timeOfLastMessurement = millis();
-    }
-
-    //Blinkt einmal, wenn niemand eingeloggt ist, aber Strom verbraucht wird.
-    if(!isLoggedIn && newInputCurrent){
-      updateLEDs(wrongLoginBlinkRed);
-    }
+void collectDataAndCreateString(double power) {
+  
+  String serverPath;
+  if(isLoggedIn){
+    serverPath = serverName + "sendData" + "?userid=" + userId + "&machineName=" + machineName + "&loginTime=" + timeOfLogin + "&duration=" + duration + "&power=" + String(power);
+  }else{
+    serverPath = serverName + "sendData" + "?userid=" + defaultId + "&machineName=" + machineName + "&loginTime=" + timeOfLogin + "&duration=" + duration + "&power=" + String(power);
   }
-}
-
-void calcualteAverageCurrent(double messuredCurrent, double *mainCurrent) {
-
-  if (messuredCurrent > offsetCurrent) {
-
-    if (*mainCurrent == 0) {
-
-      *mainCurrent = messuredCurrent;
-    }
-    else {
-      //calculate the average current
-      *mainCurrent = (*mainCurrent + messuredCurrent) / 2;
-    }
-  }
-}
-
-double messureCurrent(int inputPin) {
-
-  for (int n = 0; n < numberOfSamples; n++)
-  {
-
-    //Used for offset removal
-    lastSampleI = sampleI;
-
-    //Read in voltage and current samples.
-    sampleI = analogRead(inputPin);
-
-    //Used for offset removal
-    lastFilteredI = filteredI;
-
-    //Digital high pass filters to remove 1.6V DC offset.
-    filteredI = 0.9989 * (lastFilteredI + sampleI - lastSampleI);
-
-    //Root-mean-square method current
-    //1) square current values
-    sqI = filteredI * filteredI;
-    //2) sum
-    sumI += sqI;
-    delay(0.0002);
-  }
-
-  //Calculation of the root of the mean of the voltage and current squared (rms)
-  //Calibration coeficients applied.
-  double currentI = (I_RATIO * sqrt(sumI / numberOfSamples)) - 1;
-  if (currentI < 0) {
-    //Set negative Current to zero
-    currentI = 0;
-  };
-  sumI = 0;
-  sampleI = 0;
-  filteredI = 0;
-
-  return currentI;
-}
-
-void collectDataAndCreateString(long duration, double power) {
-
-  String serverPath = serverName + "sendData" + "?userid=" + userId + "&machineName=" + machineName + "&duration=" + duration + "&power=" + String(power);
 
   String payload = httpGETRequest(serverPath);
 
@@ -471,9 +346,174 @@ void collectDataAndCreateString(long duration, double power) {
     Serial.print("Payload: ");
     Serial.println(payload);
   #endif
+
+  if(payload != "200"){
+    state = systemErrorBlinkBlue;
+    blinkTimer = millis();
+  }
+}
+
+void checkAutoLogoutTimer() {
+
+  if(isLoggedIn){
+    if(millis() > timeOfLastMessurement + autoLogoutWithUserWithMessurement && timeOfLastMessurement != 0){
+      logout();
+    }
+    if(millis() > timeOfLogin + autoLogoutWithUserWithoutMessurement){
+      logout();
+    }
+  }
+  else{
+    if(millis() > timeOfLastMessurement + autoLogoutWithoutUser && timeOfLastMessurement != 0){
+      sendDataAutomatically();
+    }
+  }
+}
+
+void sendDataAutomatically() {
+
+  //Save duration if its still running
+  if(timeOfFirstMessurement != 0){
+    duration = duration + millis() - timeOfFirstMessurement;
+  }
+    
+  collectDataAndCreateString(calculatePower());
+
+  reset();
+}
+
+double calculatePower() {
+
+  return VOLTAGE * (Irms1 + Irms2 + Irms3);
+}
+
+void checkCurrent() {
+
+  bool newInputCurrent = false;
+
+  #ifdef inPinI1
+    double messuredCurrent1 = messureCurrent(inPinI1);
+    
+    #ifdef debugging
+      Serial.println("Irms1: " + String(messuredCurrent1));
+      Serial.println("Watt1: " + String(messuredCurrent1 * VOLTAGE));
+    #endif
+    
+    if (messuredCurrent1 > offsetCurrent) {
+      calcualteAverageCurrent(messuredCurrent1, &Irms1);
+      newInputCurrent = true;
+    }
+  #endif
+  
+  #ifdef inPinI2
+    double messuredCurrent2 = messureCurrent(inPinI2);
+    
+    #ifdef debugging
+      Serial.println("Irms2: " + String(messuredCurrent2));
+      Serial.println("Watt2: " + String(messuredCurrent2 * VOLTAGE));
+    #endif
+
+    if (messuredCurrent2 > offsetCurrent) {
+      calcualteAverageCurrent(messuredCurrent2, &Irms2);
+      newInputCurrent = true;
+    }
+  #endif
+  
+  #ifdef inPinI3
+    double messuredCurrent3 = messureCurrent(inPinI3);
+    
+    #ifdef debugging
+      Serial.println("Irms3: " + String(messuredCurrent3));
+      Serial.println("Watt3: " + String(messuredCurrent3 * VOLTAGE));
+    #endif
+
+    if (messuredCurrent3 > offsetCurrent) {
+      calcualteAverageCurrent(messuredCurrent3, &Irms3);
+      newInputCurrent = true;
+    }
+  #endif
+
+  checkPowerConsumptionState(newInputCurrent);
+  
+  //Blinkt, wenn niemand eingeloggt ist, aber Strom verbraucht wird.
+  if(!isLoggedIn && newInputCurrent && state != wrongLoginBlinkRed){
+    state = wrongLoginBlinkRed;
+    blinkTimer = millis();
+  }
+}
+
+void checkPowerConsumptionState(bool newCurrent){
+  
+  //Check if there is new Input and there was no power consumption before
+  if (newCurrent && !startedPowerConsumption) {
+
+    startedPowerConsumption = true;
+    timeOfFirstMessurement = millis();
+    timeOfLastMessurement = 0;
+  }
+
+  //Check if there is no Input but there was no power consumption before
+  if(!newCurrent && startedPowerConsumption){
+    
+    startedPowerConsumption = false;
+    duration = duration + millis() - timeOfFirstMessurement;
+    timeOfFirstMessurement = 0;
+    timeOfLastMessurement = millis();
+  }
+}
+
+void calcualteAverageCurrent(double messuredCurrent, double *mainCurrent) {
+
+  if (*mainCurrent == 0) {
+
+    *mainCurrent = messuredCurrent;
+  }
+  else {
+    //calculate the average current
+    *mainCurrent = (*mainCurrent + messuredCurrent) / 2;
+  }
+}
+
+double messureCurrent(int inputPin) {
+
+  for (int n = 0; n < numberOfSamples; n++){
+
+    //Used for offset removal
+    lastSample = sample;
+
+    //Read in voltage and current samples.
+    sample = analogRead(inputPin);
+
+    //Used for offset removal
+    lastFiltered = filtered;
+
+    //Digital high pass filters to remove 1.6V DC offset.
+    filtered = 0.9989 * (lastFiltered + sample - lastSample);
+
+    //Root-mean-square method current
+    //1) square current values
+    rms = filtered * filtered;
+    //2) sum
+    sum += rms;
+    delay(0.0002);
+  }
+
+  //Calculation of the root of the mean of the voltage and current squared (rms)
+  //Calibration coeficients applied.
+  double calculatedCurrent = (I_RATIO * sqrt(sum / numberOfSamples)) - 1;
+  if (calculatedCurrent < 0) {
+    //Set negative Current to zero
+    calculatedCurrent = 0;
+  };
+  sum = 0;
+  sample = 0;
+  filtered = 0;
+
+  return calculatedCurrent;
 }
 
 String httpGETRequest(String serverName) {
+  
   WiFiClient client;
   HTTPClient http;
   String payload = "{}";
