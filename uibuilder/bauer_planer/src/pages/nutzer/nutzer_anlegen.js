@@ -145,6 +145,10 @@ function addNewUser(){
 
 // run this function when the document is loaded
 window.onload = function() {
+
+    var admin = document.getElementById('passwordLabel');
+    admin.innerHTML = "Passwort (optional)";
+
     // Start up uibuilder - see the docs for the optional parameters
     uibuilder.start()
 
@@ -163,3 +167,13 @@ document.body.addEventListener('keypress', function(event) {
         document.getElementById("addUserButton").click();
     }
 });
+
+function isAdmin(checkbox){
+
+    var admin = document.getElementById('passwordLabel');
+    if(checkbox.checked) {
+        admin.innerHTML = "Passwort (Pflichtfeld)";
+    } else {
+        admin.innerHTML = "Passwort (Optional)";
+    }
+}

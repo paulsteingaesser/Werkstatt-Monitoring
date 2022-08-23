@@ -161,11 +161,17 @@
                             <input type="text" class="form-control" id="inputNachname" placeholder="Nachname">
                         </div>
                         <div class="mb-4 form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="inputAdmin" style="width: 20px; height: 20px; vertical-align: middle; position: relative;">
+                            <input 
+                                class="form-check-input" 
+                                type="checkbox" 
+                                value="" 
+                                id="inputAdmin"
+                                onclick='isAdmin(this)'
+                                style="width: 20px; height: 20px; vertical-align: middle; position: relative;">
                             <label class="form-check-label" for="defaultCheck1" style="vertical-align: sub;"> Adminrechte </label>
                         </div>
                         <div class="form-group">
-                            <label for="inputPasswort">Passwort (optional)</label>
+                            <label for="inputPasswort"><span id="passwordLabel" class="mb-4"></span></label>
                             <input type="password" class="form-control" id="inputPasswort" placeholder="Passwort">
                         </div>
                         <div class="form-group">

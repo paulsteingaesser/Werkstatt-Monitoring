@@ -149,4 +149,7 @@ function deleteUser(userid){
     uibuilder.send({
         'topic': 'DELETE FROM user where userid=' + userid +''
     })
+    //TODO Hier eine elegantere Lösung bei der nicht die Seite neugeladen werden muss
+    //z.B. Werte der Tabelle vorher zwischenspeichern, dann den zu löschenden Eintrag raus filtern und den Rest wieder in die Tabelle packen
+    location.reload();
 }
