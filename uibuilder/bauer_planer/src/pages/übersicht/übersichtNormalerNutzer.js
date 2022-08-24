@@ -79,14 +79,6 @@ window.fnSendToNR = function fnSendToNR(payload) {
 function stringFormat(str) {
     return str.replace(/['"]+/g, '');
 }
-
-function wattFormatter(value) {
-    return value + " W";
-}
-
-function calculateKWH(value, row) {
-    return (row.power *  row.duration / 3600000).toFixed(2)  + " kWh";
-}
  
 // run this function when the document is loaded
 window.onload = function() {
@@ -140,7 +132,7 @@ window.onload = function() {
                     field: 'duration',
                     title: 'Dauer',
                     sortable: "true",
-                    formatter: "convertMillisToMinutesSeconds"
+                    formatter: "convertMillisToHoursMinutesSeconds"
                 }, {
                     field: 'power',
                     title: 'Strom in Watt',

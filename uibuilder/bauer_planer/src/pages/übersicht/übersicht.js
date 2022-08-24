@@ -94,18 +94,22 @@ window.onload = function() {
     uibuilder.onChange('msg', function(msg){
         console.info('[indexjs:uibuilder.onChange] msg received from Node-RED server:', msg)
 
-        // dump the msg as text to the "msg" html element
-        const eMsg_0 = document.getElementById('numberOfUsers')
-        eMsg_0.innerHTML = window.syntaxHighlight(msg.payload[0]["numberOfUsers"])
+        if(!msg.changedPowerCosts){
+            // dump the msg as text to the "msg" html element
+            const eMsg_0 = document.getElementById('numberOfUsers');
+            eMsg_0.innerHTML = window.syntaxHighlight(msg.payload[0]["numberOfUsers"]);
 
-        // dump the msg as text to the "msg" html element
-        const eMsg_1 = document.getElementById('numberOfMachines')
-        eMsg_1.innerHTML = window.syntaxHighlight(msg.payload[0]["numberOfMachines"])
+            // dump the msg as text to the "msg" html element
+            const eMsg_1 = document.getElementById('numberOfMachines');
+            eMsg_1.innerHTML = window.syntaxHighlight(msg.payload[0]["numberOfMachines"]);
 
-        // dump the msg as text to the "msg" html element
-        const eMsg_3 = document.getElementById('powerCosts')
-        //TODO replace with value from database
-        eMsg_3.innerHTML = window.syntaxHighlight(msg.payload[0]["powerCost"])
+            // dump the msg as text to the "msg" html element
+            const eMsg_3 = document.getElementById('powerCosts');
+            //TODO replace with value from database
+            eMsg_3.innerHTML = window.syntaxHighlight(msg.payload[0]["powerCost"]);
+            localStorage.setItem("powerCost", msg.payload[0]["powerCost"]);
+            document.getElementById('inputPowerCosts').value = msg.payload[0]["powerCost"];
+        }
     })
 
 }
@@ -116,9 +120,11 @@ function changePowerCosts(){
     //TODO Console.log löschen und Wert an Datenbank Senden!
     console.log(inputPowerCosts);
     uibuilder.send({
-        'topic': "UPDATE config SET powerCost = "+inputPowerCosts+""
+        'topic': "UPDATE config SET powerCost = "+inputPowerCosts,
+        'changedPowerCosts': true
     })
 
     const eMsg_2 = document.getElementById('powerCosts')
     eMsg_2.innerHTML = inputPowerCosts;
+    localStorage.setItem("powerCost", inputPowerCosts);
 }
