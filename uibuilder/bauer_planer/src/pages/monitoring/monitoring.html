@@ -168,7 +168,7 @@
                                 overflow: auto;
                             }
                         </style>
-                        <p class="mb-4">Aktueller Monat <span class="mb-4"></span></p>
+                        <p class="mb-4">Aktueller Monat (gesamt)<span class="mb-4"></span></p>
 
                         <!-- Data Table -->
                         <table id="overviewTable" 
@@ -177,14 +177,31 @@
                         </table>
 
                         <!-- Date Picker -->
-                        <div class="justify-content-between mt-4" id="d" style="margin-bottom: 10px;">
+                        <div class="justify-content-between mt-4" id="d" style="margin-bottom: 15px;">
                             Alle Einträge von
                             <input type = "date" id = "start" class="ml-2 mr-2">
                             bis
                             <input type = "date" id = "end" class="ml-2 mr-2">
-
-                            <button class="btn btn-primary ml-2" onclick="getDataForSelectedTime(false)"><i class="fas fa-check"></i> Zeitraum übernehmen</button>
                         </div>
+                        
+                        <div style="display: table; table-layout: fixed; margin-bottom: 15px;">
+
+                            <div class="mb-4 dropdown" style="display: table-cell; padding-right: 15px;">
+                                <label style="margin-right: 10px;"> User: </label>
+                                <select  class="btn btn-secondary dropdown-toggle" id="userDropdown">
+                                </select>
+                            </div>
+    
+                            <div class="mb-4 dropdown" style="display: table-cell; padding-right: 15px;">
+                                <label style="margin-right: 10px;"> Maschinen: </label>
+                                <select  class="btn btn-secondary dropdown-toggle" id="machineDropdown">
+                                </select>
+                            </div>
+                            
+                            <button class="btn btn-primary ml-2" onclick="getAllDataForSelected()"><i class="fas fa-check" style="padding-right: 10px;"></i>Alles Übernehmen</button>
+                        </div>
+                        
+              
                         
                         <!-- Liste / Tabelle -->
                         <table id="dataTable" 
