@@ -13,20 +13,78 @@
     
 </head><body class="uib">
     
-    <h1>Anmelden</h1>
-    
-    <label for="uname"><b>Benutzer ID</b></label>
-    <input id ="userID" type="text" placeholder="Username" name="uname" required>
+  
 
-    <label for="psw"><b>Passwort</b></label>
-    <input id="password" type="password" placeholder="Password" name="psw" required>
-    
-    <button id="loginButton" onclick="login()">Login</button>
-        <pre id="msg" class="syntax-highlight"></pre>
+  <div class="login-root">
+    <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
+      <div class="loginbackground box-background--white padding-top--64">
+        <div class="loginbackground-gridContainer">
+          <div class="box-root flex-flex" style="grid-area: top / start / 8 / end;">
+            <div class="box-root" style="background-image: linear-gradient(white 0%, rgb(247, 250, 252) 33%); flex-grow: 1;">
+            </div>
+          </div>
+        
+        
+         
+         
+      
+         
+        </div>
+      </div>
+      <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
+        <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
+          <h1><a href="http://blog.stackfindover.com/" rel="dofollow">Anmeldung</a></h1>
+        </div>
+        <div class="formbg-outer">
+          <div class="formbg">
+            <div class="formbg-inner padding-horizontal--48">
+
+
+                <div class="field padding-bottom--24">
+                  <label for="email">Benutzer ID</label>
+                  <input id="userID" type="text" placeholder="ID" name="uname" >
+                </div>
+                <div class="field padding-bottom--24">
+                  <div class="grid--50-50">
+                    <label for="password">Passwort</label>
+
+                  </div>
+                  <input id="password" placeholder="Passwort" type="password" name="psw" >
+                </div>
+                                            <div class="error">Ungültiger Benutzername und/oder Passwort.</div>    
+                <div class="field field-checkbox padding-bottom--24 flex-flex align-center">
+                           </div>
+                <div class="field padding-bottom--24">
+                  <input id="loginButton" type="submit" name="loginButton" onclick=login() value="Login">
+                </div>
+                                <div class="field padding-bottom--24">
+                                   
+
+
+                </div>
+
+
+                      <pre id="msg" class="syntax-highlight"></pre>
     <!-- #region Supporting Scripts. These MUST be in the right order. Note no leading / -->
     <script src="../../../uibuilder/vendor/socket.io/socket.io.js">/* REQUIRED: Socket.IO is loaded only once for all instances. Without this, you don't get a websocket connection */</script>
     <script src="../../uibuilderfe.min.js">/* REQUIRED: remove 'min.' to use dev version */</script>
     <script src="login.js">/* OPTIONAL: Put your custom code here */</script>
     <!-- #endregion -->
-    
+            </div>
+          </div>
+
+            <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
+
+        
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body></html>
+
+
+
+
+
