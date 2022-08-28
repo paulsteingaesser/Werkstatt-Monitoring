@@ -88,7 +88,7 @@ window.onload = function() {
     // Start up uibuilder - see the docs for the optional parameters
     uibuilder.start()
     uibuilder.send({
-        'topic': "SELECT ( SELECT COUNT(*) FROM user) AS numberOfUsers,( SELECT firstName || ' ' || lastname FROM user where userid = "+ localStorage.getItem("username") +") AS fullName,( SELECT powerCost FROM config) AS powerCost, (SELECT COUNT(*) FROM machine) AS numberOfMachines"
+        'topic': "SELECT ( SELECT COUNT(*) FROM user) AS numberOfUsers,( SELECT firstName || ' ' || lastName FROM user where userid = "+ localStorage.getItem("username") +") AS fullName,( SELECT powerCost FROM config) AS powerCost, (SELECT COUNT(*) FROM machine) AS numberOfMachines"
     })
     // Listen for incoming messages from Node-RED
     uibuilder.onChange('msg', function(msg){

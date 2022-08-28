@@ -100,7 +100,7 @@ window.onload = function() {
                     console.log("User doesn't exist");
                 }else if (msg.payload[0]["true"] == 1){
                     uibuilder.send({
-                        'topic': "SELECT password, admin, firstName, lastname  FROM user WHERE userID =" +userID,
+                        'topic': "SELECT password, admin, firstName, lastName  FROM user WHERE userID =" +userID,
                         'name' : "checkPass"
                     })
                     console.log("User exist")
@@ -109,7 +109,7 @@ window.onload = function() {
         }else if (msg.name == "checkPass"){
                     if ( msg.payload[0]["password"] ==  password ){
                         navigator(msg.payload[0]["admin"]);
-                        var fullName = msg.payload[0]["firstName"] + " " + msg.payload[0]["lastname"];
+                        var fullName = msg.payload[0]["firstName"] + " " + msg.payload[0]["lastName"];
                         localStorage.setItem("fullName", fullName);
                         localStorage.setItem("admin", msg.payload[0]["admin"]);
                         localStorage.setItem("userID", userID);

@@ -2114,8 +2114,8 @@
         "z": "5d3034dc83dfbde2",
         "name": "Tabellen löschen:",
         "info": "",
-        "x": 200,
-        "y": 840,
+        "x": 120,
+        "y": 860,
         "wires": []
     },
     {
@@ -2136,7 +2136,7 @@
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
-        "topic": "CREATE TABLE user( userid INTEGER PRIMARY KEY AUTOINCREMENT, password TEXT NOT NULL, lastname TEXT NOT NULL, firstName TEXT, admin BOOLEAN NOT NULL, permission INTEGER NOT NULL, company TEXT )",
+        "topic": "CREATE TABLE user( userid INTEGER PRIMARY KEY AUTOINCREMENT, password TEXT NOT NULL, lastName TEXT NOT NULL, firstName TEXT, admin BOOLEAN NOT NULL, permission INTEGER NOT NULL, company TEXT )",
         "payload": "",
         "payloadType": "date",
         "x": 290,
@@ -2194,7 +2194,7 @@
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
-        "topic": "CREATE TABLE data( userid INTEGER NOT NULL, machineName TEXT NOT NULL, start INTEGER NOT NULL, end INTEGER NOT NULL,setUpTime INTEGER NOT NULL, duration INTEGER NOT NULL, power INTEGER NOT NULL, PRIMARY KEY (userid, machineName, start ) FOREIGN KEY(userid) REFERENCES user(userid), FOREIGN KEY(machineName) REFERENCES machine(machineName) )",
+        "topic": "CREATE TABLE data( userid INTEGER NOT NULL, machineName TEXT NOT NULL, start INTEGER NOT NULL, end INTEGER NOT NULL,setUpTime INTEGER NOT NULL, duration INTEGER NOT NULL, power INTEGER NOT NULL, PRIMARY KEY (userid, machineName, start ) FOREIGN KEY(userid) REFERENCES user(userid), FOREIGN KEY(machineName) REFERENCES machine(machineName))",
         "payload": "",
         "payloadType": "date",
         "x": 290,
@@ -2223,11 +2223,11 @@
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
-        "topic": "INSERT INTO user(password, lastname, firstName, admin, permission, company) VALUES( 12345, \"mustermann\", \"muster\", true, 5, NULL)",
+        "topic": "INSERT INTO user(password, lastName, firstName, admin, permission, company) VALUES( 12345, \"mustermann\", \"muster\", true, 5, NULL)",
         "payload": "",
         "payloadType": "date",
         "x": 290,
-        "y": 320,
+        "y": 340,
         "wires": [
             [
                 "0e854629aa4dc9fc"
@@ -2256,7 +2256,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 300,
-        "y": 480,
+        "y": 500,
         "wires": [
             [
                 "0e854629aa4dc9fc"
@@ -2313,8 +2313,8 @@
         "topic": "PRAGMA foreign_keys = ON;",
         "payload": "",
         "payloadType": "date",
-        "x": 280,
-        "y": 200,
+        "x": 820,
+        "y": 260,
         "wires": [
             [
                 "0e854629aa4dc9fc"
@@ -2343,7 +2343,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 320,
-        "y": 760,
+        "y": 780,
         "wires": [
             [
                 "c48ee34242888ca3"
@@ -2372,7 +2372,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 320,
-        "y": 600,
+        "y": 620,
         "wires": [
             [
                 "0e854629aa4dc9fc"
@@ -3769,7 +3769,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 310,
-        "y": 640,
+        "y": 660,
         "wires": [
             [
                 "0e854629aa4dc9fc"
@@ -3798,7 +3798,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 310,
-        "y": 680,
+        "y": 700,
         "wires": [
             [
                 "0e854629aa4dc9fc"
@@ -3827,7 +3827,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 310,
-        "y": 720,
+        "y": 740,
         "wires": [
             [
                 "0e854629aa4dc9fc"
@@ -3945,11 +3945,11 @@
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
-        "topic": "INSERT INTO user(password, lastname, firstName, admin, permission, company) VALUES( \"\", \"Doe\", \"John\", false, 2, NULL)",
+        "topic": "INSERT INTO user(password, lastName, firstName, admin, permission, company) VALUES( \"\", \"Doe\", \"John\", false, 2, NULL)",
         "payload": "",
         "payloadType": "date",
         "x": 290,
-        "y": 360,
+        "y": 380,
         "wires": [
             [
                 "0e854629aa4dc9fc"
@@ -3978,7 +3978,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 300,
-        "y": 520,
+        "y": 540,
         "wires": [
             [
                 "0e854629aa4dc9fc"
@@ -4107,7 +4107,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 290,
-        "y": 400,
+        "y": 420,
         "wires": [
             [
                 "0e854629aa4dc9fc"
@@ -4136,7 +4136,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 300,
-        "y": 560,
+        "y": 580,
         "wires": [
             [
                 "0e854629aa4dc9fc"
@@ -4161,11 +4161,11 @@
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
-        "topic": "INSERT INTO user(password, lastname, firstName, admin, permission, company) VALUES( \"tesla\", \"Elon\", \"Musk\", false, 1, \"Tesla\")",
+        "topic": "INSERT INTO user(password, lastName, firstName, admin, permission, company) VALUES( \"tesla\", \"Elon\", \"Musk\", false, 1, \"Tesla\")",
         "payload": "",
         "payloadType": "date",
         "x": 290,
-        "y": 440,
+        "y": 460,
         "wires": [
             [
                 "0e854629aa4dc9fc"
@@ -4216,7 +4216,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "test maschine",
+        "payload": "Schweißgerät",
         "payloadType": "str",
         "x": 540,
         "y": 1940,
@@ -4528,11 +4528,50 @@
         "payload": "",
         "payloadType": "date",
         "x": 310,
-        "y": 800,
+        "y": 820,
         "wires": [
             [
                 "0e854629aa4dc9fc"
             ]
         ]
+    },
+    {
+        "id": "b7cd957091796362",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "CREATE logs",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "CREATE TABLE logs( id INTEGER, time INTEGER, message TEXT)",
+        "payload": "",
+        "payloadType": "date",
+        "x": 290,
+        "y": 280,
+        "wires": [
+            [
+                "0e854629aa4dc9fc"
+            ]
+        ]
+    },
+    {
+        "id": "691097ccb4565ca4",
+        "type": "comment",
+        "z": "5d3034dc83dfbde2",
+        "name": "Erstmal nicht aktvieren!",
+        "info": "",
+        "x": 740,
+        "y": 220,
+        "wires": []
     }
 ]

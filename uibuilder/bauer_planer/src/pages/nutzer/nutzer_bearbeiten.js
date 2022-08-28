@@ -82,14 +82,14 @@ function editUser(){
     const userid = urlParams.get('userid');
 
     var firstName = document.getElementById('inputVorname').value;
-    var lastname = document.getElementById('inputNachname').value;
+    var lastName = document.getElementById('inputNachname').value;
     var password = document.getElementById('inputPasswort').value;
     var company = document.getElementById('inputFirma').value;
     var admin = document.getElementById('inputAdmin').checked;    
     var permission = document.getElementById('berechtigungsstufe').value;
 
     uibuilder.send({
-        'topic': 'UPDATE user SET password="'+password+'",lastname= "'+lastname+'",firstname ="'+firstName+'",admin= '+admin+',permission= '+permission+',company= "'+company+'" WHERE userid = '+userid+''
+        'topic': 'UPDATE user SET password="'+password+'",lastName= "'+lastName+'",firstname ="'+firstName+'",admin= '+admin+',permission= '+permission+',company= "'+company+'" WHERE userid = '+userid+''
     });
 
     window.location.href="nutzer.html";
@@ -117,7 +117,7 @@ window.onload = function() {
 
 
         document.getElementById('inputVorname').value = msg.payload[0].firstName;
-        document.getElementById('inputNachname').value = msg.payload[0].lastname;
+        document.getElementById('inputNachname').value = msg.payload[0].lastName;
         document.getElementById('inputPasswort').value = msg.payload[0].password;
         document.getElementById('inputFirma').value = msg.payload[0].company;
         document.getElementById('inputAdmin').checked = msg.payload[0].admin;

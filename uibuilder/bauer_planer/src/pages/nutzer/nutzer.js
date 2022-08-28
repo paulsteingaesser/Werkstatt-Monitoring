@@ -100,7 +100,7 @@ window.onload = function() {
               title: 'User-ID',
               sortable: "true"
             },{
-                field: 'lastname',
+                field: 'lastName',
                 title: 'Nachname',
                 sortable: "true"
 
@@ -133,7 +133,7 @@ window.onload = function() {
                 clickToSelect: false,
                 formatter : function(value,row,index) {
                     var editButton = '<a href="nutzer_bearbeiten.html?userid='+row.userid+'" type="button" class="mr-4 btn btn-primary" role="button" ><i class="fas fa-wrench" aria-hidden="true"></i></a>';
-                    var deleteButton = '<button onclick="deleteUser('+row.userid+')" type="button" class="btn btn-primary"><i class="fas fa-trash" aria-hidden="true"></i></button>'
+                    var deleteButton = '<button onclick="deleteUser('+index+','+row.userid+')" type="button" class="btn btn-primary"><i class="fas fa-trash" aria-hidden="true"></i></button>'
                     return editButton + deleteButton;
 
                 }
@@ -145,8 +145,15 @@ window.onload = function() {
     })
 }
 
-function deleteUser(userid){
+function deleteUser(index, userid){
+    
     uibuilder.send({
-        'topic': 'DELETE FROM user where userid=' + userid +''
-    })
+        'topic': 'DELETE FROM user where userid=' + userid +'' 
+    });
+
+   $('#table').bootstrapTable('remove', {
+    field: '$index',
+    values: [index]
+  });
+
 }

@@ -114,23 +114,23 @@ function snackbarMessage(str){
 
 function addNewUser(){
     var firstName = document.getElementById('inputVorname').value;
-    var lastname = document.getElementById('inputNachname').value;
+    var lastName = document.getElementById('inputNachname').value;
     var password = document.getElementById('inputPasswort').value;
     var company = document.getElementById('inputFirma').value;
     var admin = document.getElementById('inputAdmin').checked;
     var permission = document.getElementById('berechtigungsstufe').value;
 
 
-    if (inputEmptyCheck(lastname)) {
-        snackbarMessage("Ein Pflichtfeld ist nicht ausgefüllt!");
-    }else if(!inputLetterCheck(firstName) || !inputLetterCheck(lastname)){
+    if (inputEmptyCheck(lastName)) {
+        snackbarMessage("Der Nachname ist nicht ausgefüllt!");
+    }else if(!inputLetterCheck(firstName) || !inputLetterCheck(lastName)){
         snackbarMessage("Dürfen keine Sonderzeichnen oder Nummern bei den Namen eingegeben werden!"); 
     }else if(!adminPassCheck(admin, password)){
         snackbarMessage("Passwort & Admin probleme!"); 
 
     }else{
         uibuilder.send({
-            'topic': 'INSERT INTO user(password, lastname, firstName, admin, permission, company) VALUES("'+password+'", "'+lastname+'", "'+firstName+'", '+admin+', '+permission+', "'+company+'")'
+            'topic': 'INSERT INTO user(password, lastName, firstName, admin, permission, company) VALUES("'+password+'", "'+lastName+'", "'+firstName+'", '+admin+', '+permission+', "'+company+'")'
         })
         snackbarMessage("Neuer Nutzer ist erforderlich hinzugefügt."); 
         setTimeout(function() { window.location.href="nutzer.html"; }, 1000);
