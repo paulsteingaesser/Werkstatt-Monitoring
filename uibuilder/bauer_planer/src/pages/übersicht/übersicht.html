@@ -148,24 +148,26 @@
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
+                <div class="card shadow mb-4">
+                    <div class="card-body">
+                        <!-- Page Heading -->
+                        <p class="mb-4">Willkommen, <span id="fullName" class="mb-4"></span></p>
 
-                <!-- Page Heading -->
-                <p class="mb-4">Willkomen <span id="fullName" class="mb-4"></span></p>
+                        <p class="mb-4">Anzahl der Nutzer: <span id="numberOfUsers" class="mb-4"></span></p>
 
-                <p class="mb-4">Anzahl der Nutzer: <span id="numberOfUsers" class="mb-4"></span></p>
+                        <p class="mb-4">Anzahl der Maschinen: <span id="numberOfMachines" class="mb-4"></span></p>
 
-                <p class="mb-4">Anzahl der Maschinen: <span id="numberOfMachines" class="mb-4"></span></p>
+                        <p class="mb-4">Stromkosten pro kWh: <span id="powerCosts" class="mb-4"></span> €</p>
 
-                <p class="mb-4">Stromkosten pro kWh: <span id="powerCosts" class="mb-4"></span> €</p>
-
-                <form>
-                    <div class="form-group">
-                        <label for="inputPowerCosts">Stromkosten ändern:</label>
-                        <input type="number" class="form-control" id="inputPowerCosts" placeholder="€" style="width: 10%;">
+                        <form>
+                            <div class="form-group">
+                                <label for="inputPowerCosts">Stromkosten ändern:</label>
+                                <input type="number" class="form-control" id="inputPowerCosts" placeholder="€" style="width: 10%;">
+                            </div>
+                            <button  onclick="changePowerCosts()" type="button" class="btn btn-primary">Übernehmen</button>
+                        </form>
                     </div>
-                    <button  onclick="changePowerCosts()" type="button" class="btn btn-primary">Übernehmen</button>
-                </form>
-                
+                </div>
             </div>
             <!-- /.container-fluid -->
 

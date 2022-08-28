@@ -148,6 +148,7 @@ window.onload = function() {
 function deleteUser(index, userid){
     
     uibuilder.send({
+
         'topic': 'DELETE FROM user where userid=' + userid +'' 
     });
 
@@ -155,5 +156,4 @@ function deleteUser(index, userid){
     field: '$index',
     values: [index]
   });
-
 }

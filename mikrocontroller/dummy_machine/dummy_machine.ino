@@ -8,8 +8,8 @@
 //--- Config ---
 #define debugging true
 
-#define wifinetwork "Bill Clinternet";
-#define wifipassword "MartinRouterKing";
+#define wifinetwork "network=bauer+planer";
+#define wifipassword "craftsandarts";
 
 String machineName = "Säge";
 
@@ -17,7 +17,7 @@ const char* ssid = wifinetwork;
 const char* password = wifipassword;
 
 //Servername oder IP mit Pfad
-String serverName = "http://192.168.10.82:1880/";
+String serverName = "http://192.168.2.139:1880/";
 
 // the following variables are unsigned longs because the time, measured in
 // milliseconds, will quickly become a bigger number than can be stored in an int.

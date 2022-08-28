@@ -19,6 +19,8 @@
 
     <!-- Custom styles for this template-->
     <link href="../../css/styles.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.20.2/dist/bootstrap-table.min.css">
     
     <!-- Custom scripts -->
     <script lang="javascript" src="../../vendor/sheetjs/xlsx.full.min.js"></script>
@@ -151,127 +153,78 @@
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
-                <div class="container-fluid">
-                    <div class="card shadow mb-4">
+                <div class="card shadow mb-4">
+                    <div class="card-body">
+                        <style>
+
+                            .scrollbar1 {
+                                position: relative;
+                                height: 120px;
+                                overflow: auto;
+                            }
+                            .scrollbar2 {
+                                position: relative;
+                                height: 300px;
+                                overflow: auto;
+                            }
+                        </style>
+                        <p class="mb-4">Aktueller Monat (gesamt)<span class="mb-4"></span></p>
+
+                        <!-- Data Table -->
+                        <table id="overviewTable" 
+                            data-search="false"                   
+                            data-height="75%">
+                        </table>
+
+                        <!-- Date Picker -->
+                        <div class="justify-content-between mt-4" id="d" style="margin-bottom: 15px;">
+                            Alle Einträge von
+                            <input type = "date" id = "start" class="ml-2 mr-2">
+                            bis
+                            <input type = "date" id = "end" class="ml-2 mr-2">
+                        </div>
                         
-                        <div class="card-body">
-                            <style>
+                        <div style="display: table; table-layout: fixed; margin-bottom: 15px;">
 
-                                .scrollbar1 {
-                                    position: relative;
-                                    height: 120px;
-                                    overflow: auto;
-                                }
-                                .scrollbar2 {
-                                    position: relative;
-                                    height: 300px;
-                                    overflow: auto;
-                                }
-                            </style>
-                            <p class="mb-4">Aktueller Monat <span class="mb-4"></span></p>
-
-                            <!-- Data Table -->
-                            <div class="table-responsive scrollbar1 mb3 ps ps--active-y">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                    <tr>
-                                        <th>Maschinenstunden</th>
-                                        <th>Wattstunden</th>
-                                        <th>Stromkosten</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>65 h</td>
-                                        <td>10 kWh</td>
-                                        <td>500 €</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                            <div class="mb-4 dropdown" style="display: table-cell; padding-right: 15px;">
+                                <label style="margin-right: 10px;"> User: </label>
+                                <select  class="btn btn-secondary dropdown-toggle" id="userDropdown">
+                                </select>
                             </div>
-
-                            <!-- Date Picker -->
-                            <div class="justify-content-between mt-4" id="d">
-                                Alle Einträge von
-                                <input type = "date" id = "date1" class="ml-2 mr-2">
-                                <script>
-                                    document.getElementById("date1").valueAsDate = new Date() // Displays current date
-                                </script>
-                                bis
-                                <input type = "date" id = "date2" class="ml-2 mr-2">
-
-                                <button class="btn btn-primary ml-2"><i class="fas fa-check"></i> Zeitraum übernehmen</button>
+    
+                            <div class="mb-4 dropdown" style="display: table-cell; padding-right: 15px;">
+                                <label style="margin-right: 10px;"> Maschinen: </label>
+                                <select  class="btn btn-secondary dropdown-toggle" id="machineDropdown">
+                                </select>
                             </div>
                             
-                            <!-- Liste / Tabelle -->
-                            <div class="table-responsive scrollbar2 mb3 mt-4 ps ps--active-y">
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Vorname</th>
-                                        <th scope="col">Nachname</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>John</td>
-                                        <td>Doe</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Max</td>
-                                        <td>Mustermann</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jane</td>
-                                        <td>Doe</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            <button class="btn btn-primary ml-2" onclick="getAllDataForSelected()"><i class="fas fa-check" style="padding-right: 10px;"></i>Alles Übernehmen</button>
+                        </div>
+                        
+              
+                        
+                        <!-- Liste / Tabelle -->
+                        <table id="dataTable" 
+                            data-pagination="true"
+                            data-search="false"                   
+                            data-height="75%"
+                            data-show-footer="true">
+                        </table>
+                        
+                        <!-- CSV Export Button -->
+                        <div class="mt-4">
+                            <p> CSV Export </p>
+                            <button id="button-a" class="btn btn-primary mr-2" onclick="exportXLSX()"><i class="fas fa-download"></i> Ausgewählter Zeitraum</button>
+                            <!-- TODO Brauchen wir nachfolgenden Button überhautp? Sonst das style="display: none;" löschen-->
+                            <button class="btn btn-primary ml-2" style="display: none;"><i class="fas fa-download"></i> Gesamter Zeitraum</button>
                             
-                            <!-- CSV Export Button -->
-                            <div class="mt-4">
-                                <p> CSV Export </p>
-                                <button id="button-a" class="btn btn-primary mr-2"><i class="fas fa-download"></i> Ausgewählter Zeitraum</button>
-                                <button class="btn btn-primary ml-2"><i class="fas fa-download"></i> Gesamter Zeitraum</button>
-
-                                <script>
-                                    var wb = XLSX.utils.book_new();
-                                    wb.Props = {
-                                        Title: "SheetJS Tutorial",
-                                        Subject: "Test",
-                                        Author: "Red Stapler",
-                                        CreatedDate: new Date(2017,12,19)
-                                    };
-
-                                    wb.SheetNames.push("Test Sheet");
-                                    var ws_data = [['hello' , 'world']];
-                                    var ws = XLSX.utils.aoa_to_sheet(ws_data);
-                                    wb.Sheets["Test Sheet"] = ws;
-
-                                    var wbout = XLSX.write(wb, {bookType:'xlsx',  type: 'binary'});
-                                    function s2ab(s) {
-
-                                        var buf = new ArrayBuffer(s.length);
-                                        var view = new Uint8Array(buf);
-                                        for (var i=0; i<s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
-                                        return buf;
-
-                                    }
-                                    $("#button-a").click(function(){
-                                        saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), 'test.xlsx');
-                                    });
-                                </script>
-                            </div>
+                            <!-- wb.Props raus nehmen-->
+                            <script>
+                                
+                            </script>
                         </div>
                     </div>
                 </div>
-
-
             </div>
             <!-- /.container-fluid -->
 
@@ -326,10 +279,14 @@
 <!-- Core plugin JavaScript-->
 <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
 
+<!-- Bootstrap Table-->
+<script src="https://unpkg.com/bootstrap-table@1.20.2/dist/bootstrap-table.min.js"></script>
+
 <!-- #region Supporting Scripts. These MUST be in the right order. Note no leading / -->
 <script src="../../../uibuilder/vendor/socket.io/socket.io.js">/* REQUIRED: Socket.IO is loaded only once for all instances. Without this, you don't get a websocket connection */</script>
 <script src="../../uibuilderfe.min.js">/* REQUIRED: remove 'min.' to use dev version */</script>
-<script src="../../index.js">/* OPTIONAL: Put your custom code here */</script>
+<script src="monitoring.js">/* OPTIONAL: Put your custom code here */</script>
+<script src="../../generalFunctions.js"></script>
 <!-- #endregion -->
 
 </body>

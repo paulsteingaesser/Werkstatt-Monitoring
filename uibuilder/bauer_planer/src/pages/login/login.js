@@ -68,11 +68,13 @@ var password;
 window.login = function login() {
     userID=document.getElementById('userID').value;
     password=document.getElementById('password').value;
-
     uibuilder.send({
         'topic': "SELECT true FROM user WHERE userID ="+userID,
         'name': "checkUser"
     })
+    if (userID.length==3){
+        console.log("correct format")
+    }
 }
 
 function navigator(admin) {
