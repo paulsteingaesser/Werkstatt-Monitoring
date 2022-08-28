@@ -50,7 +50,7 @@ uibuilder.onChange('msg', function(msg){
                 title: 'Vorname',
                 sortable: "true"
             },{
-                field: 'lastname',
+                field: 'lastName',
                 title: 'Nachname',
                 sortable: "true"
             },{
@@ -126,7 +126,7 @@ uibuilder.onChange('msg', function(msg){
 
 function getUserAndMachines(){
 
-    var querry = "SELECT userid, firstName, lastname FROM user";
+    var querry = "SELECT userid, firstName, lastName FROM user";
 
     uibuilder.send({
         'topic': querry,
@@ -271,7 +271,7 @@ function fillUserDropdown(userArray){
     userArray.forEach(user => {
         var opt = document.createElement("option");
         opt.value = user.userid;
-        opt.innerHTML = user.firstName + " " + user.lastname;
+        opt.innerHTML = user.firstName + " " + user.lastName;
 
         select.appendChild(opt);
     });

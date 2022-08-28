@@ -124,7 +124,7 @@ window.onload = function() {
                 clickToSelect: false,
                 formatter : function(value,row,index) {
                     var editButton = '<a href="maschinen_bearbeiten.html?machine='+row.machineName+'" type="button" class="mr-4 btn btn-primary" role="button" ><i class="fas fa-wrench" aria-hidden="true"></i></a>';
-                    var deleteButton = '<button onclick="deleteMachine('+ "'" + row.machineName + "'" +')" type="button" class="btn btn-primary"><i class="fas fa-trash" aria-hidden="true"></i></button>'
+                    var deleteButton = '<button onclick="deleteMachine('+index+','+ "'" + row.machineName + "'" +')" type="button" class="btn btn-primary"><i class="fas fa-trash" aria-hidden="true"></i></button>'
                     return editButton + deleteButton;
                 }
             }],
@@ -133,8 +133,15 @@ window.onload = function() {
     })
 }
 
-function deleteMachine(machineName){
-    //TODO Maschine aus der Datenbank löschen.
-    //Frage: Wird die entsprechende Maschine auch dynamisch, also sofort auch aus der Liste entfernt?
-    console.log(machineName);
+function deleteMachine(index, machineName){
+    uibuilder.send({
+
+        'topic': 'DELETE FROM machine where machineName="' + machineName +'"' 
+    });
+
+   
+    $('#table').bootstrapTable('remove', {
+        field: '$index',
+        values: [index]
+      });
 }

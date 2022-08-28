@@ -76,6 +76,42 @@ window.fnSendToNR = function fnSendToNR(payload) {
     })
 }
 
+function inputEmptyCheck(inputtxt) {
+    if (inputtxt == null || inputtxt == "" || inputtxt.length <= 2) {
+        return true;}
+    else{
+        return false;
+    }
+}
+
+function inputLetterCheck(inputtxt) {
+    if((!/[^a-zA-Z]/.test(inputtxt))){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+
+function adminPassCheck(admin, password){
+    if(admin && !inputEmptyCheck(password)){
+        return true;
+    }else if (admin && inputEmptyCheck(password)){
+        return false;
+    }else if (!admin && inputEmptyCheck(password)){
+        return true;
+    }else if (!admin && !inputEmptyCheck(password)){
+        return true;
+    }
+}
+function snackbarMessage(str){
+    var x = document.getElementById("snackbar");
+    x.innerHTML= str;
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+
 function editUser(){
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -88,11 +124,20 @@ function editUser(){
     var admin = document.getElementById('inputAdmin').checked;    
     var permission = document.getElementById('berechtigungsstufe').value;
 
-    uibuilder.send({
-        'topic': 'UPDATE user SET password="'+password+'",lastName= "'+lastName+'",firstname ="'+firstName+'",admin= '+admin+',permission= '+permission+',company= "'+company+'" WHERE userid = '+userid+''
-    });
+    if (inputEmptyCheck(lastName)) {
+        snackbarMessage("Der Nachname ist nicht ausgefüllt!");
+    }else if(!inputLetterCheck(firstName) || !inputLetterCheck(lastName)){
+        snackbarMessage("Dürfen keine Sonderzeichnen oder Nummern bei den Namen eingegeben werden!"); 
+    }else if(!adminPassCheck(admin, password)){
+        snackbarMessage("Bei Admin muss ein Passwort gesetzt werden!"); 
 
-    window.location.href="nutzer.html";
+    }else{
+        uibuilder.send({
+            'topic': 'UPDATE user SET password="'+password+'",lastName= "'+lastName+'",firstname ="'+firstName+'",admin= '+admin+',permission= '+permission+',company= "'+company+'" WHERE userid = '+userid+''
+        });
+        snackbarMessage("Die Daten wurden erfolgreich aktualisiert"); 
+        setTimeout(function() { window.location.href="nutzer.html"; }, 1000);
+    }
 }
 
 // run this function when the document is loaded
@@ -135,3 +180,13 @@ document.body.addEventListener('keypress', function(event) {
         document.getElementById("addUserButton").click();
     }
 });
+
+function isAdmin(checkbox){
+
+    var admin = document.getElementById('passwordLabel');
+    if(checkbox.checked) {
+        admin.innerHTML = "Passwort (Pflichtfeld)";
+    } else {
+        admin.innerHTML = "Passwort (Optional)";
+    }
+}

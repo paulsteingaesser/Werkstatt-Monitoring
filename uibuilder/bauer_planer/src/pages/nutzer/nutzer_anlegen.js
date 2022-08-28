@@ -77,7 +77,6 @@ window.fnSendToNR = function fnSendToNR(payload) {
 }
 
 function inputEmptyCheck(inputtxt) {
-    console.log(inputtxt.length);
     if (inputtxt == null || inputtxt == "" || inputtxt.length <= 2) {
         return true;}
     else{
@@ -102,7 +101,7 @@ function adminPassCheck(admin, password){
     }else if (!admin && inputEmptyCheck(password)){
         return true;
     }else if (!admin && !inputEmptyCheck(password)){
-        return false;
+        return true;
     }
 }
 function snackbarMessage(str){
@@ -126,7 +125,7 @@ function addNewUser(){
     }else if(!inputLetterCheck(firstName) || !inputLetterCheck(lastName)){
         snackbarMessage("Dürfen keine Sonderzeichnen oder Nummern bei den Namen eingegeben werden!"); 
     }else if(!adminPassCheck(admin, password)){
-        snackbarMessage("Passwort & Admin probleme!"); 
+        snackbarMessage("Bei Admin muss ein Passwort gesetzt werden!"); 
 
     }else{
         uibuilder.send({
@@ -134,13 +133,8 @@ function addNewUser(){
         })
         snackbarMessage("Neuer Nutzer ist erforderlich hinzugefügt."); 
         setTimeout(function() { window.location.href="nutzer.html"; }, 1000);
-
-        
     }
  
-   
-    
-
 }
 
 // run this function when the document is loaded

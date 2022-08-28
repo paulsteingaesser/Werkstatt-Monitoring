@@ -157,21 +157,28 @@
                             <input type="text" class="form-control" id="inputVorname" placeholder="Vorname">
                         </div>
                         <div class="form-group">
-                            <label for="inputNachname">Nachname</label>
+                            <label for="inputNachname">Nachname - Beschreibung (Pflichtfeld)</label>
                             <input type="text" class="form-control" id="inputNachname" placeholder="Nachname">
                         </div>
+                        <div class="mb-4 form-check">
+                            <input 
+                                class="form-check-input" 
+                                type="checkbox" 
+                                value="" 
+                                id="inputAdmin"
+                                onclick='isAdmin(this)'
+                                style="width: 20px; height: 20px; vertical-align: middle; position: relative;">
+                            <label class="form-check-label" for="defaultCheck1" style="vertical-align: sub;"> Adminrechte </label>
+                        </div>
                         <div class="form-group">
-                            <label for="inputPasswort">Passwort (optional)</label>
+                            <label for="inputPasswort"><span id="passwordLabel" class="mb-4">Passwort</span></label>
                             <input type="password" class="form-control" id="inputPasswort" placeholder="Passwort">
                         </div>
                         <div class="form-group">
                             <label for="inputFirma">Firma (optional)</label>
                             <input type="text" class="form-control" id="inputFirma" placeholder="Firma">
                         </div>
-                        <div class="mb-4 form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="inputAdmin" style="width: 20px; height: 20px; vertical-align: middle; position: relative;">
-                            <label class="form-check-label" for="defaultCheck1" style="vertical-align: sub;"> Adminrechte </label>
-                        </div>
+                
                         <!-- Dropdown Menu -->
                      
                         <div class="mb-4 dropdown">
@@ -197,6 +204,55 @@
 
         </div>
         <!-- End of Main Content -->
+
+         <!-- snackbar -->
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+         <style>
+         #snackbar {
+         visibility: hidden;
+         min-width: 250px;
+         margin-left: -125px;
+         background-color: #333;
+         color: #fff;
+         text-align: center;
+         border-radius: 2px;
+         padding: 16px;
+         position: fixed;
+         z-index: 1;
+         left: 50%;
+         bottom: 30px;
+         font-size: 17px;
+         }
+
+         #snackbar.show {
+         visibility: visible;
+         -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+         animation: fadein 0.5s, fadeout 0.5s 2.5s;
+         }
+
+         @-webkit-keyframes fadein {
+         from {bottom: 0; opacity: 0;} 
+         to {bottom: 30px; opacity: 1;}
+         }
+
+         @keyframes fadein {
+         from {bottom: 0; opacity: 0;}
+         to {bottom: 30px; opacity: 1;}
+         }
+
+         @-webkit-keyframes fadeout {
+         from {bottom: 30px; opacity: 1;} 
+         to {bottom: 0; opacity: 0;}
+         }
+
+         @keyframes fadeout {
+         from {bottom: 30px; opacity: 1;}
+         to {bottom: 0; opacity: 0;}
+         }
+         </style>
+         <div id="snackbar"></div>
+
+
 
         <!-- Footer -->
         <footer class="sticky-footer bg-white">

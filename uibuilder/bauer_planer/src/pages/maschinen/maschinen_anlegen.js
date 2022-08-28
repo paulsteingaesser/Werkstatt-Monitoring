@@ -86,7 +86,7 @@ function inputEmptyCheck(inputtxt) {
 }
 
 function inputLetterCheck(inputtxt) {
-    if((!/[^a-zA-Z]/.test(inputtxt))){
+    if((/^[0-9]+$/.test(inputtxt))){
         return true;
     }
     else{
@@ -113,19 +113,14 @@ function addNewMachine(){
     var factor = document.getElementById('inputFaktor').value;
 
     if(inputEmptyCheck(machineName)){
-        snackbarMessage("Maschinenname darf nicht leer oder zu kürz sein!")
-    }
-    else if(inputLetterCheck(setUpTime) || inputLetterCheck(cost) || inputLetterCheck(materialConsumption) || inputLetterCheck(factor)){
-        snackbarMessage("Falsche Werte eingegeben!")
-    }else{ 
+        snackbarMessage("Maschinenname darf nicht leer oder zu kürz sein!")   
+       }else{ 
         uibuilder.send({
         'topic': 'INSERT INTO machine VALUES("'+machineName+'", "'+permission+'", "'+setUpTime+'", "'+cost+'", "'+materialConsumption+'", "'+area+'", "'+factor+'")'
         })
         snackbarMessage("Neue Maschine ist hinzufügt");
         setTimeout(function() { window.location.href="maschinen.html"; }, 1000);
-
     }
-   
 }
 
 

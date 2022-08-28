@@ -75,8 +75,34 @@ window.fnSendToNR = function fnSendToNR(payload) {
         'payload': payload,
     })
 }
+function inputEmptyCheck(inputtxt) {
+    console.log(inputtxt.length);
+    if (inputtxt == null || inputtxt == "" || inputtxt.length <= 2) {
+        return true;}
+    else{
+        return false;
+    }
+}
+
+function inputLetterCheck(inputtxt) {
+    if((/^[0-9]+$/.test(inputtxt))){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+
+function snackbarMessage(str){
+    var x = document.getElementById("snackbar");
+    x.innerHTML= str;
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
 
 function editMachine(){
+    var machineNameOld = msg.payload[0].machineName;
     var machineName = document.getElementById('inputMaschinenname').value;
     var permission = document.getElementById('berechtigungsstufe').value;
     var setUpTime = document.getElementById('inputRüstzeiten').value;
@@ -86,14 +112,15 @@ function editMachine(){
     var factor = document.getElementById('inputFaktor').value;
 
 
-    /*
-    uibuilder.send({
-        'topic': 'INSERT INTO machine VALUES("'+machineName+'", "'+permission+'", "'+setUpTime+'", "'+cost+'", "'+materialConsumption+'", "'+area+'", "'+factor+'")'
-    })
-    */
-
-
-    alert("Neue Maschine ist hinzufügt");
+    if(inputEmptyCheck(machineName)){
+        snackbarMessage("Maschinenname darf nicht leer oder zu kürz sein!")   
+       }else{ 
+        uibuilder.send({
+            'topic': 'UPDATE machine SET machineName = "'+machineName+'", permission='+permission+', setUpTime='+setUpTime+', cost ='+cost+', materialConsumption= '+materialConsumption+', area= "'+area+'", factor= '+factor+' WHERE machineName = "'+machineNameOld+'"'
+        });
+        snackbarMessage("Die Daten wurden erfolgreich aktualisiert");
+        setTimeout(function() { window.location.href="maschinen.html"; }, 1000);
+    }
 }
 
 // run this function when the document is loaded

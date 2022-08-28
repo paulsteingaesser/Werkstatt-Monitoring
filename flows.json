@@ -2612,7 +2612,7 @@
         "payload": "1650113340",
         "payloadType": "str",
         "x": 590,
-        "y": 2080,
+        "y": 2300,
         "wires": [
             [
                 "fe9c056336bd191f",
@@ -2638,7 +2638,7 @@
         "outputType": "msg",
         "outTz": "Europe/Berlin",
         "x": 820,
-        "y": 2100,
+        "y": 2320,
         "wires": [
             [
                 "4ea3c5183da93785"
@@ -2658,7 +2658,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1030,
-        "y": 2080,
+        "y": 2300,
         "wires": []
     },
     {
@@ -2679,7 +2679,7 @@
         "payload": "2022-04-22 16:00",
         "payloadType": "str",
         "x": 610,
-        "y": 2160,
+        "y": 2380,
         "wires": [
             [
                 "b81337e6f0d45f20"
@@ -2704,7 +2704,7 @@
         "outputType": "msg",
         "outTz": "Europe/Berlin",
         "x": 820,
-        "y": 2160,
+        "y": 2380,
         "wires": [
             [
                 "078e5446238161bb"
@@ -2724,7 +2724,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1030,
-        "y": 2160,
+        "y": 2380,
         "wires": []
     },
     {
@@ -2732,14 +2732,14 @@
         "type": "function",
         "z": "5d3034dc83dfbde2",
         "name": "timestampNow",
-        "func": "timeNow = new Date().getTime();\nconst currentMonth =  new Date().getMonth()+1;\nconst nextMonth =  new Date().getMonth()+2;\n\nconst start = new Date('2022-'+ currentMonth +'-01').getTime();\nconst end = new Date('2022-'+ nextMonth +'-01').getTime();\n//msg.payload = start.getTime();\nmsg.payload = end;\nreturn msg;",
+        "func": "timeNow = new Date().getTime();\nconst currentMonth =  new Date().getMonth()+1;\nconst nextMonth =  new Date().getMonth()+2;\n\nconst date2 = new Date('2022-04-22 16:00');\nconst date1 = new Date('2022-04-22 20:00');\nvar difference = date1.getTime() - date2.getTime();\n\n\nmsg.payload = (((difference / 1000) / 60)/ 60)\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
         "x": 840,
-        "y": 2240,
+        "y": 2460,
         "wires": [
             [
                 "078e5446238161bb"
@@ -2768,7 +2768,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 580,
-        "y": 2240,
+        "y": 2460,
         "wires": [
             [
                 "eddbcfd47fba54ee"
@@ -2781,8 +2781,8 @@
         "z": "5d3034dc83dfbde2",
         "name": "Time converting:",
         "info": "",
-        "x": 380,
-        "y": 2080,
+        "x": 400,
+        "y": 2300,
         "wires": []
     },
     {
@@ -2803,7 +2803,7 @@
         "payload": "18000000",
         "payloadType": "str",
         "x": 580,
-        "y": 2300,
+        "y": 2520,
         "wires": [
             [
                 "8639e53d8c9029b8"
@@ -2828,7 +2828,7 @@
         "outputType": "msg",
         "outTz": "Europe/Berlin",
         "x": 820,
-        "y": 2300,
+        "y": 2520,
         "wires": [
             [
                 "1ec28b3e9561843a"
@@ -2848,7 +2848,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1030,
-        "y": 2300,
+        "y": 2520,
         "wires": []
     },
     {
@@ -2863,7 +2863,7 @@
         "finalize": "",
         "libs": [],
         "x": 840,
-        "y": 2340,
+        "y": 2560,
         "wires": [
             [
                 "540c4819ab00eb87"
@@ -2883,7 +2883,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1010,
-        "y": 2340,
+        "y": 2560,
         "wires": []
     },
     {
@@ -2904,7 +2904,7 @@
         "payload": "1647438540000",
         "payloadType": "num",
         "x": 600,
-        "y": 2340,
+        "y": 2560,
         "wires": [
             [
                 "a030ecc9f1ee9bf2",
@@ -2926,7 +2926,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1430,
-        "y": 2500,
+        "y": 2780,
         "wires": []
     },
     {
@@ -2947,7 +2947,7 @@
         "payload": "2022-04-22 20:00",
         "payloadType": "str",
         "x": 610,
-        "y": 2200,
+        "y": 2420,
         "wires": [
             [
                 "b81337e6f0d45f20"
@@ -2972,7 +2972,7 @@
         "payload": "100",
         "payloadType": "str",
         "x": 480,
-        "y": 2580,
+        "y": 2860,
         "wires": [
             [
                 "28c1577f38c9b74f"
@@ -2991,7 +2991,7 @@
         "finalize": "",
         "libs": [],
         "x": 650,
-        "y": 2580,
+        "y": 2860,
         "wires": [
             [
                 "091c114549ca2c40"
@@ -3005,7 +3005,7 @@
         "name": "Alle Einträge von einem User für bestimmten Monat (März): ",
         "info": "",
         "x": 210,
-        "y": 2540,
+        "y": 2820,
         "wires": []
     },
     {
@@ -3020,7 +3020,7 @@
         "finalize": "",
         "libs": [],
         "x": 1280,
-        "y": 2580,
+        "y": 2860,
         "wires": [
             []
         ]
@@ -3043,7 +3043,7 @@
         "payload": "100",
         "payloadType": "str",
         "x": 480,
-        "y": 2660,
+        "y": 2940,
         "wires": [
             [
                 "e2b0ae097b625c5c"
@@ -3062,7 +3062,7 @@
         "finalize": "",
         "libs": [],
         "x": 650,
-        "y": 2660,
+        "y": 2940,
         "wires": [
             [
                 "93449dc8b3afb3cd"
@@ -3081,7 +3081,7 @@
         "finalize": "",
         "libs": [],
         "x": 1280,
-        "y": 2660,
+        "y": 2940,
         "wires": [
             []
         ]
@@ -3098,7 +3098,7 @@
         "finalize": "",
         "libs": [],
         "x": 850,
-        "y": 2380,
+        "y": 2600,
         "wires": [
             [
                 "540c4819ab00eb87"
@@ -3112,7 +3112,7 @@
         "name": "Alle Einträge von einem User für aktuellen Monat: ",
         "info": "",
         "x": 240,
-        "y": 2620,
+        "y": 2900,
         "wires": []
     },
     {
@@ -3127,7 +3127,7 @@
         "finalize": "",
         "libs": [],
         "x": 1240,
-        "y": 2460,
+        "y": 2740,
         "wires": [
             [
                 "9c997e10abe5c642"
@@ -3152,7 +3152,7 @@
         "payload": "100",
         "payloadType": "str",
         "x": 480,
-        "y": 2460,
+        "y": 2740,
         "wires": [
             [
                 "f039a0826e1be4d3"
@@ -3171,7 +3171,7 @@
         "finalize": "",
         "libs": [],
         "x": 650,
-        "y": 2460,
+        "y": 2740,
         "wires": [
             [
                 "39b484536b20e5ec"
@@ -3185,7 +3185,7 @@
         "name": "Alle Einträge von einem User:",
         "info": "",
         "x": 240,
-        "y": 2460,
+        "y": 2740,
         "wires": []
     },
     {
@@ -3286,7 +3286,7 @@
         "sql": "",
         "name": "db",
         "x": 1070,
-        "y": 2460,
+        "y": 2740,
         "wires": [
             [
                 "ab5cfe6886bb3642"
@@ -3299,7 +3299,7 @@
         "z": "5d3034dc83dfbde2",
         "name": "find db path in local directory",
         "x": 880,
-        "y": 2460,
+        "y": 2740,
         "wires": [
             [
                 "94a80b516393dcda"
@@ -3317,7 +3317,7 @@
         "sql": "",
         "name": "db",
         "x": 1070,
-        "y": 2580,
+        "y": 2860,
         "wires": [
             [
                 "9c997e10abe5c642"
@@ -3330,7 +3330,7 @@
         "z": "5d3034dc83dfbde2",
         "name": "find db path in local directory",
         "x": 880,
-        "y": 2580,
+        "y": 2860,
         "wires": [
             [
                 "a74977dcf84dcda8"
@@ -3348,7 +3348,7 @@
         "sql": "",
         "name": "db",
         "x": 1070,
-        "y": 2660,
+        "y": 2940,
         "wires": [
             [
                 "9c997e10abe5c642"
@@ -3361,7 +3361,7 @@
         "z": "5d3034dc83dfbde2",
         "name": "find db path in local directory",
         "x": 880,
-        "y": 2660,
+        "y": 2940,
         "wires": [
             [
                 "1adcb43543e66c45"
@@ -3438,7 +3438,7 @@
         "finalize": "",
         "libs": [],
         "x": 640,
-        "y": 2740,
+        "y": 3020,
         "wires": [
             [
                 "f42b56dc21b643d3"
@@ -3468,7 +3468,7 @@
         "onceDelay": 0.1,
         "topic": "",
         "x": 480,
-        "y": 2740,
+        "y": 3020,
         "wires": [
             [
                 "062e1fadf2d0e360"
@@ -3486,7 +3486,7 @@
         "sql": "",
         "name": "db",
         "x": 1070,
-        "y": 2740,
+        "y": 3020,
         "wires": [
             [
                 "9c997e10abe5c642",
@@ -3500,7 +3500,7 @@
         "z": "5d3034dc83dfbde2",
         "name": "find db path in local directory",
         "x": 880,
-        "y": 2740,
+        "y": 3020,
         "wires": [
             [
                 "2bbd741e1f665a13"
@@ -3519,7 +3519,7 @@
         "finalize": "",
         "libs": [],
         "x": 1290,
-        "y": 2740,
+        "y": 3020,
         "wires": [
             [
                 "9c997e10abe5c642"
@@ -3871,7 +3871,7 @@
         "props": [
             {
                 "p": "payload.machineName",
-                "v": "Säge",
+                "v": "test maschine",
                 "vt": "str"
             },
             {
@@ -4013,6 +4013,85 @@
         "info": "",
         "x": 740,
         "y": 220,
+        "wires": []
+    },
+    {
+        "id": "f72b95fcd5fa2b54",
+        "type": "inject",
+        "z": "5d3034dc83dfbde2",
+        "name": "Entering the values",
+        "props": [
+            {
+                "p": "payload.userid",
+                "v": "102",
+                "vt": "num"
+            },
+            {
+                "p": "payload.machineName",
+                "v": "Säge",
+                "vt": "str"
+            },
+            {
+                "p": "payload.start",
+                "v": "2022-07-29 07:30",
+                "vt": "str"
+            },
+            {
+                "p": "payload.end",
+                "v": "2022-04-29 11:10",
+                "vt": "str"
+            },
+            {
+                "p": "payload.setUpTime",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "p": "payload.power",
+                "v": "999",
+                "vt": "num"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 530,
+        "y": 2120,
+        "wires": [
+            [
+                "442754dec319b7c1"
+            ]
+        ]
+    },
+    {
+        "id": "442754dec319b7c1",
+        "type": "function",
+        "z": "5d3034dc83dfbde2",
+        "name": "Select Data",
+        "func": "var start = new Date(msg.payload.start).getTime();\nvar end = new Date(msg.payload.end).getTime();\n\nvar msg = { \"topic\": \"INSERT INTO data VALUES(\"+msg.payload.userid+\", '\"+msg.payload.machineName+\"', \"+start+\", \"+end+\", \"+msg.payload.setUpTime+\", \"+(end-start)+\", \"+msg.payload.power+\")\" };\n\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 2120,
+        "wires": [
+            [
+                "06248a2bf64d415b"
+            ]
+        ]
+    },
+    {
+        "id": "e88103ee9b848937",
+        "type": "comment",
+        "z": "5d3034dc83dfbde2",
+        "name": "Data ",
+        "info": "",
+        "x": 350,
+        "y": 2120,
         "wires": []
     }
 ]
