@@ -11,49 +11,6 @@ window.login = function (string){
      return '<span class="' + cls + '">' + string + '</span>'
 }
 
-// return formatted HTML version of JSON object
-
-window.syntaxHighlight = function syntaxHighlight (json) {
-    json = JSON.stringify(json, undefined, 4)
-    json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    json = json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
-        var cls = 'number'
-        if ((/^"/).test(match)) {
-            if ((/:$/).test(match)) {
-                cls = 'key'
-            } else {
-                cls = 'string'
-            }
-        } else if ((/true|false/).test(match)) {
-            cls = 'boolean'
-        } else if ((/null/).test(match)) {
-            cls = 'null'
-        }
-        return '<span class="' + cls + '">' + match + '</span>'
-    })
-    return json
-} // --- End of syntaxHighlight --- //
-window.loginMsg = function loginMsg (json) {
-    json = JSON.stringify(json, undefined, 4)
-    json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    json = json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
-        var cls = 'number'
-        if ((/^"/).test(match)) {
-            if ((/:$/).test(match)) {
-                cls = 'key'
-            } else {
-                cls = 'string'
-            }
-        } else if ((/true|false/).test(match)) {
-            cls = 'boolean'
-        } else if ((/null/).test(match)) {
-            cls = 'null'
-        }
-        return '<span class="' + cls + '">' + match + '</span>'
-    })
-    return json
-} // --- End of syntaxHighlight --- //
-
 // Send a message back to Node-RED
 window.fnSendToNR = function fnSendToNR(payload) {
     uibuilder.send({
@@ -72,8 +29,10 @@ window.login = function login() {
         'topic': "SELECT true FROM user WHERE userID ="+userID,
         'name': "checkUser"
     })
-    if (userID.length==3){
-        console.log("correct format")
+    if (userID.length!=3){
+        console.log("userID too long/short")
+        document.getElementById('error').style.display= "block";
+
     }
 }
 
@@ -100,9 +59,10 @@ window.onload = function() {
         if (msg.name == "checkUser"){
                 if(msg.payload == ""){
                     console.log("User doesn't exist");
+                    document.getElementById('error').style.display= "block";
                 }else if (msg.payload[0]["true"] == 1){
                     uibuilder.send({
-                        'topic': "SELECT password, admin, firstName, lastName  FROM user WHERE userID =" +userID,
+                        'topic': "SELECT password, admin, firstName, lastname  FROM user WHERE userID =" +userID,
                         'name' : "checkPass"
                     })
                     console.log("User exist")
@@ -111,12 +71,13 @@ window.onload = function() {
         }else if (msg.name == "checkPass"){
                     if ( msg.payload[0]["password"] ==  password ){
                         navigator(msg.payload[0]["admin"]);
-                        var fullName = msg.payload[0]["firstName"] + " " + msg.payload[0]["lastName"];
+                        var fullName = msg.payload[0]["firstName"] + " " + msg.payload[0]["lastname"];
                         localStorage.setItem("fullName", fullName);
                         localStorage.setItem("admin", msg.payload[0]["admin"]);
                         localStorage.setItem("userID", userID);
                     } else {
                         console.log("Password is incorrect")
+                        document.getElementById('error').style.display= "block";
                     }
                 }
         })

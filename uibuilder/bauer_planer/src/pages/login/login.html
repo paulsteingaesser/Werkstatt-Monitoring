@@ -41,8 +41,8 @@
 
 
                 <div class="field padding-bottom--24">
-                  <label for="email">Benutzer ID</label>
-                  <input id="userID" type="text" placeholder="ID" name="uname" >
+                  <label for="userid">Benutzer ID</label>
+                  <input id="userID" type="number" placeholder="ID" name="uname" >
                 </div>
                 <div class="field padding-bottom--24">
                   <div class="grid--50-50">
@@ -51,19 +51,14 @@
                   </div>
                   <input id="password" placeholder="Passwort" type="password" name="psw" >
                 </div>
-                                            <div class="error">Ungültiger Benutzername und/oder Passwort.</div>    
+                    <div id="error" class="error">Ungültige Benutzer ID und/oder Passwort.</div>    
                 <div class="field field-checkbox padding-bottom--24 flex-flex align-center">
-                           </div>
+                    </div>
                 <div class="field padding-bottom--24">
                   <input id="loginButton" type="submit" name="loginButton" onclick=login() value="Login">
                 </div>
                                 <div class="field padding-bottom--24">
-                                   
-
-
                 </div>
-
-
                       <pre id="msg" class="syntax-highlight"></pre>
     <!-- #region Supporting Scripts. These MUST be in the right order. Note no leading / -->
     <script src="../../../uibuilder/vendor/socket.io/socket.io.js">/* REQUIRED: Socket.IO is loaded only once for all instances. Without this, you don't get a websocket connection */</script>
