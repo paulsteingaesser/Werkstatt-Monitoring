@@ -991,23 +991,6 @@
         "wires": []
     },
     {
-        "id": "acbd09f7a15ccfad",
-        "type": "debug",
-        "z": "838e54b719ad8caa",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1430,
-        "y": 220,
-        "wires": []
-    },
-    {
         "id": "3e926d2fc9bc5dcf",
         "type": "http in",
         "z": "838e54b719ad8caa",
@@ -1061,8 +1044,8 @@
         "name": "HTTP Antwort an den Mikrocontroller",
         "statusCode": "200",
         "headers": {},
-        "x": 1790,
-        "y": 460,
+        "x": 950,
+        "y": 600,
         "wires": []
     },
     {
@@ -1078,8 +1061,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 970,
-        "y": 600,
+        "x": 990,
+        "y": 500,
         "wires": []
     },
     {
@@ -1120,16 +1103,6 @@
         ]
     },
     {
-        "id": "8b38b9b837dad7e8",
-        "type": "comment",
-        "z": "838e54b719ad8caa",
-        "name": "Hier Datenbank zwischen",
-        "info": "",
-        "x": 950,
-        "y": 460,
-        "wires": []
-    },
-    {
         "id": "ced57a5f39c0999b",
         "type": "debug",
         "z": "838e54b719ad8caa",
@@ -1142,8 +1115,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1710,
-        "y": 540,
+        "x": 870,
+        "y": 640,
         "wires": []
     },
     {
@@ -1152,8 +1125,8 @@
         "z": "838e54b719ad8caa",
         "name": "Payload von msg wird an MC gesendet!",
         "info": "",
-        "x": 1690,
-        "y": 420,
+        "x": 790,
+        "y": 700,
         "wires": []
     },
     {
@@ -1166,8 +1139,8 @@
         "db": "C:\\Users\\User\\.node-red\\projects\\MonitoringApp_Stand22-06-22\\db",
         "sql": "",
         "name": "db",
-        "x": 1230,
-        "y": 500,
+        "x": 670,
+        "y": 600,
         "wires": [
             [
                 "bb365524f4051b03",
@@ -1180,29 +1153,12 @@
         "type": "subflow:2a14cb53da10968a",
         "z": "838e54b719ad8caa",
         "name": "find db path in local directory",
-        "x": 1020,
-        "y": 500,
+        "x": 440,
+        "y": 600,
         "wires": [
             [
                 "7ea94c6be75dbe55"
             ]
-        ]
-    },
-    {
-        "id": "058f4fce25fb1968",
-        "type": "function",
-        "z": "838e54b719ad8caa",
-        "name": "Datenbank Ausgabe auswerten",
-        "func": "var userExists = msg.payload[0].userExists;\nvar permissionIsHighEnough = msg.payload[0].permissionIsHighEnough;\n\n\nif(userExists && permissionIsHighEnough){\n    //ad something to msg.payload like userExists = true and permission = true\n    msg.payload = \"userExists = true and permission = true\"\n} else if(userExists && !permissionIsHighEnough){\n    //ad something to msg.payload like userExists = true and permission = false\n        msg.payload = \"userExists = true and permission = false\"\n} else {\n    //ad something to msg.payload like userExists = false and permission = false\n        msg.payload = \"userExists = false and permission = false\"\n}\n\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1390,
-        "y": 440,
-        "wires": [
-            []
         ]
     },
     {
@@ -1249,8 +1205,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 710,
-        "y": 100,
+        "x": 870,
+        "y": 160,
         "wires": []
     },
     {

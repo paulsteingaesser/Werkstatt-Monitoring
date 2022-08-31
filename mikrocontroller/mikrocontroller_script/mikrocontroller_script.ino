@@ -33,10 +33,7 @@ const char* ssid = wifinetwork;
 const char* password = wifipassword;
 
 //Servername oder IP mit Pfad
-//TODO keine feste IP sondern am besten ein Domain Name verwenden!
 String serverName = "http://192.168.10.82:1880/";
-//TODO make checkIfUserExists and sendData variable
-
 
 //--- User and Machine config ---
 #define machineName "Testmaschine"
@@ -237,7 +234,7 @@ void checkLogin() {
   testPassword();
 
   /*
-   * TODO aulesen, was der Server zurück schickt!
+   * Uncomment, if Server is available. Otherwise use the testPassword() function
   if(payload == ""){
     
     //if user exists and permission is correct, buffer user id -> LEDs green
