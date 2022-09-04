@@ -47,5 +47,5 @@ function calculateKWH(power, duration) {
 }
 
 function calculatePrice(kWH, price) {
-    return (kWH * price).toFixed(4) + " €";
+    return (kWH * price).toFixed(2) + " €";
 }

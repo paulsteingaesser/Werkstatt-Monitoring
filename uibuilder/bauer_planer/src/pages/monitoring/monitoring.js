@@ -221,7 +221,7 @@ function createOverviewDataObject(array){
         sumWatt = sumWatt + Number(calculateKWH(element.power, element.duration));
     });
     overViewData[0].machineHours = convertMillisToHoursMinutesSeconds(sumMachineHours);
-    overViewData[0].wattHours = sumWatt;
+    overViewData[0].wattHours = (sumWatt).toFixed(2);
     overViewData[0].powerCosts = calculatePrice(overViewData[0].wattHours, localStorage.getItem("powerCost"));
 
     return overViewData;

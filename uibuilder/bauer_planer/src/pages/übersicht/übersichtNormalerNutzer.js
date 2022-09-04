@@ -142,7 +142,7 @@ window.onload = function() {
                     field: 'kWh',
                     title: 'kWh',
                     sortable: "true",
-                    formatter: "calculateKWH"
+                    formatter: "calculateKWHFromRow"
                 }],
                 data: msg.payload
             })
