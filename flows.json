@@ -24,6 +24,14 @@
         "env": []
     },
     {
+        "id": "56fe256bdc6888ea",
+        "type": "tab",
+        "label": "Power Management",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "2a14cb53da10968a",
         "type": "subflow",
         "name": "Subflow 1",
@@ -210,6 +218,25 @@
         "type": "sqliteQueuedDb",
         "db": "db",
         "mode": "RWC"
+    },
+    {
+        "id": "189d98b6e10797a1",
+        "type": "serial-port",
+        "serialport": "/dev/ttyAMA0/",
+        "serialbaud": "38400",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
     },
     {
         "id": "ae6b9eec80b9e3bc",
@@ -3910,6 +3937,135 @@
         "info": "",
         "x": 350,
         "y": 2120,
+        "wires": []
+    },
+    {
+        "id": "e85747894aceec43",
+        "type": "function",
+        "z": "56fe256bdc6888ea",
+        "name": "z.B. RPICT7V1",
+        "func": "\nvar output = msg.payload.split(\" \");\n\nvar NodeID = parseInt(output[0]);\nvar RP1    = parseFloat(output[1]);\nvar Vrms   = parseFloat(output[15]);\n\nvar msg1 = {payload : NodeID};\nvar msg2 = {payload : RP1};\nvar msg3 = {payload : Vrms};\n\nreturn [msg1, msg2, msg3];",
+        "outputs": 3,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 320,
+        "wires": [
+            [
+                "0a55c9fdbab99ba3"
+            ],
+            [
+                "0a55c9fdbab99ba3"
+            ],
+            [
+                "0a55c9fdbab99ba3"
+            ]
+        ]
+    },
+    {
+        "id": "bd1d5435acad84d6",
+        "type": "serial in",
+        "z": "56fe256bdc6888ea",
+        "name": "Port 1",
+        "serial": "189d98b6e10797a1",
+        "x": 250,
+        "y": 320,
+        "wires": [
+            [
+                "e85747894aceec43"
+            ]
+        ]
+    },
+    {
+        "id": "0a55c9fdbab99ba3",
+        "type": "debug",
+        "z": "56fe256bdc6888ea",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "2c01aa955659f634",
+        "type": "comment",
+        "z": "56fe256bdc6888ea",
+        "name": "Link zur Erklärung",
+        "info": "http://lechacal.com/wiki/index.php?title=RPICT_and_Node-Red_hosted_on_Raspberrypi",
+        "x": 430,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "70562e6a0e504470",
+        "type": "power-monitor",
+        "z": "56fe256bdc6888ea",
+        "name": "Power Monitor",
+        "startthreshold": "42",
+        "stopthreshold": "42",
+        "startafter": 1,
+        "stopafter": 1,
+        "energydecimals": 4,
+        "emitidle": false,
+        "x": 420,
+        "y": 400,
+        "wires": [
+            [
+                "c36595ebaef3f2d1"
+            ]
+        ]
+    },
+    {
+        "id": "32b05dd4e912d6ed",
+        "type": "inject",
+        "z": "56fe256bdc6888ea",
+        "name": "Test Power",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "43",
+        "payloadType": "num",
+        "x": 220,
+        "y": 400,
+        "wires": [
+            [
+                "70562e6a0e504470"
+            ]
+        ]
+    },
+    {
+        "id": "c36595ebaef3f2d1",
+        "type": "debug",
+        "z": "56fe256bdc6888ea",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 400,
         "wires": []
     }
 ]
